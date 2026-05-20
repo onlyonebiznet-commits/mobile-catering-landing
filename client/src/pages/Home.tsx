@@ -36,9 +36,6 @@ export default function Home() {
             <a href="#menu" className="text-sm text-foreground hover:text-primary transition-colors">
               식단
             </a>
-            <a href="#pricing" className="text-sm text-foreground hover:text-primary transition-colors">
-              가격
-            </a>
             <a href="#process" className="text-sm text-foreground hover:text-primary transition-colors">
               프로세스
             </a>
@@ -50,36 +47,35 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 overflow-hidden bg-white">
+      <section className="py-16 md:py-28 bg-white">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-5 animate-fade-in">
-              <div className="inline-block">
-                <span className="px-4 py-2 bg-accent text-accent-foreground text-sm font-medium rounded-full">
-                  신뢰할 수 있는 이동형 밀솔루션
-                </span>
+            <div className="space-y-6">
+              <div className="inline-block px-3 py-1 bg-accent rounded-full text-sm text-primary font-medium">
+                신뢰할 수 있는 이동형 밀솔루션
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
                 직원 복지의 새로운 기준
-                <span className="text-primary"> 프레시밀온</span>
+                <br />
+                <span className="text-primary">프레시밀온</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                공간 제약 없이 신선하고 건강한 식사를 제공하세요. 프레시밀온은 기업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높이고 기업의 성장을 이끌어냅니다.
+                공간 제약 없이 시작하고 건강한 식사를 제공하는 프레시밀온은 기업의 특성에 맞춘 맞춤 밀솔루션으로 직원 만족도를 높이고 기업의 성장을 이끌어냅니다.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
                   지금 상담받기 <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-border hover:bg-secondary">
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
                   자료 다운로드
                 </Button>
               </div>
             </div>
-            <div className="relative h-96 md:h-full animate-fade-in-delayed">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/hero-meal-delivery-XPTkxbCqjLtzsXEpu5rM9o.webp"
-                alt="프레시밀온 서비스"
-                className="w-full h-full object-cover rounded-2xl shadow-lg"
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/hero-meal-delivery.png" 
+                alt="프레시밀온 서비스" 
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
@@ -91,56 +87,121 @@ export default function Home() {
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { stat: "20+", label: "년 이상의 급식 운영 경험" },
-              { stat: "1,000+", label: "일일 제공 식수" },
-              { stat: "100+", label: "사업장 운영 중" },
-              { stat: "99%", label: "고객 만족도" },
-            ].map((item, idx) => (
+              { number: "20+", label: "년 이상의 금식 운영 경험" },
+              { number: "1,000+", label: "일일 제공 식수" },
+              { number: "100+", label: "사업장 운영 중" },
+              { number: "99%", label: "고객 만족도" },
+            ].map((stat, idx) => (
               <div key={idx} className="text-center space-y-2">
-                <div className="text-3xl md:text-4xl font-bold text-primary">{item.stat}</div>
-                <p className="text-sm text-muted-foreground">{item.label}</p>
+                <p className="text-3xl md:text-4xl font-bold text-primary">{stat.number}</p>
+                <p className="text-sm md:text-base text-muted-foreground">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Service Overview Section */}
-      <section id="service" className="py-16 md:py-24 bg-white">
+      {/* Kitchenless Meal Solutions Section */}
+      <section className="py-16 md:py-24 bg-white">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              운영부터 품질까지 모두 책임집니다
+              키친리스 밀솔루션
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              20년 이상의 경험을 바탕으로 기업의 특성에 맞춘 최고 수준의 서비스를 제공합니다
+              공간 효율성과 다양한 니즈를 모두 충족하는 프레시밀온의 3가지 솔루션
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
+                title: "프레시밀온",
+                subtitle: "이동형 밀솔루션",
+                description: "최소한의 공간",
+                features: ["이동형 푸드트럭 운영", "신선한 한끼 식사 제공", "공간 제약 없음", "빠른 배포"],
                 icon: Utensils,
-                title: "맞춤형 식단 설계",
-                description: "연령대, 업무 강도, 국적 등을 고려한 책임 영양사의 전문 식단 관리",
-                features: ["월별 신메뉴 개발", "영양 균형 관리", "특식 대응"],
+                bgColor: "bg-blue-50",
               },
               {
+                title: "슈퍼그로틴",
+                subtitle: "수제 간편식 밀솔루션",
+                description: "트렌디한 건강메뉴",
+                features: ["고단백 메뉴 구성", "건강한 간편식", "다양한 선택지", "영양 관리"],
+                icon: TrendingUp,
+                bgColor: "bg-green-50",
+              },
+              {
+                title: "스낵픽&카페",
+                subtitle: "맞춤형 밀솔루션",
+                description: "임직원 취향저격",
+                features: ["간식 & 카페 운영", "24시간 무인 서비스", "취향 맞춤 구성", "휴식 공간 제공"],
+                icon: Coffee,
+                bgColor: "bg-orange-50",
+              },
+            ].map((solution, idx) => {
+              const Icon = solution.icon;
+              return (
+                <div key={idx} className={`${solution.bgColor} p-8 rounded-xl border border-border space-y-4 hover:shadow-lg transition-shadow`}>
+                  <div className="space-y-2">
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground">{solution.title}</h3>
+                    <p className="text-sm text-primary font-semibold">{solution.subtitle}</p>
+                    <p className="text-sm text-muted-foreground">{solution.description}</p>
+                  </div>
+                  <ul className="space-y-2 pt-4 border-t border-border/50">
+                    {solution.features.map((feature, featureIdx) => (
+                      <li key={featureIdx} className="flex items-center gap-2 text-sm text-foreground">
+                        <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Overview Section */}
+      <section id="service" className="py-16 md:py-24 bg-secondary/40">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              운영부터 품질까지 모두 책임집니다
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              신선함과 안전성을 최우선으로 하는 프레시밀온의 핵심 서비스
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
                 icon: Shield,
-                title: "철저한 위생 관리",
-                description: "HACCP 기준의 체계적인 위생 관리로 매일 안심할 수 있는 식사 제공",
-                features: ["6대 대기업 물류", "DRY SYSTEM", "정기 방역"],
+                title: "위생 & 안전 관리",
+                description: "HACCP 인증 시설에서 엄격한 위생 기준을 준수하며 정기적인 품질 검사를 실시합니다",
+                features: ["HACCP 인증", "정기 품질 검사", "냉장 배송", "위생 교육"],
               },
               {
                 icon: Heart,
-                title: "세심한 서비스",
-                description: "3인 관리 체계와 일일 만족도 조사로 지속적인 서비스 개선",
-                features: ["3인 관리 체계", "CS 교육", "피드백 시스템"],
+                title: "맞춤형 메뉴 개발",
+                description: "기업의 특성과 직원의 취향을 반영한 맞춤형 메뉴를 개발하고 지속적으로 개선합니다",
+                features: ["맞춤 메뉴 개발", "영양 관리", "알레르기 대응", "계절 메뉴"],
+              },
+              {
+                icon: Clock,
+                title: "신속한 배송 & 수거",
+                description: "정해진 시간에 신선한 식사를 배송하고 빠르게 수거하여 위생을 유지합니다",
+                features: ["정시 배송", "신속 수거", "온도 관리", "신선도 보장"],
               },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="space-y-4 p-6 rounded-xl bg-secondary/50 border border-border hover:shadow-lg transition-shadow">
+                <div key={idx} className="space-y-4 p-6 rounded-xl bg-white border border-border hover:shadow-lg transition-shadow">
                   <div className="w-14 h-14 bg-primary rounded-lg flex items-center justify-center">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
@@ -162,14 +223,14 @@ export default function Home() {
       </section>
 
       {/* Customized Menu Section */}
-      <section className="py-16 md:py-24 bg-secondary/40">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               고객 특성에 맞춘 식단
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              기업, 산업체, 병원, 학교 등 다양한 환경에 최적화된 식단을 제공합니다
+              기업, 산업체, 병원 등 다양한 환경에 최적화된 식단을 제공합니다
             </p>
           </div>
 
@@ -221,7 +282,7 @@ export default function Home() {
       </section>
 
       {/* Meal Gallery Section */}
-      <section id="menu" className="py-16 md:py-24 bg-white">
+      <section id="menu" className="py-16 md:py-24 bg-secondary/40">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -242,22 +303,22 @@ export default function Home() {
               },
               {
                 title: "한식 정식",
-                description: "전통 한식 메뉴",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-korean-set-c2rTF8o2ppuiUAKpmki7Dn.webp",
-                items: ["쇠고기 구이", "된장국", "계란말이"],
+                description: "영양 균형 맞춘 한끼",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-korean-set.png",
+                items: ["소불고기", "계란말이", "나물"],
               },
               {
                 title: "건강 보울",
-                description: "영양 균형 식단",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-healthy-bowl-SN9RN2jJjcLNNSCdJKauSV.webp",
-                items: ["퀴노아", "그릴 치킨", "신선 채소"],
+                description: "트렌디한 웰빙 식단",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-healthy-bowl.png",
+                items: ["퀴노아", "닭가슴살", "채소"],
               },
             ].map((meal, idx) => (
-              <div key={idx} className="space-y-4 rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow bg-white">
-                <div className="h-56 bg-gray-200 overflow-hidden">
+              <div key={idx} className="rounded-xl overflow-hidden bg-white border border-border hover:shadow-lg transition-shadow">
+                <div className="h-48 overflow-hidden bg-secondary">
                   <img src={meal.image} alt={meal.title} className="w-full h-full object-cover" />
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-6 space-y-4">
                   <div>
                     <h3 className="text-lg font-bold text-foreground">{meal.title}</h3>
                     <p className="text-sm text-muted-foreground">{meal.description}</p>
@@ -276,123 +337,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
-          <div className="mt-8 p-6 rounded-xl bg-secondary/50 border border-border">
-            <h3 className="text-xl font-bold text-foreground mb-5">추가 서비스</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: Coffee,
-                  title: "커피 & 카페",
-                  description: "머신 렌탈과 원두 구독으로 휴식 공간 조성",
-                },
-                {
-                  icon: Utensils,
-                  title: "TO-GO 코너",
-                  description: "줄 서지 않고 즐기는 취향 맞춤 간편식",
-                },
-                {
-                  icon: Clock,
-                  title: "24시간 무인 운영",
-                  description: "간식부터 간편식까지 언제든 즐길 수 있는 서비스",
-                },
-              ].map((service, idx) => {
-                const Icon = service.icon;
-                return (
-                  <div key={idx} className="space-y-3">
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h4 className="font-bold text-foreground">{service.title}</h4>
-                    <p className="text-sm text-muted-foreground">{service.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-16 md:py-24 bg-secondary/40">
-        <div className="container space-y-12">
-          <div className="text-center space-y-3">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              합리적인 가격 정책
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              기업 규모와 운영 방식에 맞춘 맞춤형 견적을 제공합니다
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "기본 플랜",
-                description: "소규모 기업 맞춤",
-                items: ["밥류 1종", "국류 1종", "메인메뉴", "반찬 4종"],
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-quality-showcase-SFdK2CCmBM3iiDzfeYjHJR.webp",
-              },
-              {
-                name: "표준 플랜",
-                description: "중규모 기업 추천",
-                items: ["밥류 1종", "국류 1종", "메인메뉴", "반찬 5종"],
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-quality-showcase-SFdK2CCmBM3iiDzfeYjHJR.webp",
-                featured: true,
-              },
-              {
-                name: "프리미엄 플랜",
-                description: "대규모 기업 맞춤",
-                items: ["별도 협의", "고객 맞춤형", "스페셜 구성"],
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-quality-showcase-SFdK2CCmBM3iiDzfeYjHJR.webp",
-              },
-            ].map((plan, idx) => (
-              <div
-                key={idx}
-                className={`rounded-xl overflow-hidden transition-all ${
-                  plan.featured ? "ring-2 ring-primary shadow-lg" : "border border-border"
-                }`}
-              >
-                <div className="h-44 bg-gray-200 overflow-hidden">
-                  <img src={plan.image} alt={plan.name} className="w-full h-full object-cover" />
-                </div>
-                <div className="p-5 space-y-4 bg-white">
-                  {plan.featured && (
-                    <div className="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
-                      인기 상품
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground">{plan.name}</h3>
-                    <p className="text-sm text-muted-foreground">{plan.description}</p>
-                  </div>
-                  <ul className="space-y-2">
-                    {plan.items.map((item, itemIdx) => (
-                      <li key={itemIdx} className="flex items-center gap-2 text-sm text-foreground">
-                        <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    className={`w-full ${
-                      plan.featured
-                        ? "bg-primary hover:bg-primary/90 text-white"
-                        : "bg-secondary hover:bg-secondary/80 text-foreground"
-                    }`}
-                  >
-                    견적 문의하기
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 p-6 rounded-xl bg-white border border-border text-center">
-            <p className="text-muted-foreground">
-              최소 식수 제한이 없으며, 6대 대기업 물류 사용으로 <span className="font-bold text-foreground">약 8% 저렴한 가격</span>을 제공합니다
-            </p>
-          </div>
         </div>
       </section>
 
@@ -408,103 +352,111 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-4 gap-6">
             {[
               {
                 step: "01",
-                title: "입고 & 조리",
-                time: "AM 6 ~ 10",
-                description: "신선한 당일 배송 재료 검수와 맛있는 식사 조리",
+                title: "신선한 식재료 입고",
+                description: "매일 엄선된 신선한 식재료를 입고하여 품질을 확보합니다",
               },
               {
                 step: "02",
-                title: "적온배송",
-                time: "AM 10 ~ 11",
-                description: "따뜻함과 신선함을 유지한 적온 배송",
+                title: "위생적 조리",
+                description: "HACCP 인증 시설에서 위생 기준을 준수하여 조리합니다",
               },
               {
                 step: "03",
-                title: "식사제공",
-                time: "PM 12 ~ 13",
-                description: "고객의 환경에 맞춘 식사 세팅과 맛있는 식사 제공",
+                title: "냉장 배송",
+                description: "신선도를 유지하며 정해진 시간에 배송합니다",
               },
               {
                 step: "04",
-                title: "수거 & 세척",
-                time: "PM 15 ~ 16",
-                description: "전문 세척 업체와의 제휴로 철저한 위생 관리",
+                title: "신속한 수거",
+                description: "식사 후 빠르게 수거하여 위생을 유지합니다",
               },
-            ].map((item, idx) => (
-              <div key={idx} className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-12 h-12 bg-primary text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-                    {item.step}
-                  </div>
-                  <div className="space-y-1 flex-1">
-                    <h3 className="font-bold text-foreground text-sm">{item.title}</h3>
-                    <p className="text-xs text-primary font-medium">{item.time}</p>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
-                {idx < 3 && <div className="hidden md:block h-0.5 bg-primary/20 mt-4" />}
+            ].map((process, idx) => (
+              <div key={idx} className="space-y-4 p-6 rounded-xl bg-secondary/40 border border-border text-center">
+                <div className="text-4xl font-bold text-primary">{process.step}</div>
+                <h3 className="text-lg font-bold text-foreground">{process.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{process.description}</p>
               </div>
             ))}
-          </div>
-
-          <div className="mt-8">
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-workflow-visual-KajPJtLGMnkJ8pcNRu3eLy.webp"
-              alt="프로세스 워크플로우"
-              className="w-full rounded-xl shadow-lg"
-            />
           </div>
         </div>
       </section>
 
-      {/* Customer Testimonials Section */}
+      {/* Customer Logos Section */}
       <section className="py-16 md:py-24 bg-secondary/40">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              함께하는 고객사
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              국내 주요 기업들이 프레시밀온을 신뢰하고 있습니다
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-6 gap-8 items-center justify-items-center">
+            {[
+              { name: "Samsung", logo: "삼성" },
+              { name: "SK Hynix", logo: "SK하이닉스" },
+              { name: "LG", logo: "LG" },
+              { name: "Krafton", logo: "크래프톤" },
+              { name: "Hyundai", logo: "현대" },
+              { name: "Incheon Airport", logo: "인천공항" },
+            ].map((company, idx) => (
+              <div key={idx} className="w-full h-20 bg-white rounded-lg border border-border flex items-center justify-center hover:shadow-md transition-shadow">
+                <span className="text-sm font-semibold text-muted-foreground">{company.logo}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="py-16 md:py-24 bg-white">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               고객 후기
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              프레시밀온을 이용하고 있는 고객사의 생생한 후기를 들어보세요
+              프레시밀온을 이용하는 고객들의 만족도를 확인해보세요
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                name: "김진수",
-                company: "테크 스타트업 A사",
-                role: "HR 담당자",
-                content: "프레시밀온 도입 후 직원들의 만족도가 크게 높아졌습니다. 특히 신선하고 건강한 식사가 직원 복지의 핵심이 되었습니다.",
+                company: "테크 스타트업",
+                name: "김 이사",
+                rating: 5,
+                comment: "직원들의 만족도가 눈에 띄게 높아졌습니다. 신선하고 맛있는 식사가 업무 능률 향상에 큰 도움이 됩니다.",
               },
               {
-                name: "이미영",
-                company: "금융회사 B사",
-                role: "복지 담당자",
-                content: "공간 제약이 많았던 우리 회사에서도 프레시밀온으로 직원 식사 복지를 제공할 수 있게 되었습니다. 정말 감사합니다.",
+                company: "제조업체",
+                name: "이 과장",
+                rating: 5,
+                comment: "현장 직원들을 위한 든든한 한끼가 정말 좋습니다. 운영도 간편하고 위생 관리도 철저해서 신뢰할 수 있습니다.",
               },
               {
-                name: "박준호",
-                company: "제조업체 C사",
-                role: "경영진",
-                content: "직원들이 충분한 휴식 시간을 가질 수 있게 되었고, 그 결과 업무 생산성도 향상되었습니다. 최고의 선택입니다.",
+                company: "병원",
+                name: "박 원장",
+                rating: 5,
+                comment: "환자들의 회복에 필요한 영양 관리를 전문적으로 해주셔서 감사합니다. 맞춤형 메뉴 개발도 만족스럽습니다.",
               },
-            ].map((testimonial, idx) => (
-              <div key={idx} className="p-6 rounded-xl bg-white border border-border space-y-4">
+            ].map((review, idx) => (
+              <div key={idx} className="p-6 rounded-xl bg-secondary/50 border border-border space-y-4">
                 <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary">★</span>
+                  {[...Array(review.rating)].map((_, i) => (
+                    <span key={i} className="text-lg">⭐</span>
                   ))}
                 </div>
-                <p className="text-foreground italic text-sm">"{testimonial.content}"</p>
-                <div className="pt-4 border-t border-border">
-                  <p className="font-bold text-foreground text-sm">{testimonial.name}</p>
-                  <p className="text-xs text-muted-foreground">{testimonial.company}</p>
-                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                <p className="text-muted-foreground leading-relaxed">{review.comment}</p>
+                <div className="pt-4 border-t border-border/50">
+                  <p className="font-semibold text-foreground">{review.name}</p>
+                  <p className="text-sm text-muted-foreground">{review.company}</p>
                 </div>
               </div>
             ))}
@@ -513,14 +465,14 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-secondary/40">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               자주 묻는 질문
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              프레시밀온에 대해 궁금한 점들을 확인해보세요
+              프레시밀온에 대해 궁금한 점을 확인해보세요
             </p>
           </div>
 
@@ -543,7 +495,7 @@ export default function Home() {
                 a: "지역 제한 없이 전국 운영이 가능합니다.",
               },
             ].map((faq, idx) => (
-              <div key={idx} className="p-5 rounded-xl bg-secondary/50 border border-border space-y-3">
+              <div key={idx} className="p-5 rounded-xl bg-white border border-border space-y-3">
                 <h4 className="font-bold text-foreground">{faq.q}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{faq.a}</p>
               </div>
