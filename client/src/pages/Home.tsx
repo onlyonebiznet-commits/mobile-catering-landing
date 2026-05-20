@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Leaf, Heart, Shield, Clock, Users, TrendingUp, Coffee, Utensils, Zap } from "lucide-react";
 import { useState } from "react";
 import ConsultationModal from "@/components/ConsultationModal";
+import MaterialRequestModal from "@/components/MaterialRequestModal";
 
 /**
  * Design Philosophy: Contemporary Minimalism with Functional Elegance
@@ -17,6 +18,7 @@ import ConsultationModal from "@/components/ConsultationModal";
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
   const [consultationOpen, setConsultationOpen] = useState(false);
+  const [materialRequestOpen, setMaterialRequestOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
@@ -66,14 +68,14 @@ export default function Home() {
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
                   지금 상담받기 <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={() => setMaterialRequestOpen(true)}>
                   자료 다운로드
                 </Button>
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/hero-meal-delivery.png" 
+                src="/manus-storage/header-office-meal_34bf8ce8.png" 
                 alt="프레시밀온 서비스" 
                 className="w-full h-auto object-cover"
               />
@@ -574,6 +576,9 @@ export default function Home() {
 
       {/* Consultation Modal */}
       <ConsultationModal open={consultationOpen} onOpenChange={setConsultationOpen} />
+      
+      {/* Material Request Modal */}
+      <MaterialRequestModal open={materialRequestOpen} onOpenChange={setMaterialRequestOpen} />
     </div>
   );
 }
