@@ -86,27 +86,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Customers Section */}
-      <section className="py-12 md:py-16 bg-secondary/40 border-b border-border">
-        <div className="container space-y-6">
-          <div className="text-center space-y-2">
-            <p className="text-sm text-primary font-semibold">함께하는 고객사</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              다양한 기업이 프레시밀온을 선택합니다
-            </h2>
-          </div>
-          <div className="bg-gradient-to-r from-white to-secondary/50 rounded-xl p-8 md:p-10">
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/customer-logos-banner-awv2t8tUaa6eCN7wodDp2B.webp"
-              alt="고객사 로고"
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* Statistics Section */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-secondary/40">
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8">
             {[
@@ -125,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* Service Overview Section */}
-      <section id="service" className="py-16 md:py-24 bg-secondary/40">
+      <section id="service" className="py-16 md:py-24 bg-white">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -159,7 +140,7 @@ export default function Home() {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="space-y-4 p-6 rounded-xl bg-white border border-border hover:shadow-lg transition-shadow">
+                <div key={idx} className="space-y-4 p-6 rounded-xl bg-secondary/50 border border-border hover:shadow-lg transition-shadow">
                   <div className="w-14 h-14 bg-primary rounded-lg flex items-center justify-center">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
@@ -181,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* Customized Menu Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-secondary/40">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -221,7 +202,7 @@ export default function Home() {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="space-y-4 p-6 rounded-xl bg-secondary/50 border border-border hover:shadow-lg transition-shadow">
+                <div key={idx} className="space-y-4 p-6 rounded-xl bg-white border border-border hover:shadow-lg transition-shadow">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon className="w-6 h-6 text-primary" />
@@ -246,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* Meal Gallery Section */}
-      <section id="menu" className="py-16 md:py-24 bg-secondary/40">
+      <section id="menu" className="py-16 md:py-24 bg-white">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -302,7 +283,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-8 p-6 rounded-xl bg-white border border-border">
+          <div className="mt-8 p-6 rounded-xl bg-secondary/50 border border-border">
             <h3 className="text-xl font-bold text-foreground mb-5">추가 서비스</h3>
             <div className="grid md:grid-cols-3 gap-6">
               {[
@@ -339,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-16 md:py-24 bg-white">
+      <section id="pricing" className="py-16 md:py-24 bg-secondary/40">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -413,7 +394,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-8 p-6 rounded-xl bg-secondary/50 border border-border text-center">
+          <div className="mt-8 p-6 rounded-xl bg-white border border-border text-center">
             <p className="text-muted-foreground">
               최소 식수 제한이 없으며, 6대 대기업 물류 사용으로 <span className="font-bold text-foreground">약 8% 저렴한 가격</span>을 제공합니다
             </p>
@@ -422,7 +403,7 @@ export default function Home() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="py-16 md:py-24 bg-secondary/40">
+      <section id="process" className="py-16 md:py-24 bg-white">
         <div className="container space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -482,59 +463,6 @@ export default function Home() {
               alt="프로세스 워크플로우"
               className="w-full rounded-xl shadow-lg"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* Safety & Hygiene Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container space-y-12">
-          <div className="text-center space-y-3">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              위생과 안전이 최우선
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              HACCP 기준의 체계적인 관리로 매일 안심할 수 있는 식사를 제공합니다
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "위생 관리",
-                items: [
-                  "조리 전/후 손 세척",
-                  "마스크케어 및 위생복 필수 착용",
-                  "교차오염 방지를 위한 시설 분리",
-                  "DRY SYSTEM 운영",
-                  "조리 전 원재료 세척·소독",
-                  "단계별 소독 관리",
-                ],
-              },
-              {
-                title: "안전 관리",
-                items: [
-                  "비상대책체계(TFT) 구축",
-                  "정기적 교육 및 점검",
-                  "생산물배상책임보험",
-                  "가스사고보험",
-                  "정기 점검 및 기록",
-                  "전문 방역 업체 정기 방역",
-                ],
-              },
-            ].map((section, idx) => (
-              <div key={idx} className="space-y-5 p-6 rounded-xl bg-secondary/50 border border-border">
-                <h3 className="text-xl font-bold text-foreground">{section.title}</h3>
-                <ul className="space-y-3">
-                  {section.items.map((item, itemIdx) => (
-                    <li key={itemIdx} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -649,52 +577,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-10 bg-foreground text-white">
-        <div className="container space-y-6">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <Leaf className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-bold">프레시밀온</span>
-              </div>
-              <p className="text-sm text-white/70">
-                직원 복지의 새로운 기준을 만들어갑니다.
-              </p>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-bold text-sm">서비스</h4>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="#" className="hover:text-white transition-colors">프레시밀온</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">스낵픽</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">카페프레시</a></li>
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-bold text-sm">회사</h4>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="#" className="hover:text-white transition-colors">소개</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">채용</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">뉴스</a></li>
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-bold text-sm">연락처</h4>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li>📞 1234-5678</li>
-                <li>📧 info@freshmealon.com</li>
-                <li>📍 서울시 강남구</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-6 text-center text-sm text-white/70">
-            <p>&copy; 2024 프레시밀온. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
 
       {/* Consultation Modal */}
       <ConsultationModal open={consultationOpen} onOpenChange={setConsultationOpen} />
