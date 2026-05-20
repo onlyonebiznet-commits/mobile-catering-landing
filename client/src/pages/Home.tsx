@@ -173,7 +173,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 title: "기업 (오피스)",
@@ -192,12 +192,6 @@ export default function Home() {
                 description: "환자의 상태와 치료 과정을 고려한 과학적 메뉴 설계",
                 icon: Heart,
                 benefits: ["회복 지원", "영양 관리", "특식 대응"],
-              },
-              {
-                title: "학교",
-                description: "성장기 학생에게 필요한 영양을 고려한 식단",
-                icon: Leaf,
-                benefits: ["학습 집중력", "건강한 성장", "영양 균형"],
               },
             ].map((item, idx) => {
               const Icon = item.icon;
@@ -577,6 +571,54 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-12 bg-foreground text-white">
+        <div className="container space-y-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Leaf className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-bold text-lg">프레시밀온</span>
+              </div>
+              <p className="text-sm text-white/70 leading-relaxed">
+                Food Business Partner Creating the success way
+              </p>
+              <a href="https://www.cjfreshway.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors text-sm font-medium">
+                CJ프레시웨이 홈페이지 바로가기 ‣
+              </a>
+            </div>
+            <div className="space-y-3 text-sm text-white/70">
+              <div>
+                <p className="text-white font-semibold mb-2">회사 정보</p>
+                <p>상호명 : 씨제이프레시웨이 주식회사</p>
+                <p>대표자 : 이건일</p>
+                <p>사업자등록번호 : 603-81-11270</p>
+              </div>
+              <div>
+                <p className="text-white font-semibold mb-2">연락처</p>
+                <p>대표전화 : 02-2149-6114</p>
+              </div>
+              <div>
+                <p className="text-white font-semibold mb-2">주소</p>
+                <p>경기도 용인시 기흥구 기곡로 32(하갈동)</p>
+                <p className="text-xs mt-1">(주사무소: 서울시 마포구 월드컵북로 54길 25 S-city)</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/70">
+              <p>Copyright ⓒ CJ Freshway. All rights reserved.</p>
+              <div className="flex gap-6">
+                <a href="#" className="hover:text-white transition-colors">개인정보 처리방침</a>
+                <a href="#" className="hover:text-white transition-colors">이용약관</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* Consultation Modal */}
       <ConsultationModal open={consultationOpen} onOpenChange={setConsultationOpen} />
