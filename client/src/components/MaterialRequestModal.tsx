@@ -8,11 +8,10 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 
 interface MaterialRequestModalProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  onClose: () => void;
 }
 
-export default function MaterialRequestModal({ open, onOpenChange }: MaterialRequestModalProps) {
+export default function MaterialRequestModal({ onClose }: MaterialRequestModalProps) {
   const [, setLocation] = useLocation();
   const [formData, setFormData] = useState({
     companyName: "",
@@ -108,7 +107,7 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
       }
 
       setIsSubmitting(false);
-      onOpenChange(false);
+      onClose();
       setLocation("/thank-you");
       setFormData({
         companyName: "",
@@ -130,7 +129,7 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">자료 신청</DialogTitle>
@@ -295,7 +294,7 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
               type="button"
               variant="outline"
               className="flex-1"
-              onClick={() => onOpenChange(false)}
+              onClick={onClose}
               disabled={isSubmitting}
             >
               취소

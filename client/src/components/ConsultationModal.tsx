@@ -11,11 +11,10 @@ import { toast } from "sonner";
 import { useLocation } from "wouter";
 
 interface ConsultationModalProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  onClose: () => void;
 }
 
-export default function ConsultationModal({ open, onOpenChange }: ConsultationModalProps) {
+export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   const [, navigate] = useLocation();
   const [formData, setFormData] = useState({
     companyName: "",
@@ -118,7 +117,7 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
 
       // Navigate to thank you page
       navigate("/thank-you");
-      onOpenChange(false);
+      onClose();
 
       // Reset form
       setFormData({
@@ -146,7 +145,7 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>온라인 상담 신청</DialogTitle>
@@ -382,7 +381,7 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
             <Button
               type="button"
               variant="outline"
-              onClick={() => onOpenChange(false)}
+              onClick={onClose}
               disabled={isSubmitting}
               className="flex-1"
             >
