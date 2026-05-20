@@ -82,6 +82,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Customers Section */}
+      <section className="py-16 md:py-20 bg-white border-b border-border">
+        <div className="container space-y-8">
+          <div className="text-center space-y-2">
+            <p className="text-sm text-primary font-semibold">함께하는 고객사</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              다양한 기업이 프레시밀온을 선택합니다
+            </h2>
+          </div>
+          <div className="bg-gradient-to-r from-secondary/50 to-secondary/30 rounded-xl p-8 md:p-12">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/customer-logos-banner-awv2t8tUaa6eCN7wodDp2B.webp"
+              alt="고객사 로고"
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Statistics Section */}
       <section className="py-16 bg-secondary/30">
         <div className="container">
@@ -355,8 +374,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Meal Gallery Section */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container space-y-16">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              실제 운영 중인 식단
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              프레시밀온의 다양한 메뉴와 신선한 식사를 만나보세요
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "강릉 초당순두부",
+                description: "고객사 맞춤 식단",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-gangneung.png",
+                items: ["우육수밥", "우전", "강릉초당순두부"],
+              },
+              {
+                title: "한식 정식",
+                description: "전통 한식 메뉴",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-korean-set-c2rTF8o2ppuiUAKpmki7Dn.webp",
+                items: ["쇠고기 구이", "된장국", "계란말이"],
+              },
+              {
+                title: "건강 보울",
+                description: "영양 균형 식단",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-healthy-bowl-SN9RN2jJjcLNNSCdJKauSV.webp",
+                items: ["퀴노아", "그릴 치킨", "신선 채소"],
+              },
+            ].map((meal, idx) => (
+              <div key={idx} className="space-y-4 rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow">
+                <div className="h-64 bg-gray-200 overflow-hidden">
+                  <img src={meal.image} alt={meal.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-6 space-y-3">
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">{meal.title}</h3>
+                    <p className="text-sm text-muted-foreground">{meal.description}</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-xs text-muted-foreground font-medium">포함 메뉴</p>
+                    <div className="flex flex-wrap gap-2">
+                      {meal.items.map((item, itemIdx) => (
+                        <span key={itemIdx} className="px-2 py-1 bg-accent text-accent-foreground text-xs rounded">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Customer Testimonials Section */}
-      <section className="py-20 md:py-32">
+      <section className="py-20 md:py-32 bg-secondary/30">
         <div className="container space-y-16">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -388,7 +466,7 @@ export default function Home() {
                 content: "직원들이 충분한 휴식 시간을 가질 수 있게 되었고, 그 결과 업무 생산성도 향상되었습니다. 최고의 선택입니다.",
               },
             ].map((testimonial, idx) => (
-              <div key={idx} className="p-6 rounded-xl bg-secondary/50 border border-border space-y-4">
+              <div key={idx} className="p-6 rounded-xl bg-white border border-border space-y-4">
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <span key={i} className="text-primary">★</span>
