@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Leaf, Heart, Shield, Clock, Users, TrendingUp, Coffee, Utensils, Zap } from "lucide-react";
 import { useState } from "react";
+import ConsultationModal from "@/components/ConsultationModal";
 
 /**
  * Design Philosophy: Contemporary Minimalism with Functional Elegance
@@ -15,6 +16,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
+  const [consultationOpen, setConsultationOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
@@ -41,7 +43,7 @@ export default function Home() {
               프로세스
             </a>
           </nav>
-          <Button className="bg-primary hover:bg-primary/90 text-white">
+          <Button className="bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
             문의하기
           </Button>
         </div>
@@ -65,7 +67,7 @@ export default function Home() {
                 공간 제약 없이 신선하고 건강한 식사를 제공하세요. 프레시밀온은 기업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높이고 기업의 성장을 이끌어냅니다.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
                   지금 상담받기 <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-border hover:bg-secondary">
@@ -638,7 +640,7 @@ export default function Home() {
             신선하고 건강한 식사로 직원 만족도를 높이고, 기업의 성장을 이끌어내세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90" onClick={() => setConsultationOpen(true)}>
               지금 상담받기 <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
@@ -693,6 +695,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Consultation Modal */}
+      <ConsultationModal open={consultationOpen} onOpenChange={setConsultationOpen} />
     </div>
   );
 }
