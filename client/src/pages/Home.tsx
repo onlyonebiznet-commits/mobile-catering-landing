@@ -1,8 +1,8 @@
-import { CheckCircle2, Leaf, Heart, Shield, Clock, Users, TrendingUp, Coffee, Utensils, Zap, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
 import { Button } from "@/components/ui/button";
+import { Leaf, Heart, Shield, ChevronDown, ChevronUp, MessageCircle } from "lucide-react";
 
 /**
  * Design Philosophy: Contemporary Minimalism with Functional Elegance
@@ -16,10 +16,11 @@ import { Button } from "@/components/ui/button";
  */
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState(0);
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [materialRequestOpen, setMaterialRequestOpen] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
@@ -104,42 +105,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Service Overview Section */}
-      <section id="service" className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-            프레시밀온의 핵심 가치
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Heart,
-                title: "맛과 편리",
-                description: "신선한 재료로 만든 맛있는 식사와 편리한 배송 서비스"
-              },
-              {
-                icon: Leaf,
-                title: "건강한 식사",
-                description: "영양 균형을 고려한 맞춤형 메뉴로 직원 건강 관리"
-              },
-              {
-                icon: Shield,
-                title: "식품 안전",
-                description: "엄격한 위생 관리와 신선도 보장 시스템"
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="p-8 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors">
-                <item.icon className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Kitchen-less Meal Solutions Section */}
-      <section className="py-16 md:py-24 bg-secondary/40">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
             키친리스 밀솔루션
@@ -148,31 +115,34 @@ export default function Home() {
             {[
               {
                 title: "프레시밀온",
-                subtitle: "최소한의 공간, 이동형 밀솔루션",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/fresh-meal-on-service-kJ8mKpNvhD9xQ2pL5rW8sT.webp"
+                keyword: "최소한의 공간, 이동형 밀솔루션",
+                description: "공간 제약 없이 신선한 식사를 제공합니다",
+                features: ["신선한 재료", "빠른 배송", "맞춤형 메뉴"]
               },
               {
                 title: "슈퍼그로틴",
-                subtitle: "트렌디한 건강메뉴, 수제 간편식 밀솔루션",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/super-grotin-service-aB3cD4eF5gH6iJ7kL8mN9o.webp"
+                keyword: "트렌디한 건강메뉴, 수제 간편식",
+                description: "건강과 맛을 동시에 만족시킵니다",
+                features: ["고단백 식단", "건강식", "간편식"]
               },
               {
                 title: "스낵픽&카페",
-                subtitle: "임직원 취향저격, 맞춤형 밀솔루션",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/snack-pick-cafe-service-pQ1rS2tU3vW4xY5zA6bC7d.webp"
+                keyword: "임직원 취향저격, 맞춤형 밀솔루션",
+                description: "직원들의 취향을 반영한 서비스입니다",
+                features: ["간식 제공", "카페 서비스", "맞춤 구성"]
               }
             ].map((solution, idx) => (
-              <div key={idx} className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-64 bg-gray-200 overflow-hidden">
-                  <img 
-                    src={solution.image} 
-                    alt={solution.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6 bg-white">
-                  <h3 className="text-xl font-bold text-foreground mb-2">{solution.title}</h3>
-                  <p className="text-sm text-muted-foreground">{solution.subtitle}</p>
+              <div key={idx} className="p-8 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors space-y-4">
+                <h3 className="text-2xl font-bold text-primary">{solution.title}</h3>
+                <p className="text-sm font-semibold text-foreground">{solution.keyword}</p>
+                <p className="text-muted-foreground">{solution.description}</p>
+                <div className="space-y-2">
+                  {solution.features.map((feature, fidx) => (
+                    <div key={fidx} className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4 rounded" checked disabled />
+                      <span className="text-sm text-foreground">{feature}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -180,42 +150,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Operations to Quality Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-            운영부터 품질까지
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Zap,
-                title: "위생 & 안전 관리",
-                description: "엄격한 위생 기준과 안전 관리 시스템으로 신선한 식사 보장"
-              },
-              {
-                icon: Utensils,
-                title: "맞춤형 메뉴 개발",
-                description: "기업의 특성과 직원의 취향을 반영한 맞춤형 메뉴 개발"
-              },
-              {
-                icon: Clock,
-                title: "신속한 배송 & 수거",
-                description: "정시 배송과 신속한 수거로 최적의 서비스 제공"
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="p-8 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors">
-                <item.icon className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Customer Specific Meals Section */}
-      <section id="menu" className="py-16 md:py-24 bg-secondary/40">
+      {/* Customer Characteristics Section */}
+      <section id="service" className="py-16 md:py-24 bg-secondary/40">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
             고객 특성에 맞춘 식단
@@ -223,28 +159,38 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "기업",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/corporate-meal-bg-fcjuhfqEdqdKhY6d6ymVBD.webp"
+                title: "오피스",
+                description: "다양한 직급과 취향을 고려한 균형잡힌 식단",
+                tags: ["신선함", "다양성", "영양균형"],
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/corporate-meal-bg-kaE7ss6sP9NVoKZndD8oRb.webp"
               },
               {
                 title: "산업체",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/factory-meal-bg-iBPLXhB9XTZd9R9cW5pVxP.webp"
+                description: "에너지 충전이 필요한 근로자를 위한 푸짐한 식단",
+                tags: ["고칼로리", "푸짐함", "에너지"],
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/factory-meal-bg-kaE7ss6sP9NVoKZndD8oRb.webp"
               },
               {
                 title: "병원",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/hospital-meal-bg-kGYyoyz98J4bTjeFRVm65K.webp"
+                description: "환자와 직원을 위한 건강하고 위생적인 식단",
+                tags: ["위생", "건강식", "영양"],
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/hospital-meal-bg-kaE7ss6sP9NVoKZndD8oRb.webp"
               }
-            ].map((meal, idx) => (
+            ].map((category, idx) => (
               <div key={idx} className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-64 bg-gray-200">
-                  <img 
-                    src={meal.image} 
-                    alt={meal.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
+                <div className="h-48 overflow-hidden">
+                  <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
                 </div>
-                <div className="p-6 bg-white text-center">
-                  <h3 className="text-xl font-bold text-foreground">{meal.title}</h3>
+                <div className="p-6 bg-white space-y-4">
+                  <h3 className="text-2xl font-bold text-foreground">{category.title}</h3>
+                  <p className="text-muted-foreground">{category.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {category.tags.map((tag, tidx) => (
+                      <span key={tidx} className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -252,35 +198,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Meal Gallery Section */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* Menu Gallery Section */}
+      <section id="menu" className="py-16 md:py-24 bg-white">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-            실제 운영 중인 식단
+            실제 운영중인 식단
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "강릉초당순두부",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-korean-set-mN7oP8qR9sT0uV1wX2yZ3a.webp"
+                name: "강릉 초당순두부",
+                description: "신선한 두부와 정통 양념으로 만든 건강식",
+                tags: ["건강식", "전통", "신선함"],
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-korean-set-kaE7ss6sP9NVoKZndD8oRb.webp"
               },
               {
                 name: "한식 정식",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-healthy-bowl-bC4dE5fG6hI7jK8lM9nO0p.webp"
+                description: "밥, 국, 반찬으로 구성된 정통 한식 정식",
+                tags: ["정통", "영양", "한식"],
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-korean-set-kaE7ss6sP9NVoKZndD8oRb.webp"
               },
               {
                 name: "건강 보울",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-quality-showcase-cQ2rS3tU4vW5xY6zA7bC8d.webp"
+                description: "신선한 채소와 단백질로 만든 영양 만점 보울",
+                tags: ["건강", "영양", "채식"],
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/meal-example-healthy-bowl-kaE7ss6sP9NVoKZndD8oRb.webp"
               }
-            ].map((meal, idx) => (
-              <div key={idx} className="rounded-xl overflow-hidden shadow-lg">
-                <img 
-                  src={meal.image} 
-                  alt={meal.name}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-4 bg-white text-center">
-                  <p className="text-sm font-semibold text-foreground">{meal.name}</p>
+            ].map((menu, idx) => (
+              <div key={idx} className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="h-48 overflow-hidden">
+                  <img src={menu.image} alt={menu.name} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-6 bg-white space-y-4">
+                  <h3 className="text-xl font-bold text-foreground">{menu.name}</h3>
+                  <p className="text-muted-foreground text-sm">{menu.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {menu.tags.map((tag, tidx) => (
+                      <span key={tidx} className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -298,34 +256,39 @@ export default function Home() {
             {[
               {
                 step: "1",
-                title: "신선한 재료 준비",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-bg-fRPRuXGRhDcBSYSgEpwKbm.webp"
+                title: "신선한 재료 입고",
+                description: "매일 아침 신선한 재료를 엄선하여 입고합니다",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-bg-kaE7ss6sP9NVoKZndD8oRb.webp"
               },
               {
                 step: "2",
-                title: "전문 조리",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step2-bg-7542ij4CkzsLuBsjZ6QX8g.webp"
+                title: "정성스러운 조리",
+                description: "숙련된 셰프가 정성스럽게 조리합니다",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step2-bg-kaE7ss6sP9NVoKZndD8oRb.webp"
               },
               {
                 step: "3",
-                title: "품질 관리",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step3-bg-hjCrHrfdVf4vTF3gZZn9w6.webp"
+                title: "위생 관리",
+                description: "엄격한 위생 기준으로 안전성을 보장합니다",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step3-bg-kaE7ss6sP9NVoKZndD8oRb.webp"
               },
               {
                 step: "4",
                 title: "신속한 배송",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step4-bg-hMHMabC8ukezutCc7Z4qBG.webp"
+                description: "신선도를 유지하며 빠르게 배송합니다",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step4-bg-kaE7ss6sP9NVoKZndD8oRb.webp"
               }
             ].map((process, idx) => (
-              <div key={idx} className="relative rounded-xl overflow-hidden shadow-lg h-64">
-                <img 
-                  src={process.image} 
-                  alt={process.title}
-                  className="w-full h-full object-cover opacity-60"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30">
-                  <div className="text-5xl font-bold text-white mb-2">{process.step}</div>
-                  <p className="text-white font-semibold text-center px-4">{process.title}</p>
+              <div key={idx} className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="h-40 overflow-hidden relative">
+                  <img src={process.image} alt={process.title} className="w-full h-full object-cover opacity-70" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-5xl font-bold text-white">{process.step}</span>
+                  </div>
+                </div>
+                <div className="p-4 bg-white space-y-2">
+                  <h3 className="text-lg font-bold text-foreground">{process.title}</h3>
+                  <p className="text-sm text-muted-foreground">{process.description}</p>
                 </div>
               </div>
             ))}
@@ -343,35 +306,39 @@ export default function Home() {
             {[
               {
                 name: "김철수",
-                company: "삼성전자",
-                comment: "프레시밀온 도입 후 직원 만족도가 크게 높아졌습니다. 신선하고 맛있는 식사가 직원들의 업무 효율을 높이는 데 큰 도움이 됩니다.",
-                icon: "👨‍💼"
+                company: "테크 스타트업",
+                rating: 5,
+                comment: "프레시밀온 덕분에 직원들의 만족도가 크게 높아졌습니다. 매일 다양한 메뉴가 제공되어 좋습니다."
               },
               {
                 name: "이영희",
-                company: "LG전자",
-                comment: "다양한 메뉴와 정시 배송으로 식당 운영 걱정이 없어졌습니다. 프레시밀온 팀의 전문성과 성실함이 정말 인상적입니다.",
-                icon: "👩‍💼"
+                company: "제조업체",
+                rating: 5,
+                comment: "신선하고 맛있는 식사가 근로자들의 에너지를 충전해줍니다. 강력 추천합니다!"
               },
               {
-                name: "박민준",
-                company: "현대자동차",
-                comment: "위생 관리와 품질이 최고 수준입니다. 직원들이 매일 즐거운 마음으로 식사하는 모습을 보면 프레시밀온을 선택한 것이 정말 잘한 결정이라고 생각합니다.",
-                icon: "👨‍💻"
+                name: "박준호",
+                company: "의료기관",
+                rating: 5,
+                comment: "위생 관리가 철저하고 영양 균형이 잘 맞춰져 있어서 환자와 직원 모두 만족합니다."
               }
             ].map((review, idx) => (
-              <div key={idx} className="p-8 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors">
-                <div className="text-4xl mb-4">{review.icon}</div>
-                <p className="text-muted-foreground mb-6 italic">"{review.comment}"</p>
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                    {review.name.charAt(0)}
+              <div key={idx} className="p-6 rounded-xl border border-border bg-white hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-sm">{review.name}</p>
-                    <p className="text-xs text-muted-foreground">{review.company}</p>
+                  <div className="flex-1">
+                    <p className="font-bold text-foreground">{review.name}</p>
+                    <p className="text-sm text-muted-foreground">{review.company}</p>
                   </div>
                 </div>
+                <div className="flex gap-1 mb-3">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400">★</span>
+                  ))}
+                </div>
+                <p className="text-muted-foreground italic">"{review.comment}"</p>
               </div>
             ))}
           </div>
@@ -380,49 +347,47 @@ export default function Home() {
 
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-secondary/40">
-        <div className="container max-w-2xl">
+        <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
             자주 묻는 질문
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-4 max-w-3xl mx-auto">
             {[
               {
-                question: "프레시밀온 서비스는 어떻게 시작하나요?",
-                answer: "간단한 상담을 통해 귀사의 필요에 맞는 맞춤형 솔루션을 제안해드립니다. 상담 후 약 2주 내에 서비스를 시작할 수 있습니다."
+                question: "프레시밀온 서비스는 어떻게 신청하나요?",
+                answer: "상단의 '지금 상담받기' 버튼을 클릭하여 상담 신청 폼을 작성하시면, 담당자가 빠르게 연락드립니다."
               },
               {
-                question: "최소 주문량이나 계약 기간이 있나요?",
-                answer: "최소 일일 50명 이상의 식수부터 시작 가능하며, 계약 기간은 협의 가능합니다. 유연한 조건으로 귀사의 상황에 맞춰 진행됩니다."
+                question: "최소 주문 식수는 몇 명부터 가능한가요?",
+                answer: "기업 규모와 상황에 따라 유연하게 대응하고 있습니다. 상담 시 자세히 설명해드리겠습니다."
               },
               {
                 question: "메뉴는 얼마나 자주 바뀌나요?",
-                answer: "주 1회 이상 메뉴가 변경되며, 계절 재료를 활용한 신선한 식단을 제공합니다. 특별한 요청사항이 있으면 언제든지 반영 가능합니다."
+                answer: "매주 새로운 메뉴를 제공하여 직원들이 다양한 식사를 즐길 수 있습니다."
               },
               {
                 question: "배송 지역에 제한이 있나요?",
-                answer: "전국 대부분의 지역에 서비스를 제공하고 있습니다. 구체적인 배송 지역은 상담 시 확인해드립니다."
+                answer: "전국 대부분의 지역에서 서비스를 제공하고 있습니다. 자세한 내용은 상담 시 확인해주세요."
               },
               {
                 question: "식품 알레르기 대응이 가능한가요?",
-                answer: "네, 직원들의 알레르기 정보를 미리 파악하여 맞춤형 메뉴를 준비합니다. 안전한 식사 환경을 최우선으로 생각합니다."
-              },
-              {
-                question: "가격은 어떻게 결정되나요?",
-                answer: "일일 식수, 메뉴 구성, 배송 지역 등을 고려하여 맞춤형 견적을 제공합니다. 상담을 통해 최적의 가격을 안내해드립니다."
+                answer: "네, 직원들의 알레르기 정보를 미리 파악하여 맞춤형 메뉴를 제공합니다."
               }
             ].map((faq, idx) => (
-              <div key={idx} className="border border-border rounded-lg overflow-hidden">
+              <div key={idx} className="border border-border rounded-lg overflow-hidden bg-white">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
-                  className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-secondary/20 transition-colors"
+                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-secondary/50 transition-colors"
                 >
                   <span className="font-semibold text-foreground text-left">{faq.question}</span>
-                  <ChevronDown 
-                    className={`w-5 h-5 text-primary transition-transform ${expandedFaq === idx ? 'rotate-180' : ''}`}
-                  />
+                  {expandedFaq === idx ? (
+                    <ChevronUp className="w-5 h-5 text-primary flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-primary flex-shrink-0" />
+                  )}
                 </button>
                 {expandedFaq === idx && (
-                  <div className="px-6 py-4 bg-secondary/30 border-t border-border">
+                  <div className="px-6 py-4 border-t border-border bg-secondary/20">
                     <p className="text-muted-foreground">{faq.answer}</p>
                   </div>
                 )}
@@ -433,88 +398,133 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 md:py-24 bg-primary">
-        <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            지금 바로 상담받으세요
+      <section className="py-16 md:py-24 bg-primary text-white">
+        <div className="container text-center space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            프레시밀온과 함께 직원 복지를 높이세요
           </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            프레시밀온과 함께 직원 복지의 새로운 기준을 만들어보세요.
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            20년 이상의 경험과 신뢰로 1,000명 이상의 직원 식사를 책임지고 있습니다.
           </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-primary hover:bg-white/90" 
-            onClick={() => setConsultationOpen(true)}
-          >
-            지금 상담받기
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90" onClick={() => setConsultationOpen(true)}>
+              지금 상담받기
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" onClick={() => setMaterialRequestOpen(true)}>
+              자료 다운로드
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-white py-12 md:py-16">
+      <footer className="bg-foreground text-white py-12">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 mb-12">
+          <div className="grid md:grid-cols-3 gap-12 mb-8">
             {/* Left: Company Info */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                  <Leaf className="w-5 h-5 text-primary" />
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Leaf className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">프레시밀온</span>
+                <span className="text-lg font-bold">프레시밀온</span>
               </div>
-              <div className="space-y-3 text-sm text-white/80">
-                <p>
-                  <span className="font-semibold">상호명:</span> 씨제이프레시웨이 주식회사
-                </p>
-                <p>
-                  <span className="font-semibold">대표자:</span> 이건일
-                </p>
-                <p>
-                  <span className="font-semibold">사업자등록번호:</span> 603-81-11270
-                </p>
-                <p>
-                  <span className="font-semibold">대표전화:</span> 02-2149-6114
-                </p>
-                <p>
-                  <span className="font-semibold">주소:</span> 경기도 용인시 기흥구 기곡로 32(하갈동)
-                </p>
-                <p className="text-xs text-white/60">
-                  (주사무소: 서울시 마포구 월드컵북로 54길 25 S-city)
-                </p>
+              <p className="text-sm text-white/70">Food Business Partner Creating the success way</p>
+              <div className="space-y-2 text-sm text-white/70">
+                <p><strong>상호명:</strong> 씨제이프레시웨이 주식회사</p>
+                <p><strong>대표자:</strong> 이건일</p>
+                <p><strong>사업자등록번호:</strong> 603-81-11270</p>
+                <p><strong>대표전화:</strong> 02-2149-6114</p>
+                <p><strong>주소:</strong> 경기도 용인시 기흥구 기곡로 32(하갈동)</p>
+                <p className="text-xs">(주사무소: 서울시 마포구 월드컵북로 54길 25 S-city)</p>
               </div>
             </div>
 
-            {/* Right: Links */}
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-semibold mb-4">CJ프레시웨이</h3>
-                <a href="https://www.cjfreshway.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors flex items-center gap-2">
-                  홈페이지 바로가기 ‣
-                </a>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-4">Food Business Partner</h3>
-                <p className="text-white/80">Creating the success way</p>
-              </div>
-              <div className="space-y-2 text-sm">
-                <a href="#" className="text-white/80 hover:text-white transition-colors block">
-                  개인정보 처리방침
-                </a>
-                <a href="#" className="text-white/80 hover:text-white transition-colors block">
-                  이용약관
-                </a>
-              </div>
+            {/* Center: Links */}
+            <div className="space-y-4">
+              <h3 className="font-bold text-white">빠른 링크</h3>
+              <ul className="space-y-2 text-sm text-white/70">
+                <li><a href="#service" className="hover:text-white transition-colors">서비스</a></li>
+                <li><a href="#menu" className="hover:text-white transition-colors">식단</a></li>
+                <li><a href="#process" className="hover:text-white transition-colors">프로세스</a></li>
+                <li>
+                  <button onClick={() => setShowPrivacy(true)} className="hover:text-white transition-colors">
+                    개인정보 처리방침
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => setShowTerms(true)} className="hover:text-white transition-colors">
+                    이용약관
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right: CJ Freshway */}
+            <div className="space-y-4">
+              <h3 className="font-bold text-white">CJ프레시웨이</h3>
+              <a href="https://www.cjfreshway.com" target="_blank" rel="noopener noreferrer" className="inline-block text-sm text-primary hover:text-primary/80 transition-colors">
+                CJ프레시웨이 홈페이지 바로가기 ›
+              </a>
             </div>
           </div>
 
-          <div className="border-t border-white/20 pt-8">
+          <div className="border-t border-white/10 pt-8">
             <p className="text-center text-sm text-white/60">
-              Copyright ⓒ CJ Freshway. All rights reserved.
+              Copyright © CJ Freshway. All rights reserved.
             </p>
           </div>
         </div>
       </footer>
+
+      {/* Privacy Policy Modal */}
+      {showPrivacy && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto p-8">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-foreground">개인정보 처리방침</h2>
+              <button onClick={() => setShowPrivacy(false)} className="text-2xl text-muted-foreground hover:text-foreground">
+                ×
+              </button>
+            </div>
+            <div className="space-y-4 text-sm text-muted-foreground">
+              <p>CJ프레시웨이㈜는 개인정보보호법을 준수하며, 고객님의 개인정보를 안전하게 관리합니다.</p>
+              <p><strong>1. 수집하는 개인정보의 항목</strong></p>
+              <p>성명, 휴대폰번호, 이메일주소, 기업명, 주소, 예상 식수</p>
+              <p><strong>2. 개인정보의 수집 및 이용목적</strong></p>
+              <p>이동급식 서비스 상담 및 진행, 서비스 홍보 등 마케팅</p>
+              <p><strong>3. 개인정보의 보유 및 이용기간</strong></p>
+              <p>서비스 상담 신청 후 3년</p>
+              <p><strong>4. 개인정보 보호 책임자</strong></p>
+              <p>대표전화: 02-2149-6114</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Terms of Service Modal */}
+      {showTerms && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto p-8">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-foreground">이용약관</h2>
+              <button onClick={() => setShowTerms(false)} className="text-2xl text-muted-foreground hover:text-foreground">
+                ×
+              </button>
+            </div>
+            <div className="space-y-4 text-sm text-muted-foreground">
+              <p><strong>제1조 (목적)</strong></p>
+              <p>본 약관은 CJ프레시웨이㈜가 제공하는 이동급식 서비스의 이용에 관한 기본적인 사항을 규정합니다.</p>
+              <p><strong>제2조 (서비스의 제공)</strong></p>
+              <p>회사는 고객의 요청에 따라 이동급식 서비스를 제공합니다.</p>
+              <p><strong>제3조 (이용자의 의무)</strong></p>
+              <p>이용자는 본 약관의 내용을 숙지하고 이를 준수해야 합니다.</p>
+              <p><strong>제4조 (면책조항)</strong></p>
+              <p>회사는 천재지변 등 불가항력적인 사유로 인한 서비스 중단에 대해 책임을 지지 않습니다.</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Modals */}
       <ConsultationModal open={consultationOpen} onOpenChange={setConsultationOpen} />
