@@ -52,8 +52,19 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/material-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("요청 처리 중 오류가 발생했습니다");
+      }
+
       setIsSubmitting(false);
       onOpenChange(false);
       setLocation("/thank-you");
@@ -63,7 +74,11 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
         phone: "",
         email: "",
       });
-    }, 500);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("요청 처리 중 오류가 발생했습니다");
+      setIsSubmitting(false);
+    }
   };
 
   return (

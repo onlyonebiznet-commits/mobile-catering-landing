@@ -56,8 +56,26 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/consultation-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          companyName: formData.companyName,
+          manager: formData.contactPerson,
+          phone: formData.phoneNumber,
+          email: formData.email,
+          region: formData.region,
+          expectedMealCount: formData.estimatedMeals,
+          serviceType: formData.service,
+          inquiries: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("요청 처리 중 오류가 발생했습니다");
+      }
 
       // Navigate to thank you page
       navigate("/thank-you");
@@ -75,6 +93,7 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
         message: "",
       });
     } catch (error) {
+      console.error("Error:", error);
       toast.error("상담 신청 중 오류가 발생했습니다");
     } finally {
       setIsSubmitting(false);
