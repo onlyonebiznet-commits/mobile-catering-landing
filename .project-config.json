@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4",
+    "access_key_id": "ASIAZV3A2ECZLLGLZWM5",
+    "secret_access_key": "93Kn0/e9ZMsmqIqlleVxvI8SLPeDIkUvk40Px+ZI",
+    "session_token": "IQoJb3JpZ2luX2VjEBoaCXVzLWVhc3QtMSJGMEQCICqGCkRrmub+vGTifAzbgA8adpdlld39Oh8Y6FIWR8JVAiB6HDrJJNDF8ZffnQNgbuSvqbJh4Q0wRETKNQV+lsGMdCr/Awjj//////////8BEAQaDDY2NTM4NjA5ODg2NiIMRoS2lWo6iriPX40zKtMDX91VRZVWPigIWc/K7gLV2uqGdajENPlLfz62DM5cTrhP4N5YHrXS/pBWaXQGvytIf6NBXBGPN3yMRims0s6yZJEXxXKomYneRj+DoqPPpCmWF8uTLN3DcQf5ifl+PhG/1Rre+OMbjImBq4V+Z3OMhW3zZ16G5Guuzwl9HcSt5ARj/VZ2nLjbDfJgflCHsYMIRcENqkxTZoXGjp1Xe9BuwVv+37zCEUGBs0kdZUaVY55OWc5SYXc0q9EvK3698Y55o9qD7gxan3LvIkcTKrh33Qy5fN9lwt9r0o/F5GW6fu5Inxklsiin1LjKt6mrZ1IW+kCjyy1Fgb+8f30wdlK2ivIF/Rmu47FsudGJx0K77B7LtfHThGJf7P5hLxEmfPnl0EFfbZTVKQqNf4tlk/uJj8mYqRdq34xC4TtMtc2fQ7alg+dTJ9MKjEriuW4VT9tnQ6sM4A3Ew7wGMLX2mgO1ynb1JrRUkcfwSncEL6sAxvZ/eENLcjw4pFcT+zZreOkMZzHtph/LJ5Va7e/4SgvLWKgaTTmTX6W1o45m5DoovXUgbwkqH8mBIGMZTrgMXhUXo9Y0nq36sypZUdsW2Dt4WkeR0To138w2OVa/EAvfx1JPw0wwnZ+00AY6ngGUJerv5W33CPOKnN5ClMvel6oDpfp56gNg+VlD/UGA6yQgSB6kG75WFj4dRrx6FnReOlZKlhWMgnG0M72ZxZrJRmFhO1IaMP7R80WB4fMoa0vZsrY0fhvB8zkIhLsM0qRgbUGHD018bgwUHr5UB1UpQSkXCXQ2q6X2gT33scauppBEh1rxQdaQCb0jxbmH5D9kpZ31ydfVptzHs19Ngw==",
+    "expiration": "2026-05-20T13:34:21.000Z"
+  },
+  "name": "mobile-catering-landing",
+  "path": "/home/ubuntu/mobile-catering-landing",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "Y3pRXVQm75R5QMEabjtFpk",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "YKTWdtMEdwg8WHma5g79qB",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "담",
+    "OWNER_OPEN_ID": "mG3ZS6uxn9BEmT5Ee8XZH9",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "9a371419-bfc2-498e-91bf-7bc08bb40390",
+    "VITE_APP_ID": "BNzd6XnofgDBbo2EVE2Tz4",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "프레시밀온 - 이동형 밀솔루션 랜딩페이지",
+    "VITE_FRONTEND_FORGE_API_KEY": "igTinvivBhJWAJZiyZmJmf",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
