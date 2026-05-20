@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { toast } from "sonner";
+import { useLocation } from "wouter";
 
 interface ConsultationModalProps {
   open: boolean;
@@ -14,12 +15,15 @@ interface ConsultationModalProps {
 }
 
 export default function ConsultationModal({ open, onOpenChange }: ConsultationModalProps) {
+  const [, navigate] = useLocation();
   const [formData, setFormData] = useState({
     companyName: "",
     contactPerson: "",
     phoneNumber: "",
     email: "",
     service: "",
+    region: "",
+    estimatedMeals: "",
     message: "",
   });
 
@@ -33,10 +37,10 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
     }));
   };
 
-  const handleServiceChange = (value: string) => {
+  const handleSelectChange = (name: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
-      service: value,
+      [name]: value,
     }));
   };
 
@@ -55,8 +59,10 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
       // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      toast.success("상담 신청이 완료되었습니다. 곧 연락드리겠습니다!");
-      
+      // Navigate to thank you page
+      navigate("/thank-you");
+      onOpenChange(false);
+
       // Reset form
       setFormData({
         companyName: "",
@@ -64,10 +70,10 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
         phoneNumber: "",
         email: "",
         service: "",
+        region: "",
+        estimatedMeals: "",
         message: "",
       });
-
-      onOpenChange(false);
     } catch (error) {
       toast.error("상담 신청 중 오류가 발생했습니다");
     } finally {
@@ -77,7 +83,7 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>온라인 상담 신청</DialogTitle>
           <DialogDescription>
@@ -85,7 +91,7 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Company Name */}
           <div className="space-y-2">
             <Label htmlFor="companyName" className="text-sm font-medium">
@@ -156,25 +162,55 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
             <Label htmlFor="service" className="text-sm font-medium">
               관심 서비스 <span className="text-destructive">*</span>
             </Label>
-            <Select value={formData.service} onValueChange={handleServiceChange} disabled={isSubmitting}>
+            <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)} disabled={isSubmitting}>
               <SelectTrigger className="border-border">
                 <SelectValue placeholder="서비스를 선택해주세요" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="meal-plan">이동형 밀솔루션</SelectItem>
-                <SelectItem value="coffee">커피 & 카페</SelectItem>
-                <SelectItem value="snack">스낵 서비스</SelectItem>
-                <SelectItem value="breakfast">조식 서비스</SelectItem>
+                <SelectItem value="mobile-meal">이동급식</SelectItem>
+                <SelectItem value="snack-breakfast">간식조식</SelectItem>
+                <SelectItem value="office-cafe">사내카페</SelectItem>
                 <SelectItem value="catering">케이터링</SelectItem>
-                <SelectItem value="all">전체 서비스 상담</SelectItem>
               </SelectContent>
             </Select>
+          </div>
+
+          {/* Region */}
+          <div className="space-y-2">
+            <Label htmlFor="region" className="text-sm font-medium">
+              희망 지역
+            </Label>
+            <Input
+              id="region"
+              name="region"
+              placeholder="예: 서울시 강남구"
+              value={formData.region}
+              onChange={handleInputChange}
+              disabled={isSubmitting}
+              className="border-border"
+            />
+          </div>
+
+          {/* Estimated Meals */}
+          <div className="space-y-2">
+            <Label htmlFor="estimatedMeals" className="text-sm font-medium">
+              예상 식수
+            </Label>
+            <Input
+              id="estimatedMeals"
+              name="estimatedMeals"
+              placeholder="예: 100명"
+              value={formData.estimatedMeals}
+              onChange={handleInputChange}
+              disabled={isSubmitting}
+              className="border-border"
+            />
           </div>
 
           {/* Message */}
           <div className="space-y-2">
             <Label htmlFor="message" className="text-sm font-medium">
-              추가 문의사항
+              문의 사항
             </Label>
             <Textarea
               id="message"
@@ -183,7 +219,7 @@ export default function ConsultationModal({ open, onOpenChange }: ConsultationMo
               value={formData.message}
               onChange={handleInputChange}
               disabled={isSubmitting}
-              className="border-border min-h-[100px] resize-none"
+              className="border-border min-h-[80px] resize-none"
             />
           </div>
 

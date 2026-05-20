@@ -50,10 +50,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 md:py-32 overflow-hidden">
+      <section className="py-16 md:py-24 overflow-hidden bg-white">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-5 animate-fade-in">
               <div className="inline-block">
                 <span className="px-4 py-2 bg-accent text-accent-foreground text-sm font-medium rounded-full">
                   신뢰할 수 있는 이동형 밀솔루션
@@ -66,7 +66,7 @@ export default function Home() {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 공간 제약 없이 신선하고 건강한 식사를 제공하세요. 프레시밀온은 기업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높이고 기업의 성장을 이끌어냅니다.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
                   지금 상담받기 <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -87,15 +87,15 @@ export default function Home() {
       </section>
 
       {/* Customers Section */}
-      <section className="py-16 md:py-20 bg-white border-b border-border">
-        <div className="container space-y-8">
+      <section className="py-12 md:py-16 bg-secondary/40 border-b border-border">
+        <div className="container space-y-6">
           <div className="text-center space-y-2">
             <p className="text-sm text-primary font-semibold">함께하는 고객사</p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
               다양한 기업이 프레시밀온을 선택합니다
             </h2>
           </div>
-          <div className="bg-gradient-to-r from-secondary/50 to-secondary/30 rounded-xl p-8 md:p-12">
+          <div className="bg-gradient-to-r from-white to-secondary/50 rounded-xl p-8 md:p-10">
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/customer-logos-banner-awv2t8tUaa6eCN7wodDp2B.webp"
               alt="고객사 로고"
@@ -106,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-16 bg-secondary/30">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8">
             {[
@@ -125,9 +125,9 @@ export default function Home() {
       </section>
 
       {/* Service Overview Section */}
-      <section id="service" className="py-20 md:py-32">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section id="service" className="py-16 md:py-24 bg-secondary/40">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               운영부터 품질까지 모두 책임집니다
             </h2>
@@ -136,7 +136,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: Utensils,
@@ -159,13 +159,13 @@ export default function Home() {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="space-y-4 p-8 rounded-xl bg-secondary/50 hover:shadow-lg transition-shadow">
+                <div key={idx} className="space-y-4 p-6 rounded-xl bg-white border border-border hover:shadow-lg transition-shadow">
                   <div className="w-14 h-14 bg-primary rounded-lg flex items-center justify-center">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                  <ul className="space-y-2 pt-4">
+                  <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                  <ul className="space-y-2 pt-2">
                     {item.features.map((feature, featureIdx) => (
                       <li key={featureIdx} className="flex items-center gap-2 text-sm text-foreground">
                         <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
@@ -181,9 +181,9 @@ export default function Home() {
       </section>
 
       {/* Customized Menu Section */}
-      <section className="py-20 md:py-32 bg-secondary/30">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               고객 특성에 맞춘 식단
             </h2>
@@ -192,7 +192,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               {
                 title: "기업 (오피스)",
@@ -221,7 +221,7 @@ export default function Home() {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="space-y-4 p-8 rounded-xl bg-white border border-border hover:shadow-lg transition-shadow">
+                <div key={idx} className="space-y-4 p-6 rounded-xl bg-secondary/50 border border-border hover:shadow-lg transition-shadow">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon className="w-6 h-6 text-primary" />
@@ -231,7 +231,7 @@ export default function Home() {
                       <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-2 pt-4">
+                  <div className="flex flex-wrap gap-2 pt-2">
                     {item.benefits.map((benefit, benefitIdx) => (
                       <span key={benefitIdx} className="px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-full">
                         {benefit}
@@ -246,9 +246,9 @@ export default function Home() {
       </section>
 
       {/* Meal Gallery Section */}
-      <section id="menu" className="py-20 md:py-32 bg-white">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section id="menu" className="py-16 md:py-24 bg-secondary/40">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               실제 운영 중인 식단
             </h2>
@@ -257,7 +257,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 title: "강릉 초당순두부",
@@ -278,11 +278,11 @@ export default function Home() {
                 items: ["퀴노아", "그릴 치킨", "신선 채소"],
               },
             ].map((meal, idx) => (
-              <div key={idx} className="space-y-4 rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow">
-                <div className="h-64 bg-gray-200 overflow-hidden">
+              <div key={idx} className="space-y-4 rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow bg-white">
+                <div className="h-56 bg-gray-200 overflow-hidden">
                   <img src={meal.image} alt={meal.title} className="w-full h-full object-cover" />
                 </div>
-                <div className="p-6 space-y-3">
+                <div className="p-5 space-y-3">
                   <div>
                     <h3 className="text-lg font-bold text-foreground">{meal.title}</h3>
                     <p className="text-sm text-muted-foreground">{meal.description}</p>
@@ -302,9 +302,9 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-12 p-8 rounded-xl bg-secondary/50 border border-border">
-            <h3 className="text-2xl font-bold text-foreground mb-6">추가 서비스</h3>
-            <div className="grid md:grid-cols-3 gap-8">
+          <div className="mt-8 p-6 rounded-xl bg-white border border-border">
+            <h3 className="text-xl font-bold text-foreground mb-5">추가 서비스</h3>
+            <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
                   icon: Coffee,
@@ -339,9 +339,9 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 md:py-32 bg-secondary/30">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section id="pricing" className="py-16 md:py-24 bg-white">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               합리적인 가격 정책
             </h2>
@@ -350,7 +350,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 name: "기본 플랜",
@@ -378,10 +378,10 @@ export default function Home() {
                   plan.featured ? "ring-2 ring-primary shadow-lg" : "border border-border"
                 }`}
               >
-                <div className="h-48 bg-gray-200 overflow-hidden">
+                <div className="h-44 bg-gray-200 overflow-hidden">
                   <img src={plan.image} alt={plan.name} className="w-full h-full object-cover" />
                 </div>
-                <div className="p-6 space-y-4 bg-white">
+                <div className="p-5 space-y-4 bg-white">
                   {plan.featured && (
                     <div className="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
                       인기 상품
@@ -413,8 +413,8 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-12 p-8 rounded-xl bg-white border border-border text-center">
-            <p className="text-muted-foreground mb-4">
+          <div className="mt-8 p-6 rounded-xl bg-secondary/50 border border-border text-center">
+            <p className="text-muted-foreground">
               최소 식수 제한이 없으며, 6대 대기업 물류 사용으로 <span className="font-bold text-foreground">약 8% 저렴한 가격</span>을 제공합니다
             </p>
           </div>
@@ -422,9 +422,9 @@ export default function Home() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="py-20 md:py-32 bg-white">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section id="process" className="py-16 md:py-24 bg-secondary/40">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               신선함을 보장하는 프로세스
             </h2>
@@ -433,7 +433,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-4 gap-5">
             {[
               {
                 step: "01",
@@ -460,23 +460,23 @@ export default function Home() {
                 description: "전문 세척 업체와의 제휴로 철저한 위생 관리",
               },
             ].map((item, idx) => (
-              <div key={idx} className="space-y-4">
-                <div className="flex items-start gap-4">
+              <div key={idx} className="space-y-3">
+                <div className="flex items-start gap-3">
                   <div className="w-12 h-12 bg-primary text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
                     {item.step}
                   </div>
-                  <div className="space-y-2 flex-1">
-                    <h3 className="font-bold text-foreground">{item.title}</h3>
+                  <div className="space-y-1 flex-1">
+                    <h3 className="font-bold text-foreground text-sm">{item.title}</h3>
                     <p className="text-xs text-primary font-medium">{item.time}</p>
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
-                {idx < 3 && <div className="hidden md:block h-0.5 bg-primary/20 mt-6" />}
+                {idx < 3 && <div className="hidden md:block h-0.5 bg-primary/20 mt-4" />}
               </div>
             ))}
           </div>
 
-          <div className="mt-12">
+          <div className="mt-8">
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-workflow-visual-KajPJtLGMnkJ8pcNRu3eLy.webp"
               alt="프로세스 워크플로우"
@@ -487,9 +487,9 @@ export default function Home() {
       </section>
 
       {/* Safety & Hygiene Section */}
-      <section className="py-20 md:py-32 bg-secondary/30">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               위생과 안전이 최우선
             </h2>
@@ -498,7 +498,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               {
                 title: "위생 관리",
@@ -523,13 +523,13 @@ export default function Home() {
                 ],
               },
             ].map((section, idx) => (
-              <div key={idx} className="space-y-6 p-8 rounded-xl bg-white border border-border">
-                <h3 className="text-2xl font-bold text-foreground">{section.title}</h3>
+              <div key={idx} className="space-y-5 p-6 rounded-xl bg-secondary/50 border border-border">
+                <h3 className="text-xl font-bold text-foreground">{section.title}</h3>
                 <ul className="space-y-3">
                   {section.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground">{item}</span>
+                      <span className="text-foreground text-sm">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -540,9 +540,9 @@ export default function Home() {
       </section>
 
       {/* Customer Testimonials Section */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section className="py-16 md:py-24 bg-secondary/40">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               고객 후기
             </h2>
@@ -551,7 +551,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 name: "김진수",
@@ -572,16 +572,16 @@ export default function Home() {
                 content: "직원들이 충분한 휴식 시간을 가질 수 있게 되었고, 그 결과 업무 생산성도 향상되었습니다. 최고의 선택입니다.",
               },
             ].map((testimonial, idx) => (
-              <div key={idx} className="p-6 rounded-xl bg-secondary/50 border border-border space-y-4">
+              <div key={idx} className="p-6 rounded-xl bg-white border border-border space-y-4">
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <span key={i} className="text-primary">★</span>
                   ))}
                 </div>
-                <p className="text-foreground italic">"{testimonial.content}"</p>
+                <p className="text-foreground italic text-sm">"{testimonial.content}"</p>
                 <div className="pt-4 border-t border-border">
-                  <p className="font-bold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                  <p className="font-bold text-foreground text-sm">{testimonial.name}</p>
+                  <p className="text-xs text-muted-foreground">{testimonial.company}</p>
                   <p className="text-xs text-muted-foreground">{testimonial.role}</p>
                 </div>
               </div>
@@ -591,9 +591,9 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 md:py-32 bg-secondary/30">
-        <div className="container space-y-16">
-          <div className="text-center space-y-4">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container space-y-12">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               자주 묻는 질문
             </h2>
@@ -602,7 +602,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
               {
                 q: "최소 몇 명부터 운영이 가능한가요?",
@@ -621,8 +621,8 @@ export default function Home() {
                 a: "지역 제한 없이 전국 운영이 가능합니다.",
               },
             ].map((faq, idx) => (
-              <div key={idx} className="p-6 rounded-xl bg-white border border-border space-y-3">
-                <h4 className="font-bold text-foreground text-lg">{faq.q}</h4>
+              <div key={idx} className="p-5 rounded-xl bg-secondary/50 border border-border space-y-3">
+                <h4 className="font-bold text-foreground">{faq.q}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{faq.a}</p>
               </div>
             ))}
@@ -631,15 +631,15 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-primary text-white">
-        <div className="container text-center space-y-8">
+      <section className="py-16 md:py-24 bg-primary text-white">
+        <div className="container text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">
             직원 복지의 새로운 기준을 경험하세요
           </h2>
           <p className="text-lg text-white/90 max-w-2xl mx-auto">
             신선하고 건강한 식사로 직원 만족도를 높이고, 기업의 성장을 이끌어내세요.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <Button size="lg" className="bg-white text-primary hover:bg-white/90" onClick={() => setConsultationOpen(true)}>
               지금 상담받기 <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
@@ -651,10 +651,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-foreground text-white">
-        <div className="container space-y-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
+      <footer className="py-10 bg-foreground text-white">
+        <div className="container space-y-6">
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <Leaf className="w-5 h-5 text-white" />
@@ -665,24 +665,24 @@ export default function Home() {
                 직원 복지의 새로운 기준을 만들어갑니다.
               </p>
             </div>
-            <div className="space-y-4">
-              <h4 className="font-bold">서비스</h4>
+            <div className="space-y-3">
+              <h4 className="font-bold text-sm">서비스</h4>
               <ul className="space-y-2 text-sm text-white/70">
                 <li><a href="#" className="hover:text-white transition-colors">프레시밀온</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">스낵픽</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">카페프레시</a></li>
               </ul>
             </div>
-            <div className="space-y-4">
-              <h4 className="font-bold">회사</h4>
+            <div className="space-y-3">
+              <h4 className="font-bold text-sm">회사</h4>
               <ul className="space-y-2 text-sm text-white/70">
                 <li><a href="#" className="hover:text-white transition-colors">소개</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">채용</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">뉴스</a></li>
               </ul>
             </div>
-            <div className="space-y-4">
-              <h4 className="font-bold">연락처</h4>
+            <div className="space-y-3">
+              <h4 className="font-bold text-sm">연락처</h4>
               <ul className="space-y-2 text-sm text-white/70">
                 <li>📞 1234-5678</li>
                 <li>📧 info@freshmealon.com</li>
@@ -690,7 +690,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 text-center text-sm text-white/70">
+          <div className="border-t border-white/10 pt-6 text-center text-sm text-white/70">
             <p>&copy; 2024 프레시밀온. All rights reserved.</p>
           </div>
         </div>
