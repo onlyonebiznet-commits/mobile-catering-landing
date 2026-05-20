@@ -66,18 +66,18 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
-                  지금 상담받기 <ArrowRight className="w-4 h-4 ml-2" />
+                  지금 상담받기
                 </Button>
                 <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={() => setMaterialRequestOpen(true)}>
                   자료 다운로드
                 </Button>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
               <img 
-                src="/manus-storage/header-office-meal_34bf8ce8.png" 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/hero-background-full-kaE7ss6sP9NVoKZndD8oRb.webp" 
                 alt="프레시밀온 서비스" 
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
@@ -124,6 +124,7 @@ export default function Home() {
                 features: ["이동형 푸드트럭 운영", "신선한 한끼 식사 제공", "공간 제약 없음", "빠른 배포"],
                 icon: Utensils,
                 bgColor: "bg-blue-50",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/fresh-meal-on-service-49Z3D3c4Amt5gk4U4mKd7n.webp",
               },
               {
                 title: "슈퍼그로틴",
@@ -132,6 +133,7 @@ export default function Home() {
                 features: ["고단백 메뉴 구성", "건강한 간편식", "다양한 선택지", "영양 관리"],
                 icon: TrendingUp,
                 bgColor: "bg-green-50",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/super-grotin-service-MGWyTBvxaqzeyh6fecTxov.webp",
               },
               {
                 title: "스낵픽&카페",
@@ -140,27 +142,33 @@ export default function Home() {
                 features: ["간식 & 카페 운영", "24시간 무인 서비스", "취향 맞춤 구성", "휴식 공간 제공"],
                 icon: Coffee,
                 bgColor: "bg-orange-50",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/snack-pick-cafe-service-7GcDkgzq4PTwrG9yAUtE3D.webp",
               },
             ].map((solution, idx) => {
               const Icon = solution.icon;
               return (
-                <div key={idx} className={`${solution.bgColor} p-8 rounded-xl border border-border space-y-4 hover:shadow-lg transition-shadow`}>
-                  <div className="space-y-2">
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground">{solution.title}</h3>
-                    <p className="text-sm text-primary font-semibold">{solution.subtitle}</p>
-                    <p className="text-sm text-muted-foreground">{solution.description}</p>
+                <div key={idx} className={`${solution.bgColor} rounded-xl border border-border overflow-hidden hover:shadow-lg transition-shadow`}>
+                  <div className="w-full h-48 overflow-hidden">
+                    <img src={solution.image} alt={solution.title} className="w-full h-full object-cover" />
                   </div>
-                  <ul className="space-y-2 pt-4 border-t border-border/50">
-                    {solution.features.map((feature, featureIdx) => (
-                      <li key={featureIdx} className="flex items-center gap-2 text-sm text-foreground">
-                        <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="p-8 space-y-4">
+                    <div className="space-y-2">
+                      <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-foreground">{solution.title}</h3>
+                      <p className="text-sm text-primary font-semibold">{solution.subtitle}</p>
+                      <p className="text-sm text-muted-foreground">{solution.description}</p>
+                    </div>
+                    <ul className="space-y-2 pt-4 border-t border-border/50">
+                      {solution.features.map((feature, featureIdx) => (
+                        <li key={featureIdx} className="flex items-center gap-2 text-sm text-foreground">
+                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               );
             })}
