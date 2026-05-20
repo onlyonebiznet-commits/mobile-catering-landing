@@ -2,7 +2,7 @@ import { useState } from "react";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
 import { Button } from "@/components/ui/button";
-import { Leaf, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Leaf, ChevronLeft, ChevronRight, X, Menu } from "lucide-react";
 
 export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
@@ -11,6 +11,7 @@ export default function Home() {
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [currentDietIndex, setCurrentDietIndex] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const diets = [
     {
@@ -118,7 +119,7 @@ export default function Home() {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <Leaf className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-foreground">프레시밀온</span>
+            <span className="text-lg md:text-xl font-bold text-foreground">프레시밀온</span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <a href="#service" className="text-sm text-foreground hover:text-primary transition-colors">
@@ -131,14 +132,44 @@ export default function Home() {
               프로세스
             </a>
           </nav>
-          <Button className="bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
-            문의하기
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-white" onClick={() => setConsultationOpen(true)}>
+              문의하기
+            </Button>
+            <button
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Menu className="w-6 h-6 text-foreground" />
+            </button>
+          </div>
         </div>
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-border">
+            <div className="container py-4 space-y-4">
+              <a href="#service" className="block text-sm text-foreground hover:text-primary transition-colors">
+                서비스
+              </a>
+              <a href="#menu" className="block text-sm text-foreground hover:text-primary transition-colors">
+                식단
+              </a>
+              <a href="#process" className="block text-sm text-foreground hover:text-primary transition-colors">
+                프로세스
+              </a>
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white" onClick={() => {
+                setConsultationOpen(true);
+                setMobileMenuOpen(false);
+              }}>
+                문의하기
+              </Button>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section - Full Width Image */}
-      <section className="relative w-full h-[600px] overflow-hidden">
+      <section className="relative w-full h-[400px] md:h-[600px] overflow-hidden">
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/hero-header-full-3cjYuMNLwgQdBpk4qCwgQR.webp"
           alt="Hero"
@@ -147,24 +178,24 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/40 flex items-center">
           <div className="container">
             <div className="max-w-lg">
-              <p className="text-green-400 text-sm font-semibold mb-4">신선함 수 있는 이동형 밀솔루션</p>
-              <h1 className="text-5xl font-bold text-white mb-6">
+              <p className="text-green-400 text-xs md:text-sm font-semibold mb-2 md:mb-4">신선함 수 있는 이동형 밀솔루션</p>
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
                 직원 복지의 새로운<br />기준<br />
                 <span className="text-primary">프레시밀온</span>
               </h1>
-              <p className="text-white/90 text-lg mb-8">
+              <p className="text-white/90 text-sm md:text-lg mb-6 md:mb-8">
                 공간 제약 없이 시작하고 건강한 식사를 제공하는 프레시밀온은 기업의 특성에 맞춘 맞춤 식단으로 직원 만족도를 높입니다.
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-col md:flex-row gap-3 md:gap-4">
                 <Button
-                  className="bg-primary hover:bg-primary/90 text-white"
+                  className="bg-primary hover:bg-primary/90 text-white text-sm md:text-base"
                   onClick={() => setConsultationOpen(true)}
                 >
                   지금 상담받기
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10"
+                  className="border-white text-white hover:bg-white/10 text-sm md:text-base"
                   onClick={() => setMaterialRequestOpen(true)}
                 >
                   자료 다운로드
@@ -176,53 +207,59 @@ export default function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">20+</div>
-              <p className="text-gray-600">년 이상의 급식 운영 경험</p>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">20+</div>
+              <p className="text-xs md:text-base text-gray-600">년 이상의 급식 운영 경험</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">1,000+</div>
-              <p className="text-gray-600">일일 제공 식수</p>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">1,000+</div>
+              <p className="text-xs md:text-base text-gray-600">일일 제공 식수</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">100+</div>
-              <p className="text-gray-600">사업장 운영 중</p>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">100+</div>
+              <p className="text-xs md:text-base text-gray-600">사업장 운영 중</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">99%</div>
-              <p className="text-gray-600">고객 만족도</p>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">99%</div>
+              <p className="text-xs md:text-base text-gray-600">고객 만족도</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Kitchen-less Solutions Section */}
-      <section id="service" className="py-20 bg-gray-50">
+      <section id="service" className="py-12 md:py-20 bg-gray-50">
         <div className="container">
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold mb-3">키친리스 밀솔루션</h2>
-            <p className="text-lg text-gray-600">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 맞춤형 솔루션</p>
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3">키친리스 밀솔루션</h2>
+            <p className="text-sm md:text-lg text-gray-600">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 맞춤형 솔루션</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {kitchenlessSolutions.map((solution, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src={solution.image} alt={solution.name} className="w-full h-64 object-cover" />
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{solution.name}</h3>
-                  <p className="text-primary font-semibold mb-3">{solution.shortDesc}</p>
-                  <p className="text-gray-600 mb-4">{solution.details}</p>
+                <div className="overflow-hidden h-48 md:h-64">
+                  <img
+                    src={solution.image}
+                    alt={solution.name}
+                    className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+                <div className="p-4 md:p-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{solution.name}</h3>
+                  <p className="text-sm md:text-base text-primary font-semibold mb-3">{solution.shortDesc}</p>
+                  <p className="text-xs md:text-base text-gray-600 mb-4">{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, idx) => (
-                      <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                      <span key={idx} className="bg-primary/10 text-primary px-2 md:px-3 py-1 rounded-full text-xs font-medium">
                         {tag}
                       </span>
                     ))}
                   </div>
                   <Button
-                    className="w-full bg-primary hover:bg-primary/90 text-white"
+                    className="w-full bg-primary hover:bg-primary/90 text-white text-sm md:text-base"
                     onClick={() => setConsultationOpen(true)}
                   >
                     견적 문의
@@ -235,25 +272,25 @@ export default function Home() {
       </section>
 
       {/* Customer Diet Section - Carousel */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container">
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold mb-3">고객 특성에 맞춘 식단</h2>
-            <p className="text-lg text-gray-600">기업, 산업체, 병원 등 각 고객의 특성에 맞춘 맞춤형 식단 제공</p>
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3">고객 특성에 맞춘 식단</h2>
+            <p className="text-sm md:text-lg text-gray-600">기업, 산업체, 병원 등 각 고객의 특성에 맞춘 맞춤형 식단 제공</p>
           </div>
           <div className="relative">
             <div className="bg-gray-50 rounded-lg overflow-hidden">
               <img
                 src={diets[currentDietIndex].image}
                 alt={diets[currentDietIndex].title}
-                className="w-full h-96 object-cover"
+                className="w-full h-64 md:h-96 object-cover"
               />
-              <div className="p-8">
-                <h3 className="text-3xl font-bold text-foreground mb-3">{diets[currentDietIndex].title}</h3>
-                <p className="text-lg text-gray-600 mb-4">{diets[currentDietIndex].description}</p>
+              <div className="p-4 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2 md:mb-3">{diets[currentDietIndex].title}</h3>
+                <p className="text-sm md:text-lg text-gray-600 mb-4">{diets[currentDietIndex].description}</p>
                 <div className="flex flex-wrap gap-2">
                   {diets[currentDietIndex].tags.map((tag, idx) => (
-                    <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+                    <span key={idx} className="bg-primary/10 text-primary px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                       {tag}
                     </span>
                   ))}
@@ -262,37 +299,43 @@ export default function Home() {
             </div>
             <button
               onClick={prevDiet}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-primary hover:bg-primary/90 text-white p-3 rounded-full transition-colors"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 md:-translate-x-16 bg-primary hover:bg-primary/90 text-white p-2 md:p-3 rounded-full transition-colors"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
             </button>
             <button
               onClick={nextDiet}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-primary hover:bg-primary/90 text-white p-3 rounded-full transition-colors"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 md:translate-x-16 bg-primary hover:bg-primary/90 text-white p-2 md:p-3 rounded-full transition-colors"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
             </button>
           </div>
         </div>
       </section>
 
       {/* Meal Gallery - 3 Items */}
-      <section id="menu" className="py-20 bg-gray-50">
+      <section id="menu" className="py-12 md:py-20 bg-gray-50">
         <div className="container">
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold mb-3">실제 운영중인 식단</h2>
-            <p className="text-lg text-gray-600">신선한 재료와 정성으로 만든 다양한 식단 메뉴</p>
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3">실제 운영중인 식단</h2>
+            <p className="text-sm md:text-lg text-gray-600">신선한 재료와 정성으로 만든 다양한 식단 메뉴</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {meals.map((meal, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src={meal.image} alt={meal.name} className="w-full h-64 object-cover" />
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{meal.name}</h3>
-                  <p className="text-gray-600 mb-4">{meal.description}</p>
+                <div className="overflow-hidden h-48 md:h-64">
+                  <img
+                    src={meal.image}
+                    alt={meal.name}
+                    className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+                <div className="p-4 md:p-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{meal.name}</h3>
+                  <p className="text-xs md:text-base text-gray-600 mb-4">{meal.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {meal.tags.map((tag, idx) => (
-                      <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                      <span key={idx} className="bg-primary/10 text-primary px-2 md:px-3 py-1 rounded-full text-xs font-medium">
                         {tag}
                       </span>
                     ))}
@@ -305,47 +348,42 @@ export default function Home() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="py-20 bg-white">
+      <section id="process" className="py-12 md:py-20 bg-white">
         <div className="container">
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold mb-3">신선함을 보장하는 프로세스</h2>
-            <p className="text-lg text-gray-600">입고부터 배송까지 신선함을 지키기 위한 철저한 프로세스</p>
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3">신선함을 보장하는 프로세스</h2>
+            <p className="text-sm md:text-lg text-gray-600">입고부터 배송까지 신선함을 지키기 위한 철저한 프로세스</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
             {[
               {
                 title: "신선한 재료 입고",
-                icon: "🥬",
                 image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
               },
               {
                 title: "위생 관리",
-                icon: "✓",
                 image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
               },
               {
                 title: "맞춤형 메뉴 개발",
-                icon: "👨‍🍳",
                 image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
               },
               {
                 title: "신속한 배송 & 수거",
-                icon: "🚚",
                 image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
               },
             ].map((step, index) => (
               <div
                 key={index}
-                className="relative rounded-lg overflow-hidden shadow-lg h-64 group"
+                className="relative rounded-lg overflow-hidden shadow-lg h-48 md:h-64 group"
               >
                 <img
                   src={step.image}
                   alt={step.title}
-                  className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity"
+                  className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col items-center justify-center text-center p-4">
-                  <div className="text-4xl mb-3">{step.icon}</div>
-                  <h3 className="text-lg font-bold text-white">{step.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center p-4 md:p-6">
+                  <h3 className="text-base md:text-lg font-bold text-white text-center">{step.title}</h3>
                 </div>
               </div>
             ))}
@@ -354,10 +392,10 @@ export default function Home() {
       </section>
 
       {/* Customer Reviews Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 md:py-20 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16">고객 후기</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-16">고객 후기</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 name: "삼성전자 HR팀",
@@ -375,20 +413,17 @@ export default function Home() {
                 emoji: "❤️",
               },
             ].map((review, index) => (
-              <div key={index} className="bg-white rounded-lg p-8 shadow-sm relative">
-                <div className="absolute -top-4 -left-4 text-4xl">{review.emoji}</div>
-                <div className="flex gap-3 mb-4">
+              <div key={index} className="bg-white rounded-lg p-4 md:p-8 shadow-sm relative">
+                <div className="absolute -top-3 -left-3 text-3xl md:text-4xl">{review.emoji}</div>
+                <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-400">
+                    <span key={i} className="text-yellow-400 text-sm md:text-base">
                       ★
                     </span>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic">"{review.comment}"</p>
-                <p className="font-bold text-foreground">{review.name}</p>
-                <div className="mt-4 p-4 bg-primary/5 rounded-lg border-l-4 border-primary">
-                  <p className="text-sm text-gray-600">💬 {review.comment}</p>
-                </div>
+                <p className="text-gray-700 mb-4 md:mb-6 italic text-sm md:text-base">"{review.comment}"</p>
+                <p className="font-bold text-foreground text-sm md:text-base">{review.name}</p>
               </div>
             ))}
           </div>
@@ -396,22 +431,22 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container max-w-3xl">
-          <h2 className="text-4xl font-bold text-center mb-16">자주 묻는 질문</h2>
-          <div className="space-y-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-16">자주 묻는 질문</h2>
+          <div className="space-y-3 md:space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border border-border rounded-lg overflow-hidden">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  className="w-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
-                  <span className="font-semibold text-foreground text-left">{faq.question}</span>
-                  <span className="text-primary">{expandedFaq === index ? "−" : "+"}</span>
+                  <span className="font-semibold text-foreground text-left text-sm md:text-base">{faq.question}</span>
+                  <span className="text-primary text-lg md:text-xl">{expandedFaq === index ? "−" : "+"}</span>
                 </button>
                 {expandedFaq === index && (
-                  <div className="px-6 py-4 bg-gray-50 border-t border-border">
-                    <p className="text-gray-700">{faq.answer}</p>
+                  <div className="px-4 md:px-6 py-3 md:py-4 bg-gray-50 border-t border-border">
+                    <p className="text-gray-700 text-sm md:text-base">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -421,20 +456,20 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-primary text-white">
+      <section className="py-12 md:py-20 bg-primary text-white">
         <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">지금 바로 상담받으세요</h2>
-          <p className="text-xl mb-8 text-white/90">프레시밀온과 함께 직원 복지의 새로운 기준을 만들어보세요</p>
-          <div className="flex gap-4 justify-center">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">지금 바로 상담받으세요</h2>
+          <p className="text-base md:text-xl mb-6 md:mb-8 text-white/90">프레시밀온과 함께 직원 복지의 새로운 기준을 만들어보세요</p>
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center">
             <Button
-              className="bg-white text-primary hover:bg-white/90"
+              className="bg-white text-primary hover:bg-white/90 text-sm md:text-base"
               onClick={() => setConsultationOpen(true)}
             >
               지금 상담받기
             </Button>
             <Button
               variant="outline"
-              className="border-white text-white hover:bg-white/10"
+              className="border-white text-white hover:bg-white/10 text-sm md:text-base"
               onClick={() => setMaterialRequestOpen(true)}
             >
               자료 다운로드
@@ -445,39 +480,39 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
-        <div className="container py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
+        <div className="container py-8 md:py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-8">
             {/* Left: Company Info */}
             <div>
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-4 md:mb-6">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <Leaf className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">프레시밀온</span>
+                <span className="text-lg md:text-xl font-bold">프레시밀온</span>
               </div>
-              <p className="text-gray-400 mb-6">Food Business Partner Creating the success way</p>
-              <div className="space-y-2 text-sm text-gray-400">
+              <p className="text-gray-400 mb-4 md:mb-6 text-sm md:text-base">Food Business Partner Creating the success way</p>
+              <div className="space-y-1 md:space-y-2 text-xs md:text-sm text-gray-400">
                 <p>상호명 : 씨제이프레시웨이 주식회사</p>
                 <p>대표자 : 이건일</p>
                 <p>사업자등록번호 : 603-81-11270</p>
                 <p>대표전화 : 02-2149-6114</p>
                 <p>경기도 용인시 기흥구 기곡로 32(하갈동)</p>
-                <p className="text-xs mt-4">(주사무소: 서울시 마포구 월드컵북로 54길 25 S-city)</p>
+                <p className="text-xs mt-2 md:mt-4">(주사무소: 서울시 마포구 월드컵북로 54길 25 S-city)</p>
               </div>
             </div>
 
             {/* Right: CJ Freshway */}
             <div>
-              <h3 className="font-bold mb-6">CJ프레시웨이</h3>
+              <h3 className="font-bold mb-4 md:mb-6 text-sm md:text-base">CJ프레시웨이</h3>
               <a
                 href="https://www.cjfreshway.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 transition-colors flex items-center gap-2 mb-8"
+                className="text-primary hover:text-primary/80 transition-colors flex items-center gap-2 mb-6 md:mb-8 text-sm md:text-base"
               >
                 CJ프레시웨이 홈페이지 바로가기 ‣
               </a>
-              <div className="space-y-3 text-gray-400">
+              <div className="space-y-2 md:space-y-3 text-gray-400 text-sm md:text-base">
                 <button
                   onClick={() => setShowPrivacy(true)}
                   className="hover:text-primary transition-colors text-left"
@@ -494,8 +529,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8">
-            <p className="text-center text-gray-500 text-sm">
+          <div className="border-t border-gray-800 pt-6 md:pt-8">
+            <p className="text-center text-gray-500 text-xs md:text-sm">
               Copyright ⓒ CJ Freshway. All rights reserved.
             </p>
           </div>
@@ -506,13 +541,13 @@ export default function Home() {
       {showPrivacy && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-border p-6 flex items-center justify-between">
-              <h3 className="text-2xl font-bold">개인정보 처리방침</h3>
+            <div className="sticky top-0 bg-white border-b border-border p-4 md:p-6 flex items-center justify-between">
+              <h3 className="text-xl md:text-2xl font-bold">개인정보 처리방침</h3>
               <button onClick={() => setShowPrivacy(false)} className="text-gray-500 hover:text-gray-700">
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 text-gray-700 space-y-4">
+            <div className="p-4 md:p-6 text-gray-700 space-y-4 text-sm md:text-base">
               <p>
                 CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다. 수집한
                 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 고객님께 안내하고 동의를 받을
@@ -526,7 +561,7 @@ export default function Home() {
               <p>서비스 상담 신청 후 3년</p>
               <h4 className="font-bold">근거</h4>
               <p>개인정보 보호법 제15조 제1항 제4호에 따른 서비스 이행</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-xs md:text-sm text-gray-600">
                 개인정보를 기입하지 않으실 수 있으나, 기재하지 않으실 경우 이동급식 서비스 상담 진행이 어렵습니다.
               </p>
             </div>
@@ -538,13 +573,13 @@ export default function Home() {
       {showTerms && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-border p-6 flex items-center justify-between">
-              <h3 className="text-2xl font-bold">이용약관</h3>
+            <div className="sticky top-0 bg-white border-b border-border p-4 md:p-6 flex items-center justify-between">
+              <h3 className="text-xl md:text-2xl font-bold">이용약관</h3>
               <button onClick={() => setShowTerms(false)} className="text-gray-500 hover:text-gray-700">
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 text-gray-700 space-y-4">
+            <div className="p-4 md:p-6 text-gray-700 space-y-4 text-sm md:text-base">
               <h4 className="font-bold">제1조 (목적)</h4>
               <p>본 약관은 CJ프레시웨이㈜가 제공하는 이동급식 서비스의 이용에 관한 기본적인 사항을 규정합니다.</p>
               <h4 className="font-bold">제2조 (서비스 내용)</h4>
