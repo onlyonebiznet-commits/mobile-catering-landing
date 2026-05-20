@@ -2,7 +2,7 @@ import { useState } from "react";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
 import { Button } from "@/components/ui/button";
-import { Leaf, ChevronLeft, ChevronRight, MessageCircle, X } from "lucide-react";
+import { Leaf, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
@@ -11,7 +11,6 @@ export default function Home() {
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [currentDietIndex, setCurrentDietIndex] = useState(0);
-  const [currentMealIndex, setCurrentMealIndex] = useState(0);
 
   const diets = [
     {
@@ -36,21 +35,21 @@ export default function Home() {
 
   const meals = [
     {
-      name: "한식 정식",
+      name: "정통 한식",
       description: "전통 한식의 맛과 영양을 담은 정성스러운 한끼",
       tags: ["한식", "정식", "영양균형"],
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/corporate-meal-carousel-f2DqeewL8p9QTRUu8jnzdS.webp",
     },
     {
-      name: "건강 보울",
+      name: "아시안식",
       description: "신선한 재료로 만든 균형잡힌 건강식",
-      tags: ["건강식", "고단백", "신선"],
+      tags: ["아시안", "건강식", "신선"],
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/super-grotin-hero-EnkjTLPrRJAMgqDuTFtczr.webp",
     },
     {
-      name: "카페 스낵",
-      description: "오후의 피로를 풀어주는 가벼운 간식",
-      tags: ["간식", "카페", "가벼운"],
+      name: "고급 양식",
+      description: "프리미엄 재료로 준비한 세련된 양식 요리",
+      tags: ["양식", "프리미엄", "고급"],
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/snack-pick-cafe-hero-YEJTRmZZSYChfg3tUEFqPY.webp",
     },
   ];
@@ -58,20 +57,23 @@ export default function Home() {
   const kitchenlessSolutions = [
     {
       name: "프레시밀온",
-      description: "최소한의 공간, 이동형 밀솔루션",
-      details: "사무실, 공장, 병원 등 어디든 설치 가능한 이동형 밀솔루션",
+      shortDesc: "최소한의 공간, 이동형 밀솔루션",
+      details: "사무실, 공장, 병원 등 어디든 설치 가능한 이동형 밀솔루션으로 공간 제약 없이 신선한 식사를 제공합니다.",
+      tags: ["이동형", "공간절약", "신선"],
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/fresh-meal-on-hero-gBtqdgZs9PjFiB2wftstQz.webp",
     },
     {
       name: "슈퍼그로틴",
-      description: "트렌디한 건강메뉴, 수제 간편식 밀솔루션",
-      details: "건강을 추구하는 직원들을 위한 프리미엄 간편식",
+      shortDesc: "트렌디한 건강메뉴, 수제 간편식 밀솔루션",
+      details: "건강을 추구하는 직원들을 위한 프리미엄 간편식으로 고단백, 저탄수화물 옵션을 제공합니다.",
+      tags: ["건강식", "고단백", "프리미엄"],
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/super-grotin-hero-EnkjTLPrRJAMgqDuTFtczr.webp",
     },
     {
       name: "스낵픽&카페",
-      description: "임직원 취향저격, 맞춤형 밀솔루션",
-      details: "커피, 간식, 음료 등 다양한 선택지 제공",
+      shortDesc: "임직원 취향저격, 맞춤형 밀솔루션",
+      details: "커피, 간식, 음료 등 다양한 선택지를 제공하여 직원들의 오후 피로를 풀어줍니다.",
+      tags: ["간식", "카페", "다양한선택"],
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/snack-pick-cafe-hero-YEJTRmZZSYChfg3tUEFqPY.webp",
     },
   ];
@@ -105,14 +107,6 @@ export default function Home() {
 
   const prevDiet = () => {
     setCurrentDietIndex((prev) => (prev - 1 + diets.length) % diets.length);
-  };
-
-  const nextMeal = () => {
-    setCurrentMealIndex((prev) => (prev + 1) % meals.length);
-  };
-
-  const prevMeal = () => {
-    setCurrentMealIndex((prev) => (prev - 1 + meals.length) % meals.length);
   };
 
   return (
@@ -208,15 +202,25 @@ export default function Home() {
       {/* Kitchen-less Solutions Section */}
       <section id="service" className="py-20 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16">키친리스 밀솔루션</h2>
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold mb-3">키친리스 밀솔루션</h2>
+            <p className="text-lg text-gray-600">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 맞춤형 솔루션</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {kitchenlessSolutions.map((solution, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
                 <img src={solution.image} alt={solution.name} className="w-full h-64 object-cover" />
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-foreground mb-2">{solution.name}</h3>
-                  <p className="text-primary font-semibold mb-3">{solution.description}</p>
-                  <p className="text-gray-600 mb-6">{solution.details}</p>
+                  <p className="text-primary font-semibold mb-3">{solution.shortDesc}</p>
+                  <p className="text-gray-600 mb-4">{solution.details}</p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {solution.tags.map((tag, idx) => (
+                      <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                   <Button
                     className="w-full bg-primary hover:bg-primary/90 text-white"
                     onClick={() => setConsultationOpen(true)}
@@ -233,7 +237,10 @@ export default function Home() {
       {/* Customer Diet Section - Carousel */}
       <section className="py-20 bg-white">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16">고객 특성에 맞춘 식단</h2>
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold mb-3">고객 특성에 맞춘 식단</h2>
+            <p className="text-lg text-gray-600">기업, 산업체, 병원 등 각 고객의 특성에 맞춘 맞춤형 식단 제공</p>
+          </div>
           <div className="relative">
             <div className="bg-gray-50 rounded-lg overflow-hidden">
               <img
@@ -269,41 +276,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Meal Gallery - Carousel */}
+      {/* Meal Gallery - 3 Items */}
       <section id="menu" className="py-20 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16">실제 운영중인 식단</h2>
-          <div className="relative">
-            <div className="bg-white rounded-lg overflow-hidden">
-              <img
-                src={meals[currentMealIndex].image}
-                alt={meals[currentMealIndex].name}
-                className="w-full h-96 object-cover"
-              />
-              <div className="p-8">
-                <h3 className="text-3xl font-bold text-foreground mb-3">{meals[currentMealIndex].name}</h3>
-                <p className="text-lg text-gray-600 mb-4">{meals[currentMealIndex].description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {meals[currentMealIndex].tags.map((tag, idx) => (
-                    <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
-                      {tag}
-                    </span>
-                  ))}
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold mb-3">실제 운영중인 식단</h2>
+            <p className="text-lg text-gray-600">신선한 재료와 정성으로 만든 다양한 식단 메뉴</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {meals.map((meal, index) => (
+              <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <img src={meal.image} alt={meal.name} className="w-full h-64 object-cover" />
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">{meal.name}</h3>
+                  <p className="text-gray-600 mb-4">{meal.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {meal.tags.map((tag, idx) => (
+                      <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-            <button
-              onClick={prevMeal}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-primary hover:bg-primary/90 text-white p-3 rounded-full transition-colors"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={nextMeal}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-primary hover:bg-primary/90 text-white p-3 rounded-full transition-colors"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+            ))}
           </div>
         </div>
       </section>
@@ -311,26 +307,48 @@ export default function Home() {
       {/* Process Section */}
       <section id="process" className="py-20 bg-white">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16">신선함을 보장하는 프로세스</h2>
-          <div className="relative">
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp"
-              alt="Process"
-              className="w-full h-96 object-cover rounded-lg mb-8 opacity-60"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 -mt-32 relative z-10">
-              {[
-                { title: "신선한 재료 입고", icon: "🥬" },
-                { title: "위생 관리", icon: "✓" },
-                { title: "맞춤형 메뉴 개발", icon: "👨‍🍳" },
-                { title: "신속한 배송 & 수거", icon: "🚚" },
-              ].map((step, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold mb-3">신선함을 보장하는 프로세스</h2>
+            <p className="text-lg text-gray-600">입고부터 배송까지 신선함을 지키기 위한 철저한 프로세스</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              {
+                title: "신선한 재료 입고",
+                icon: "🥬",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
+              },
+              {
+                title: "위생 관리",
+                icon: "✓",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
+              },
+              {
+                title: "맞춤형 메뉴 개발",
+                icon: "👨‍🍳",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
+              },
+              {
+                title: "신속한 배송 & 수거",
+                icon: "🚚",
+                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/process-step1-fresh-Se9k8psD9fWpNKfa7DDVtP.webp",
+              },
+            ].map((step, index) => (
+              <div
+                key={index}
+                className="relative rounded-lg overflow-hidden shadow-lg h-64 group"
+              >
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col items-center justify-center text-center p-4">
                   <div className="text-4xl mb-3">{step.icon}</div>
-                  <h3 className="text-lg font-bold text-foreground">{step.title}</h3>
+                  <h3 className="text-lg font-bold text-white">{step.title}</h3>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -428,7 +446,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
         <div className="container py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             {/* Left: Company Info */}
             <div>
               <div className="flex items-center gap-2 mb-6">
@@ -448,44 +466,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Middle: Quick Links */}
-            <div>
-              <h3 className="font-bold mb-6">빠른 링크</h3>
-              <ul className="space-y-3 text-gray-400">
-                <li>
-                  <a href="#service" className="hover:text-primary transition-colors">
-                    서비스
-                  </a>
-                </li>
-                <li>
-                  <a href="#menu" className="hover:text-primary transition-colors">
-                    식단
-                  </a>
-                </li>
-                <li>
-                  <a href="#process" className="hover:text-primary transition-colors">
-                    프로세스
-                  </a>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setShowPrivacy(true)}
-                    className="hover:text-primary transition-colors text-left"
-                  >
-                    개인정보 처리방침
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setShowTerms(true)}
-                    className="hover:text-primary transition-colors text-left"
-                  >
-                    이용약관
-                  </button>
-                </li>
-              </ul>
-            </div>
-
             {/* Right: CJ Freshway */}
             <div>
               <h3 className="font-bold mb-6">CJ프레시웨이</h3>
@@ -493,10 +473,24 @@ export default function Home() {
                 href="https://www.cjfreshway.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 transition-colors flex items-center gap-2"
+                className="text-primary hover:text-primary/80 transition-colors flex items-center gap-2 mb-8"
               >
                 CJ프레시웨이 홈페이지 바로가기 ‣
               </a>
+              <div className="space-y-3 text-gray-400">
+                <button
+                  onClick={() => setShowPrivacy(true)}
+                  className="hover:text-primary transition-colors text-left"
+                >
+                  개인정보 처리방침
+                </button>
+                <button
+                  onClick={() => setShowTerms(true)}
+                  className="hover:text-primary transition-colors text-left block"
+                >
+                  이용약관
+                </button>
+              </div>
             </div>
           </div>
 
