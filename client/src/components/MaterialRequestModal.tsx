@@ -210,7 +210,7 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
                   className="mt-1"
                 />
                 <Label htmlFor="allAgree" className="text-sm font-semibold cursor-pointer flex-1">
-                  모두 동의합니다. (선택항목 포함)
+                  ㅁ 모두 동의합니다. (선택항목 포함)
                 </Label>
               </div>
 
@@ -225,7 +225,7 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
                     className="mt-1"
                   />
                   <Label htmlFor="personalInfoCollection" className="text-sm font-medium cursor-pointer flex-1">
-                    <span className="text-destructive">[필수]</span> 개인정보 수집 / 이용 동의서
+                    ㅁ <span className="text-destructive">[필수]</span> 개인정보 수집 / 이용 동의
                   </Label>
                 </div>
                 <div className="ml-7 text-xs text-muted-foreground space-y-2 bg-white p-3 rounded border border-border">
@@ -252,7 +252,7 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
                     className="mt-1"
                   />
                   <Label htmlFor="marketingConsent" className="text-sm font-medium cursor-pointer flex-1">
-                    마케팅 목적 개인정보 수집 / 이용 동의서
+                    ㅁ <span className="text-muted-foreground">[선택]</span> 마케팅 목적 개인정보 수집 / 이용 동의
                   </Label>
                 </div>
                 <div className="ml-7 text-xs text-muted-foreground space-y-2 bg-white p-3 rounded border border-border">
@@ -277,7 +277,7 @@ export default function MaterialRequestModal({ open, onOpenChange }: MaterialReq
                     className="mt-1"
                   />
                   <Label htmlFor="adConsent" className="text-sm font-medium cursor-pointer flex-1">
-                    <span className="text-muted-foreground">[선택]</span> 광고성 정보 수신 동의서
+                    ㅁ <span className="text-muted-foreground">[선택]</span> 광고성 정보 수신 동의
                   </Label>
                 </div>
                 <div className="ml-7 text-xs text-muted-foreground space-y-2 bg-white p-3 rounded border border-border">
