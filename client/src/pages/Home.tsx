@@ -46,19 +46,19 @@ export default function Home() {
   const diets = [
     {
       title: "오피스",
-      image: "/manus-storage/corporate-meal-bg.png",
+      image: "/manus-storage/aJQxyOi4VuZM_5d0eef51.jpg",
       description: "정통 한식부터 건강한 샐러드까지, 직원들의 다양한 입맛을 만족시키는 균형잡힌 식단입니다. 신선한 재료로 만든 한끼 식사로 업무 효율을 높입니다.",
       tags: ["균형잡힌 영양", "신선한 재료", "다양한 메뉴"],
     },
     {
       title: "산업체",
-      image: "/manus-storage/factory-meal-carousel.png",
+      image: "/manus-storage/xtFlBsOX65yJ_f72a2817.jpg",
       description: "육체적 노동으로 소모되는 에너지를 충분히 보충할 수 있는 푸짐한 식단입니다. 고단백 메뉴와 든든한 밥상으로 근로자의 건강을 지킵니다.",
       tags: ["고단백 식단", "푸짐한 양", "에너지 보충"],
     },
     {
       title: "병원",
-      image: "/manus-storage/hospital-meal-carousel.png",
+      image: "/manus-storage/NaGhdZqdJImL_197b26e6.jpg",
       description: "환자의 건강 상태를 고려한 특별식 제공이 가능합니다. 영양사 상담을 통한 맞춤형 메뉴로 빠른 회복을 돕습니다.",
       tags: ["영양관리", "특별식", "위생관리"],
     },
@@ -69,21 +69,21 @@ export default function Home() {
       name: "프레시밀온",
       shortDesc: "최소한의 공간, 이동형 밀솔루션",
       details: "좁은 공간에도 설치 가능한 이동형 식사 솔루션으로, 어디든 신선한 식사를 제공합니다.",
-      image: "/manus-storage/fresh-meal-on-hero.png",
+      image: "/manus-storage/aJQxyOi4VuZM_5d0eef51.jpg",
       tags: ["이동형", "공간절약", "신선함"],
     },
     {
       name: "슈퍼그로틴",
       shortDesc: "트렌디한 건강메뉴, 수제 간편식",
       details: "건강을 생각하는 직원들을 위한 고단백 간편식으로, 맛과 영양을 모두 잡았습니다.",
-      image: "/manus-storage/super-grotin-hero.png",
+      image: "/manus-storage/NaGhdZqdJImL_197b26e6.jpg",
       tags: ["고단백", "건강식", "간편식"],
     },
     {
       name: "스낵픽&카페",
       shortDesc: "임직원 취향저격, 맞춤형 밀솔루션",
       details: "간식부터 커피까지, 직원들의 다양한 니즈를 충족하는 복합형 솔루션입니다.",
-      image: "/manus-storage/snack-pick-cafe-hero.png",
+      image: "/manus-storage/yP5jkVPyxwwj_5c801f1f.png",
       tags: ["간식", "카페", "맞춤형"],
     },
   ];
@@ -91,7 +91,7 @@ export default function Home() {
   const meals = [
     {
       name: "정통 한식",
-      image: "/manus-storage/corporate-meal-carousel.png",
+      image: "/manus-storage/xtFlBsOX65yJ_f72a2817.jpg",
       description: "신선한 재료로 만든 전통 한식",
       fullDescription: "한반도의 오랜 식문화를 계승한 정통 한식입니다. 계절 재료를 활용하여 영양 균형을 맞추고, 전통 양념과 조리법으로 깊은 맛을 살렸습니다.",
       summary: "계절 재료로 만든 영양 균형 잡힌 한끼",
@@ -99,7 +99,7 @@ export default function Home() {
     },
     {
       name: "아시안식",
-      image: "/manus-storage/factory-meal-carousel.png",
+      image: "/manus-storage/NaGhdZqdJImL_197b26e6.jpg",
       description: "다양한 아시아 요리의 맛",
       fullDescription: "태국, 베트남, 중국 등 다양한 아시아 요리의 정수를 담았습니다. 신선한 허브와 향신료로 입맛을 돋우고, 가벼우면서도 영양가 있는 메뉴 구성입니다.",
       summary: "신선한 향신료로 살린 아시아의 맛",
@@ -107,7 +107,7 @@ export default function Home() {
     },
     {
       name: "고급 양식",
-      image: "/manus-storage/hospital-meal-carousel.png",
+      image: "/manus-storage/aJQxyOi4VuZM_5d0eef51.jpg",
       description: "세련된 양식 메뉴",
       fullDescription: "유럽의 정통 요리 기법을 바탕으로 한 세련된 양식입니다. 신선한 재료와 정교한 조리로 프리미엄 식사 경험을 제공합니다.",
       summary: "유럽 정통 기법으로 만든 프리미엄 식사",
@@ -214,14 +214,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <div className="text-2xl font-bold text-[#1B7F4A]">🥗 프레시밀온</div>
+              <div className="text-2xl font-bold text-[#005B44]">🥗 프레시밀온</div>
             </div>
             
             {/* Desktop Menu */}
             <nav className="hidden md:flex gap-8">
-              <a href="#services" className="text-gray-700 hover:text-[#1B7F4A] transition">서비스</a>
-              <a href="#diet" className="text-gray-700 hover:text-[#1B7F4A] transition">식단</a>
-              <a href="#process" className="text-gray-700 hover:text-[#1B7F4A] transition">프로세스</a>
+              <a href="#services" className="text-gray-700 hover:text-[#005B44] transition">서비스</a>
+              <a href="#diet" className="text-gray-700 hover:text-[#005B44] transition">식단</a>
+              <a href="#process" className="text-gray-700 hover:text-[#005B44] transition">프로세스</a>
             </nav>
 
             {/* Mobile Menu Button */}
@@ -236,7 +236,7 @@ export default function Home() {
 
             <button
               onClick={() => setConsultationOpen(true)}
-              className="hidden md:block px-6 py-2 bg-[#1B7F4A] text-white rounded-lg hover:bg-white hover:text-[#1B7F4A] border-2 border-[#1B7F4A] transition duration-300 font-semibold"
+              className="hidden md:block px-6 py-2 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
             >
               문의하기
             </button>
@@ -245,12 +245,12 @@ export default function Home() {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden pb-4 border-t">
-              <a href="#services" className="block py-2 text-gray-700 hover:text-[#1B7F4A]">서비스</a>
-              <a href="#diet" className="block py-2 text-gray-700 hover:text-[#1B7F4A]">식단</a>
-              <a href="#process" className="block py-2 text-gray-700 hover:text-[#1B7F4A]">프로세스</a>
+              <a href="#services" className="block py-2 text-gray-700 hover:text-[#005B44]">서비스</a>
+              <a href="#diet" className="block py-2 text-gray-700 hover:text-[#005B44]">식단</a>
+              <a href="#process" className="block py-2 text-gray-700 hover:text-[#005B44]">프로세스</a>
               <button
                 onClick={() => setConsultationOpen(true)}
-                className="w-full mt-4 px-4 py-2 bg-[#1B7F4A] text-white rounded-lg"
+                className="w-full mt-4 px-4 py-2 bg-[#005B44] text-white rounded-lg"
               >
                 문의하기
               </button>
@@ -260,24 +260,24 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-header-meals_01700763.jpg')" }}>
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
+        <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative h-full flex flex-col justify-center items-start px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto w-full">
-            <p className="text-white/80 text-lg mb-4">신선함 속 있는 이동형 밀솔루션</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">직원 복지의 새로운 기준</h1>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#FFD700] mb-8">프레시밀온</h2>
-            <p className="text-white text-lg md:text-xl max-w-2xl mb-8">신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.</p>
+            <p className="text-white text-lg mb-4 font-semibold drop-shadow-lg">신선함 속 있는 이동형 밀솔루션</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">직원 복지의 새로운 기준</h1>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#ED6325] mb-8 drop-shadow-lg">프레시밀온</h2>
+            <p className="text-white text-lg md:text-xl max-w-2xl mb-8 drop-shadow-lg leading-relaxed">신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.</p>
             <div className="flex gap-4">
               <button
                 onClick={() => setConsultationOpen(true)}
-                className="px-8 py-3 bg-[#1B7F4A] text-white rounded-lg hover:bg-white hover:text-[#1B7F4A] border-2 border-[#1B7F4A] transition duration-300 font-semibold"
+                className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
               >
                 지금 상담받기
               </button>
               <button
                 onClick={() => setMaterialOpen(true)}
-                className="px-8 py-3 bg-white text-[#1B7F4A] rounded-lg hover:bg-[#1B7F4A] hover:text-white border-2 border-white transition duration-300 font-semibold"
+                className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
               >
                 자료 다운로드
               </button>
@@ -291,19 +291,19 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1B7F4A] mb-2">20+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">20+</div>
               <p className="text-gray-600">년 이상의 금식 운영 경험</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1B7F4A] mb-2">1,000+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">1,000+</div>
               <p className="text-gray-600">일일 제공 식수</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1B7F4A] mb-2">100+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">100+</div>
               <p className="text-gray-600">사업장 운영 중</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1B7F4A] mb-2">99%</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">99%</div>
               <p className="text-gray-600">고객 만족도</p>
             </div>
           </div>
@@ -330,18 +330,18 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{solution.name}</h3>
-                  <p className="text-[#1B7F4A] font-semibold mb-3">{solution.shortDesc}</p>
+                  <p className="text-[#005B44] font-semibold mb-3">{solution.shortDesc}</p>
                   <p className="text-gray-600 mb-4">{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-[#1B7F4A]/10 text-[#1B7F4A] rounded-full text-sm">
+                      <span key={i} className="px-3 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-sm">
                         {tag}
                       </span>
                     ))}
                   </div>
                   <button
                     onClick={() => setConsultationOpen(true)}
-                    className="w-full px-4 py-2 bg-[#1B7F4A] text-white rounded-lg hover:bg-white hover:text-[#1B7F4A] border-2 border-[#1B7F4A] transition duration-300 font-semibold"
+                    className="w-full px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
                   >
                     견적 문의
                   </button>
@@ -375,7 +375,7 @@ export default function Home() {
                   <p className="text-gray-600 mb-8 leading-relaxed text-lg">{diets[currentDietIndex].description}</p>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {diets[currentDietIndex].tags.map((tag, i) => (
-                      <span key={i} className="px-4 py-2 bg-[#1B7F4A]/10 text-[#1B7F4A] rounded-full text-sm font-medium">
+                      <span key={i} className="px-4 py-2 bg-[#005B44]/10 text-[#005B44] rounded-full text-sm font-medium">
                         {tag}
                       </span>
                     ))}
@@ -387,7 +387,7 @@ export default function Home() {
                           key={idx}
                           onClick={() => setCurrentDietIndex(idx)}
                           className={`w-3 h-3 rounded-full transition-all ${
-                            idx === currentDietIndex ? "bg-[#1B7F4A] w-8" : "bg-gray-300 hover:bg-gray-400"
+                            idx === currentDietIndex ? "bg-[#005B44] w-8" : "bg-gray-300 hover:bg-gray-400"
                           }`}
                         />
                       ))}
@@ -398,13 +398,13 @@ export default function Home() {
             </div>
             <button
               onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-16 bg-[#1B7F4A] text-white p-3 rounded-full hover:bg-[#156638] transition-colors shadow-lg"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-16 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004a36] transition-colors shadow-lg"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-16 bg-[#1B7F4A] text-white p-3 rounded-full hover:bg-[#156638] transition-colors shadow-lg"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-16 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004a36] transition-colors shadow-lg"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -432,11 +432,11 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                  <p className="text-[#1B7F4A] font-semibold text-sm mb-3">{meal.summary}</p>
+                  <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
                   <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                   <div className="flex flex-wrap gap-2">
                     {meal.tags.map((tag, i) => (
-                      <span key={i} className="px-2 py-1 bg-[#1B7F4A]/10 text-[#1B7F4A] rounded-full text-xs font-medium">
+                      <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
                         {tag}
                       </span>
                     ))}
@@ -449,7 +449,7 @@ export default function Home() {
       </section>
 
       {/* Process Section - Professional Layout */}
-      <section id="process" className="py-20 bg-gradient-to-r from-[#1B7F4A] to-[#2a9f5f]">
+      <section id="process" className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">신선함을 보장하는 프로세스</h2>
@@ -510,7 +510,7 @@ export default function Home() {
                     <img
                       src={review.image}
                       alt={review.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-[#1B7F4A]/20"
+                      className="w-16 h-16 rounded-full object-cover border-2 border-[#005B44]/20"
                     />
                     <div>
                       <p className="font-bold text-gray-900">{review.company}</p>
@@ -546,7 +546,7 @@ export default function Home() {
                 >
                   <span className="font-semibold text-gray-900 text-left">{faq.question}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#1B7F4A] transition-transform duration-300 ${
+                    className={`w-5 h-5 text-[#005B44] transition-transform duration-300 ${
                       expandedFAQ === idx ? "transform rotate-180" : ""
                     }`}
                   />
@@ -563,14 +563,14 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-[#1B7F4A]">
+      <section className="py-20 bg-[#005B44]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">직원 복지의 새로운 기준을 경험하세요</h2>
           <p className="text-xl text-white/90 mb-8">신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => setConsultationOpen(true)}
-              className="px-8 py-3 bg-white text-[#1B7F4A] rounded-lg hover:bg-gray-100 transition duration-300 font-semibold"
+              className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-gray-100 transition duration-300 font-semibold"
             >
               지금 상담받기
             </button>
@@ -651,7 +651,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowPrivacyModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-[#1B7F4A] text-white rounded-lg hover:bg-[#156a3a] transition"
+                className="mt-6 w-full px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a36] transition"
               >
                 닫기
               </button>
@@ -673,7 +673,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowTermsModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-[#1B7F4A] text-white rounded-lg hover:bg-[#156a3a] transition"
+                className="mt-6 w-full px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a36] transition"
               >
                 닫기
               </button>

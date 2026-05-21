@@ -45,9 +45,9 @@
 
 :root {
   /* Primary Green - Fresh, Health, Growth */
-  --primary: #1B7F4A;
+  --primary: #005B44;
   --primary-foreground: #FFFFFF;
-  --sidebar-primary: #1B7F4A;
+  --sidebar-primary: #005B44;
   --sidebar-primary-foreground: #FFFFFF;
   
   /* Chart colors - Green gradient */
@@ -59,15 +59,15 @@
   
   --radius: 0.65rem;
   
-  /* Light theme - Clean white background */
-  --background: #FFFFFF;
+  /* Light theme - Beige background */
+  --background: #FBFBEF;
   --foreground: #1A1A1A;
   --card: #FFFFFF;
   --card-foreground: #1A1A1A;
   --popover: #FFFFFF;
   --popover-foreground: #1A1A1A;
   
-  /* Secondary - Light gray */
+  /* Secondary - Light beige */
   --secondary: #F5F5F5;
   --secondary-foreground: #424242;
   
@@ -75,9 +75,9 @@
   --muted: #EEEEEE;
   --muted-foreground: #757575;
   
-  /* Accent - Light green */
-  --accent: #E8F5E9;
-  --accent-foreground: #1B7F4A;
+  /* Accent - Orange */
+  --accent: #ED6325;
+  --accent-foreground: #FFFFFF;
   
   /* Destructive - Red */
   --destructive: #D32F2F;
@@ -86,15 +86,15 @@
   /* Borders and inputs */
   --border: #E0E0E0;
   --input: #F5F5F5;
-  --ring: #1B7F4A;
+  --ring: #005B44;
   
   /* Sidebar */
   --sidebar: #FFFFFF;
   --sidebar-foreground: #1A1A1A;
   --sidebar-accent: #E8F5E9;
-  --sidebar-accent-foreground: #1B7F4A;
+  --sidebar-accent-foreground: #005B44;
   --sidebar-border: #E0E0E0;
-  --sidebar-ring: #1B7F4A;
+  --sidebar-ring: #005B44;
 }
 
 .dark {
