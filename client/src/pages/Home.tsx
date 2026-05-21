@@ -91,7 +91,7 @@ export default function Home() {
   const meals = [
     {
       name: "정통 한식",
-      image: "/manus-storage/xtFlBsOX65yJ_f72a2817.jpg",
+      image: "/manus-storage/02_07006eb7.png",
       description: "신선한 재료로 만든 전통 한식",
       fullDescription: "한반도의 오랜 식문화를 계승한 정통 한식입니다. 계절 재료를 활용하여 영양 균형을 맞추고, 전통 양념과 조리법으로 깊은 맛을 살렸습니다.",
       summary: "계절 재료로 만든 영양 균형 잡힌 한끼",
@@ -99,7 +99,7 @@ export default function Home() {
     },
     {
       name: "아시안식",
-      image: "/manus-storage/NaGhdZqdJImL_197b26e6.jpg",
+      image: "/manus-storage/03_f0cbcda5.png",
       description: "다양한 아시아 요리의 맛",
       fullDescription: "태국, 베트남, 중국 등 다양한 아시아 요리의 정수를 담았습니다. 신선한 허브와 향신료로 입맛을 돋우고, 가벼우면서도 영양가 있는 메뉴 구성입니다.",
       summary: "신선한 향신료로 살린 아시아의 맛",
@@ -107,7 +107,7 @@ export default function Home() {
     },
     {
       name: "고급 양식",
-      image: "/manus-storage/aJQxyOi4VuZM_5d0eef51.jpg",
+      image: "/manus-storage/04_024062b0.png",
       description: "세련된 양식 메뉴",
       fullDescription: "유럽의 정통 요리 기법을 바탕으로 한 세련된 양식입니다. 신선한 재료와 정교한 조리로 프리미엄 식사 경험을 제공합니다.",
       summary: "유럽 정통 기법으로 만든 프리미엄 식사",
