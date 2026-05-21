@@ -447,21 +447,78 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                {diets[idx]?.testimonialImages && (
-                  <div className="mt-6 flex gap-3 overflow-x-auto pb-2">
-                    {diets[idx].testimonialImages.map((img, i) => (
-                      <div key={i} className="flex-shrink-0">
-                        <img
-                          src={img}
-                          alt={`${meal.name} 후기 ${i + 1}`}
-                          className="h-32 w-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
+
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Actual Operating Testimonials Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">실제 운영 후기</h2>
+            <p className="text-xl text-gray-600">프레시밀온과 함께하는 고객들의 실제 운영 사진</p>
+          </div>
+
+          <div className="space-y-8">
+            {/* Office Testimonials */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#005B44] rounded-full"></span>
+                오피스 식단 운영 사진
+              </h3>
+              <div className="flex gap-4 overflow-x-auto pb-4">
+                {diets[0]?.testimonialImages?.map((img, i) => (
+                  <div key={i} className="flex-shrink-0">
+                    <img
+                      src={img}
+                      alt={`오피스 운영 사진 ${i + 1}`}
+                      className="h-48 w-72 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Industrial Testimonials */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#ED6325] rounded-full"></span>
+                산업체 식단 운영 사진
+              </h3>
+              <div className="flex gap-4 overflow-x-auto pb-4">
+                {diets[1]?.testimonialImages?.map((img, i) => (
+                  <div key={i} className="flex-shrink-0">
+                    <img
+                      src={img}
+                      alt={`산업체 운영 사진 ${i + 1}`}
+                      className="h-48 w-72 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Hospital Testimonials */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full" style={{backgroundColor: '#ED6325'}}></span>
+                병원 식단 운영 사진
+              </h3>
+              <div className="flex gap-4 overflow-x-auto pb-4">
+                {diets[2]?.testimonialImages?.map((img, i) => (
+                  <div key={i} className="flex-shrink-0">
+                    <img
+                      src={img}
+                      alt={`병원 운영 사진 ${i + 1}`}
+                      className="h-48 w-72 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
