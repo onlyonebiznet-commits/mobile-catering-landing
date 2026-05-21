@@ -292,13 +292,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-96 md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative h-full flex flex-col justify-center items-start px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto w-full">
+        <div className="relative h-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto w-full text-center">
             <p className="text-white text-lg mb-4 font-semibold drop-shadow-lg">신선함 속 있는 이동형 밀솔루션</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">직원 복지의 새로운 기준</h1>
             <h2 className="text-4xl md:text-5xl font-bold text-[#ED6325] mb-8 drop-shadow-lg">프레시밀온</h2>
-            <p className="text-white text-lg md:text-xl max-w-2xl mb-8 drop-shadow-lg leading-relaxed">신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.</p>
-            <div className="flex gap-4">
+            <p className="text-white text-lg md:text-xl max-w-2xl mx-auto mb-8 drop-shadow-lg leading-relaxed">신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.</p>
+            <div className="flex gap-4 justify-center">
               <button
                 onClick={() => setConsultationOpen(true)}
                 className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
@@ -564,33 +564,23 @@ export default function Home() {
           </div>
 
           {/* Operating Photos Gallery with Comments */}
-          <div className="space-y-12 border-t pt-16">
-            {operatingPhotos.map((section, sIdx) => {
-              const categoryNames: Record<string, string> = { office: '오피스 식단', industrial: '산업체 식단', hospital: '병원 식단' };
-              const categoryColors: Record<string, string> = { office: '#005B44', industrial: '#ED6325', hospital: '#ED6325' };
-              return (
-                <div key={sIdx}>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full" style={{backgroundColor: categoryColors[section.category as keyof typeof categoryColors]}}></span>
-                    {categoryNames[section.category as keyof typeof categoryNames]} 운영 현황
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {section.photos.map((photo, pIdx) => (
-                      <div key={pIdx} className="group">
-                        <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100 h-56">
-                          <img
-                            src={photo.image}
-                            alt={`${categoryNames[section.category as keyof typeof categoryNames]} ${pIdx + 1}`}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                        <p className="text-gray-700 text-center font-medium leading-relaxed">{photo.comment}</p>
-                      </div>
-                    ))}
+          <div className="border-t pt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {operatingPhotos.flatMap((section) =>
+                section.photos.map((photo, pIdx) => (
+                  <div key={`${section.category}-${pIdx}`} className="group">
+                    <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100 h-56">
+                      <img
+                        src={photo.image}
+                        alt={`운영 사진 ${pIdx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <p className="text-gray-700 text-center font-medium leading-relaxed">{photo.comment}</p>
                   </div>
-                </div>
-              );
-            })}
+                ))
+              )}
+            </div>
           </div>
         </div>
       </section>
