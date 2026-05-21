@@ -260,7 +260,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
+      <section className="relative h-96 md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative h-full flex flex-col justify-center items-start px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto w-full">
