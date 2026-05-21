@@ -540,11 +540,8 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  {/* Customer Info Bubble */}
-                  <div className="relative px-4 pt-3 pb-4 bg-gray-800 rounded-b-lg">
-                    {/* Tail on right */}
-                    <div className="absolute -top-2 right-6 w-4 h-4 bg-gray-800 transform rotate-45"></div>
-                    
+                  {/* Customer Info Bubble Below Photo */}
+                  <div className="mt-4 bg-white rounded-2xl px-4 py-3 shadow-lg relative">
                     <div className="flex items-start gap-3 mb-2">
                       <img
                         src={photo.customerImage}
@@ -552,14 +549,17 @@ export default function Home() {
                         className="w-8 h-8 rounded-full object-cover flex-shrink-0"
                       />
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-white text-sm">{photo.company}</p>
-                        <p className="text-xs text-gray-300">{photo.department}</p>
+                        <p className="font-bold text-gray-800 text-sm">{photo.company}</p>
+                        <p className="text-xs text-gray-600">{photo.department}</p>
                       </div>
                       <span className="text-lg flex-shrink-0">{photo.emoji}</span>
                     </div>
                     
                     {/* Comment */}
-                    <p className="text-gray-100 text-xs leading-relaxed italic ml-11">\"{ photo.comment}\"</p>
+                    <p className="text-gray-700 text-xs leading-relaxed italic ml-11">\"{ photo.comment}\"</p>
+                    
+                    {/* Tail */}
+                    <div className="absolute -top-2 left-6 w-4 h-4 bg-white transform rotate-45"></div>
                   </div>
                 </div>
               ))}
