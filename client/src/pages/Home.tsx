@@ -93,16 +93,25 @@ export default function Home() {
       name: "정통 한식",
       image: "/manus-storage/corporate-meal-carousel.png",
       description: "신선한 재료로 만든 전통 한식",
+      fullDescription: "한반도의 오랜 식문화를 계승한 정통 한식입니다. 계절 재료를 활용하여 영양 균형을 맞추고, 전통 양념과 조리법으로 깊은 맛을 살렸습니다.",
+      summary: "계절 재료로 만든 영양 균형 잡힌 한끼",
+      tags: ["전통식", "영양균형", "한국식"],
     },
     {
       name: "아시안식",
       image: "/manus-storage/factory-meal-carousel.png",
       description: "다양한 아시아 요리의 맛",
+      fullDescription: "태국, 베트남, 중국 등 다양한 아시아 요리의 정수를 담았습니다. 신선한 허브와 향신료로 입맛을 돋우고, 가벼우면서도 영양가 있는 메뉴 구성입니다.",
+      summary: "신선한 향신료로 살린 아시아의 맛",
+      tags: ["아시안", "향신료", "다양한맛"],
     },
     {
       name: "고급 양식",
       image: "/manus-storage/hospital-meal-carousel.png",
       description: "세련된 양식 메뉴",
+      fullDescription: "유럽의 정통 요리 기법을 바탕으로 한 세련된 양식입니다. 신선한 재료와 정교한 조리로 프리미엄 식사 경험을 제공합니다.",
+      summary: "유럽 정통 기법으로 만든 프리미엄 식사",
+      tags: ["양식", "프리미엄", "세련된맛"],
     },
   ];
 
@@ -142,6 +151,7 @@ export default function Home() {
       rating: 5,
       comment: "프레시밀온 덕분에 직원들의 점심시간이 훨씬 편해졌습니다. 신선하고 맛있는 식사로 만족도가 높습니다.",
       emoji: "😊",
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=kim",
     },
     {
       company: "LG전자",
@@ -151,6 +161,7 @@ export default function Home() {
       rating: 5,
       comment: "다양한 메뉴와 건강한 식단으로 직원들이 정말 좋아합니다. 강력 추천합니다!",
       emoji: "👍",
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=lee",
     },
     {
       company: "SK하이닉스",
@@ -160,6 +171,7 @@ export default function Home() {
       rating: 5,
       comment: "매일 신선한 식사를 제공해주셔서 감사합니다. 직원 복지가 한 단계 업그레이드 되었습니다.",
       emoji: "⭐",
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=park",
     },
   ];
 
@@ -248,7 +260,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-header-full.png')" }}>
+      <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-header-meals_01700763.jpg')" }}>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative h-full flex flex-col justify-center items-start px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto w-full">
@@ -348,31 +360,54 @@ export default function Home() {
             <p className="text-xl text-gray-600">각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
-          <div className="space-y-8">
-            {diets.map((diet, idx) => (
-              <div key={idx} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-                  <div className="md:col-span-2 relative h-64 md:h-auto overflow-hidden group">
-                    <img
-                      src={diet.image}
-                      alt={diet.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+          <div className="relative">
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96">
+                <div className="relative h-96 md:h-auto overflow-hidden group">
+                  <img
+                    src={diets[currentDietIndex].image}
+                    alt={diets[currentDietIndex].title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-8 md:p-12 flex flex-col justify-center">
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{diets[currentDietIndex].title}</h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed text-lg">{diets[currentDietIndex].description}</p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {diets[currentDietIndex].tags.map((tag, i) => (
+                      <span key={i} className="px-4 py-2 bg-[#1B7F4A]/10 text-[#1B7F4A] rounded-full text-sm font-medium">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                  <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">{diet.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{diet.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {diet.tags.map((tag, i) => (
-                        <span key={i} className="px-3 py-1 bg-[#1B7F4A]/10 text-[#1B7F4A] rounded-full text-sm">
-                          {tag}
-                        </span>
+                  <div className="flex items-center gap-4">
+                    <div className="flex gap-2">
+                      {diets.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentDietIndex(idx)}
+                          className={`w-3 h-3 rounded-full transition-all ${
+                            idx === currentDietIndex ? "bg-[#1B7F4A] w-8" : "bg-gray-300 hover:bg-gray-400"
+                          }`}
+                        />
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+            <button
+              onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-16 bg-[#1B7F4A] text-white p-3 rounded-full hover:bg-[#156638] transition-colors shadow-lg"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-16 bg-[#1B7F4A] text-white p-3 rounded-full hover:bg-[#156638] transition-colors shadow-lg"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </section>
@@ -395,9 +430,17 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
-                <div className="p-6 text-center">
+                <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                  <p className="text-gray-600">{meal.description}</p>
+                  <p className="text-[#1B7F4A] font-semibold text-sm mb-3">{meal.summary}</p>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {meal.tags.map((tag, i) => (
+                      <span key={i} className="px-2 py-1 bg-[#1B7F4A]/10 text-[#1B7F4A] rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -461,18 +504,24 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reviews.map((review, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-gray-50 to-white rounded-lg p-8 shadow-lg hover:shadow-xl transition">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="text-4xl">{review.emoji}</div>
-                  <div>
-                    <p className="font-bold text-gray-900">{review.company}</p>
-                    <p className="text-sm text-gray-600">{review.department}</p>
+              <div key={idx} className="bg-gradient-to-br from-gray-50 to-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                <div className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <img
+                      src={review.image}
+                      alt={review.name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-[#1B7F4A]/20"
+                    />
+                    <div>
+                      <p className="font-bold text-gray-900">{review.company}</p>
+                      <p className="text-sm text-gray-600">{review.department}</p>
+                    </div>
                   </div>
-                </div>
-                <p className="text-gray-700 mb-6 leading-relaxed italic">"{review.comment}"</p>
-                <div className="border-t pt-4">
-                  <p className="font-semibold text-gray-900">{review.name}</p>
-                  <p className="text-sm text-gray-600">{review.position}</p>
+                  <p className="text-gray-700 mb-6 leading-relaxed italic">"{ review.comment}"</p>
+                  <div className="border-t pt-4">
+                    <p className="font-semibold text-gray-900">{review.name}</p>
+                    <p className="text-sm text-gray-600">{review.position}</p>
+                  </div>
                 </div>
               </div>
             ))}
