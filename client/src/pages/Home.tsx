@@ -535,28 +535,30 @@ export default function Home() {
             <p className="text-xl text-gray-600">프레시밀온과 함께하는 고객들의 실제 운영 사진과 후기</p>
           </div>
 
-          {/* Customer Reviews Section */}
+          {/* Customer Reviews Section - Card Layout */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">고객 만족도</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {reviews.map((review, idx) => (
-                <div key={idx} className="text-center">
-                  <div className="mb-4">
+                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition">
+                  <div className="flex items-start gap-3 mb-4">
                     <img
                       src={review.image}
                       alt={review.name}
-                      className="w-full h-48 object-cover rounded-lg shadow-lg"
+                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                     />
+                    <div className="flex-1">
+                      <p className="font-bold text-gray-900 text-sm">{review.company}</p>
+                      <p className="text-xs text-[#005B44] font-semibold">{review.department}</p>
+                    </div>
                   </div>
-                  <p className="font-bold text-gray-900 text-lg mb-1">{review.company}</p>
-                  <p className="text-sm text-[#005B44] font-semibold mb-3">{review.department}</p>
-                  <p className="text-gray-700 leading-relaxed italic mb-4">"{ review.comment}"</p>
-                  <div className="flex items-center justify-center gap-2">
-                    <span className="text-xl">{review.emoji}</span>
-                    <div className="text-left">
+                  <p className="text-gray-700 leading-relaxed text-sm mb-4">"{ review.comment}"</p>
+                  <div className="flex items-center justify-between pt-4 border-t">
+                    <div>
                       <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
                       <p className="text-xs text-gray-600">{review.position}</p>
                     </div>
+                    <span className="text-2xl">{review.emoji}</span>
                   </div>
                 </div>
               ))}
@@ -569,14 +571,14 @@ export default function Home() {
               {operatingPhotos.flatMap((section) =>
                 section.photos.map((photo, pIdx) => (
                   <div key={`${section.category}-${pIdx}`} className="group">
-                    <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100 h-56">
+                    <div className="relative overflow-hidden rounded-lg mb-4 bg-gray-100 h-56">
                       <img
                         src={photo.image}
                         alt={`운영 사진 ${pIdx + 1}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <p className="text-gray-700 text-center font-medium leading-relaxed">{photo.comment}</p>
+                    <p className="text-gray-700 text-center font-medium leading-relaxed text-sm">{photo.comment}</p>
                   </div>
                 ))
               )}
