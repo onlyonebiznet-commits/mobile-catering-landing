@@ -49,18 +49,21 @@ export default function Home() {
       image: "/manus-storage/aJQxyOi4VuZM_5d0eef51.jpg",
       description: "정통 한식부터 건강한 샐러드까지, 직원들의 다양한 입맛을 만족시키는 균형잡힌 식단입니다. 신선한 재료로 만든 한끼 식사로 업무 효율을 높입니다.",
       tags: ["균형잡힌 영양", "신선한 재료", "다양한 메뉴"],
+      testimonialImages: ["/manus-storage/office-meal-01_b17cd0b5.jpg", "/manus-storage/finger-food-01_3f568f56.jpg", "/manus-storage/dessert-01_710601c9.webp"],
     },
     {
       title: "산업체",
       image: "/manus-storage/xtFlBsOX65yJ_f72a2817.jpg",
       description: "육체적 노동으로 소모되는 에너지를 충분히 보충할 수 있는 푸짐한 식단입니다. 고단백 메뉴와 든든한 밥상으로 근로자의 건강을 지킵니다.",
       tags: ["고단백 식단", "푸짐한 양", "에너지 보충"],
+      testimonialImages: ["/manus-storage/mobile-meal-07_c09fc712.jpg", "/manus-storage/process-04_18409a8e.jpg", "/manus-storage/finger-food-01_3f568f56.jpg"],
     },
     {
       title: "병원",
       image: "/manus-storage/NaGhdZqdJImL_197b26e6.jpg",
       description: "환자의 건강 상태를 고려한 특별식 제공이 가능합니다. 영양사 상담을 통한 맞춤형 메뉴로 빠른 회복을 돕습니다.",
       tags: ["영양관리", "특별식", "위생관리"],
+      testimonialImages: ["/manus-storage/hospital-meal-01_7d7c6bb6.webp", "/manus-storage/hospital-meal-02_8afc5e57.webp", "/manus-storage/hospital-meal-03_225a3bdb.webp"],
     },
   ];
 
@@ -422,26 +425,41 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {meals.map((meal, idx) => (
-              <div key={idx} className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-64 overflow-hidden group">
-                  <img
-                    src={meal.image}
-                    alt={meal.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                  <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {meal.tags.map((tag, i) => (
-                      <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
-                        {tag}
-                      </span>
-                    ))}
+              <div key={idx}>
+                <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="relative h-64 overflow-hidden group">
+                    <img
+                      src={meal.image}
+                      alt={meal.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
+                    <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {meal.tags.map((tag, i) => (
+                        <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
+                {diets[idx]?.testimonialImages && (
+                  <div className="mt-6 flex gap-3 overflow-x-auto pb-2">
+                    {diets[idx].testimonialImages.map((img, i) => (
+                      <div key={i} className="flex-shrink-0">
+                        <img
+                          src={img}
+                          alt={`${meal.name} 후기 ${i + 1}`}
+                          className="h-32 w-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
