@@ -521,38 +521,40 @@ export default function Home() {
           <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {operatingPhotos.map((photo, pIdx) => (
-                  <div key={pIdx} className="group">
-                    <div className="relative overflow-hidden rounded-lg mb-4 bg-gray-100 h-56">
-                      <img
-                        src={photo.image}
-                        alt={`운영 사진 ${pIdx + 1}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    {/* Customer Info Card */}
-                    <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-md">
-                      <div className="flex items-start gap-3 mb-3">
-                        <img
-                          src={photo.customerImage}
-                          alt={photo.name}
-                          className="w-10 h-10 rounded-full object-cover flex-shrink-0"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <p className="font-bold text-gray-900 text-sm">{photo.company}</p>
-                          <p className="text-xs text-[#005B44] font-semibold">{photo.department}</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-700 leading-relaxed text-xs mb-3 italic">"{ photo.comment}"</p>
-                      <div className="flex items-center justify-between pt-3 border-t">
-                        <div className="min-w-0">
-                          <p className="font-semibold text-gray-900 text-xs">{photo.name}</p>
-                          <p className="text-xs text-gray-600">{photo.position}</p>
-                        </div>
-                        <span className="text-lg flex-shrink-0">{photo.emoji}</span>
+                <div key={pIdx} className="group">
+                  {/* Photo with Comment Bubble */}
+                  <div className="relative overflow-hidden rounded-lg bg-gray-100 h-56 mb-0">
+                    <img
+                      src={photo.image}
+                      alt={`운영 사진 ${pIdx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    
+                    {/* Comment Bubble with Tail */}
+                    <div className="absolute top-4 left-4 right-4">
+                      <div className="bg-white rounded-2xl px-4 py-3 shadow-lg relative">
+                        <p className="text-gray-800 text-sm font-medium leading-relaxed">\"{ photo.comment}\"</p>
+                        {/* Tail */}
+                        <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white transform rotate-45"></div>
                       </div>
                     </div>
                   </div>
-                ))}
+                  
+                  {/* Customer Info Bar */}
+                  <div className="bg-gray-800 rounded-b-lg px-4 py-3 flex items-center gap-3">
+                    <img
+                      src={photo.customerImage}
+                      alt={photo.name}
+                      className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-white text-sm">{photo.company}</p>
+                      <p className="text-xs text-gray-300">{photo.department}</p>
+                    </div>
+                    <span className="text-lg flex-shrink-0">{photo.emoji}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
