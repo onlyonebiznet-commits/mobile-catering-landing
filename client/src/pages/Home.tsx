@@ -149,25 +149,25 @@ export default function Home() {
     {
       category: 'office',
       photos: [
-        { image: diets[0]?.testimonialImages?.[0] || '', comment: '매일 신선한 재료로 정성스럽게 준비된 식사' },
-        { image: diets[0]?.testimonialImages?.[1] || '', comment: '직원들이 만족하는 다양한 메뉴 구성' },
-        { image: diets[0]?.testimonialImages?.[2] || '', comment: '위생적인 포장과 빠른 배송' },
+        { image: diets[0]?.testimonialImages?.[0] || '', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
+        { image: diets[0]?.testimonialImages?.[1] || '', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
+        { image: diets[0]?.testimonialImages?.[2] || '', comment: '위생적인 포장과 빠른 배송', company: 'SK하이닉스', department: '생산팀', name: '박준호', position: '과장', emoji: '⭐', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=park' },
       ]
     },
     {
       category: 'industrial',
       photos: [
-        { image: diets[1]?.testimonialImages?.[0] || '', comment: '산업체 특성에 맞춘 영양 균형 식단' },
-        { image: diets[1]?.testimonialImages?.[1] || '', comment: '직원 체력 관리를 위한 고단백 메뉴' },
-        { image: diets[1]?.testimonialImages?.[2] || '', comment: '대량 공급도 신선함을 유지' },
+        { image: diets[1]?.testimonialImages?.[0] || '', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
+        { image: diets[1]?.testimonialImages?.[1] || '', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
+        { image: diets[1]?.testimonialImages?.[2] || '', comment: '대량 공급도 신선함을 유지', company: '한국전력', department: '관리팀', name: '박영식', position: '과장', emoji: '⭐', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=park2' },
       ]
     },
     {
       category: 'hospital',
       photos: [
-        { image: diets[2]?.testimonialImages?.[0] || '', comment: '환자 맞춤형 저염식 및 특수식 제공' },
-        { image: diets[2]?.testimonialImages?.[1] || '', comment: '위생 기준을 철저히 준수한 조리' },
-        { image: diets[2]?.testimonialImages?.[2] || '', comment: '빠른 배송으로 따뜻한 식사 제공' },
+        { image: diets[2]?.testimonialImages?.[0] || '', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
+        { image: diets[2]?.testimonialImages?.[1] || '', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
+        { image: diets[2]?.testimonialImages?.[2] || '', comment: '빠른 배송으로 따뜻한 식사 제공', company: '아산병원', department: '관리팀', name: '박민지', position: '대리', emoji: '⭐', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=park3' },
       ]
     }
   ];
@@ -567,7 +567,7 @@ export default function Home() {
 
           {/* Operating Photos Gallery with Comments */}
           <div className="border-t pt-16">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {operatingPhotos.flatMap((section) =>
                 section.photos.map((photo, pIdx) => (
                   <div key={`${section.category}-${pIdx}`} className="group">
@@ -578,7 +578,28 @@ export default function Home() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <p className="text-gray-700 text-center font-medium leading-relaxed text-sm">{photo.comment}</p>
+                    {/* Customer Info Card */}
+                    <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-md">
+                      <div className="flex items-start gap-3 mb-3">
+                        <img
+                          src={photo.customerImage}
+                          alt={photo.name}
+                          className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <p className="font-bold text-gray-900 text-sm">{photo.company}</p>
+                          <p className="text-xs text-[#005B44] font-semibold">{photo.department}</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 leading-relaxed text-xs mb-3 italic">"{ photo.comment}"</p>
+                      <div className="flex items-center justify-between pt-3 border-t">
+                        <div className="min-w-0">
+                          <p className="font-semibold text-gray-900 text-xs">{photo.name}</p>
+                          <p className="text-xs text-gray-600">{photo.position}</p>
+                        </div>
+                        <span className="text-lg flex-shrink-0">{photo.emoji}</span>
+                      </div>
+                    </div>
                   </div>
                 ))
               )}
