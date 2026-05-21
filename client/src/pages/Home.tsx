@@ -146,30 +146,12 @@ export default function Home() {
   ];
 
   const operatingPhotos = [
-    {
-      category: 'office',
-      photos: [
-        { image: diets[0]?.testimonialImages?.[0] || '', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
-        { image: diets[0]?.testimonialImages?.[1] || '', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
-        { image: diets[0]?.testimonialImages?.[2] || '', comment: '위생적인 포장과 빠른 배송', company: 'SK하이닉스', department: '생산팀', name: '박준호', position: '과장', emoji: '⭐', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=park' },
-      ]
-    },
-    {
-      category: 'industrial',
-      photos: [
-        { image: diets[1]?.testimonialImages?.[0] || '', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
-        { image: diets[1]?.testimonialImages?.[1] || '', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
-        { image: diets[1]?.testimonialImages?.[2] || '', comment: '대량 공급도 신선함을 유지', company: '한국전력', department: '관리팀', name: '박영식', position: '과장', emoji: '⭐', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=park2' },
-      ]
-    },
-    {
-      category: 'hospital',
-      photos: [
-        { image: diets[2]?.testimonialImages?.[0] || '', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
-        { image: diets[2]?.testimonialImages?.[1] || '', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
-        { image: diets[2]?.testimonialImages?.[2] || '', comment: '빠른 배송으로 따뜻한 식사 제공', company: '아산병원', department: '관리팀', name: '박민지', position: '대리', emoji: '⭐', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=park3' },
-      ]
-    }
+    { image: diets[0]?.testimonialImages?.[0] || '', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
+    { image: diets[0]?.testimonialImages?.[1] || '', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
+    { image: diets[1]?.testimonialImages?.[0] || '', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
+    { image: diets[1]?.testimonialImages?.[1] || '', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
+    { image: diets[2]?.testimonialImages?.[0] || '', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
+    { image: diets[2]?.testimonialImages?.[1] || '', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
   ];
 
   const reviews = [
@@ -535,42 +517,11 @@ export default function Home() {
             <p className="text-xl text-gray-600">프레시밀온과 함께하는 고객들의 실제 운영 사진과 후기</p>
           </div>
 
-          {/* Customer Reviews Section - Card Layout */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">고객 만족도</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {reviews.map((review, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition">
-                  <div className="flex items-start gap-3 mb-4">
-                    <img
-                      src={review.image}
-                      alt={review.name}
-                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
-                    />
-                    <div className="flex-1">
-                      <p className="font-bold text-gray-900 text-sm">{review.company}</p>
-                      <p className="text-xs text-[#005B44] font-semibold">{review.department}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-sm mb-4">"{ review.comment}"</p>
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <div>
-                      <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
-                      <p className="text-xs text-gray-600">{review.position}</p>
-                    </div>
-                    <span className="text-2xl">{review.emoji}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Operating Photos Gallery with Comments */}
-          <div className="border-t pt-16">
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {operatingPhotos.flatMap((section) =>
-                section.photos.map((photo, pIdx) => (
-                  <div key={`${section.category}-${pIdx}`} className="group">
+              {operatingPhotos.map((photo, pIdx) => (
+                  <div key={pIdx} className="group">
                     <div className="relative overflow-hidden rounded-lg mb-4 bg-gray-100 h-56">
                       <img
                         src={photo.image}
@@ -601,8 +552,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                ))
-              )}
+                ))}
             </div>
           </div>
         </div>
