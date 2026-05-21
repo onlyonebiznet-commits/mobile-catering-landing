@@ -145,6 +145,33 @@ export default function Home() {
     },
   ];
 
+  const operatingPhotos = [
+    {
+      category: 'office',
+      photos: [
+        { image: diets[0]?.testimonialImages?.[0] || '', comment: '매일 신선한 재료로 정성스럽게 준비된 식사' },
+        { image: diets[0]?.testimonialImages?.[1] || '', comment: '직원들이 만족하는 다양한 메뉴 구성' },
+        { image: diets[0]?.testimonialImages?.[2] || '', comment: '위생적인 포장과 빠른 배송' },
+      ]
+    },
+    {
+      category: 'industrial',
+      photos: [
+        { image: diets[1]?.testimonialImages?.[0] || '', comment: '산업체 특성에 맞춘 영양 균형 식단' },
+        { image: diets[1]?.testimonialImages?.[1] || '', comment: '직원 체력 관리를 위한 고단백 메뉴' },
+        { image: diets[1]?.testimonialImages?.[2] || '', comment: '대량 공급도 신선함을 유지' },
+      ]
+    },
+    {
+      category: 'hospital',
+      photos: [
+        { image: diets[2]?.testimonialImages?.[0] || '', comment: '환자 맞춤형 저염식 및 특수식 제공' },
+        { image: diets[2]?.testimonialImages?.[1] || '', comment: '위생 기준을 철저히 준수한 조리' },
+        { image: diets[2]?.testimonialImages?.[2] || '', comment: '빠른 배송으로 따뜻한 식사 제공' },
+      ]
+    }
+  ];
+
   const reviews = [
     {
       company: "삼성전자",
@@ -500,7 +527,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section - Combined */}
+      {/* Testimonials Section - Photo Gallery Style */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -508,103 +535,62 @@ export default function Home() {
             <p className="text-xl text-gray-600">프레시밀온과 함께하는 고객들의 실제 운영 사진과 후기</p>
           </div>
 
-          {/* Customer Reviews with Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {reviews.map((review, idx) => (
-              <div key={idx} className="group">
-                <div className="relative h-64 overflow-hidden rounded-lg mb-4 bg-gray-100">
-                  <img
-                    src={review.image}
-                    alt={review.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <p className="text-white text-sm font-semibold">{review.name} - {review.position}</p>
+          {/* Customer Reviews Section */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">고객 만족도</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {reviews.map((review, idx) => (
+                <div key={idx} className="text-center">
+                  <div className="mb-4">
+                    <img
+                      src={review.image}
+                      alt={review.name}
+                      className="w-full h-48 object-cover rounded-lg shadow-lg"
+                    />
                   </div>
-                </div>
-                <div className="bg-gradient-to-br from-gray-50 to-white rounded-lg p-6 shadow-lg hover:shadow-xl transition">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="flex-1">
-                      <p className="font-bold text-gray-900 text-lg">{review.company}</p>
-                      <p className="text-sm text-[#005B44] font-semibold">{review.department}</p>
-                    </div>
-                    <span className="text-2xl">{review.emoji}</span>
-                  </div>
+                  <p className="font-bold text-gray-900 text-lg mb-1">{review.company}</p>
+                  <p className="text-sm text-[#005B44] font-semibold mb-3">{review.department}</p>
                   <p className="text-gray-700 leading-relaxed italic mb-4">"{ review.comment}"</p>
-                  <div className="border-t pt-3 flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#005B44]/10 flex items-center justify-center">
-                      <span className="text-xs font-bold text-[#005B44]">★</span>
-                    </div>
-                    <div>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="text-xl">{review.emoji}</span>
+                    <div className="text-left">
                       <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
                       <p className="text-xs text-gray-600">{review.position}</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Operating Photos Gallery */}
-          <div className="space-y-8 border-t pt-16">
-            <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">실제 운영 현황</h3>
-            
-            {/* Office */}
-            <div>
-              <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="w-3 h-3 bg-[#005B44] rounded-full"></span>
-                오피스 식단 운영
-              </h4>
-              <div className="flex gap-4 overflow-x-auto pb-4">
-                {diets[0]?.testimonialImages?.map((img, i) => (
-                  <div key={i} className="flex-shrink-0">
-                    <img
-                      src={img}
-                      alt={`오피스 운영 사진 ${i + 1}`}
-                      className="h-40 w-60 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-                    />
+          {/* Operating Photos Gallery with Comments */}
+          <div className="space-y-12 border-t pt-16">
+            {operatingPhotos.map((section, sIdx) => {
+              const categoryNames: Record<string, string> = { office: '오피스 식단', industrial: '산업체 식단', hospital: '병원 식단' };
+              const categoryColors: Record<string, string> = { office: '#005B44', industrial: '#ED6325', hospital: '#ED6325' };
+              return (
+                <div key={sIdx}>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full" style={{backgroundColor: categoryColors[section.category as keyof typeof categoryColors]}}></span>
+                    {categoryNames[section.category as keyof typeof categoryNames]} 운영 현황
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {section.photos.map((photo, pIdx) => (
+                      <div key={pIdx} className="group">
+                        <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100 h-56">
+                          <img
+                            src={photo.image}
+                            alt={`${categoryNames[section.category as keyof typeof categoryNames]} ${pIdx + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <p className="text-gray-700 text-center font-medium leading-relaxed">{photo.comment}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Industrial */}
-            <div>
-              <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="w-3 h-3 bg-[#ED6325] rounded-full"></span>
-                산업체 식단 운영
-              </h4>
-              <div className="flex gap-4 overflow-x-auto pb-4">
-                {diets[1]?.testimonialImages?.map((img, i) => (
-                  <div key={i} className="flex-shrink-0">
-                    <img
-                      src={img}
-                      alt={`산업체 운영 사진 ${i + 1}`}
-                      className="h-40 w-60 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Hospital */}
-            <div>
-              <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full" style={{backgroundColor: '#ED6325'}}></span>
-                병원 식단 운영
-              </h4>
-              <div className="flex gap-4 overflow-x-auto pb-4">
-                {diets[2]?.testimonialImages?.map((img, i) => (
-                  <div key={i} className="flex-shrink-0">
-                    <img
-                      src={img}
-                      alt={`병원 운영 사진 ${i + 1}`}
-                      className="h-40 w-60 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
