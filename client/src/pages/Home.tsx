@@ -738,9 +738,9 @@ export default function Home() {
                     className="w-full h-full"
                   >
                     <source src={[
-                      '/manus-storage/freshmelon-video_e8036959.mp4',
-                      '/manus-storage/inbound-snack_efe36f2a.mp4',
-                      '/manus-storage/cafe-fresh_019ac06c.mp4'
+                      '/manus-storage/freshmelon-video_d7ab0bca.mp4',
+                      '/manus-storage/inbound-snack_8401e2ff.mp4',
+                      '/manus-storage/cafe-fresh_48b65e64.mp4'
                     ][currentDietIndex]} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
