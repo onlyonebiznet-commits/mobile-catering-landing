@@ -509,30 +509,47 @@ export default function Home() {
               0% { transform: translateX(0); }
               100% { transform: translateX(calc(-50% - 1rem)); }
             }
-            .scroll-container {
+            .scroll-content {
               display: flex;
-              gap: 1rem;
-              animation: scroll-infinite 40s linear infinite;
+              gap: 2rem;
+              animation: scroll-infinite 60s linear infinite;
               width: fit-content;
             }
-            .scroll-container:hover {
+            .scroll-content:hover {
               animation-play-state: paused;
+            }
+            .scroll-wrapper {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 2rem;
+              overflow: hidden;
             }
           `}</style>
 
           <div className="relative w-full overflow-hidden bg-gray-50">
-            <div className="scroll-container">
-              {[...companies, ...companies].map((company, idx) => (
-                <div key={idx} className="flex-shrink-0 w-40 md:w-48 lg:w-56">
-                  <div className="bg-white p-4 md:p-6 flex items-center justify-center h-28 md:h-32 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <div className="scroll-wrapper">
+              <div className="scroll-content">
+                {[...companies, ...companies].map((company, idx) => (
+                  <div key={`row1-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                     <img
                       src={company.logo}
                       alt={company.name}
                       className="max-w-full max-h-full object-contain"
                     />
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="scroll-content">
+                {[...companies, ...companies].map((company, idx) => (
+                  <div key={`row2-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
