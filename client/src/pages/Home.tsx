@@ -646,7 +646,6 @@ export default function Home() {
                     <h3 className="text-lg md:text-xl font-bold leading-tight">{story.title}</h3>
                   </div>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed">{story.description}</p>
               </div>
             ))}
           </div>
