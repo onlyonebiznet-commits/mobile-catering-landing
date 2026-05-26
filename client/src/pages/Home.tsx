@@ -186,6 +186,36 @@ export default function Home() {
       emoji: "⭐",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=park",
     },
+    {
+      company: "현대자동차",
+      department: "인사팀",
+      name: "이수현",
+      position: "부장",
+      rating: 5,
+      comment: "프레시밀온의 이동형 솔루션으로 다양한 사업장에서 직원 식사를 제공할 수 있게 되었습니다.",
+      emoji: "🚗",
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=hyun",
+    },
+    {
+      company: "삼성화재",
+      department: "영업팀",
+      name: "최지훈",
+      position: "과장",
+      rating: 5,
+      comment: "신선한 재료와 정성스러운 조리로 만든 식사가 정말 맛있습니다. 직원들의 만족도가 매우 높습니다.",
+      emoji: "😋",
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=choi",
+    },
+    {
+      company: "네이버",
+      department: "개발팀",
+      name: "정혜린",
+      position: "팀장",
+      rating: 5,
+      comment: "프레시밀온 덕분에 사무실에서도 편하게 신선한 식사를 즐길 수 있습니다. 정말 추천합니다!",
+      emoji: "🌟",
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=jung",
+    },
   ];
 
   const faqs = [
@@ -545,11 +575,11 @@ export default function Home() {
           </div>
 
           {/* Card Grid Reviews */}
-          <div className="relative">
-            {/* Navigation Arrows */}
+          <div className="relative px-16 md:px-20">
+            {/* Navigation Arrows - Left */}
             <button
               onClick={() => setCurrentReviewIndex(Math.max(0, currentReviewIndex - 1))}
-              className="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-12 md:-translate-x-16 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
               disabled={currentReviewIndex === 0}
             >
               <ChevronLeft className="w-6 h-6" />
@@ -559,14 +589,13 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {reviews.slice(currentReviewIndex, currentReviewIndex + 3).map((review, idx) => (
                 <div key={idx} className="flex flex-col">
-                  {/* Image Card with Play Button */}
+                  {/* Image Card */}
                   <div className="relative rounded-2xl overflow-hidden bg-gray-200 aspect-square group mb-4">
                     <img
                       src={operatingPhotos[currentReviewIndex + idx]?.image}
                       alt={review.company}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    {/* Play Button - Removed */}
                   </div>
 
                   {/* Company Name and Review - Left Aligned */}
@@ -578,10 +607,10 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Right */}
             <button
               onClick={() => setCurrentReviewIndex(Math.min(reviews.length - 3, currentReviewIndex + 1))}
-              className="absolute right-0 top-1/3 -translate-y-1/2 translate-x-12 md:translate-x-16 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
               disabled={currentReviewIndex >= reviews.length - 3}
             >
               <ChevronRight className="w-6 h-6" />
