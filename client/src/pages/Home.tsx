@@ -9,6 +9,7 @@ export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [materialOpen, setMaterialOpen] = useState(false);
   const [currentDietIndex, setCurrentDietIndex] = useState(0);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
@@ -535,69 +536,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section - Magazine Style */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      {/* Testimonials Section - Card Grid with Play Button */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">고객 후기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
-          {/* Magazine Style Reviews */}
-          <div className="space-y-16">
-            {reviews.map((review, idx) => (
-              <div key={idx} className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12 items-center`}>
-                {/* Image Side */}
-                <div className="flex-1 w-full">
-                  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#005B44]/10 to-[#005B44]/5 aspect-square md:aspect-auto md:h-96">
+          {/* Card Grid Reviews */}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => setCurrentReviewIndex(Math.max(0, currentReviewIndex - 1))}
+              className="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-6 md:-translate-x-12 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
+              disabled={currentReviewIndex === 0}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            {/* Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {reviews.slice(currentReviewIndex, currentReviewIndex + 3).map((review, idx) => (
+                <div key={idx} className="flex flex-col">
+                  {/* Image Card with Play Button */}
+                  <div className="relative rounded-2xl overflow-hidden bg-gray-200 aspect-square group mb-4">
                     <img
-                      src={operatingPhotos[idx]?.image}
+                      src={operatingPhotos[currentReviewIndex + idx]?.image}
                       alt={review.company}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    {/* Number Badge */}
-                    <div className="absolute top-6 right-6 text-6xl font-bold text-white/20">0{idx + 1}</div>
-                  </div>
-                </div>
-
-                {/* Content Side */}
-                <div className="flex-1 w-full">
-                  <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg hover:shadow-xl transition-shadow">
-                    {/* Rating Stars */}
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <span key={i} className="text-2xl">⭐</span>
-                      ))}
-                    </div>
-
-                    {/* Company & Position */}
-                    <div className="mb-6">
-                      <h3 className="text-sm font-semibold text-[#005B44] uppercase tracking-wider mb-1">신규 고객사 추천</h3>
-                      <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{review.company}</h4>
-                      <p className="text-gray-600 text-sm">{review.department} · {review.position}</p>
-                    </div>
-
-                    {/* Review Comment */}
-                    <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6 italic border-l-4 border-[#005B44] pl-4">
-                      "{review.comment}"
-                    </p>
-
-                    {/* Customer Info */}
-                    <div className="flex items-center gap-3 pt-6 border-t border-gray-200">
-                      <img
-                        src={review.image}
-                        alt={review.name}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-900">{review.name}</p>
-                        <p className="text-sm text-gray-600">{review.position}</p>
+                    {/* Play Button */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition">
+                      <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
+                        <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
                       </div>
-                      <span className="ml-auto text-3xl">{review.emoji}</span>
                     </div>
                   </div>
+
+                  {/* Company Name and Review - Left Aligned */}
+                  <div className="text-left">
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">{review.company}</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed italic">"{review.comment}"</p>
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => setCurrentReviewIndex(Math.min(reviews.length - 3, currentReviewIndex + 1))}
+              className="absolute right-0 top-1/3 -translate-y-1/2 translate-x-6 md:translate-x-12 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
+              disabled={currentReviewIndex >= reviews.length - 3}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Indicators */}
+          <div className="flex justify-center gap-2 mt-8">
+            {[...Array(Math.ceil(reviews.length / 3))].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentReviewIndex(i * 3)}
+                className={`w-2 h-2 rounded-full transition ${i === Math.floor(currentReviewIndex / 3) ? 'bg-[#005B44]' : 'bg-gray-300'}`}
+              />
             ))}
           </div>
         </div>
