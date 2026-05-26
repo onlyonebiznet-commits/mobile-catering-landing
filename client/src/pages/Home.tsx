@@ -536,50 +536,26 @@ export default function Home() {
           `}</style>
 
           <div className="relative w-full overflow-hidden bg-gray-50">
-            <div className="space-y-4 md:space-y-6">
-              <div className="overflow-hidden">
-                <div className="scroll-content scroll-content-row1">
-                  {companies.map((company, idx) => (
-                    <div key={`row1-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    </div>
-                  ))}
-                  {companies.map((company, idx) => (
-                    <div key={`row1-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="overflow-hidden">
-                <div className="scroll-content scroll-content-row2">
-                  {[...companies].reverse().map((company, idx) => (
-                    <div key={`row2-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    </div>
-                  ))}
-                  {[...companies].reverse().map((company, idx) => (
-                    <div key={`row2-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
+            <div className="overflow-hidden">
+              <div className="scroll-content scroll-content-row1">
+                {companies.map((company, idx) => (
+                  <div key={`row1-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                ))}
+                {companies.map((company, idx) => (
+                  <div key={`row1-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
