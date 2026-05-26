@@ -389,8 +389,8 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{diets[currentDietIndex].title}</h3>
-                  <p className="text-gray-600 mb-8 leading-relaxed text-lg">{diets[currentDietIndex].description}</p>
+                  <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">{diets[currentDietIndex].title}</h3>
+                  <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {diets[currentDietIndex].tags.map((tag, i) => (
                       <span key={i} className="px-4 py-2 bg-[#005B44]/10 text-[#005B44] rounded-full text-sm font-medium">
@@ -515,14 +515,14 @@ export default function Home() {
             }
             .scroll-content {
               display: flex;
-              gap: 2rem;
+              gap: 1.5rem;
               width: fit-content;
             }
             .scroll-content-row1 {
-              animation: scroll-infinite 80s linear infinite;
+              animation: scroll-infinite 100s linear infinite;
             }
             .scroll-content-row2 {
-              animation: scroll-infinite-reverse 80s linear infinite;
+              animation: scroll-infinite-reverse 100s linear infinite;
               animation-delay: 3s;
             }
             .scroll-content:hover {
@@ -530,13 +530,13 @@ export default function Home() {
             }
             @media (max-width: 768px) {
               .scroll-content {
-                gap: 1rem;
+                gap: 0.75rem;
               }
               .scroll-content-row1 {
-                animation: scroll-infinite 60s linear infinite;
+                animation: scroll-infinite 80s linear infinite;
               }
               .scroll-content-row2 {
-                animation: scroll-infinite-reverse 60s linear infinite;
+                animation: scroll-infinite-reverse 80s linear infinite;
               }
             }
           `}</style>
@@ -546,7 +546,7 @@ export default function Home() {
               <div className="overflow-hidden">
                 <div className="scroll-content scroll-content-row1">
                   {companies.map((company, idx) => (
-                    <div key={`row1-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <div key={`row1-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
                         alt={company.name}
@@ -555,7 +555,7 @@ export default function Home() {
                     </div>
                   ))}
                   {companies.map((company, idx) => (
-                    <div key={`row1-dup-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <div key={`row1-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
                         alt={company.name}
@@ -568,7 +568,7 @@ export default function Home() {
               <div className="overflow-hidden">
                 <div className="scroll-content scroll-content-row2">
                   {[...companies].reverse().map((company, idx) => (
-                    <div key={`row2-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <div key={`row2-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
                         alt={company.name}
@@ -577,7 +577,7 @@ export default function Home() {
                     </div>
                   ))}
                   {[...companies].reverse().map((company, idx) => (
-                    <div key={`row2-dup-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <div key={`row2-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
                         alt={company.name}
@@ -659,7 +659,7 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께 만들어가는 성공 사례들</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
               {
                 image: "/manus-storage/pasted_file_GLjdwZ_03_ab8063d4.jpg",
