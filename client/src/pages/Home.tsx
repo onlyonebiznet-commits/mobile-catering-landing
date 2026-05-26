@@ -40,6 +40,8 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+
+
   if (location === "/thank-you") {
     return <ThankYouPage />;
   }
@@ -217,6 +219,18 @@ export default function Home() {
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=jung",
     },
   ];
+
+  // Auto-slide for reviews
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReviewIndex((prevIndex) => {
+        const maxIndex = reviews.length - 3;
+        return prevIndex >= maxIndex ? 0 : prevIndex + 1;
+      });
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [reviews.length]);
 
   const faqs = [
     {
@@ -578,7 +592,9 @@ export default function Home() {
           <div className="relative px-16 md:px-20">
             {/* Navigation Arrows - Left */}
             <button
-              onClick={() => setCurrentReviewIndex(Math.max(0, currentReviewIndex - 1))}
+              onClick={() => {
+                setCurrentReviewIndex(Math.max(0, currentReviewIndex - 1));
+              }}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
               disabled={currentReviewIndex === 0}
             >
@@ -609,7 +625,9 @@ export default function Home() {
 
             {/* Navigation Arrows - Right */}
             <button
-              onClick={() => setCurrentReviewIndex(Math.min(reviews.length - 3, currentReviewIndex + 1))}
+              onClick={() => {
+                setCurrentReviewIndex(Math.min(reviews.length - 3, currentReviewIndex + 1));
+              }}
               className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
               disabled={currentReviewIndex >= reviews.length - 3}
             >
