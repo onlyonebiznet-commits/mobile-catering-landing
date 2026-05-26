@@ -474,9 +474,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {processes.map((process, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center border border-white/20 hover:bg-white/20 transition">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
                   <div className="text-5xl mb-4">{process.icon}</div>
-                  <div className="text-4xl font-bold text-white mb-3">{process.step}</div>
                   <h3 className="text-xl font-bold text-white mb-2">{process.title}</h3>
                   <p className="text-white/80 text-sm">{process.description}</p>
                 </div>
