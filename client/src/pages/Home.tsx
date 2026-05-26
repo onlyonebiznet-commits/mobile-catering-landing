@@ -52,24 +52,39 @@ export default function Home() {
   const diets = [
     {
       title: "오피스",
-      image: "/manus-storage/aJQxyOi4VuZM_5d0eef51.jpg",
+      image: "/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg",
       description: "정통 한식부터 건강한 샐러드까지, 직원들의 다양한 입맛을 만족시키는 균형잡힌 식단입니다. 신선한 재료로 만든 한끼 식사로 업무 효율을 높입니다.",
       tags: ["균형잡힌 영양", "신선한 재료", "다양한 메뉴"],
-      testimonialImages: ["/manus-storage/office-meal-01_b17cd0b5.jpg", "/manus-storage/finger-food-01_3f568f56.jpg", "/manus-storage/dessert-01_710601c9.webp"],
     },
     {
       title: "산업체",
-      image: "/manus-storage/xtFlBsOX65yJ_f72a2817.jpg",
+      image: "/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg",
       description: "육체적 노동으로 소모되는 에너지를 충분히 보충할 수 있는 푸짐한 식단입니다. 고단백 메뉴와 든든한 밥상으로 근로자의 건강을 지킵니다.",
       tags: ["고단백 식단", "푸짐한 양", "에너지 보충"],
-      testimonialImages: ["/manus-storage/mobile-meal-07_c09fc712.jpg", "/manus-storage/process-04_18409a8e.jpg", "/manus-storage/finger-food-01_3f568f56.jpg"],
     },
     {
       title: "병원",
-      image: "/manus-storage/NaGhdZqdJImL_197b26e6.jpg",
+      image: "/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg",
       description: "환자의 건강 상태를 고려한 특별식 제공이 가능합니다. 영양사 상담을 통한 맞춤형 메뉴로 빠른 회복을 돕습니다.",
       tags: ["영양관리", "특별식", "위생관리"],
-      testimonialImages: ["/manus-storage/hospital-meal-01_7d7c6bb6.webp", "/manus-storage/hospital-meal-02_8afc5e57.webp", "/manus-storage/hospital-meal-03_225a3bdb.webp"],
+    },
+    {
+      title: "카페/음료",
+      image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg",
+      description: "프리미엄 커피와 다양한 음료로 직원들의 휴식 시간을 더욱 특별하게 만듭니다. 신선한 재료로 만든 건강한 음료 메뉴를 제공합니다.",
+      tags: ["프리미엄 음료", "카페", "휴식시간"],
+    },
+    {
+      title: "핑거푸드",
+      image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg",
+      description: "회의나 행사에 어울리는 세련된 핑거푸드로 특별한 순간을 더욱 돋보이게 합니다. 신선한 재료로 만든 고급스러운 메뉴입니다.",
+      tags: ["핑거푸드", "행사용", "고급스러움"],
+    },
+    {
+      title: "음료/음식",
+      image: "/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg",
+      description: "다양한 음료와 간식으로 직원들의 일상에 활력을 더합니다. 건강과 맛을 모두 고려한 프리미엄 음식 및 음료 솔루션입니다.",
+      tags: ["음료", "간식", "다양한선택"],
     },
   ];
 
@@ -152,12 +167,12 @@ export default function Home() {
   ];
 
   const operatingPhotos = [
-    { image: diets[0]?.testimonialImages?.[0] || '', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
-    { image: diets[0]?.testimonialImages?.[1] || '', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
-    { image: diets[1]?.testimonialImages?.[0] || '', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
-    { image: diets[1]?.testimonialImages?.[1] || '', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
-    { image: diets[2]?.testimonialImages?.[0] || '', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
-    { image: diets[2]?.testimonialImages?.[1] || '', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
+    { image: '/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
+    { image: '/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
+    { image: '/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
+    { image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
+    { image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
+    { image: '/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
   ];
 
   const reviews = [
