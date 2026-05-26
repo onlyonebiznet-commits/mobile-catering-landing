@@ -609,32 +609,32 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                image: "/manus-storage/pasted_file_Rtq0qn_image_2a62d05e.png",
+                image: "/manus-storage/pasted_file_GLjdwZ_03_ab8063d4.jpg",
                 subtitle: "대형 오피스 추천",
                 title: "50인 이상 대형 오피스",
                 description: "넓은 공간에 최적화된 프레시밀온 솔루션으로 직원 만족도를 높였습니다."
               },
               {
-                image: "/manus-storage/pasted_file_Y0XUmx_image_30394401.png",
+                image: "/manus-storage/pasted_file_process01_244fb723.jpg",
                 subtitle: "즉시 입주 가능",
                 title: "즉시 입주 가능한 오피스",
                 description: "빠른 설치와 운영으로 입주 첫날부터 서비스를 시작할 수 있습니다."
               },
               {
-                image: "/manus-storage/pasted_file_h8bpeq_image_e6ded495.png",
+                image: "/manus-storage/pasted_file_meal01_af4e645b.webp",
                 subtitle: "신규 오피스 추천",
                 title: "새로운 오피스에서 근무하고 싶다면",
                 description: "현대적이고 쾌적한 환경에서 프레시밀온의 신선한 식사를 즐기세요."
               },
               {
-                image: "/manus-storage/pasted_file_Gvwei0_image_007c74a7.png",
+                image: "/manus-storage/pasted_file_cafe01_91a573f8.webp",
                 subtitle: "1인 오피스 추천",
                 title: "혼자 집중하며 일하는 공간",
                 description: "소규모 오피스도 프레시밀온으로 직원 복지를 충실하게 구성할 수 있습니다."
               }
             ].map((story, idx) => (
               <div key={idx} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-2xl mb-4 h-64 md:h-72">
+                <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
                   <img
                     src={story.image}
                     alt={story.title}
