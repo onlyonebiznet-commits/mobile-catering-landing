@@ -507,10 +507,10 @@ export default function Home() {
           <style>{`
             @keyframes scroll-infinite {
               0% { transform: translateX(0); }
-              100% { transform: translateX(calc(-50% - 1rem)); }
+              100% { transform: translateX(calc(-100% - 2rem)); }
             }
             @keyframes scroll-infinite-reverse {
-              0% { transform: translateX(calc(-50% - 1rem)); }
+              0% { transform: translateX(calc(-100% - 2rem)); }
               100% { transform: translateX(0); }
             }
             .scroll-content {
@@ -519,23 +519,43 @@ export default function Home() {
               width: fit-content;
             }
             .scroll-content-row1 {
-              animation: scroll-infinite 60s linear infinite;
+              animation: scroll-infinite 80s linear infinite;
             }
             .scroll-content-row2 {
-              animation: scroll-infinite-reverse 60s linear infinite;
-              animation-delay: 2s;
+              animation: scroll-infinite-reverse 80s linear infinite;
+              animation-delay: 3s;
             }
             .scroll-content:hover {
               animation-play-state: paused;
             }
+            @media (max-width: 768px) {
+              .scroll-content {
+                gap: 1rem;
+              }
+              .scroll-content-row1 {
+                animation: scroll-infinite 60s linear infinite;
+              }
+              .scroll-content-row2 {
+                animation: scroll-infinite-reverse 60s linear infinite;
+              }
+            }
           `}</style>
 
           <div className="relative w-full overflow-hidden bg-gray-50">
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <div className="overflow-hidden">
                 <div className="scroll-content scroll-content-row1">
-                  {[...companies, ...companies].map((company, idx) => (
-                    <div key={`row1-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                  {companies.map((company, idx) => (
+                    <div key={`row1-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                  {companies.map((company, idx) => (
+                    <div key={`row1-dup-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
                         alt={company.name}
@@ -547,8 +567,17 @@ export default function Home() {
               </div>
               <div className="overflow-hidden">
                 <div className="scroll-content scroll-content-row2">
-                  {[...companies.reverse(), ...companies.reverse()].map((company, idx) => (
-                    <div key={`row2-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                  {[...companies].reverse().map((company, idx) => (
+                    <div key={`row2-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                  {[...companies].reverse().map((company, idx) => (
+                    <div key={`row2-dup-${idx}`} className="flex-shrink-0 w-24 sm:w-28 md:w-40 lg:w-48 h-16 sm:h-20 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
                         alt={company.name}
@@ -709,22 +738,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-20 bg-white">
+          {/* Video Section */}
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">프레시밀온 이야기</h2>
-            <p className="text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4">프레시밀온 이야기</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
           </div>
 
-          <div className="bg-black rounded-lg overflow-hidden aspect-video">
+          <div className="bg-black rounded-lg overflow-hidden aspect-video w-full">
             <video
               width="100%"
               height="100%"
               autoPlay
               muted
               loop
-              className="w-full h-full"
+              playsInline
+              className="w-full h-full object-cover"
             >
               <source src="/manus-storage/freshmelon-video_d7ab0bca.mp4" type="video/mp4" />
               Your browser does not support the video tag.
