@@ -310,7 +310,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-8 md:h-10" />
+              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-10 md:h-12" />
             </div>
             
             {/* Desktop Menu */}
@@ -825,7 +825,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             <div>
-              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-8 mb-4" />
+              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-12 mb-4" />
               <p className="text-gray-400 mb-6">Food Business Partner Creating the success way</p>
               <div className="space-y-2 text-sm">
                 <p><span className="font-semibold">상호명:</span> 씨제이프레시웨이 주식회사</p>
