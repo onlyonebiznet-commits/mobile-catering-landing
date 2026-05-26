@@ -518,37 +518,35 @@ export default function Home() {
             .scroll-content:hover {
               animation-play-state: paused;
             }
-            .scroll-wrapper {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 2rem;
-              overflow: hidden;
-            }
           `}</style>
 
           <div className="relative w-full overflow-hidden bg-gray-50">
-            <div className="scroll-wrapper">
-              <div className="scroll-content">
-                {[...companies, ...companies].map((company, idx) => (
-                  <div key={`row1-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                    <img
-                      src={company.logo}
-                      alt={company.name}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
-                ))}
+            <div className="space-y-6">
+              <div className="overflow-hidden">
+                <div className="scroll-content">
+                  {[...companies, ...companies].map((company, idx) => (
+                    <div key={`row1-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="scroll-content">
-                {[...companies, ...companies].map((company, idx) => (
-                  <div key={`row2-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                    <img
-                      src={company.logo}
-                      alt={company.name}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
-                ))}
+              <div className="overflow-hidden">
+                <div className="scroll-content">
+                  {[...companies, ...companies].map((company, idx) => (
+                    <div key={`row2-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -697,6 +695,67 @@ export default function Home() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">프레시밀온 이야기</h2>
+            <p className="text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
+          </div>
+
+          <div className="relative">
+            <div className="flex items-center justify-between">
+              <button
+                onClick={() => setCurrentDietIndex(Math.max(0, currentDietIndex - 1))}
+                className="absolute left-0 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition"
+                disabled={currentDietIndex === 0}
+              >
+                <ChevronLeft className="w-6 h-6 text-[#005B44]" />
+              </button>
+
+              <div className="w-full px-12">
+                <div className="bg-black rounded-lg overflow-hidden aspect-video">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${[
+                      'SDi4rodtkM8',
+                      'G9pbmLyvpz4',
+                      '9HAON5ViZr8'
+                    ][currentDietIndex]}?autoplay=0`}
+                    title="프레시밀온 영상"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+
+              <button
+                onClick={() => setCurrentDietIndex(Math.min(2, currentDietIndex + 1))}
+                className="absolute right-0 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition"
+                disabled={currentDietIndex === 2}
+              >
+                <ChevronRight className="w-6 h-6 text-[#005B44]" />
+              </button>
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center gap-2 mt-6">
+              {[0, 1, 2].map((idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentDietIndex(idx)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentDietIndex === idx ? 'bg-[#005B44] w-8' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
