@@ -391,13 +391,7 @@ export default function Home() {
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">{diets[currentDietIndex].title}</h3>
                   <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {diets[currentDietIndex].tags.map((tag, i) => (
-                      <span key={i} className="px-4 py-2 bg-[#005B44]/10 text-[#005B44] rounded-full text-sm font-medium">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+
                   <div className="flex items-center gap-4">
                     <div className="flex gap-2">
                       {diets.map((_, idx) => (
