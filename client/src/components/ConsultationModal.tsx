@@ -76,8 +76,8 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
     e.preventDefault();
 
     // Validation
-    if (!formData.companyName || !formData.contactPerson || !formData.phoneNumber || !formData.service) {
-      toast.error("필수 항목을 모두 입력해주세요");
+    if (!formData.companyName || !formData.contactPerson || !formData.phoneNumber || !formData.service || !formData.estimatedMeals) {
+      toast.error("필수 항목(회사명, 담당자명, 연락처, 서비스, 식수 규모)을 모두 입력해주세요");
       return;
     }
 
