@@ -380,6 +380,15 @@ export default function Home() {
         ?
       </button>
 
+      {/* Center bottom floating button - All devices */}
+      <button
+        onClick={() => setConsultationOpen(true)}
+        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40 px-6 py-3 bg-[#005B44] text-white rounded-full shadow-lg hover:bg-[#004433] transition-all duration-300 font-semibold hover:scale-105 whitespace-nowrap"
+        title="상담 문의"
+      >
+        상담 문의
+      </button>
+
       {/* Hero Section */}
       <section className="relative h-96 md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
         <div className="absolute inset-0 bg-black/50"></div>
