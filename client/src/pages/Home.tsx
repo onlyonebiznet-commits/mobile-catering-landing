@@ -622,7 +622,7 @@ export default function Home() {
           </div>
 
           {/* Card Grid Reviews */}
-          <div className="relative px-16 md:px-20">
+          <div className="relative px-4 sm:px-6 lg:px-8">
             {/* Navigation Arrows - Left */}
             <button
               onClick={() => {
