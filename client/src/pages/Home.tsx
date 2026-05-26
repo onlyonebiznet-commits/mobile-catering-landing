@@ -356,9 +356,25 @@ export default function Home() {
       </header>
 
       {/* Floating Contact Button - Mobile Only */}
+      <style>{`
+        @keyframes pulse-ring {
+          0% {
+            box-shadow: 0 0 0 0 rgba(0, 91, 68, 0.7);
+          }
+          50% {
+            box-shadow: 0 0 0 10px rgba(0, 91, 68, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(0, 91, 68, 0);
+          }
+        }
+        .floating-btn {
+          animation: pulse-ring 2s infinite;
+        }
+      `}</style>
       <button
         onClick={() => setConsultationOpen(true)}
-        className="fixed bottom-6 right-6 md:hidden z-40 w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:bg-[#004433] transition-all duration-300 flex items-center justify-center text-2xl font-bold hover:scale-110"
+        className="floating-btn fixed bottom-6 right-6 md:hidden z-40 w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:bg-[#004433] transition-all duration-300 flex items-center justify-center text-2xl font-bold hover:scale-110"
         title="문의하기"
       >
         ?
