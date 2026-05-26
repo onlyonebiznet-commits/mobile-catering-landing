@@ -308,7 +308,7 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-16 md:h-16 py-2 md:py-0">
             <div className="flex items-center gap-2">
               <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-10 md:h-12" />
             </div>
@@ -354,6 +354,15 @@ export default function Home() {
           )}
         </div>
       </header>
+
+      {/* Floating Contact Button - Mobile Only */}
+      <button
+        onClick={() => setConsultationOpen(true)}
+        className="fixed bottom-6 right-6 md:hidden z-40 w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:bg-[#004433] transition-all duration-300 flex items-center justify-center text-2xl font-bold hover:scale-110"
+        title="문의하기"
+      >
+        ?
+      </button>
 
       {/* Hero Section */}
       <section className="relative h-96 md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
