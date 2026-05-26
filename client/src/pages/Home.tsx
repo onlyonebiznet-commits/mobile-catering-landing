@@ -368,8 +368,19 @@ export default function Home() {
             box-shadow: 0 0 0 0 rgba(0, 91, 68, 0);
           }
         }
+        @keyframes bounce-scale {
+          0%, 100% {
+            transform: translateX(-50%) scale(1);
+          }
+          50% {
+            transform: translateX(-50%) scale(1.08);
+          }
+        }
         .floating-btn {
           animation: pulse-ring 2s infinite;
+        }
+        .floating-btn-center {
+          animation: bounce-scale 2s ease-in-out infinite;
         }
       `}</style>
       <button
@@ -383,7 +394,7 @@ export default function Home() {
       {/* Center bottom floating button - All devices */}
       <button
         onClick={() => setConsultationOpen(true)}
-        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40 px-6 py-3 bg-[#005B44] text-white rounded-full shadow-lg hover:bg-[#004433] transition-all duration-300 font-semibold hover:scale-105 whitespace-nowrap"
+        className="floating-btn-center fixed bottom-6 left-1/2 z-40 px-8 py-4 bg-[#005B44] text-white rounded-2xl shadow-xl hover:bg-[#004433] transition-all duration-300 font-bold text-lg hover:shadow-2xl whitespace-nowrap"
         title="상담 문의"
       >
         상담 문의
