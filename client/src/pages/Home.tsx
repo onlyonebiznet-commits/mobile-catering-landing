@@ -211,13 +211,19 @@ export default function Home() {
   ];
 
   const companies = [
-    { name: "SK Hynix", logo: "/manus-storage/sk-aihightech_844dccb9.png" },
-    { name: "MUSINSA", logo: "/manus-storage/musinsa_89f8bb7a.png" },
-    { name: "Samsung", logo: "/manus-storage/samsung_9f5fcbd4.png" },
-    { name: "Hyundai", logo: "/manus-storage/hyundai_067feb2c.png" },
-    { name: "Coupang", logo: "/manus-storage/coupang_a87f269e.png" },
-    { name: "CGV", logo: "/manus-storage/cgv_f9ebba7f.png" },
-    { name: "Kakao", logo: "/manus-storage/kakao_8043c49c.png" },
+    { name: "Coupang", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
+    { name: "Hyundai", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
+    { name: "TBT", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
+    { name: "시대인재", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
+    { name: "Inspire", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
+    { name: "CGV", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
+    { name: "Kakao", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
+    { name: "SK하이닉스", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
+    { name: "MUSINSA", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
+    { name: "바노바기클리닉", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
+    { name: "Samsung", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
+    { name: "KAI", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
+    { name: "Coupang", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
   ];
 
   return (
@@ -492,23 +498,43 @@ export default function Home() {
       </section>
 
       {/* Partner Companies Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">함께하는 고객사</h2>
             <p className="text-lg text-gray-600">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 md:gap-8">
-            {companies.map((company, idx) => (
-              <div key={idx} className="bg-white rounded-lg p-6 flex items-center justify-center h-32 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <img
-                  src={company.logo}
-                  alt={company.name}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-            ))}
+          <style>{`
+            @keyframes scroll-infinite {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(calc(-50% - 1rem)); }
+            }
+            .scroll-container {
+              display: flex;
+              gap: 1rem;
+              animation: scroll-infinite 40s linear infinite;
+              width: fit-content;
+            }
+            .scroll-container:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+
+          <div className="relative w-full overflow-hidden bg-gray-50">
+            <div className="scroll-container">
+              {[...companies, ...companies].map((company, idx) => (
+                <div key={idx} className="flex-shrink-0 w-40 md:w-48 lg:w-56">
+                  <div className="bg-white rounded-lg p-4 md:p-6 flex items-center justify-center h-28 md:h-32 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -568,6 +594,61 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Section - Magazine Style */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">우리의 이야기</h2>
+            <p className="text-xl text-gray-600">프레시밀온과 함께 만들어가는 성공 사례들</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                image: "/manus-storage/pasted_file_Rtq0qn_image_2a62d05e.png",
+                subtitle: "대형 오피스 추천",
+                title: "50인 이상 대형 오피스",
+                description: "넓은 공간에 최적화된 프레시밀온 솔루션으로 직원 만족도를 높였습니다."
+              },
+              {
+                image: "/manus-storage/pasted_file_Y0XUmx_image_30394401.png",
+                subtitle: "즉시 입주 가능",
+                title: "즉시 입주 가능한 오피스",
+                description: "빠른 설치와 운영으로 입주 첫날부터 서비스를 시작할 수 있습니다."
+              },
+              {
+                image: "/manus-storage/pasted_file_h8bpeq_image_e6ded495.png",
+                subtitle: "신규 오피스 추천",
+                title: "새로운 오피스에서 근무하고 싶다면",
+                description: "현대적이고 쾌적한 환경에서 프레시밀온의 신선한 식사를 즐기세요."
+              },
+              {
+                image: "/manus-storage/pasted_file_Gvwei0_image_007c74a7.png",
+                subtitle: "1인 오피스 추천",
+                title: "혼자 집중하며 일하는 공간",
+                description: "소규모 오피스도 프레시밀온으로 직원 복지를 충실하게 구성할 수 있습니다."
+              }
+            ].map((story, idx) => (
+              <div key={idx} className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-2xl mb-4 h-64 md:h-72">
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300"></div>
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                    <p className="text-sm font-medium mb-2 opacity-90">{story.subtitle}</p>
+                    <h3 className="text-lg md:text-xl font-bold leading-tight">{story.title}</h3>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed">{story.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
