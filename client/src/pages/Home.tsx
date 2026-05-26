@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
@@ -15,7 +15,10 @@ export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   const [location] = useLocation();
+  const reviewsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -231,6 +234,36 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [reviews.length]);
+
+  // Handle touch swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setTouchEnd(e.changedTouches[0].clientX);
+    handleSwipe(e.targetTouches[0]?.clientX || e.changedTouches[0].clientX);
+  };
+
+  const handleSwipe = (endX: number) => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - endX;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      // Swipe left - go to next
+      setCurrentReviewIndex((prevIndex) => {
+        const maxIndex = reviews.length - 3;
+        return prevIndex >= maxIndex ? 0 : prevIndex + 1;
+      });
+    } else if (isRightSwipe) {
+      // Swipe right - go to previous
+      setCurrentReviewIndex((prevIndex) => {
+        return prevIndex <= 0 ? reviews.length - 3 : prevIndex - 1;
+      });
+    }
+  };
 
   const faqs = [
     {
@@ -602,7 +635,12 @@ export default function Home() {
             </button>
 
             {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              ref={reviewsContainerRef}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               {reviews.slice(currentReviewIndex, currentReviewIndex + 3).map((review, idx) => (
                 <div key={idx} className="flex flex-col">
                   {/* Image Card */}
