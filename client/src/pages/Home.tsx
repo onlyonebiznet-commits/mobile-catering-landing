@@ -211,19 +211,18 @@ export default function Home() {
   ];
 
   const companies = [
-    { name: "Coupang", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
-    { name: "Hyundai", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
-    { name: "TBT", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
-    { name: "시대인재", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
-    { name: "Inspire", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
-    { name: "CGV", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
-    { name: "Kakao", logo: "/manus-storage/pasted_file_nwP93Y_image_e0de1d03.png" },
-    { name: "SK하이닉스", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
-    { name: "MUSINSA", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
-    { name: "바노바기클리닉", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
-    { name: "Samsung", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
-    { name: "KAI", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
-    { name: "Coupang", logo: "/manus-storage/pasted_file_Ehqf09_image_c53065f0.png" },
+    { name: "Company 1", logo: "/manus-storage/logo_01_2d111615.png" },
+    { name: "Company 2", logo: "/manus-storage/logo_02_96ffa516.png" },
+    { name: "Company 3", logo: "/manus-storage/logo_03_45e8c1c5.png" },
+    { name: "Company 4", logo: "/manus-storage/logo_04_7b2b1dca.png" },
+    { name: "Company 5", logo: "/manus-storage/logo_05_9ebcc27b.png" },
+    { name: "Company 6", logo: "/manus-storage/logo_06_68267b53.png" },
+    { name: "Company 7", logo: "/manus-storage/logo_07_1caf9494.png" },
+    { name: "Company 8", logo: "/manus-storage/logo_08_4b7fe42c.png" },
+    { name: "Company 9", logo: "/manus-storage/logo_09_191d5360.png" },
+    { name: "Company 10", logo: "/manus-storage/logo_10_f2680fbf.png" },
+    { name: "Company 11", logo: "/manus-storage/logo_11_c44b2fc0.png" },
+    { name: "Company 12", logo: "/manus-storage/logo_12_cf712c7d.png" },
   ];
 
   return (
@@ -525,7 +524,7 @@ export default function Home() {
             <div className="scroll-container">
               {[...companies, ...companies].map((company, idx) => (
                 <div key={idx} className="flex-shrink-0 w-40 md:w-48 lg:w-56">
-                  <div className="bg-white rounded-lg p-4 md:p-6 flex items-center justify-center h-28 md:h-32 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300">
+                  <div className="bg-white p-4 md:p-6 flex items-center justify-center h-28 md:h-32 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300">
                     <img
                       src={company.logo}
                       alt={company.name}
