@@ -535,61 +535,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section - Photo Gallery Style */}
-      <section className="py-20 bg-white">
+      {/* Testimonials Section - Magazine Style */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">고객 후기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 실제 운영 사진과 후기</p>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
-          {/* Operating Photos Gallery with Comments */}
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {operatingPhotos.map((photo, pIdx) => (
-                <div key={pIdx} className="group">
-                  {/* Photo with Comment Bubble */}
-                  <div className="relative overflow-hidden rounded-lg bg-gray-100 h-56 mb-0">
+          {/* Magazine Style Reviews */}
+          <div className="space-y-16">
+            {reviews.map((review, idx) => (
+              <div key={idx} className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12 items-center`}>
+                {/* Image Side */}
+                <div className="flex-1 w-full">
+                  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#005B44]/10 to-[#005B44]/5 aspect-square md:aspect-auto md:h-96">
                     <img
-                      src={photo.image}
-                      alt={`운영 사진 ${pIdx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      src={operatingPhotos[idx]?.image}
+                      alt={review.company}
+                      className="w-full h-full object-cover"
                     />
-                    
-                    {/* Comment Bubble with Tail */}
-                    <div className="absolute top-4 left-4 right-4">
-                      <div className="bg-white rounded-2xl px-4 py-3 shadow-lg relative">
-                        <p className="text-gray-800 text-sm font-medium leading-relaxed">\"{ photo.comment}\"</p>
-                        {/* Tail */}
-                        <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white transform rotate-45"></div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Customer Info Bubble Below Photo */}
-                  <div className="mt-4 bg-white rounded-2xl px-4 py-3 shadow-lg relative">
-                    <div className="flex items-start gap-3 mb-2">
-                      <img
-                        src={photo.customerImage}
-                        alt={photo.name}
-                        className="w-8 h-8 rounded-full object-cover flex-shrink-0"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <p className="font-bold text-gray-800 text-sm">{photo.company}</p>
-                        <p className="text-xs text-gray-600">{photo.department}</p>
-                      </div>
-                      <span className="text-lg flex-shrink-0">{photo.emoji}</span>
-                    </div>
-                    
-                    {/* Comment */}
-                    <p className="text-gray-700 text-xs leading-relaxed italic ml-11">\"{ photo.comment}\"</p>
-                    
-                    {/* Tail */}
-                    <div className="absolute -top-2 left-6 w-4 h-4 bg-white transform rotate-45"></div>
+                    {/* Number Badge */}
+                    <div className="absolute top-6 right-6 text-6xl font-bold text-white/20">0{idx + 1}</div>
                   </div>
                 </div>
-              ))}
-            </div>
+
+                {/* Content Side */}
+                <div className="flex-1 w-full">
+                  <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg hover:shadow-xl transition-shadow">
+                    {/* Rating Stars */}
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <span key={i} className="text-2xl">⭐</span>
+                      ))}
+                    </div>
+
+                    {/* Company & Position */}
+                    <div className="mb-6">
+                      <h3 className="text-sm font-semibold text-[#005B44] uppercase tracking-wider mb-1">신규 고객사 추천</h3>
+                      <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{review.company}</h4>
+                      <p className="text-gray-600 text-sm">{review.department} · {review.position}</p>
+                    </div>
+
+                    {/* Review Comment */}
+                    <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6 italic border-l-4 border-[#005B44] pl-4">
+                      "{review.comment}"
+                    </p>
+
+                    {/* Customer Info */}
+                    <div className="flex items-center gap-3 pt-6 border-t border-gray-200">
+                      <img
+                        src={review.image}
+                        alt={review.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <p className="font-semibold text-gray-900">{review.name}</p>
+                        <p className="text-sm text-gray-600">{review.position}</p>
+                      </div>
+                      <span className="ml-auto text-3xl">{review.emoji}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
