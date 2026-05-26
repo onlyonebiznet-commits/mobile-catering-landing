@@ -395,9 +395,9 @@ export default function Home() {
       <button
         onClick={() => setConsultationOpen(true)}
         className="floating-btn-center fixed bottom-6 left-1/2 z-40 px-8 py-4 bg-[#005B44] text-white rounded-2xl shadow-xl hover:bg-[#004433] transition-all duration-300 font-bold text-lg hover:shadow-2xl whitespace-nowrap"
-        title="상담 문의"
+        title="지금 바로 상담 신청"
       >
-        상담 문의
+        지금 바로 상담 신청
       </button>
 
       {/* Hero Section */}
