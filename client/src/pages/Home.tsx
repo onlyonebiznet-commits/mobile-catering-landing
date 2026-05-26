@@ -233,7 +233,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <div className="text-2xl font-bold text-[#005B44]">🥗 프레시밀온</div>
+              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-8 md:h-10" />
             </div>
             
             {/* Desktop Menu */}
@@ -549,7 +549,7 @@ export default function Home() {
             {/* Navigation Arrows */}
             <button
               onClick={() => setCurrentReviewIndex(Math.max(0, currentReviewIndex - 1))}
-              className="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-6 md:-translate-x-12 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
+              className="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-12 md:-translate-x-16 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
               disabled={currentReviewIndex === 0}
             >
               <ChevronLeft className="w-6 h-6" />
@@ -566,20 +566,13 @@ export default function Home() {
                       alt={review.company}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    {/* Play Button */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition">
-                      <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
-                        <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
+                    {/* Play Button - Removed */}
                   </div>
 
                   {/* Company Name and Review - Left Aligned */}
                   <div className="text-left">
                     <h4 className="text-lg font-bold text-gray-900 mb-2">{review.company}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed italic">"{review.comment}"</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">"{review.comment}"</p>
                   </div>
                 </div>
               ))}
@@ -588,7 +581,7 @@ export default function Home() {
             {/* Navigation Arrows */}
             <button
               onClick={() => setCurrentReviewIndex(Math.min(reviews.length - 3, currentReviewIndex + 1))}
-              className="absolute right-0 top-1/3 -translate-y-1/2 translate-x-6 md:translate-x-12 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
+              className="absolute right-0 top-1/3 -translate-y-1/2 translate-x-12 md:translate-x-16 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
               disabled={currentReviewIndex >= reviews.length - 3}
             >
               <ChevronRight className="w-6 h-6" />
@@ -747,7 +740,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             <div>
-              <div className="text-2xl font-bold text-white mb-4">🥗 프레시밀온</div>
+              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-8 mb-4" />
               <p className="text-gray-400 mb-6">Food Business Partner Creating the success way</p>
               <div className="space-y-2 text-sm">
                 <p><span className="font-semibold">상호명:</span> 씨제이프레시웨이 주식회사</p>
