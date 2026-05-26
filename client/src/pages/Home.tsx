@@ -730,6 +730,7 @@ export default function Home() {
               <div className="w-full px-12">
                 <div className="bg-black rounded-lg overflow-hidden aspect-video">
                   <video
+                    key={currentDietIndex}
                     width="100%"
                     height="100%"
                     controls
