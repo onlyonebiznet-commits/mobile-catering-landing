@@ -637,7 +637,7 @@ export default function Home() {
             {/* Grid */}
             <div
               ref={reviewsContainerRef}
-              className="grid grid-cols-2 md:grid-cols-3 gap-6"
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
