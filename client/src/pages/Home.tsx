@@ -471,19 +471,14 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-white/90">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto">
             {processes.map((process, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                  <div className="text-5xl mb-4">{process.icon}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{process.title}</h3>
-                  <p className="text-white/80 text-sm">{process.description}</p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
+                  <div className="text-4xl md:text-5xl mb-3 md:mb-4">{process.icon}</div>
+                  <h3 className="text-base md:text-xl font-bold text-white mb-2">{process.title}</h3>
+                  <p className="text-white/80 text-xs md:text-sm">{process.description}</p>
                 </div>
-                {idx < processes.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                    <ChevronRight className="w-6 h-6 text-white/40" />
-                  </div>
-                )}
               </div>
             ))}
           </div>
@@ -501,36 +496,21 @@ export default function Home() {
           <style>{`
             @keyframes scroll-infinite {
               0% { transform: translateX(0); }
-              100% { transform: translateX(calc(-100% - 2rem)); }
-            }
-            @keyframes scroll-infinite-reverse {
-              0% { transform: translateX(calc(-100% - 2rem)); }
-              100% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
             }
             .scroll-content {
               display: flex;
-              gap: 1.5rem;
-              width: fit-content;
-            }
-            .scroll-content-row1 {
-              animation: scroll-infinite 100s linear infinite;
-            }
-            .scroll-content-row2 {
-              animation: scroll-infinite-reverse 100s linear infinite;
-              animation-delay: 3s;
+              gap: 2rem;
+              width: max-content;
+              animation: scroll-infinite 60s linear infinite;
             }
             .scroll-content:hover {
               animation-play-state: paused;
             }
             @media (max-width: 768px) {
               .scroll-content {
-                gap: 0.75rem;
-              }
-              .scroll-content-row1 {
-                animation: scroll-infinite 80s linear infinite;
-              }
-              .scroll-content-row2 {
-                animation: scroll-infinite-reverse 80s linear infinite;
+                gap: 1.5rem;
+                animation: scroll-infinite 50s linear infinite;
               }
             }
           `}</style>
@@ -538,23 +518,16 @@ export default function Home() {
           <div className="relative w-full overflow-hidden bg-gray-50">
             <div className="overflow-hidden">
               <div className="scroll-content scroll-content-row1">
-                {companies.map((company, idx) => (
-                  <div key={`row1-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                    <img
-                      src={company.logo}
-                      alt={company.name}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
-                ))}
-                {companies.map((company, idx) => (
-                  <div key={`row1-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                    <img
-                      src={company.logo}
-                      alt={company.name}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
+                {[...Array(3)].map((_, iteration) => (
+                  companies.map((company, idx) => (
+                    <div key={`logo-${iteration}-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))
                 ))}
               </div>
             </div>
