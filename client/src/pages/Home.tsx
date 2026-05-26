@@ -471,7 +471,7 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-white/90">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {processes.map((process, idx) => (
               <div key={idx} className="relative">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
