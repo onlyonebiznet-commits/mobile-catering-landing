@@ -211,12 +211,13 @@ export default function Home() {
   ];
 
   const companies = [
-    { name: "Samsung", logo: "삼성" },
-    { name: "SK Hynix", logo: "SK하이닉스" },
-    { name: "LG", logo: "LG" },
-    { name: "Krafton", logo: "크래프톤" },
-    { name: "Hyundai", logo: "현대" },
-    { name: "Incheon Airport", logo: "인천공항" },
+    { name: "SK Hynix", logo: "/manus-storage/sk-aihightech_844dccb9.png" },
+    { name: "MUSINSA", logo: "/manus-storage/musinsa_89f8bb7a.png" },
+    { name: "Samsung", logo: "/manus-storage/samsung_9f5fcbd4.png" },
+    { name: "Hyundai", logo: "/manus-storage/hyundai_067feb2c.png" },
+    { name: "Coupang", logo: "/manus-storage/coupang_a87f269e.png" },
+    { name: "CGV", logo: "/manus-storage/cgv_f9ebba7f.png" },
+    { name: "Kakao", logo: "/manus-storage/kakao_8043c49c.png" },
   ];
 
   return (
@@ -498,10 +499,14 @@ export default function Home() {
             <p className="text-lg text-gray-600">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 md:gap-8">
             {companies.map((company, idx) => (
-              <div key={idx} className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition">
-                <p className="text-gray-700 font-semibold">{company.logo}</p>
+              <div key={idx} className="bg-white rounded-lg p-6 flex items-center justify-center h-32 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
             ))}
           </div>
