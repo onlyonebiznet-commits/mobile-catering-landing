@@ -509,11 +509,21 @@ export default function Home() {
               0% { transform: translateX(0); }
               100% { transform: translateX(calc(-50% - 1rem)); }
             }
+            @keyframes scroll-infinite-reverse {
+              0% { transform: translateX(calc(-50% - 1rem)); }
+              100% { transform: translateX(0); }
+            }
             .scroll-content {
               display: flex;
               gap: 2rem;
-              animation: scroll-infinite 60s linear infinite;
               width: fit-content;
+            }
+            .scroll-content-row1 {
+              animation: scroll-infinite 60s linear infinite;
+            }
+            .scroll-content-row2 {
+              animation: scroll-infinite-reverse 60s linear infinite;
+              animation-delay: 2s;
             }
             .scroll-content:hover {
               animation-play-state: paused;
@@ -523,7 +533,7 @@ export default function Home() {
           <div className="relative w-full overflow-hidden bg-gray-50">
             <div className="space-y-6">
               <div className="overflow-hidden">
-                <div className="scroll-content">
+                <div className="scroll-content scroll-content-row1">
                   {[...companies, ...companies].map((company, idx) => (
                     <div key={`row1-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
@@ -536,8 +546,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="overflow-hidden">
-                <div className="scroll-content">
-                  {[...companies, ...companies].map((company, idx) => (
+                <div className="scroll-content scroll-content-row2">
+                  {[...companies.reverse(), ...companies.reverse()].map((company, idx) => (
                     <div key={`row2-${idx}`} className="flex-shrink-0 w-32 md:w-40 lg:w-48 h-24 md:h-28 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
