@@ -717,58 +717,18 @@ export default function Home() {
             <p className="text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
           </div>
 
-          <div className="relative">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={() => setCurrentDietIndex(Math.max(0, currentDietIndex - 1))}
-                className="absolute left-0 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition"
-                disabled={currentDietIndex === 0}
-              >
-                <ChevronLeft className="w-6 h-6 text-[#005B44]" />
-              </button>
-
-              <div className="w-full px-12">
-                <div className="bg-black rounded-lg overflow-hidden aspect-video">
-                  <video
-                    key={currentDietIndex}
-                    width="100%"
-                    height="100%"
-                    controls
-                    autoPlay
-                    muted
-                    className="w-full h-full"
-                  >
-                    <source src={[
-                      '/manus-storage/freshmelon-video_d7ab0bca.mp4',
-                      '/manus-storage/inbound-snack_8401e2ff.mp4',
-                      '/manus-storage/cafe-fresh_48b65e64.mp4'
-                    ][currentDietIndex]} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setCurrentDietIndex(Math.min(2, currentDietIndex + 1))}
-                className="absolute right-0 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition"
-                disabled={currentDietIndex === 2}
-              >
-                <ChevronRight className="w-6 h-6 text-[#005B44]" />
-              </button>
-            </div>
-
-            {/* Indicators */}
-            <div className="flex justify-center gap-2 mt-6">
-              {[0, 1, 2].map((idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentDietIndex(idx)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentDietIndex === idx ? 'bg-[#005B44] w-8' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
+          <div className="bg-black rounded-lg overflow-hidden aspect-video">
+            <video
+              width="100%"
+              height="100%"
+              autoPlay
+              muted
+              loop
+              className="w-full h-full"
+            >
+              <source src="/manus-storage/freshmelon-video_d7ab0bca.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
