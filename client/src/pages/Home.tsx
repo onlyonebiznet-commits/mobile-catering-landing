@@ -352,24 +352,24 @@ export default function Home() {
           <div 
             className="flex h-full transition-transform duration-700 ease-in-out"
             style={{
-              transform: `translateX(calc(-${(currentDietIndex % 3) * 100}%))`
+              transform: `translateX(-${(currentDietIndex % 3) * 100}%)`
             }}
           >
             {[
               {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
+                image: '/manus-storage/banner1_8f01aafa.png',
                 title: '직원 복지의 새로운 기준',
                 highlight: '프레시밀온',
                 description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
               },
               {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
+                image: '/manus-storage/banner2_f378c80a.webp',
                 title: '이동형 밀솔루션의 혁신',
                 highlight: '프레시밀온',
                 description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
               },
               {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
+                image: '/manus-storage/KakaoTalk_20250219_171016456_04_51f3ea71.jpg',
                 title: '신뢰할 수 있는 파트너',
                 highlight: '프레시밀온',
                 description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
@@ -463,19 +463,19 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full">
             {[
               {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
+                image: '/manus-storage/banner1_8f01aafa.png',
                 title: '직원 복지의 새로운 기준',
                 highlight: '프레시밀온',
                 description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
               },
               {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
+                image: '/manus-storage/banner2_f378c80a.webp',
                 title: '이동형 밀솔루션의 혁신',
                 highlight: '프레시밀온',
                 description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
               },
               {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
+                image: '/manus-storage/KakaoTalk_20250219_171016456_04_51f3ea71.jpg',
                 title: '신뢰할 수 있는 파트너',
                 highlight: '프레시밀온',
                 description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
