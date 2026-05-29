@@ -98,31 +98,19 @@ const ServiceRecommendationChatbot = () => {
 
   return (
     <>
-      {/* Floating Button with Badge */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
-        {/* Speech Bubble Badge */}
-        {!isOpen && (
-          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <div className="bg-white rounded-2xl shadow-lg px-4 py-3 max-w-xs">
-              <p className="text-sm font-medium text-gray-900">어떤 서비스가 궁금하신가요?</p>
-              <div className="absolute -bottom-2 right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white"></div>
-            </div>
-          </div>
+      {/* Floating Button - Hidden, used only as trigger for FloatingActionButtons */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="hidden"
+        title="서비스 추천 챗봇"
+        data-chatbot-trigger
+      >
+        {isOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <MessageCircle className="w-6 h-6" />
         )}
-
-        {/* Floating Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center"
-          title="서비스 추천 챗봇"
-        >
-          {isOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <MessageCircle className="w-6 h-6" />
-          )}
-        </button>
-      </div>
+      </button>
 
       {/* Chatbot Window */}
       {isOpen && (

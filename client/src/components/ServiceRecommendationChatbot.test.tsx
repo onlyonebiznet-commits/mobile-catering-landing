@@ -14,9 +14,10 @@ describe('ServiceRecommendationChatbot', () => {
     expect(button).toBeInTheDocument();
   });
 
-  it('displays speech bubble badge when closed', () => {
+  it('hidden trigger button exists', () => {
     render(<ServiceRecommendationChatbot />);
-    expect(screen.getByText('어떤 서비스가 궁금하신가요?')).toBeInTheDocument();
+    const button = screen.getByTitle('서비스 추천 챗봇');
+    expect(button).toHaveClass('hidden');
   });
 
   it('opens chatbot when floating button is clicked', async () => {

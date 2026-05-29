@@ -52,15 +52,19 @@ export default function FloatingActionButtons() {
         </button>
       )}
 
-      {/* Recommendation Button */}
+      {/* Consultation Button */}
       {isVisible && (
         <button
           onClick={scrollToChatbot}
-          className="fixed bottom-6 right-6 z-40 px-4 py-3 rounded-full bg-white text-[#005B44] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 font-semibold text-sm border-2 border-[#005B44]"
-          aria-label="맞춤 추천"
-          title="맞춤 추천"
+          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-semibold text-xs"
+          aria-label="맞춤 상담"
+          title="맞춤 상담"
         >
-          맞춤 추천
+          <span className="text-center leading-tight">
+            맞춤
+            <br />
+            상담
+          </span>
         </button>
       )}
     </>
