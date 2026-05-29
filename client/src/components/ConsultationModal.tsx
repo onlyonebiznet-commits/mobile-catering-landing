@@ -187,7 +187,12 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent 
         ref={contentRef}
-        className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto relative"
+        className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto relative w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 md:relative md:left-auto md:top-auto md:transform-none"
+        style={{
+          maxHeight: 'min(75vh, calc(100vh - 120px))',
+          width: 'calc(100vw - 32px)',
+          maxWidth: '600px'
+        }}
         onMouseDown={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
