@@ -1086,7 +1086,7 @@ export default function Home() {
                     title="블로그"
                   >
                     <img
-                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/naver-blog-icon-transparent-FizrtzzvePWPmv6DnQSTsi.webp"
+                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/blog-icon-black-hw38TqrywU36TEoFB37L9G.webp"
                       alt="네이버 블로그"
                       className="w-6 h-6"
                     />
