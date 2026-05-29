@@ -76,13 +76,20 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
     e.preventDefault();
 
     // Validation
-    if (!formData.companyName || !formData.contactPerson || !formData.phoneNumber || !formData.service || !formData.estimatedMeals) {
-      toast.error("필수 항목(회사명, 담당자명, 연락처, 서비스, 식수 규모)을 모두 입력해주세요");
+    if (!formData.companyName || !formData.contactPerson || !formData.phoneNumber || !formData.email || !formData.region || !formData.estimatedMeals || !formData.service) {
+      toast.error("필수 항목(회사명, 담당자명, 연락처, 이메일, 희망지역, 예상 식수, 서비스)를 모두 입력해주세요");
       return;
     }
 
     if (!agreements.personalInfoCollection) {
       toast.error("[필수] 개인정보 수집/이용 동의에 동의해주세요");
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("올바른 이메일 주소를 입력해주세요");
       return;
     }
 
@@ -203,7 +210,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
           {/* Email */}
           <div className="space-y-2">
             <Label htmlFor="email" className="text-sm font-medium">
-              이메일
+              이메일 <span className="text-destructive">*</span>
             </Label>
             <Input
               id="email"
@@ -227,9 +234,10 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 <SelectValue placeholder="서비스를 선택해주세요" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="mobile-meal">이동급식</SelectItem>
-                <SelectItem value="snack-breakfast">간식조식</SelectItem>
-                <SelectItem value="office-cafe">사내카페</SelectItem>
+                <SelectItem value="canteen">구내식당</SelectItem>
+                <SelectItem value="snack">간식</SelectItem>
+                <SelectItem value="breakfast">조식</SelectItem>
+                <SelectItem value="cafe">사내카페</SelectItem>
                 <SelectItem value="catering">케이터링</SelectItem>
               </SelectContent>
             </Select>
@@ -238,7 +246,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
           {/* Region */}
           <div className="space-y-2">
             <Label htmlFor="region" className="text-sm font-medium">
-              희망 지역
+              희망 지역 <span className="text-destructive">*</span>
             </Label>
             <Input
               id="region"
@@ -254,7 +262,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
           {/* Estimated Meals */}
           <div className="space-y-2">
             <Label htmlFor="estimatedMeals" className="text-sm font-medium">
-              예상 식수
+              예상 식수 <span className="text-destructive">*</span>
             </Label>
             <Input
               id="estimatedMeals"
