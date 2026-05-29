@@ -235,15 +235,16 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               <Accordion type="single" collapsible className="w-full space-y-2">
                 <AccordionItem value="personal-info" className="border border-gray-200 rounded-lg px-3">
                   <AccordionTrigger className="hover:no-underline py-3">
-                    <div className="flex items-center space-x-2 text-left">
+                    <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="personalInfoCollection"
                         checked={agreements.personalInfoCollection}
                         onCheckedChange={(checked) => handleAgreementChange("personalInfoCollection", checked as boolean)}
                         onClick={(e) => e.stopPropagation()}
+                        className="flex-shrink-0"
                       />
-                      <Label htmlFor="personalInfoCollection" className="text-xs text-gray-600 cursor-pointer">
-                        개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
+                      <Label htmlFor="personalInfoCollection" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
+                        개인정보 수집 및 이용 <span className="text-red-500">*</span>
                       </Label>
                     </div>
                   </AccordionTrigger>
@@ -264,15 +265,16 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
 
                 <AccordionItem value="marketing" className="border border-gray-200 rounded-lg px-3">
                   <AccordionTrigger className="hover:no-underline py-3">
-                    <div className="flex items-center space-x-2 text-left">
+                    <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="marketingConsent"
                         checked={agreements.marketingConsent}
                         onCheckedChange={(checked) => handleAgreementChange("marketingConsent", checked as boolean)}
                         onClick={(e) => e.stopPropagation()}
+                        className="flex-shrink-0"
                       />
-                      <Label htmlFor="marketingConsent" className="text-xs text-gray-600 cursor-pointer">
-                        마케팅 정보 수신 동의
+                      <Label htmlFor="marketingConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
+                        마케팅 정보 수신
                       </Label>
                     </div>
                   </AccordionTrigger>
@@ -291,15 +293,16 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
 
                 <AccordionItem value="ad" className="border border-gray-200 rounded-lg px-3">
                   <AccordionTrigger className="hover:no-underline py-3">
-                    <div className="flex items-center space-x-2 text-left">
+                    <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="adConsent"
                         checked={agreements.adConsent}
                         onCheckedChange={(checked) => handleAgreementChange("adConsent", checked as boolean)}
                         onClick={(e) => e.stopPropagation()}
+                        className="flex-shrink-0"
                       />
-                      <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer">
-                        광고성 정보 수신 동의
+                      <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
+                        광고성 정보 수신
                       </Label>
                     </div>
                   </AccordionTrigger>
