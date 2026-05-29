@@ -5,14 +5,31 @@ export default function FloatingActionButtons() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
   const [touchedButton, setTouchedButton] = useState<string | null>(null);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
-    if (window.scrollY > 300) {
+    const currentScrollY = window.scrollY;
+    
+    // Show/hide based on scroll position
+    if (currentScrollY > 300) {
       setIsVisible(true);
+      
+      // Detect scroll direction
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide button
+        setIsHidden(true);
+      } else {
+        // Scrolling up - show button
+        setIsHidden(false);
+      }
     } else {
       setIsVisible(false);
+      setIsHidden(false);
     }
+    
+    setLastScrollY(currentScrollY);
   };
 
   // Scroll to top smoothly and close consultation form
@@ -79,7 +96,9 @@ export default function FloatingActionButtons() {
       {/* Top Button */}
       {isVisible && (
         <div
-          className="fixed bottom-24 right-6 z-40"
+          className={`fixed bottom-24 right-6 z-40 transition-all duration-300 ease-out ${
+            isHidden ? "translate-y-32 opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+          }`}
           onMouseEnter={() => setHoveredButton("top")}
           onMouseLeave={() => setHoveredButton(null)}
           onTouchStart={() => handleTouchStart("top")}
@@ -116,7 +135,9 @@ export default function FloatingActionButtons() {
       {/* Consultation Button */}
       {isVisible && (
         <div
-          className="fixed bottom-6 right-6 z-40"
+          className={`fixed bottom-6 right-6 z-40 transition-all duration-300 ease-out ${
+            isHidden ? "translate-y-32 opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+          }`}
           onMouseEnter={() => setHoveredButton("consultation")}
           onMouseLeave={() => setHoveredButton(null)}
           onTouchStart={() => handleTouchStart("consultation")}
