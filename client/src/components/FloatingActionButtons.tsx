@@ -86,10 +86,10 @@ export default function FloatingActionButtons() {
           <div className="relative inline-block h-14 w-14">
             {/* Text Label Pill - Behind the icon */}
             <div
-              className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
-                isExpanded("top") ? "w-40 pr-4" : "w-14"
+              className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
+                isExpanded("top") ? "w-40" : "w-14"
               }`}
-              style={{ zIndex: 1 }}
+              style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
             >
               <div
                 className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
@@ -127,10 +127,10 @@ export default function FloatingActionButtons() {
           <div className="relative inline-block h-14 w-14">
             {/* Text Label Pill - Behind the icon */}
             <div
-              className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
-                isExpanded("consultation") ? "w-40 pr-4" : "w-14"
+              className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
+                isExpanded("consultation") ? "w-40" : "w-14"
               }`}
-              style={{ zIndex: 1 }}
+              style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
             >
               <div
                 className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
