@@ -618,7 +618,7 @@ export default function Home() {
                   </button>
                   <button
                     onClick={() => setMaterialOpen(true)}
-                    className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-[#005B44] transition duration-300 font-semibold"
+                    className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
                   >
                     자료 다운로드
                   </button>
@@ -1061,7 +1061,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setMaterialOpen(true)}
-              className="px-8 py-3 bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#005B44] transition duration-300 font-semibold"
+              className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
             >
               자료 다운로드
             </button>
