@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, MessageCircle, Send } from 'lucide-react';
+import { X, MessageCircle } from 'lucide-react';
 
 const ServiceRecommendationChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,6 @@ const ServiceRecommendationChatbot = () => {
     service: '',
     environment: '',
     people: '',
-    startDate: '',
     inquiry: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -38,64 +37,6 @@ const ServiceRecommendationChatbot = () => {
     '행사장',
     '기타'
   ];
-
-  const recommendations: { [key: string]: { [key: string]: string } } = {
-    '이동급식': {
-      '공사현장': '현장 맞춤형 이동급식으로 작업자들의 영양 관리와 만족도를 높일 수 있습니다.',
-      '산업체': '산업체 특성에 맞춘 이동급식 서비스로 직원 복지를 개선하세요.',
-      '오피스': '신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선할 수 있습니다.',
-      '병원': '환자와 직원을 위한 전문화된 이동급식 서비스를 제공합니다.',
-      '요양시설': '어르신들을 위한 영양 관리 이동급식 서비스입니다.',
-      '복지관': '지역 주민들을 위한 따뜻한 이동급식 서비스를 제공합니다.',
-      '학교/교육기관': '학생과 교직원을 위한 건강한 이동급식 서비스입니다.',
-      '행사장': '행사 규모와 특성에 맞춘 이동급식으로 성공적인 행사를 지원합니다.',
-      '기타': '특별한 요구사항에 맞춘 맞춤형 이동급식 서비스를 제공합니다.'
-    },
-    '조식 서비스': {
-      '공사현장': '아침 일찍 현장에 도착한 작업자들을 위한 조식 서비스입니다.',
-      '산업체': '직원들의 활기찬 하루를 시작하는 영양 조식 서비스입니다.',
-      '오피스': '신선하고 건강한 아침 식사로 업무 효율을 높입니다.',
-      '병원': '환자 회복을 돕는 전문 영양 조식 서비스입니다.',
-      '요양시설': '어르신들의 건강한 아침을 위한 맞춤 조식 서비스입니다.',
-      '복지관': '지역 주민들을 위한 따뜻한 아침 조식 서비스입니다.',
-      '학교/교육기관': '학생들의 성장을 돕는 영양 조식 서비스입니다.',
-      '행사장': '행사 참가자들을 위한 조식 서비스입니다.',
-      '기타': '특별한 요구사항에 맞춘 조식 서비스를 제공합니다.'
-    },
-    '간식 서비스': {
-      '공사현장': '작업 중 에너지 충전을 위한 건강한 간식 서비스입니다.',
-      '산업체': '직원들의 휴식 시간을 더욱 즐겁게 해주는 간식 서비스입니다.',
-      '오피스': '업무 중 피로를 덜어주는 신선한 간식 서비스입니다.',
-      '병원': '환자와 보호자를 위한 건강한 간식 서비스입니다.',
-      '요양시설': '어르신들의 간식 시간을 풍요롭게 해주는 서비스입니다.',
-      '복지관': '지역 주민들을 위한 건강한 간식 서비스입니다.',
-      '학교/교육기관': '학생들의 성장을 돕는 영양 간식 서비스입니다.',
-      '행사장': '행사 분위기를 더하는 간식 서비스입니다.',
-      '기타': '특별한 요구사항에 맞춘 간식 서비스를 제공합니다.'
-    },
-    '케이터링': {
-      '공사현장': '현장 행사와 회의를 위한 전문 케이터링 서비스입니다.',
-      '산업체': '회의, 행사, 워크숍을 위한 프리미엄 케이터링 서비스입니다.',
-      '오피스': '회의실 행사와 특별 행사를 위한 케이터링 서비스입니다.',
-      '병원': '병원 행사와 특별한 날을 위한 케이터링 서비스입니다.',
-      '요양시설': '시설 행사와 특별한 날을 위한 케이터링 서비스입니다.',
-      '복지관': '지역 행사와 프로그램을 위한 케이터링 서비스입니다.',
-      '학교/교육기관': '학교 행사와 특별 프로그램을 위한 케이터링 서비스입니다.',
-      '행사장': '행사 규모와 특성에 맞춘 전문 케이터링 서비스입니다.',
-      '기타': '특별한 행사를 위한 맞춤형 케이터링 서비스입니다.'
-    },
-    '사내카페': {
-      '공사현장': '현장 휴게실을 위한 카페 운영 서비스입니다.',
-      '산업체': '직원들의 휴식 공간을 위한 사내 카페 운영 서비스입니다.',
-      '오피스': '업무 중 휴식을 위한 프리미엄 사내 카페 서비스입니다.',
-      '병원': '의료진과 방문객을 위한 카페 운영 서비스입니다.',
-      '요양시설': '어르신들의 휴식 공간을 위한 카페 운영 서비스입니다.',
-      '복지관': '지역 주민들을 위한 카페 운영 서비스입니다.',
-      '학교/교육기관': '학생과 교직원을 위한 카페 운영 서비스입니다.',
-      '행사장': '행사 참가자들을 위한 카페 운영 서비스입니다.',
-      '기타': '특별한 요구사항에 맞춘 카페 운영 서비스입니다.'
-    }
-  };
 
   const handleServiceSelect = (service: string) => {
     setSelectedService(service);
@@ -135,44 +76,51 @@ const ServiceRecommendationChatbot = () => {
         service: '',
         environment: '',
         people: '',
-        startDate: '',
         inquiry: ''
       });
       setSubmitted(false);
     }, 3000);
   };
 
-  const handleReset = () => {
-    setStep(1);
-    setSelectedService('');
-    setSelectedEnvironment('');
-    setFormData({
-      name: '',
-      company: '',
-      phone: '',
-      email: '',
-      service: '',
-      environment: '',
-      people: '',
-      startDate: '',
-      inquiry: ''
-    });
+  const handleBack = () => {
+    if (step === 2) {
+      setStep(1);
+      setSelectedService('');
+      setFormData({ ...formData, service: '' });
+    } else if (step === 3) {
+      setStep(2);
+      setSelectedEnvironment('');
+      setFormData({ ...formData, environment: '' });
+    }
   };
 
   return (
     <>
-      {/* Floating Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center"
-        title="서비스 추천 챗봇"
-      >
-        {isOpen ? (
-          <X className="w-6 h-6" />
-        ) : (
-          <MessageCircle className="w-6 h-6" />
+      {/* Floating Button with Badge */}
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
+        {/* Speech Bubble Badge */}
+        {!isOpen && (
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <div className="bg-white rounded-2xl shadow-lg px-4 py-3 max-w-xs">
+              <p className="text-sm font-medium text-gray-900">어떤 서비스가 궁금하신가요?</p>
+              <div className="absolute -bottom-2 right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white"></div>
+            </div>
+          </div>
         )}
-      </button>
+
+        {/* Floating Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center"
+          title="서비스 추천 챗봇"
+        >
+          {isOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <MessageCircle className="w-6 h-6" />
+          )}
+        </button>
+      </div>
 
       {/* Chatbot Window */}
       {isOpen && (
@@ -180,7 +128,7 @@ const ServiceRecommendationChatbot = () => {
           {/* Header */}
           <div className="bg-gradient-to-r from-[#005B44] to-[#004a35] text-white p-6">
             <h3 className="text-lg font-bold">서비스 추천 상담</h3>
-            <p className="text-sm text-white/80 mt-1">맞춤형 서비스를 추천해드립니다</p>
+            <p className="text-sm text-white/80 mt-1">우리 현장에 맞는 맞춤형 서비스를 추천해드립니다</p>
           </div>
 
           {/* Content */}
@@ -212,14 +160,6 @@ const ServiceRecommendationChatbot = () => {
               </div>
             ) : step === 2 ? (
               <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <div className="flex items-center gap-2 mb-4">
-                  <button
-                    onClick={() => setStep(1)}
-                    className="text-[#005B44] hover:text-[#004a35] text-sm font-medium"
-                  >
-                    ← 뒤로
-                  </button>
-                </div>
                 <p className="font-semibold text-gray-900 mb-4">어느 환경에서 필요하신가요?</p>
                 <div className="space-y-2">
                   {environments.map((environment) => (
@@ -235,14 +175,6 @@ const ServiceRecommendationChatbot = () => {
               </div>
             ) : step === 3 ? (
               <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <div className="bg-[#005B44]/10 border border-[#005B44]/20 rounded-lg p-4 mb-4">
-                  <p className="text-sm text-gray-600 mb-2">선택하신 조건에 맞춰</p>
-                  <p className="font-semibold text-gray-900 mb-3">{selectedService}을 추천드립니다.</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    {recommendations[selectedService]?.[selectedEnvironment] || '맞춤형 서비스를 제공합니다.'}
-                  </p>
-                </div>
-
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="grid grid-cols-2 gap-3">
                     <input
@@ -286,23 +218,14 @@ const ServiceRecommendationChatbot = () => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <input
-                      type="text"
-                      name="people"
-                      placeholder="예상 이용 인원"
-                      value={formData.people}
-                      onChange={handleFormChange}
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
-                    />
-                    <input
-                      type="date"
-                      name="startDate"
-                      value={formData.startDate}
-                      onChange={handleFormChange}
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    name="people"
+                    placeholder="예상 식수"
+                    value={formData.people}
+                    onChange={handleFormChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                  />
 
                   <textarea
                     name="inquiry"
@@ -315,18 +238,17 @@ const ServiceRecommendationChatbot = () => {
 
                   <div className="flex gap-2 pt-2">
                     <button
-                      type="submit"
-                      className="flex-1 px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a35] transition-colors duration-200 font-medium text-sm flex items-center justify-center gap-2"
-                    >
-                      <Send className="w-4 h-4" />
-                      문의하기
-                    </button>
-                    <button
                       type="button"
-                      onClick={handleReset}
+                      onClick={handleBack}
                       className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium text-sm"
                     >
-                      다시 선택
+                      뒤로가기
+                    </button>
+                    <button
+                      type="submit"
+                      className="flex-1 px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a35] transition-colors duration-200 font-medium text-sm"
+                    >
+                      문의하기
                     </button>
                   </div>
                 </form>

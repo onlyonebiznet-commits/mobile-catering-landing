@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ServiceRecommendationChatbot from './ServiceRecommendationChatbot';
@@ -12,6 +12,11 @@ describe('ServiceRecommendationChatbot', () => {
     render(<ServiceRecommendationChatbot />);
     const button = screen.getByTitle('서비스 추천 챗봇');
     expect(button).toBeInTheDocument();
+  });
+
+  it('displays speech bubble badge when closed', () => {
+    render(<ServiceRecommendationChatbot />);
+    expect(screen.getByText('어떤 서비스가 궁금하신가요?')).toBeInTheDocument();
   });
 
   it('opens chatbot when floating button is clicked', async () => {
@@ -55,7 +60,7 @@ describe('ServiceRecommendationChatbot', () => {
     });
   });
 
-  it('shows recommendation after environment selection', async () => {
+  it('navigates to form after environment selection', async () => {
     render(<ServiceRecommendationChatbot />);
     const button = screen.getByTitle('서비스 추천 챗봇');
     
@@ -72,12 +77,11 @@ describe('ServiceRecommendationChatbot', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText(/이동급식을 추천드립니다/)).toBeInTheDocument();
-      expect(screen.getByText(/신선한 식사로 직원 만족도를 높이고/)).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('예상 식수')).toBeInTheDocument();
     });
   });
 
-  it('displays form fields after recommendation', async () => {
+  it('displays form fields with correct labels', async () => {
     render(<ServiceRecommendationChatbot />);
     const button = screen.getByTitle('서비스 추천 챗봇');
     
@@ -98,32 +102,11 @@ describe('ServiceRecommendationChatbot', () => {
       expect(screen.getByPlaceholderText('회사명/기관명')).toBeInTheDocument();
       expect(screen.getByPlaceholderText('연락처')).toBeInTheDocument();
       expect(screen.getByPlaceholderText('이메일')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('예상 식수')).toBeInTheDocument();
     });
   });
 
-  it('allows going back to service selection', async () => {
-    render(<ServiceRecommendationChatbot />);
-    const button = screen.getByTitle('서비스 추천 챗봇');
-    
-    fireEvent.click(button);
-    
-    // Select service
-    await waitFor(() => {
-      fireEvent.click(screen.getByText('이동급식'));
-    });
-
-    // Click back button
-    await waitFor(() => {
-      const backButton = screen.getByText('← 뒤로');
-      fireEvent.click(backButton);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('어떤 서비스가 궁금하신가요?')).toBeInTheDocument();
-    });
-  });
-
-  it('can reset form and start over', async () => {
+  it('displays back button and inquiry button in form', async () => {
     render(<ServiceRecommendationChatbot />);
     const button = screen.getByTitle('서비스 추천 챗봇');
     
@@ -139,14 +122,10 @@ describe('ServiceRecommendationChatbot', () => {
       fireEvent.click(screen.getByText('오피스'));
     });
 
-    // Click reset button
+    // Verify buttons are present
     await waitFor(() => {
-      const resetButton = screen.getByText('다시 선택');
-      fireEvent.click(resetButton);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('어떤 서비스가 궁금하신가요?')).toBeInTheDocument();
+      expect(screen.getByText('뒤로가기')).toBeInTheDocument();
+      expect(screen.getByText('문의하기')).toBeInTheDocument();
     });
   });
 
@@ -160,7 +139,7 @@ describe('ServiceRecommendationChatbot', () => {
       expect(screen.getByText('서비스 추천 상담')).toBeInTheDocument();
     });
 
-    // Click close button (the X icon button)
+    // Click close button
     fireEvent.click(button);
 
     await waitFor(() => {
