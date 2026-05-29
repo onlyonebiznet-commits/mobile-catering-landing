@@ -74,10 +74,13 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      if (consultationOpen) {
+        setConsultationOpen(false);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [consultationOpen]);
 
   // Auto-play banner carousel
   useEffect(() => {
