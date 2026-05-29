@@ -1,11 +1,33 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
+import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
 import ServiceRecommendationChatbot from "@/components/ServiceRecommendationChatbot";
 import ThankYouPage from "@/pages/ThankYou";
 import { useLocation } from "wouter";
+
+interface StatisticItemProps {
+  end: number;
+  suffix: string;
+  label: string;
+}
+
+function StatisticItem({ end, suffix, label }: StatisticItemProps) {
+  const { count, elementRef } = useCountUp({ end, duration: 1800 });
+
+  return (
+    <div ref={elementRef} className="text-center scroll-reveal-stagger animate-in fade-in slide-in-from-bottom-2 duration-500">
+      <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">
+        {count.toLocaleString()}{suffix}
+      </div>
+      <p className="text-gray-600 animate-in fade-in slide-in-from-bottom-2 duration-500" style={{ animationDelay: '0.2s' }}>
+        {label}
+      </p>
+    </div>
+  );
+}
 
 export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
@@ -646,22 +668,10 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center scroll-reveal-stagger" data-reveal-item="0">
-              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">20+</div>
-              <p className="text-gray-600">년 이상의 금식 운영 경험</p>
-            </div>
-            <div className="text-center scroll-reveal-stagger" data-reveal-item="1">
-              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">1,000+</div>
-              <p className="text-gray-600">일일 제공 식수</p>
-            </div>
-            <div className="text-center scroll-reveal-stagger" data-reveal-item="2">
-              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">100+</div>
-              <p className="text-gray-600">사업장 운영 중</p>
-            </div>
-            <div className="text-center scroll-reveal-stagger" data-reveal-item="3">
-              <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">99%</div>
-              <p className="text-gray-600">고객 만족도</p>
-            </div>
+            <StatisticItem end={20} suffix="+" label="년 이상의 금식 운영 경험" />
+            <StatisticItem end={1000} suffix="+" label="일일 제공 식수" />
+            <StatisticItem end={100} suffix="+" label="사업장 운영 중" />
+            <StatisticItem end={99} suffix="%" label="고객 만족도" />
           </div>
         </div>
       </section>
