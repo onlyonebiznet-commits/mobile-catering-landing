@@ -338,7 +338,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Integrated Header */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-2/3 overflow-hidden">
         {/* Banner Carousel Background */}
         <div className="absolute inset-0">
           {[
@@ -366,7 +366,7 @@ export default function Home() {
               <div
                 key={idx}
                 className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                  isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
+                  isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
                 }`}
                 style={{
                   backgroundImage: `url('${banner.image}')`,
