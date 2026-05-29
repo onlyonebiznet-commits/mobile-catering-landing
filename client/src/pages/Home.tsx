@@ -393,19 +393,23 @@ export default function Home() {
     },
   ];
 
-  const companies = [
-    { name: "Company 1", logo: "/manus-storage/logo_01_2d111615.png" },
-    { name: "Company 2", logo: "/manus-storage/logo_02_96ffa516.png" },
-    { name: "Company 3", logo: "/manus-storage/logo_03_45e8c1c5.png" },
-    { name: "Company 4", logo: "/manus-storage/logo_04_7b2b1dca.png" },
-    { name: "Company 5", logo: "/manus-storage/logo_05_9ebcc27b.png" },
-    { name: "Company 6", logo: "/manus-storage/logo_06_68267b53.png" },
-    { name: "Company 7", logo: "/manus-storage/logo_07_1caf9494.png" },
-    { name: "Company 8", logo: "/manus-storage/logo_08_4b7fe42c.png" },
-    { name: "Company 9", logo: "/manus-storage/logo_09_191d5360.png" },
-    { name: "Company 10", logo: "/manus-storage/logo_10_f2680fbf.png" },
-    { name: "Company 11", logo: "/manus-storage/logo_11_c44b2fc0.png" },
-    { name: "Company 12", logo: "/manus-storage/logo_12_cf712c7d.png" },
+    const companies = [
+    { name: "CJ ENM", logo: "/manus-storage/cj-enm_f7611505.png" },
+    { name: "LG Display", logo: "/manus-storage/lg-display_cedf659b.png" },
+    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_ae6b0629.png" },
+    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_3a4354f7.png" },
+    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_85c57c13.png" },
+    { name: "STECO", logo: "/manus-storage/steco_ea93e310.png" },
+    { name: "Severance", logo: "/manus-storage/severance_10b716bf.png" },
+  ];
+  const companiesRow2 = [
+    { name: "CJ Daesang 2", logo: "/manus-storage/cj-daesang-2_4ab5d5e6.png" },
+    { name: "CJ ENM", logo: "/manus-storage/cj-enm_f7611505.png" },
+    { name: "LG Display", logo: "/manus-storage/lg-display_cedf659b.png" },
+    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_ae6b0629.png" },
+    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_3a4354f7.png" },
+    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_85c57c13.png" },
+    { name: "STECO", logo: "/manus-storage/steco_ea93e310.png" },
   ];
 
   return (
@@ -543,7 +547,7 @@ export default function Home() {
               }
             ][currentDietIndex % 3] && (
               <div>
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-3 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100">
+                <h1 className="text-5xl md:text-6xl font-bold text-white mb-3 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '32px'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -565,7 +569,7 @@ export default function Home() {
                     }
                   ][currentDietIndex % 3].title}
                 </h1>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200" style={{fontSize: '30px'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -587,7 +591,7 @@ export default function Home() {
                     }
                   ][currentDietIndex % 3].highlight}
                 </h2>
-                <p className="text-white text-lg md:text-xl max-w-2xl mb-8 drop-shadow-lg leading-relaxed animate-in fade-in slide-in-from-left-4 delay-300">
+                <p className="text-white text-lg md:text-xl max-w-2xl mb-8 drop-shadow-lg leading-relaxed animate-in fade-in slide-in-from-left-4 delay-300" style={{fontSize: '16px'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -695,7 +699,7 @@ export default function Home() {
       <section id="services" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">키친리스 밀솔루션</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '30px'}}>키친리스 밀솔루션</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
           </div>
 
@@ -737,8 +741,8 @@ export default function Home() {
       <section id="diet" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">고객 특성에 맞춘 식단</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600">각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '30px'}}>고객 특성에 맞춘 식단</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600" style={{fontSize: '14px'}}>각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
           <div className="relative">
@@ -791,7 +795,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">실제 운영중인 식단</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '30px'}}>실제 운영중인 식단</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">신선한 재료로 만든 다양한 메뉴</p>
           </div>
 
@@ -830,7 +834,7 @@ export default function Home() {
       <section id="process" className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2">신선함을 보장하는 프로세스</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2" style={{fontSize: '30px'}}>신선함을 보장하는 프로세스</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
@@ -848,50 +852,85 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partner Companies Section */}
+            {/* Partner Companies Section - 2 Row Infinite Scroll */}
       <section className="py-16 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">함께하는 고객사</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '30px'}}>함께하는 고객사</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
           </div>
-
           <style>{`
-            @keyframes scroll-infinite {
+            @keyframes scroll-infinite-ltr {
               0% { transform: translateX(0); }
               100% { transform: translateX(-50%); }
             }
-            .scroll-content {
+            @keyframes scroll-infinite-rtl {
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+            .scroll-content-row1 {
               display: flex;
               gap: 2rem;
               width: max-content;
-              animation: scroll-infinite 60s linear infinite;
+              animation: scroll-infinite-ltr 60s linear infinite;
             }
-            .scroll-content:hover {
+            .scroll-content-row2 {
+              display: flex;
+              gap: 2rem;
+              width: max-content;
+              animation: scroll-infinite-rtl 60s linear infinite;
+              animation-delay: -30s;
+            }
+            .scroll-content-row1:hover,
+            .scroll-content-row2:hover {
               animation-play-state: paused;
             }
             @media (max-width: 768px) {
-              .scroll-content {
+              .scroll-content-row1,
+              .scroll-content-row2 {
                 gap: 1.5rem;
-                animation: scroll-infinite 50s linear infinite;
+                animation-duration: 50s;
+              }
+              .scroll-content-row2 {
+                animation-delay: -25s;
               }
             }
           `}</style>
-
-          <div className="relative w-full overflow-hidden bg-gray-50">
-            <div className="overflow-hidden">
-              <div className="scroll-content scroll-content-row1">
-                {[...Array(3)].map((_, iteration) => (
-                  companies.map((company, idx) => (
-                    <div key={`logo-${iteration}-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    </div>
-                  ))
-                ))}
+          <div className="space-y-8">
+            {/* Row 1 - Left to Right */}
+            <div className="relative w-full overflow-hidden bg-gray-50">
+              <div className="overflow-hidden">
+                <div className="scroll-content-row1">
+                  {[...Array(3)].map((_, iteration) => (
+                    companies.map((company, idx) => (
+                      <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                        <img
+                          src={company.logo}
+                          alt={company.name}
+                          className="max-w-full max-h-full object-contain"
+                        />
+                      </div>
+                    ))
+                  ))}
+                </div>
+              </div>
+            </div>
+            {/* Row 2 - Right to Left (Offset) */}
+            <div className="relative w-full overflow-hidden bg-gray-50">
+              <div className="overflow-hidden">
+                <div className="scroll-content-row2">
+                  {[...Array(3)].map((_, iteration) => (
+                    companiesRow2.map((company, idx) => (
+                      <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                        <img
+                          src={company.logo}
+                          alt={company.name}
+                          className="max-w-full max-h-full object-contain"
+                        />
+                      </div>
+                    ))
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -902,7 +941,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">고객 후기</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '30px'}}>고객 후기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
@@ -939,7 +978,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">우리의 이야기</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '30px'}}>우리의 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께 만들어가는 성공 사례들</p>
           </div>
 
@@ -993,7 +1032,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">자주 묻는 질문</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '30px'}}>자주 묻는 질문</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온 서비스에 대한 자주 묻는 질문들입니다</p>
           </div>
 
@@ -1026,7 +1065,7 @@ export default function Home() {
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4">프레시밀온 이야기</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4" style={{fontSize: '30px'}}>프레시밀온 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
           </div>
 
@@ -1050,7 +1089,7 @@ export default function Home() {
       {/* Final CTA Section */}
       <section className="py-20 bg-[#005B44]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2">직원 복지의 새로운 기준을 경험하세요</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2" style={{fontSize: '30px'}}>직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8">신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal-stagger" data-reveal-item="0">
             <button
