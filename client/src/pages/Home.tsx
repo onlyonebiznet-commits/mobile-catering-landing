@@ -329,24 +329,25 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-50 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-16 py-2 md:py-0">
             <div className="flex items-center gap-2">
-              <span className="text-[#005B44] font-bold text-lg md:text-xl">이동형 F&B 서비스</span>
+              <span className="text-white font-bold text-lg md:text-xl">이동형 F&B 서비스</span>
             </div>
             
             {/* Desktop Menu */}
             <nav className="hidden md:flex gap-8">
-              <a href="#services" className="text-gray-700 hover:text-[#005B44] transition">서비스</a>
-              <a href="#diet" className="text-gray-700 hover:text-[#005B44] transition">식단</a>
-              <a href="#process" className="text-gray-700 hover:text-[#005B44] transition">프로세스</a>
+              <a href="#services" className="text-white hover:text-white/80 transition">서비스</a>
+              <a href="#diet" className="text-white hover:text-white/80 transition">식단</a>
+              <a href="#process" className="text-white hover:text-white/80 transition">프로세스</a>
             </nav>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
+              className="md:hidden p-2 hover:bg-white/20 rounded-lg text-white"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -355,7 +356,7 @@ export default function Home() {
 
             <button
               onClick={() => setConsultationOpen(true)}
-              className="hidden md:block px-6 py-2 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
+              className="hidden md:block px-6 py-2 bg-white text-[#005B44] rounded-lg hover:bg-white/90 border-2 border-white transition duration-300 font-semibold"
             >
               문의하기
             </button>
@@ -363,13 +364,13 @@ export default function Home() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-4 border-t">
-              <a href="#services" className="block py-2 text-gray-700 hover:text-[#005B44]">서비스</a>
-              <a href="#diet" className="block py-2 text-gray-700 hover:text-[#005B44]">식단</a>
-              <a href="#process" className="block py-2 text-gray-700 hover:text-[#005B44]">프로세스</a>
+            <div className="md:hidden pb-4 border-t border-white/30 bg-black/20">
+              <a href="#services" className="block py-2 text-white hover:text-white/80">서비스</a>
+              <a href="#diet" className="block py-2 text-white hover:text-white/80">식단</a>
+              <a href="#process" className="block py-2 text-white hover:text-white/80">프로세스</a>
               <button
                 onClick={() => setConsultationOpen(true)}
-                className="w-full mt-4 px-4 py-2 bg-[#005B44] text-white rounded-lg"
+                className="w-full mt-4 px-4 py-2 bg-white text-[#005B44] rounded-lg font-semibold"
               >
                 문의하기
               </button>
@@ -424,7 +425,7 @@ export default function Home() {
       </button>
 
       {/* Hero Section - Rolling Banner */}
-      <section className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
+      <section className="relative h-80 md:h-[450px] lg:h-[550px] overflow-hidden mt-0">
         {/* Banner Carousel */}
         <div className="relative h-full">
           {[
