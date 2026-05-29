@@ -958,7 +958,7 @@ export default function Home() {
                 description: "소규모 오피스도 프레시밀온으로 직원 복지를 충실하게 구성할 수 있습니다."
               }
             ].map((story, idx) => (
-              <div key={idx} className="group cursor-pointer">
+              <div key={idx} className="group cursor-pointer scroll-reveal-stagger" data-reveal-item={idx}>
                 <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
                   <img
                     src={story.image}
@@ -987,7 +987,7 @@ export default function Home() {
 
           <div className="space-y-4">
             {faqs.map((faq, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-sm hover:shadow-md transition">
+              <div key={idx} className="bg-white rounded-lg shadow-sm hover:shadow-md transition scroll-reveal-stagger" data-reveal-item={idx}>
                 <button
                   onClick={() => setExpandedFAQ(expandedFAQ === idx ? null : idx)}
                   className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition"
