@@ -778,14 +778,14 @@ export default function Home() {
       {/* Actual Operating Meals Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">실제 운영중인 식단</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">신선한 재료로 만든 다양한 메뉴</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {meals.map((meal, idx) => (
-              <div key={idx}>
+              <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
                 <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative h-64 overflow-hidden group">
                     <img
@@ -839,9 +839,9 @@ export default function Home() {
       {/* Partner Companies Section */}
       <section className="py-16 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">함께하는 고객사</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
+          <div className="text-center mb-16 scroll-reveal">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">함께하는 고객사</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
           </div>
 
           <style>{`
