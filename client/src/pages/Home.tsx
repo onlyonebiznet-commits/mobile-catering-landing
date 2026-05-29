@@ -946,13 +946,13 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
               {
-                image: "/manus-storage/story1_c7ff773c.webp",
+                image: "/manus-storage/story_image_1_5ec94354.webp",
                 subtitle: "대형 오피스 추천",
                 title: "50인 이상 대형 오피스",
                 description: "넓은 공간에 최적화된 프레시밀온 솔루션으로 직원 만족도를 높였습니다."
               },
               {
-                image: "/manus-storage/story2_b2dd90e7.jpg",
+                image: "/manus-storage/story_image_2_21a852e8.webp",
                 subtitle: "즉시 입주 가능",
                 title: "즉시 입주 가능한 오피스",
                 description: "빠른 설치와 운영으로 입주 첫날부터 서비스를 시작할 수 있습니다."
