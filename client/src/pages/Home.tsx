@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock,
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
+import ServiceRecommendationChatbot from "@/components/ServiceRecommendationChatbot";
 import ThankYouPage from "@/pages/ThankYou";
 import { useLocation } from "wouter";
 
@@ -637,22 +638,8 @@ export default function Home() {
           animation: bounce-scale 2s ease-in-out infinite;
         }
       `}</style>
-      <button
-        onClick={() => setConsultationOpen(true)}
-        className="floating-btn fixed bottom-6 right-6 md:hidden z-40 w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:bg-[#004433] transition-all duration-300 flex items-center justify-center text-2xl font-bold hover:scale-110"
-        title="문의하기"
-      >
-        ?
-      </button>
-
-      {/* Center bottom floating button - All devices */}
-      <button
-        onClick={() => setConsultationOpen(true)}
-        className="floating-btn-center fixed bottom-6 left-1/2 z-40 px-8 py-4 bg-[#ED6325] text-white rounded-2xl shadow-xl hover:bg-[#d45a1f] transition-all duration-300 font-bold text-lg hover:shadow-2xl whitespace-nowrap"
-        title="지금 바로 상담 신청"
-      >
-        지금 바로 상담 신청
-      </button>
+      {/* Service Recommendation Chatbot */}
+      <ServiceRecommendationChatbot />
 
 
       {/* Statistics Section */}
