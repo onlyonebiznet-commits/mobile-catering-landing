@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { X } from "lucide-react";
 import { toast } from "sonner";
 
@@ -145,7 +146,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent 
         ref={contentRef}
-        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-lg overflow-hidden"
+        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-lg overflow-hidden bg-white"
         style={{
           maxHeight: 'min(75vh, calc(100vh - 120px))',
           width: 'calc(100vw - 32px)',
@@ -307,38 +308,64 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 </Label>
               </div>
 
-              <div className="space-y-2 pl-6">
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="personalInfoCollection"
-                    checked={agreements.personalInfoCollection}
-                    onCheckedChange={(checked) => handleAgreementChange("personalInfoCollection", checked as boolean)}
-                  />
-                  <Label htmlFor="personalInfoCollection" className="text-xs text-gray-600 cursor-pointer">
-                    개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="marketingConsent"
-                    checked={agreements.marketingConsent}
-                    onCheckedChange={(checked) => handleAgreementChange("marketingConsent", checked as boolean)}
-                  />
-                  <Label htmlFor="marketingConsent" className="text-xs text-gray-600 cursor-pointer">
-                    마케팅 정보 수신 동의
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="adConsent"
-                    checked={agreements.adConsent}
-                    onCheckedChange={(checked) => handleAgreementChange("adConsent", checked as boolean)}
-                  />
-                  <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer">
-                    광고성 정보 수신 동의
-                  </Label>
-                </div>
-              </div>
+              <Accordion type="single" collapsible className="w-full space-y-2">
+                <AccordionItem value="personal-info" className="border border-gray-200 rounded-lg px-3">
+                  <AccordionTrigger className="hover:no-underline py-3">
+                    <div className="flex items-center space-x-2 text-left">
+                      <Checkbox
+                        id="personalInfoCollection"
+                        checked={agreements.personalInfoCollection}
+                        onCheckedChange={(checked) => handleAgreementChange("personalInfoCollection", checked as boolean)}
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                      <Label htmlFor="personalInfoCollection" className="text-xs text-gray-600 cursor-pointer">
+                        개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
+                      </Label>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-xs text-gray-500 pb-3 pt-2 border-t">
+                    <p>개인정보 수집 및 이용에 대한 상세 내용입니다. 귀사의 개인정보는 상담 목적으로만 사용되며, 관련 법령에 따라 안전하게 보호됩니다.</p>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="marketing" className="border border-gray-200 rounded-lg px-3">
+                  <AccordionTrigger className="hover:no-underline py-3">
+                    <div className="flex items-center space-x-2 text-left">
+                      <Checkbox
+                        id="marketingConsent"
+                        checked={agreements.marketingConsent}
+                        onCheckedChange={(checked) => handleAgreementChange("marketingConsent", checked as boolean)}
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                      <Label htmlFor="marketingConsent" className="text-xs text-gray-600 cursor-pointer">
+                        마케팅 정보 수신 동의
+                      </Label>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-xs text-gray-500 pb-3 pt-2 border-t">
+                    <p>마케팅 정보 수신에 동의하시면 신제품 소개, 이벤트 정보 등을 받아보실 수 있습니다.</p>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="ad" className="border border-gray-200 rounded-lg px-3">
+                  <AccordionTrigger className="hover:no-underline py-3">
+                    <div className="flex items-center space-x-2 text-left">
+                      <Checkbox
+                        id="adConsent"
+                        checked={agreements.adConsent}
+                        onCheckedChange={(checked) => handleAgreementChange("adConsent", checked as boolean)}
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                      <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer">
+                        광고성 정보 수신 동의
+                      </Label>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-xs text-gray-500 pb-3 pt-2 border-t">
+                    <p>광고성 정보 수신에 동의하시면 프로모션 및 특별 혜택 정보를 받아보실 수 있습니다.</p>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
 
             {/* Submit Button */}
