@@ -352,7 +352,7 @@ export default function Home() {
           <div 
             className="flex h-full transition-transform duration-700 ease-in-out"
             style={{
-              transform: `translateX(-${(currentDietIndex % 3) * 100}%)`
+              transform: `translateX(${-(currentDietIndex % 3) * 100}%)`
             }}
           >
             {[
@@ -369,7 +369,7 @@ export default function Home() {
                 description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
               },
               {
-                image: '/manus-storage/KakaoTalk_20250219_171016456_04_51f3ea71.jpg',
+                image: '/manus-storage/banner3_3165e25d.jpg',
                 title: '신뢰할 수 있는 파트너',
                 highlight: '프레시밀온',
                 description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
@@ -475,7 +475,7 @@ export default function Home() {
                 description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
               },
               {
-                image: '/manus-storage/KakaoTalk_20250219_171016456_04_51f3ea71.jpg',
+                image: '/manus-storage/banner3_3165e25d.jpg',
                 title: '신뢰할 수 있는 파트너',
                 highlight: '프레시밀온',
                 description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
