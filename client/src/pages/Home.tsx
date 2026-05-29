@@ -1082,11 +1082,11 @@ export default function Home() {
                     href="https://blog.naver.com/cjfreshway_official"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:opacity-80 transition"
+                    className="text-gray-400 hover:text-white transition"
                     title="블로그"
                   >
                     <img
-                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/naver-blog-logo-NCxPZQP5SkeUC6AW2Cz6PJ.webp"
+                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/naver-blog-icon-7pn7QrRYH6x2jSTz7MSvNw.webp"
                       alt="네이버 블로그"
                       className="w-6 h-6"
                     />
