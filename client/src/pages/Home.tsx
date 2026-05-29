@@ -12,18 +12,19 @@ interface StatisticItemProps {
   end: number;
   suffix: string;
   label: string;
+  index?: number;
 }
 
-function StatisticItem({ end, suffix, label }: StatisticItemProps) {
+function StatisticItem({ end, suffix, label, index = 0 }: StatisticItemProps) {
   const { count, elementRef } = useCountUp({ end, duration: 1800 });
 
   return (
-    <div ref={elementRef} className="text-center scroll-reveal-stagger animate-in fade-in slide-in-from-bottom-2 duration-500">
+    <div ref={elementRef} className="text-center scroll-reveal-stagger">
       <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">
         {count.toLocaleString()}
         <span className="ml-1">{suffix}</span>
       </div>
-      <p className="text-gray-600 animate-in fade-in slide-in-from-bottom-2 duration-500" style={{ animationDelay: '0.2s' }}>
+      <p className="text-gray-600">
         {label}
       </p>
     </div>
@@ -669,10 +670,10 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatisticItem end={20} suffix="년" label="이상의 운영 경험" />
-            <StatisticItem end={300000} suffix="명" label="일일 제공 식수" />
-            <StatisticItem end={730} suffix="점" label="평균 만족도" />
-            <StatisticItem end={99} suffix="%" label="고객 만족도" />
+            <StatisticItem end={20} suffix="년" label="이상의 운영 경험" index={0} />
+            <StatisticItem end={300000} suffix="명" label="일일 제공 식수" index={1} />
+            <StatisticItem end={730} suffix="점" label="평균 만족도" index={2} />
+            <StatisticItem end={99} suffix="%" label="고객 만족도" index={3} />
           </div>
         </div>
       </section>

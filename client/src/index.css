@@ -307,6 +307,23 @@
     transition-delay: 0.75s;
   }
 
+  /* Statistics section specific stagger - more generous delays */
+  .scroll-reveal-stagger[data-reveal-item="0"].visible {
+    transition-delay: 0s;
+  }
+
+  .scroll-reveal-stagger[data-reveal-item="1"].visible {
+    transition-delay: 0.15s;
+  }
+
+  .scroll-reveal-stagger[data-reveal-item="2"].visible {
+    transition-delay: 0.3s;
+  }
+
+  .scroll-reveal-stagger[data-reveal-item="3"].visible {
+    transition-delay: 0.45s;
+  }
+
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     .scroll-reveal,
