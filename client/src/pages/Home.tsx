@@ -5,6 +5,7 @@ import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
 import ServiceRecommendationChatbot from "@/components/ServiceRecommendationChatbot";
+import FloatingActionButtons from "@/components/FloatingActionButtons";
 import ThankYouPage from "@/pages/ThankYou";
 import { useLocation } from "wouter";
 
@@ -1157,6 +1158,12 @@ export default function Home() {
       {/* Modals */}
       {consultationOpen && <ConsultationModal onClose={() => setConsultationOpen(false)} />}
       {materialOpen && <MaterialRequestModal onClose={() => setMaterialOpen(false)} />}
+
+      {/* Floating Action Buttons */}
+      <FloatingActionButtons />
+
+      {/* Service Recommendation Chatbot */}
+      <ServiceRecommendationChatbot />
     </div>
   );
 }
