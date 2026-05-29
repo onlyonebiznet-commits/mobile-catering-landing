@@ -449,71 +449,75 @@ export default function Home() {
               highlight: '프레시밀온',
               description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
             }
-          ].map((banner, idx) => (
-            <div
-              key={idx}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                idx === currentDietIndex % 3 ? 'opacity-100' : 'opacity-0'
-              }`}
-              style={{
-                backgroundImage: `url('${banner.image}')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
-            >
-              <div className="absolute inset-0 bg-black/50"></div>
-              <div className="relative h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto w-full">
-                  <p className="text-white text-lg mb-4 font-semibold drop-shadow-lg animate-in fade-in slide-in-from-left-4 duration-700">{banner.subtitle}</p>
-                  <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg animate-in fade-in slide-in-from-left-4 duration-700 delay-100">{banner.title}</h1>
-                  <h2 className="text-4xl md:text-5xl font-bold text-[#ED6325] mb-8 drop-shadow-lg animate-in fade-in slide-in-from-left-4 duration-700 delay-200">{banner.highlight}</h2>
-                  <p className="text-white text-lg md:text-xl max-w-2xl mb-8 drop-shadow-lg leading-relaxed animate-in fade-in slide-in-from-left-4 duration-700 delay-300">{banner.description}</p>
-                  <div className="flex gap-4 animate-in fade-in slide-in-from-left-4 duration-700 delay-500">
-                    <button
-                      onClick={() => setConsultationOpen(true)}
-                      className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
-                    >
-                      지금 상담받기
-                    </button>
-                    <button
-                      onClick={() => setMaterialOpen(true)}
-                      className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
-                    >
-                      자료 다운로드
-                    </button>
+          ].map((banner, idx) => {
+            const isActive = idx === currentDietIndex % 3;
+            const isPrev = idx === (currentDietIndex - 1 + 3) % 3;
+            return (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                  isActive ? 'opacity-100 scale-100 rotate-0' : isPrev ? 'opacity-0 scale-95 -rotate-12 -translate-x-full' : 'opacity-0 scale-105 rotate-12 translate-x-full'
+                }`}
+                style={{
+                  backgroundImage: `url('${banner.image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              >
+                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="relative h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-7xl mx-auto w-full">
+                    <p className={`text-white text-lg mb-2 font-semibold drop-shadow-lg transition-all duration-700 ${
+                      isActive ? 'animate-in fade-in slide-in-from-left-4' : 'opacity-0'
+                    }`}>{banner.subtitle}</p>
+                    <h1 className={`text-5xl md:text-6xl font-bold text-white mb-3 drop-shadow-lg transition-all duration-700 ${
+                      isActive ? 'animate-in fade-in slide-in-from-left-4 delay-100' : 'opacity-0'
+                    }`}>{banner.title}</h1>
+                    <h2 className={`text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg transition-all duration-700 ${
+                      isActive ? 'animate-in fade-in slide-in-from-left-4 delay-200' : 'opacity-0'
+                    }`}>{banner.highlight}</h2>
+                    <p className={`text-white text-lg md:text-xl max-w-2xl mb-8 drop-shadow-lg leading-relaxed transition-all duration-700 ${
+                      isActive ? 'animate-in fade-in slide-in-from-left-4 delay-300' : 'opacity-0'
+                    }`}>{banner.description}</p>
+                    <div className={`flex gap-4 transition-all duration-700 ${
+                      isActive ? 'animate-in fade-in slide-in-from-left-4 delay-500' : 'opacity-0'
+                    }`}>
+                      <button
+                        onClick={() => setConsultationOpen(true)}
+                        className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
+                      >
+                        지금 상담받기
+                      </button>
+                      <button
+                        onClick={() => setMaterialOpen(true)}
+                        className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
+                      >
+                        자료 다운로드
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Banner Navigation */}
-        <div className="absolute bottom-8 left-8 flex items-center gap-6 z-10">
-          <div className="flex items-center gap-2">
-            <span className="text-white font-bold text-lg">0{(currentDietIndex % 3) + 1}</span>
-            <div className="w-16 h-1 bg-white/30 rounded-full">
-              <div
-                className="h-full bg-white rounded-full transition-all duration-500"
-                style={{ width: `${((currentDietIndex % 3) + 1) * 33.33}%` }}
-              ></div>
-            </div>
-            <span className="text-white font-bold text-lg">03</span>
-          </div>
-          <div className="flex gap-3">
-            <button
-              onClick={() => setCurrentDietIndex((prev) => (prev - 1 + 3) % 3)}
-              className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition text-white"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={() => setCurrentDietIndex((prev) => (prev + 1) % 3)}
-              className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition text-white"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
+        {/* Banner Navigation - Right Bottom */}
+        <div className="absolute bottom-8 right-8 flex gap-3 z-10">
+          <button
+            onClick={() => setCurrentDietIndex((prev) => (prev - 1 + 3) % 3)}
+            className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition text-white hover:scale-110 transform duration-300"
+            title="이전"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={() => setCurrentDietIndex((prev) => (prev + 1) % 3)}
+            className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition text-white hover:scale-110 transform duration-300"
+            title="다음"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
       </section>
 
