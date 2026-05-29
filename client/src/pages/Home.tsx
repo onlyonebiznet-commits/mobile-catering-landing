@@ -352,7 +352,7 @@ export default function Home() {
           <div 
             className="flex h-full transition-transform duration-700 ease-in-out"
             style={{
-              transform: `translateX(calc(${currentDietIndex % 3} * -100%))`
+              transform: `translateX(calc(-${(currentDietIndex % 3) * 100}%))`
             }}
           >
             {[
