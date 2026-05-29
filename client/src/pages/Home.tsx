@@ -456,7 +456,7 @@ export default function Home() {
               <div
                 key={idx}
                 className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                  isActive ? 'opacity-100 scale-100 rotate-0' : isPrev ? 'opacity-0 scale-95 -rotate-12 -translate-x-full' : 'opacity-0 scale-105 rotate-12 translate-x-full'
+                  isActive ? 'opacity-100 translate-x-0' : isPrev ? 'opacity-0 translate-x-full' : 'opacity-0 -translate-x-full'
                 }`}
                 style={{
                   backgroundImage: `url('${banner.image}')`,
@@ -467,9 +467,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/50"></div>
                 <div className="relative h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
                   <div className="max-w-7xl mx-auto w-full">
-                    <p className={`text-white text-lg mb-2 font-semibold drop-shadow-lg transition-all duration-700 ${
-                      isActive ? 'animate-in fade-in slide-in-from-left-4' : 'opacity-0'
-                    }`}>{banner.subtitle}</p>
+
                     <h1 className={`text-5xl md:text-6xl font-bold text-white mb-3 drop-shadow-lg transition-all duration-700 ${
                       isActive ? 'animate-in fade-in slide-in-from-left-4 delay-100' : 'opacity-0'
                     }`}>{banner.title}</h1>
@@ -503,20 +501,20 @@ export default function Home() {
         </div>
 
         {/* Banner Navigation - Right Bottom */}
-        <div className="absolute bottom-8 right-8 flex gap-3 z-10">
+        <div className="absolute bottom-8 right-8 flex gap-4 z-10">
           <button
             onClick={() => setCurrentDietIndex((prev) => (prev - 1 + 3) % 3)}
-            className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition text-white hover:scale-110 transform duration-300"
+            className="text-white hover:text-white/80 transition duration-300 hover:scale-125 transform"
             title="이전"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-8 h-8" />
           </button>
           <button
             onClick={() => setCurrentDietIndex((prev) => (prev + 1) % 3)}
-            className="p-3 rounded-full bg-white/20 hover:bg-white/40 transition text-white hover:scale-110 transform duration-300"
+            className="text-white hover:text-white/80 transition duration-300 hover:scale-125 transform"
             title="다음"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-8 h-8" />
           </button>
         </div>
       </section>
