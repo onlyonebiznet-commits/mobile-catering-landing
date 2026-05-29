@@ -14,6 +14,7 @@ const ServiceRecommendationChatbot = () => {
     service: '',
     environment: '',
     people: '',
+    region: '',
     inquiry: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -76,6 +77,7 @@ const ServiceRecommendationChatbot = () => {
         service: '',
         environment: '',
         people: '',
+        region: '',
         inquiry: ''
       });
       setSubmitted(false);
@@ -218,14 +220,24 @@ const ServiceRecommendationChatbot = () => {
                     />
                   </div>
 
-                  <input
-                    type="text"
-                    name="people"
-                    placeholder="예상 식수"
-                    value={formData.people}
-                    onChange={handleFormChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
-                  />
+                  <div className="grid grid-cols-2 gap-3">
+                    <input
+                      type="text"
+                      name="people"
+                      placeholder="예상 식수"
+                      value={formData.people}
+                      onChange={handleFormChange}
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                    />
+                    <input
+                      type="text"
+                      name="region"
+                      placeholder="희망 지역"
+                      value={formData.region}
+                      onChange={handleFormChange}
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                    />
+                  </div>
 
                   <textarea
                     name="inquiry"
