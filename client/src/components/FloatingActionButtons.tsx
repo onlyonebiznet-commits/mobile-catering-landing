@@ -83,19 +83,15 @@ export default function FloatingActionButtons() {
           onTouchEnd={handleTouchEnd}
         >
           {/* Floating item container */}
-          <div className="relative inline-block h-14 w-14">
+          <div className="relative inline-block">
             {/* Text Label Pill - Behind the icon */}
             <div
               className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-                isExpanded("top") ? "w-40" : "w-14"
+                isExpanded("top") ? "w-40 opacity-100 visible" : "w-0 opacity-0 invisible"
               }`}
               style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
             >
-              <div
-                className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
-                  isExpanded("top") ? "opacity-100" : "opacity-0"
-                }`}
-              >
+              <div className="whitespace-nowrap text-white font-medium text-sm">
                 맨 위로
               </div>
             </div>
@@ -103,7 +99,7 @@ export default function FloatingActionButtons() {
             {/* Circular Icon Button - On top */}
             <button
               onClick={scrollToTop}
-              className="absolute right-0 top-0 w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center"
+              className="relative w-14 h-14 rounded-full bg-[#005B44] text-white shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center"
               style={{ zIndex: 3 }}
               aria-label="맨 위로 이동"
               title="Top"
@@ -124,19 +120,15 @@ export default function FloatingActionButtons() {
           onTouchEnd={handleTouchEnd}
         >
           {/* Floating item container */}
-          <div className="relative inline-block h-14 w-14">
+          <div className="relative inline-block">
             {/* Text Label Pill - Behind the icon */}
             <div
               className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-                isExpanded("consultation") ? "w-40" : "w-14"
+                isExpanded("consultation") ? "w-40 opacity-100 visible" : "w-0 opacity-0 invisible"
               }`}
               style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
             >
-              <div
-                className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
-                  isExpanded("consultation") ? "opacity-100" : "opacity-0"
-                }`}
-              >
+              <div className="whitespace-nowrap text-white font-medium text-sm">
                 맞춤 상담하기
               </div>
             </div>
@@ -144,7 +136,7 @@ export default function FloatingActionButtons() {
             {/* Circular Icon Button - On top */}
             <button
               onClick={scrollToChatbot}
-              className="absolute right-0 top-0 w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center"
+              className="relative w-14 h-14 rounded-full bg-[#005B44] text-white shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center"
               style={{ zIndex: 3 }}
               aria-label="맞춤 상담"
               title="맞춤 상담"
