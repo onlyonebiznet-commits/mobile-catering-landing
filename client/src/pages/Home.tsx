@@ -1013,12 +1013,12 @@ export default function Home() {
           {/* Video Section */}
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 md:mb-16">
+          <div className="text-center mb-8 md:mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4">프레시밀온 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
           </div>
 
-          <div className="bg-black rounded-lg overflow-hidden aspect-video w-full">
+          <div className="bg-black rounded-lg overflow-hidden aspect-video w-full scroll-reveal">
             <video
               width="100%"
               height="100%"
@@ -1037,10 +1037,10 @@ export default function Home() {
 
       {/* Final CTA Section */}
       <section className="py-20 bg-[#005B44]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2">직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8">신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal-stagger" data-reveal-item="0">
             <button
               onClick={() => setConsultationOpen(true)}
               className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-gray-100 transition duration-300 font-semibold"
