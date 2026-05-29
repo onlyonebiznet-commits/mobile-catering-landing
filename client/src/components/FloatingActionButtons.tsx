@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { ChevronUp } from "lucide-react";
+import { ChevronUp, MessageCircle } from "lucide-react";
 
 export default function FloatingActionButtons() {
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredButton, setHoveredButton] = useState<string | null>(null);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -40,32 +41,70 @@ export default function FloatingActionButtons() {
 
   return (
     <>
-      {/* Top Button */}
+      {/* Top Button - Telegram Style */}
       {isVisible && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
-          aria-label="Top으로 이동"
-          title="Top"
+        <div
+          className="fixed bottom-24 right-6 z-40"
+          onMouseEnter={() => setHoveredButton("top")}
+          onMouseLeave={() => setHoveredButton(null)}
         >
-          <ChevronUp className="w-6 h-6 group-hover:translate-y-1 transition-transform" />
-        </button>
+          <button
+            onClick={scrollToTop}
+            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
+            aria-label="맨 위로 이동"
+            title="Top"
+          >
+            <ChevronUp className="w-6 h-6" />
+          </button>
+
+          {/* Expanded Text Area */}
+          <div
+            className={`absolute right-0 top-1/2 -translate-y-1/2 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
+              hoveredButton === "top" ? "w-40 pr-14" : "w-0"
+            }`}
+          >
+            <div
+              className={`pl-4 whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
+                hoveredButton === "top" ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              맨 위로 이동
+            </div>
+          </div>
+        </div>
       )}
 
-      {/* Consultation Button */}
+      {/* Consultation Button - Telegram Style */}
       {isVisible && (
-        <button
-          onClick={scrollToChatbot}
-          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-semibold text-xs"
-          aria-label="맞춤 상담"
-          title="맞춤 상담"
+        <div
+          className="fixed bottom-6 right-6 z-40"
+          onMouseEnter={() => setHoveredButton("consultation")}
+          onMouseLeave={() => setHoveredButton(null)}
         >
-          <span className="text-center leading-tight">
-            맞춤
-            <br />
-            상담
-          </span>
-        </button>
+          <button
+            onClick={scrollToChatbot}
+            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
+            aria-label="맞춤 상담"
+            title="맞춤 상담"
+          >
+            <MessageCircle className="w-6 h-6" />
+          </button>
+
+          {/* Expanded Text Area */}
+          <div
+            className={`absolute right-0 top-1/2 -translate-y-1/2 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
+              hoveredButton === "consultation" ? "w-40 pr-14" : "w-0"
+            }`}
+          >
+            <div
+              className={`pl-4 whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
+                hoveredButton === "consultation" ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              맞춤 상담하기
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
