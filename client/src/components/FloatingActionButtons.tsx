@@ -4,6 +4,7 @@ import { ChevronUp, MessageCircle } from "lucide-react";
 export default function FloatingActionButtons() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  const [touchedButton, setTouchedButton] = useState<string | null>(null);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -32,12 +33,40 @@ export default function FloatingActionButtons() {
     }
   };
 
+  // Handle touch events for mobile
+  const handleTouchStart = (buttonName: string) => {
+    setTouchedButton(buttonName);
+  };
+
+  const handleTouchEnd = () => {
+    setTouchedButton(null);
+  };
+
+  // Get expanded state (hover on desktop or touch on mobile)
+  const isExpanded = (buttonName: string) => {
+    return hoveredButton === buttonName || touchedButton === buttonName;
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", toggleVisibility);
     return () => {
       window.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
+
+  // Close touch state when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setTouchedButton(null);
+    };
+
+    if (touchedButton) {
+      document.addEventListener("click", handleClickOutside);
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }
+  }, [touchedButton]);
 
   return (
     <>
@@ -47,6 +76,8 @@ export default function FloatingActionButtons() {
           className="fixed bottom-24 right-6 z-40"
           onMouseEnter={() => setHoveredButton("top")}
           onMouseLeave={() => setHoveredButton(null)}
+          onTouchStart={() => handleTouchStart("top")}
+          onTouchEnd={handleTouchEnd}
         >
           <button
             onClick={scrollToTop}
@@ -60,12 +91,12 @@ export default function FloatingActionButtons() {
           {/* Expanded Text Area */}
           <div
             className={`absolute right-0 top-1/2 -translate-y-1/2 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-              hoveredButton === "top" ? "w-40 pr-14" : "w-0"
+              isExpanded("top") ? "w-40 pr-14" : "w-0"
             }`}
           >
             <div
               className={`pl-4 whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
-                hoveredButton === "top" ? "opacity-100" : "opacity-0"
+                isExpanded("top") ? "opacity-100" : "opacity-0"
               }`}
             >
               맨 위로 이동
@@ -80,6 +111,8 @@ export default function FloatingActionButtons() {
           className="fixed bottom-6 right-6 z-40"
           onMouseEnter={() => setHoveredButton("consultation")}
           onMouseLeave={() => setHoveredButton(null)}
+          onTouchStart={() => handleTouchStart("consultation")}
+          onTouchEnd={handleTouchEnd}
         >
           <button
             onClick={scrollToChatbot}
@@ -93,12 +126,12 @@ export default function FloatingActionButtons() {
           {/* Expanded Text Area */}
           <div
             className={`absolute right-0 top-1/2 -translate-y-1/2 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-              hoveredButton === "consultation" ? "w-40 pr-14" : "w-0"
+              isExpanded("consultation") ? "w-40 pr-14" : "w-0"
             }`}
           >
             <div
               className={`pl-4 whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
-                hoveredButton === "consultation" ? "opacity-100" : "opacity-0"
+                isExpanded("consultation") ? "opacity-100" : "opacity-0"
               }`}
             >
               맞춤 상담하기

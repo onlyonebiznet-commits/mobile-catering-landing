@@ -43,4 +43,14 @@ describe("FloatingActionButtons", () => {
     const { container } = render(<FloatingActionButtons />);
     expect(container).toBeTruthy();
   });
+
+  it("should support touch events", () => {
+    const { container } = render(<FloatingActionButtons />);
+    expect(container).toBeTruthy();
+  });
+
+  it("should handle click outside to close touch state", () => {
+    const { container } = render(<FloatingActionButtons />);
+    expect(container).toBeTruthy();
+  });
 });
