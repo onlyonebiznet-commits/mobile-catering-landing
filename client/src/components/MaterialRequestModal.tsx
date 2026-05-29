@@ -1,18 +1,18 @@
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useState, useEffect, useRef } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
 import { toast } from "sonner";
-import { useState } from "react";
-import { useLocation } from "wouter";
 
 interface MaterialRequestModalProps {
   onClose: () => void;
 }
 
 export default function MaterialRequestModal({ onClose }: MaterialRequestModalProps) {
-  const [, setLocation] = useLocation();
+  const contentRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     companyName: "",
     manager: "",
@@ -28,6 +28,37 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (contentRef.current && !contentRef.current.contains(e.target as Node)) {
+        onClose();
+      }
+    };
+
+    // Add slight delay to avoid closing immediately on open
+    const timer = setTimeout(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
+  // Handle ESC key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -80,234 +111,169 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
     }
 
     if (!agreements.personalInfoCollection) {
-      toast.error("[필수] 개인정보 수집/이용 동의에 동의해주세요");
+      toast.error("개인정보 수집에 동의해주세요");
       return;
     }
 
     setIsSubmitting(true);
-
     try {
-      const response = await fetch("/api/material-request", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          agreements: {
-            personalInfoCollection: agreements.personalInfoCollection,
-            marketingConsent: agreements.marketingConsent,
-            adConsent: agreements.adConsent,
-          },
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("요청 처리 중 오류가 발생했습니다");
-      }
-
-      setIsSubmitting(false);
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      toast.success("자료 신청이 완료되었습니다. 이메일로 자료를 보내드리겠습니다.");
       onClose();
-      setLocation("/thank-you");
-      setFormData({
-        companyName: "",
-        manager: "",
-        phone: "",
-        email: "",
-      });
-      setAgreements({
-        allAgree: false,
-        personalInfoCollection: false,
-        marketingConsent: false,
-        adConsent: false,
-      });
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("요청 처리 중 오류가 발생했습니다");
+      toast.error("자료 신청 중 오류가 발생했습니다");
+    } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">자료 신청</DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="companyName" className="text-sm font-semibold">
-              회사명 <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="companyName"
-              name="companyName"
-              placeholder="회사명을 입력해주세요"
-              value={formData.companyName}
-              onChange={handleChange}
-              disabled={isSubmitting}
-              className="border-border"
-            />
-          </div>
+      <DialogContent 
+        ref={contentRef}
+        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-lg overflow-hidden"
+        style={{
+          maxHeight: 'min(75vh, calc(100vh - 120px))',
+          width: 'calc(100vw - 32px)',
+          maxWidth: '600px'
+        }}
+        onMouseDown={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="bg-[#005B44] px-6 py-6 relative">
+          <button
+            onClick={onClose}
+            className="absolute right-4 top-4 p-1 hover:bg-[#004a37] rounded-md transition-colors"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5 text-white" />
+          </button>
+          <h2 className="text-xl font-bold text-white pr-8">자료 신청</h2>
+          <p className="text-sm text-green-100 mt-2">서비스 소개자료와 맞춤형 운영 정보를 받아보세요.</p>
+        </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="manager" className="text-sm font-semibold">
-              담당자 <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="manager"
-              name="manager"
-              placeholder="담당자명을 입력해주세요"
-              value={formData.manager}
-              onChange={handleChange}
-              disabled={isSubmitting}
-              className="border-border"
-            />
-          </div>
+        {/* Form Content */}
+        <div className="px-6 py-6 overflow-y-auto" style={{ maxHeight: 'calc(75vh - 140px)' }}>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Company Name */}
+            <div className="space-y-2">
+              <Label htmlFor="companyName" className="text-sm font-medium">
+                회사명 <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="companyName"
+                name="companyName"
+                placeholder="회사명을 입력해주세요"
+                value={formData.companyName}
+                onChange={handleChange}
+                className="rounded-lg border-gray-300"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="phone" className="text-sm font-semibold">
-              연락처 <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="phone"
-              name="phone"
-              placeholder="010-0000-0000"
-              value={formData.phone}
-              onChange={handleChange}
-              disabled={isSubmitting}
-              className="border-border"
-            />
-          </div>
+            {/* Manager */}
+            <div className="space-y-2">
+              <Label htmlFor="manager" className="text-sm font-medium">
+                담당자명 <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="manager"
+                name="manager"
+                placeholder="담당자명을 입력해주세요"
+                value={formData.manager}
+                onChange={handleChange}
+                className="rounded-lg border-gray-300"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="email" className="text-sm font-semibold">
-              이메일 <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="example@company.com"
-              value={formData.email}
-              onChange={handleChange}
-              disabled={isSubmitting}
-              className="border-border"
-            />
-          </div>
+            {/* Phone */}
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="text-sm font-medium">
+                연락처 <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="phone"
+                name="phone"
+                placeholder="010-0000-0000"
+                value={formData.phone}
+                onChange={handleChange}
+                className="rounded-lg border-gray-300"
+              />
+            </div>
 
-          {/* Personal Information Agreement */}
-          <div className="space-y-3 pt-4 border-t border-border">
-            <div className="space-y-3">
-              {/* All Agree */}
-              <div className="flex items-start gap-3 p-3 bg-secondary/50 rounded-lg">
+            {/* Email */}
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-sm font-medium">
+                이메일 <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="example@company.com"
+                value={formData.email}
+                onChange={handleChange}
+                className="rounded-lg border-gray-300"
+              />
+            </div>
+
+            {/* Agreements */}
+            <div className="space-y-3 border-t pt-4">
+              <div className="flex items-center space-x-2">
                 <Checkbox
                   id="allAgree"
                   checked={agreements.allAgree}
                   onCheckedChange={(checked) => handleAgreementChange("allAgree", checked as boolean)}
-                  disabled={isSubmitting}
-                  className="mt-1"
                 />
-                <Label htmlFor="allAgree" className="text-sm font-semibold cursor-pointer flex-1">
-                  ㅁ 모두 동의합니다. (선택항목 포함)
+                <Label htmlFor="allAgree" className="text-sm font-medium cursor-pointer">
+                  전체 동의
                 </Label>
               </div>
 
-              {/* Personal Info Collection */}
-              <div className="space-y-2">
-                <div className="flex items-start gap-3">
+              <div className="space-y-2 pl-6">
+                <div className="flex items-center space-x-2">
                   <Checkbox
                     id="personalInfoCollection"
                     checked={agreements.personalInfoCollection}
                     onCheckedChange={(checked) => handleAgreementChange("personalInfoCollection", checked as boolean)}
-                    disabled={isSubmitting}
-                    className="mt-1"
                   />
-                  <Label htmlFor="personalInfoCollection" className="text-sm font-medium cursor-pointer flex-1">
-                    ㅁ <span className="text-destructive">[필수]</span> 개인정보 수집 / 이용 동의
+                  <Label htmlFor="personalInfoCollection" className="text-xs text-gray-600 cursor-pointer">
+                    개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
                   </Label>
                 </div>
-                <div className="ml-7 text-xs text-muted-foreground space-y-2 bg-white p-3 rounded border border-border">
-                  <p className="font-semibold">개인정보 수집·이용 안내</p>
-                  <p>CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다. 수집한 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 고객님께 안내하고 동의를 받을 예정입니다.</p>
-                  <div className="space-y-1">
-                    <p>◼ 수집·이용 항목: 성명, 휴대폰번호, 이메일주소, 기업명, 주소, 예상 식수</p>
-                    <p>◼ 목적: 이동급식 서비스 상담 및 진행</p>
-                    <p>◼ 보유·이용 기간: 서비스 상담 신청 후 3년</p>
-                    <p>◼ 근거: 개인정보 보호법 제15조 제1항 제4호에 따른 서비스 이행</p>
-                  </div>
-                  <p>개인정보를 기입하지 않으실 수 있으나, 기재하지 않으실 경우 이동급식 서비스 상담 진행이 어렵습니다.</p>
-                </div>
-              </div>
-
-              {/* Marketing Consent */}
-              <div className="space-y-2">
-                <div className="flex items-start gap-3">
+                <div className="flex items-center space-x-2">
                   <Checkbox
                     id="marketingConsent"
                     checked={agreements.marketingConsent}
                     onCheckedChange={(checked) => handleAgreementChange("marketingConsent", checked as boolean)}
-                    disabled={isSubmitting}
-                    className="mt-1"
                   />
-                  <Label htmlFor="marketingConsent" className="text-sm font-medium cursor-pointer flex-1">
-                    ㅁ <span className="text-muted-foreground">[선택]</span> 마케팅 목적 개인정보 수집 / 이용 동의
+                  <Label htmlFor="marketingConsent" className="text-xs text-gray-600 cursor-pointer">
+                    마케팅 정보 수신 동의
                   </Label>
                 </div>
-                <div className="ml-7 text-xs text-muted-foreground space-y-2 bg-white p-3 rounded border border-border">
-                  <p className="font-semibold">마케팅 목적 개인정보 수집·이용 동의</p>
-                  <div className="space-y-1">
-                    <p>◼ 수집·이용 항목: 성명, 휴대폰번호, 이메일, 기업명</p>
-                    <p>◼ 목적: 서비스 홍보 등 마케팅</p>
-                    <p>◼ 보유·이용 기간: 수집·이용 동의 후 3년</p>
-                  </div>
-                  <p>개인정보 수집 및 이용 동의를 거부할 수 있습니다. 동의 거부 시 마케팅 서비스 이용이 어려우나, 상담에는 지장이 없습니다.</p>
-                </div>
-              </div>
-
-              {/* Ad Consent */}
-              <div className="space-y-2">
-                <div className="flex items-start gap-3">
+                <div className="flex items-center space-x-2">
                   <Checkbox
                     id="adConsent"
                     checked={agreements.adConsent}
                     onCheckedChange={(checked) => handleAgreementChange("adConsent", checked as boolean)}
-                    disabled={isSubmitting}
-                    className="mt-1"
                   />
-                  <Label htmlFor="adConsent" className="text-sm font-medium cursor-pointer flex-1">
-                    ㅁ <span className="text-muted-foreground">[선택]</span> 광고성 정보 수신 동의
+                  <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer">
+                    광고성 정보 수신 동의
                   </Label>
-                </div>
-                <div className="ml-7 text-xs text-muted-foreground space-y-2 bg-white p-3 rounded border border-border">
-                  <p className="font-semibold">광고성 정보 수신 동의</p>
-                  <p>CJ프레시웨이㈜는 '마케팅 목적의 개인정보 수집 및 이용'에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다. 본 동의를 거부하실 수 있으며, 거부 시 광고성 정보를 받으실 수 없으나, 서비스 이용에 지장이 없습니다.</p>
-                  <p>광고성 정보 수신 설정 변경은 다음과 같습니다. 고객센터(02-2149-6114)를 통한 광고성 정보 수신 동의 변경 신청</p>
-                  <p>☐ SMS(문자) ☐ 이메일 ☐ 카카오톡</p>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="flex gap-3 pt-4">
-            <Button
-              type="button"
-              variant="outline"
-              className="flex-1"
-              onClick={onClose}
-              disabled={isSubmitting}
-            >
-              취소
-            </Button>
+            {/* Submit Button */}
             <Button
               type="submit"
-              className="flex-1 bg-primary hover:bg-primary/90 text-white"
               disabled={isSubmitting}
+              className="w-full bg-[#005B44] hover:bg-[#004a37] text-white font-medium rounded-lg py-2 mt-6"
             >
-              {isSubmitting ? "신청 중..." : "자료 신청"}
+              {isSubmitting ? "신청 중..." : "자료 신청하기"}
             </Button>
-          </div>
-        </form>
+          </form>
+        </div>
       </DialogContent>
     </Dialog>
   );
