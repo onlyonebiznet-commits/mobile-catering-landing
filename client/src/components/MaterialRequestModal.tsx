@@ -140,6 +140,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
           maxWidth: '600px'
         }}
         onMouseDown={(e) => e.stopPropagation()}
+        showCloseButton={false}
       >
         {/* Header */}
         <div className="bg-[#005B44] px-6 py-6 relative">
