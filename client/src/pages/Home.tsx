@@ -347,37 +347,35 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Hero Section with Integrated Header */}
       <section className="relative h-[85vh] overflow-hidden">
-        {/* Banner Carousel - Seamless Slider */}
-        <div className="relative w-full h-full overflow-hidden">
-          <div 
-            className="flex h-full transition-transform duration-700 ease-in-out"
-            style={{
-              transform: `translateX(calc(${currentDietIndex % 3} * -100%))`
-            }}
-          >
-            {[
-              {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
-                title: '직원 복지의 새로운 기준',
-                highlight: '프레시밀온',
-                description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
-              },
-              {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
-                title: '이동형 밀솔루션의 혁신',
-                highlight: '프레시밀온',
-                description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
-              },
-              {
-                image: '/manus-storage/hero-office-meal_08208dd3.png',
-                title: '신뢰할 수 있는 파트너',
-                highlight: '프레시밀온',
-                description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
-              }
-            ].map((banner, idx) => (
+        {/* Banner Carousel Background */}
+        <div className="absolute inset-0">
+          {[
+            {
+              image: '/manus-storage/hero-office-meal_08208dd3.png',
+              title: '직원 복지의 새로운 기준',
+              highlight: '프레시밀온',
+              description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+            },
+            {
+              image: '/manus-storage/hero-office-meal_08208dd3.png',
+              title: '이동형 밀솔루션의 혁신',
+              highlight: '프레시밀온',
+              description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+            },
+            {
+              image: '/manus-storage/hero-office-meal_08208dd3.png',
+              title: '신뢰할 수 있는 파트너',
+              highlight: '프레시밀온',
+              description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+            }
+          ].map((banner, idx) => {
+            const isActive = idx === currentDietIndex % 3;
+            return (
               <div
                 key={idx}
-                className="relative w-full h-full flex-shrink-0"
+                className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                  isActive ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+                }`}
                 style={{
                   backgroundImage: `url('${banner.image}')`,
                   backgroundSize: 'cover',
@@ -387,19 +385,9 @@ export default function Home() {
                 <div className={`absolute inset-0 transition-all duration-300 ${
                   scrolled ? 'bg-black/60' : 'bg-black/40'
                 }`}></div>
-                {/* Banner Text Content */}
-                <div className="absolute inset-0 flex items-center justify-start">
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                    <div className="max-w-2xl">
-                      <p className="text-white/80 text-sm md:text-base mb-2">{banner.title}</p>
-                      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">{banner.highlight}</h1>
-                      <p className="text-white/90 text-base md:text-lg leading-relaxed">{banner.description}</p>
-                    </div>
-                  </div>
-                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
         {/* Fixed Header */}
