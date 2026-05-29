@@ -52,6 +52,14 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Auto-play banner carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDietIndex((prev) => (prev + 1) % 3);
+    }, 5000); // Change banner every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
 
 
   if (location === "/thank-you") {
@@ -338,7 +346,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Integrated Header */}
-      <section className="relative h-1/3 overflow-hidden">
+      <section className="relative h-[85vh] overflow-hidden">
         {/* Banner Carousel Background */}
         <div className="absolute inset-0">
           {[
@@ -365,8 +373,8 @@ export default function Home() {
             return (
               <div
                 key={idx}
-                className={`absolute inset-0 ${
-                  isActive ? 'block' : 'hidden'
+                className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                  isActive ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
                 }`}
                 style={{
                   backgroundImage: `url('${banner.image}')`,
