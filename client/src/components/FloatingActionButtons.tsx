@@ -76,72 +76,82 @@ export default function FloatingActionButtons() {
       {/* Top Button */}
       {isVisible && (
         <div
-          className="fixed bottom-24 right-6 z-40 flex items-center"
+          className="fixed bottom-24 right-6 z-40"
           onMouseEnter={() => setHoveredButton("top")}
           onMouseLeave={() => setHoveredButton(null)}
           onTouchStart={() => handleTouchStart("top")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Expanded Text Pill - Behind the icon */}
-          <div
-            className={`absolute right-14 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
-              isExpanded("top") ? "w-40 pr-4" : "w-0"
-            }`}
-          >
+          {/* Wrapper with relative positioning */}
+          <div className="relative inline-flex items-center h-14">
+            {/* Text Label Pill - Behind the icon */}
             <div
-              className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
-                isExpanded("top") ? "opacity-100" : "opacity-0"
+              className={`absolute right-7 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
+                isExpanded("top") ? "w-40 pr-4" : "w-0"
               }`}
+              style={{ zIndex: 1 }}
             >
-              맨 위로
+              <div
+                className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
+                  isExpanded("top") ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                맨 위로
+              </div>
             </div>
-          </div>
 
-          {/* Circular Icon Button - Always on top */}
-          <button
-            onClick={scrollToTop}
-            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0 relative z-10"
-            aria-label="맨 위로 이동"
-            title="Top"
-          >
-            <ChevronUp className="w-6 h-6" />
-          </button>
+            {/* Circular Icon Button - Always on top */}
+            <button
+              onClick={scrollToTop}
+              className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
+              style={{ position: "relative", zIndex: 2 }}
+              aria-label="맨 위로 이동"
+              title="Top"
+            >
+              <ChevronUp className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       )}
 
       {/* Consultation Button */}
       {isVisible && (
         <div
-          className="fixed bottom-6 right-6 z-40 flex items-center"
+          className="fixed bottom-6 right-6 z-40"
           onMouseEnter={() => setHoveredButton("consultation")}
           onMouseLeave={() => setHoveredButton(null)}
           onTouchStart={() => handleTouchStart("consultation")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Expanded Text Pill - Behind the icon */}
-          <div
-            className={`absolute right-14 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
-              isExpanded("consultation") ? "w-40 pr-4" : "w-0"
-            }`}
-          >
+          {/* Wrapper with relative positioning */}
+          <div className="relative inline-flex items-center h-14">
+            {/* Text Label Pill - Behind the icon */}
             <div
-              className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
-                isExpanded("consultation") ? "opacity-100" : "opacity-0"
+              className={`absolute right-7 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
+                isExpanded("consultation") ? "w-40 pr-4" : "w-0"
               }`}
+              style={{ zIndex: 1 }}
             >
-              맞춤 상담하기
+              <div
+                className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
+                  isExpanded("consultation") ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                맞춤 상담하기
+              </div>
             </div>
-          </div>
 
-          {/* Circular Icon Button - Always on top */}
-          <button
-            onClick={scrollToChatbot}
-            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0 relative z-10"
-            aria-label="맞춤 상담"
-            title="맞춤 상담"
-          >
-            <MessageCircle className="w-6 h-6" />
-          </button>
+            {/* Circular Icon Button - Always on top */}
+            <button
+              onClick={scrollToChatbot}
+              className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
+              style={{ position: "relative", zIndex: 2 }}
+              aria-label="맞춤 상담"
+              title="맞춤 상담"
+            >
+              <MessageCircle className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       )}
     </>
