@@ -21,3 +21,4 @@
 - [ ] 성능 최적화 (이미지 lazy loading)
 - [ ] SEO 최적화
 - [ ] 분석 도구 통합
+- [x] Scroll Reveal Animation 적용 (Fade In + Up 효과, 0.6~1초, 20~30px 이동)

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
+import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
 import ThankYouPage from "@/pages/ThankYou";
@@ -58,6 +59,32 @@ export default function Home() {
       setCurrentDietIndex((prev) => (prev + 1) % 3);
     }, 5000); // Change banner every 5 seconds
     return () => clearInterval(interval);
+  }, []);
+
+  // Scroll Reveal Animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target.classList.contains('scroll-reveal')) {
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    document.querySelectorAll('.scroll-reveal, .scroll-reveal-stagger').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
 
@@ -456,7 +483,7 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative h-full flex flex-col justify-center pt-20">
-          <div className="container mx-auto px-4 w-full">
+          <div className="container mx-auto px-4 w-full scroll-reveal">
             {[
               {
                 image: '/manus-storage/banner1_8f01aafa.png',
@@ -632,19 +659,19 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
+            <div className="text-center scroll-reveal-stagger" data-reveal-item="0">
               <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">20+</div>
               <p className="text-gray-600">년 이상의 금식 운영 경험</p>
             </div>
-            <div className="text-center">
+            <div className="text-center scroll-reveal-stagger" data-reveal-item="1">
               <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">1,000+</div>
               <p className="text-gray-600">일일 제공 식수</p>
             </div>
-            <div className="text-center">
+            <div className="text-center scroll-reveal-stagger" data-reveal-item="2">
               <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">100+</div>
               <p className="text-gray-600">사업장 운영 중</p>
             </div>
-            <div className="text-center">
+            <div className="text-center scroll-reveal-stagger" data-reveal-item="3">
               <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">99%</div>
               <p className="text-gray-600">고객 만족도</p>
             </div>
@@ -655,14 +682,14 @@ export default function Home() {
       {/* Kitchenless Solutions Section */}
       <section id="services" className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">키친리스 밀솔루션</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {kitchenlessSolutions.map((solution, idx) => (
-              <div key={idx} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div key={idx} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow scroll-reveal-stagger" data-reveal-item={idx}>
                 <div className="relative h-64 overflow-hidden group">
                   <img
                     src={solution.image}
@@ -697,13 +724,13 @@ export default function Home() {
       {/* Customer Diet Section - Wide Layout */}
       <section id="diet" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">고객 특성에 맞춘 식단</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
           <div className="relative">
-            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg scroll-reveal">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96">
                 <div className="relative h-96 md:h-auto overflow-hidden group">
                   <img
@@ -790,14 +817,14 @@ export default function Home() {
       {/* Process Section - Professional Layout */}
       <section id="process" className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2">신선함을 보장하는 프로세스</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {processes.map((process, idx) => (
-              <div key={idx} className="relative">
+              <div key={idx} className="relative scroll-reveal-stagger" data-reveal-item={idx}>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
                   <div className="text-4xl md:text-5xl mb-3 md:mb-4">{process.icon}</div>
                   <h3 className="text-base md:text-xl font-bold text-white mb-2">{process.title}</h3>
@@ -862,7 +889,7 @@ export default function Home() {
       {/* Testimonials Section - Card Grid with Play Button */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">고객 후기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
@@ -874,7 +901,7 @@ export default function Home() {
               className="grid grid-cols-1 md:grid-cols-3 gap-6"
             >
               {reviews.slice(0, 3).map((review, idx) => (
-                <div key={idx} className="flex flex-col">
+                <div key={idx} className="flex flex-col scroll-reveal-stagger" data-reveal-item={idx}>
                   {/* Image Card */}
                   <div className="relative rounded-2xl overflow-hidden bg-gray-200 aspect-square group mb-4">
                     <img
@@ -899,7 +926,7 @@ export default function Home() {
       {/* Our Story Section - Magazine Style */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">우리의 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께 만들어가는 성공 사례들</p>
           </div>
@@ -953,7 +980,7 @@ export default function Home() {
       {/* FAQ Section with Accordion */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">자주 묻는 질문</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온 서비스에 대한 자주 묻는 질문들입니다</p>
           </div>

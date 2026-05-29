@@ -255,3 +255,64 @@
     }
   }
 }
+
+  /* Scroll Reveal Animation - Premium brand style */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered animation for multiple elements */
+  .scroll-reveal-stagger {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .scroll-reveal-stagger.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Stagger delays for sequential reveal */
+  .scroll-reveal-stagger:nth-child(1).visible {
+    transition-delay: 0s;
+  }
+
+  .scroll-reveal-stagger:nth-child(2).visible {
+    transition-delay: 0.1s;
+  }
+
+  .scroll-reveal-stagger:nth-child(3).visible {
+    transition-delay: 0.2s;
+  }
+
+  .scroll-reveal-stagger:nth-child(4).visible {
+    transition-delay: 0.3s;
+  }
+
+  .scroll-reveal-stagger:nth-child(5).visible {
+    transition-delay: 0.4s;
+  }
+
+  .scroll-reveal-stagger:nth-child(n+6).visible {
+    transition-delay: 0.5s;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal,
+    .scroll-reveal-stagger {
+      opacity: 1;
+      transform: translateY(0);
+      transition: none;
+    }
+  }
