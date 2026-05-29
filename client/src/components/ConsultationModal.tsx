@@ -324,8 +324,18 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-500 pb-3 pt-2 border-t">
-                    <p>개인정보 수집 및 이용에 대한 상세 내용입니다. 귀사의 개인정보는 상담 목적으로만 사용되며, 관련 법령에 따라 안전하게 보호됩니다.</p>
+                  <AccordionContent className="text-xs text-gray-600 pb-3 pt-2 border-t space-y-3">
+                    <div className="space-y-2">
+                      <p className="font-medium">개인정보 수집·이용 안내</p>
+                      <p>CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다. 수집한 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 고객님께 안내하고 동의를 받을 예정입니다.</p>
+                      <ul className="list-disc list-inside space-y-1 text-gray-600">
+                        <li>수집·이용 항목: 성명, 휴대폰번호, 이메일주소, 기업명, 주소, 예상 식수</li>
+                        <li>목적: 이동급식 서비스 상담 및 진행</li>
+                        <li>보유·이용 기간: 서비스 상담 신청 후 3년</li>
+                        <li>근거: 개인정보 보호법 제15조 제1항 제4호에 따른 서비스 이행</li>
+                      </ul>
+                      <p className="text-gray-500 text-xs">개인정보를 기입하지 않으실 수 있으나, 기재하지 않으실 경우 이동급식 서비스 상담 진행이 어렵습니다.</p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -343,8 +353,16 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-500 pb-3 pt-2 border-t">
-                    <p>마케팅 정보 수신에 동의하시면 신제품 소개, 이벤트 정보 등을 받아보실 수 있습니다.</p>
+                  <AccordionContent className="text-xs text-gray-600 pb-3 pt-2 border-t space-y-3">
+                    <div className="space-y-2">
+                      <p className="font-medium">마케팅 목적 개인정보 수집·이용 동의</p>
+                      <ul className="list-disc list-inside space-y-1 text-gray-600">
+                        <li>수집·이용 항목: 성명, 휴대폰번호, 이메일, 기업명</li>
+                        <li>목적: 서비스 홍보 등 마케팅</li>
+                        <li>보유·이용 기간: 수집·이용 동의 후 3년</li>
+                      </ul>
+                      <p className="text-gray-500 text-xs">개인정보 수집 및 이용 동의를 거부할 수 있습니다. 동의 거부 시 마케팅 서비스 이용이 어려우나, 상담에는 지장이 없습니다.</p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -362,8 +380,14 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-500 pb-3 pt-2 border-t">
-                    <p>광고성 정보 수신에 동의하시면 프로모션 및 특별 혜택 정보를 받아보실 수 있습니다.</p>
+                  <AccordionContent className="text-xs text-gray-600 pb-3 pt-2 border-t space-y-3">
+                    <div className="space-y-2">
+                      <p className="font-medium">광고성 정보 수신 동의</p>
+                      <p>CJ프레시웨이㈜는 '마케팅 목적의 개인정보 수집 및 이용'에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다. 본 동의를 거부하실 수 있으며, 거부 시 광고성 정보를 받으실 수 없으나, 서비스 이용에 지장이 없습니다.</p>
+                      <p className="font-medium text-xs">광고성 정보 수신 설정 변경</p>
+                      <p>고객센터(02-2149-6114)를 통한 광고성 정보 수신 동의 변경 신청</p>
+                      <p className="text-gray-500 text-xs">ㅁ SMS(문자) ㅁ 이메일 ㅁ 카카오톡</p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
