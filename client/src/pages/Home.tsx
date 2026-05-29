@@ -352,7 +352,7 @@ export default function Home() {
           <div 
             className="flex h-full transition-transform duration-700 ease-in-out"
             style={{
-              transform: `translateX(calc(-${currentDietIndex % 3} * 100%))`
+              transform: `translateX(calc(${currentDietIndex % 3} * -100%))`
             }}
           >
             {[
@@ -387,6 +387,16 @@ export default function Home() {
                 <div className={`absolute inset-0 transition-all duration-300 ${
                   scrolled ? 'bg-black/60' : 'bg-black/40'
                 }`}></div>
+                {/* Banner Text Content */}
+                <div className="absolute inset-0 flex items-center justify-start">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div className="max-w-2xl">
+                      <p className="text-white/80 text-sm md:text-base mb-2">{banner.title}</p>
+                      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">{banner.highlight}</h1>
+                      <p className="text-white/90 text-base md:text-lg leading-relaxed">{banner.description}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
