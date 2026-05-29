@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle, Instagram, BookOpen } from "lucide-react";
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
@@ -1076,7 +1076,27 @@ export default function Home() {
             <div className="flex flex-col justify-between">
               <div>
                 <h3 className="text-white font-semibold mb-4">CJ프레시웨이</h3>
-                <a href="#" className="text-gray-400 hover:text-white transition">CJ프레시웨이 홈페이지 바로가기 ‣</a>
+                <a href="#" className="text-gray-400 hover:text-white transition mb-4 block">CJ프레시웨이 홈페이지 바로가기 ‣</a>
+                <div className="flex gap-4">
+                  <a
+                    href="https://blog.naver.com/cjfreshway_official"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition"
+                    title="블로그"
+                  >
+                    <BookOpen className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/cjfreshway_freshmealon/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition"
+                    title="인스타그램"
+                  >
+                    <Instagram className="w-6 h-6" />
+                  </a>
+                </div>
               </div>
               <div className="space-y-2">
                 <button
