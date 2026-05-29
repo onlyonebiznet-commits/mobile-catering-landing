@@ -82,12 +82,12 @@ export default function FloatingActionButtons() {
           onTouchStart={() => handleTouchStart("top")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Wrapper with relative positioning */}
-          <div className="relative inline-flex items-center h-14">
+          {/* Floating item container */}
+          <div className="relative inline-block h-14 w-14">
             {/* Text Label Pill - Behind the icon */}
             <div
-              className={`absolute right-7 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
-                isExpanded("top") ? "w-40 pr-4" : "w-0"
+              className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
+                isExpanded("top") ? "w-40 pr-4" : "w-14"
               }`}
               style={{ zIndex: 1 }}
             >
@@ -100,11 +100,11 @@ export default function FloatingActionButtons() {
               </div>
             </div>
 
-            {/* Circular Icon Button - Always on top */}
+            {/* Circular Icon Button - On top */}
             <button
               onClick={scrollToTop}
-              className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
-              style={{ position: "relative", zIndex: 2 }}
+              className="absolute right-0 top-0 w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center"
+              style={{ zIndex: 3 }}
               aria-label="맨 위로 이동"
               title="Top"
             >
@@ -123,12 +123,12 @@ export default function FloatingActionButtons() {
           onTouchStart={() => handleTouchStart("consultation")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Wrapper with relative positioning */}
-          <div className="relative inline-flex items-center h-14">
+          {/* Floating item container */}
+          <div className="relative inline-block h-14 w-14">
             {/* Text Label Pill - Behind the icon */}
             <div
-              className={`absolute right-7 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
-                isExpanded("consultation") ? "w-40 pr-4" : "w-0"
+              className={`absolute right-0 top-0 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
+                isExpanded("consultation") ? "w-40 pr-4" : "w-14"
               }`}
               style={{ zIndex: 1 }}
             >
@@ -141,11 +141,11 @@ export default function FloatingActionButtons() {
               </div>
             </div>
 
-            {/* Circular Icon Button - Always on top */}
+            {/* Circular Icon Button - On top */}
             <button
               onClick={scrollToChatbot}
-              className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
-              style={{ position: "relative", zIndex: 2 }}
+              className="absolute right-0 top-0 w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center"
+              style={{ zIndex: 3 }}
               aria-label="맞춤 상담"
               title="맞춤 상담"
             >
