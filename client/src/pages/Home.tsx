@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle, Instagram, BookOpen } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle, Instagram } from "lucide-react";
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
@@ -1082,10 +1082,14 @@ export default function Home() {
                     href="https://blog.naver.com/cjfreshway_official"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition"
+                    className="hover:opacity-80 transition"
                     title="블로그"
                   >
-                    <BookOpen className="w-6 h-6" />
+                    <img
+                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4/naver-blog-logo-NCxPZQP5SkeUC6AW2Cz6PJ.webp"
+                      alt="네이버 블로그"
+                      className="w-6 h-6"
+                    />
                   </a>
                   <a
                     href="https://www.instagram.com/cjfreshway_freshmealon/"
