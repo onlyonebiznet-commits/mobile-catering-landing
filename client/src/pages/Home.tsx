@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
 import ConsultationModal from "@/components/ConsultationModal";
 import MaterialRequestModal from "@/components/MaterialRequestModal";
@@ -9,16 +9,12 @@ export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [materialOpen, setMaterialOpen] = useState(false);
   const [currentDietIndex, setCurrentDietIndex] = useState(0);
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
   const [location] = useLocation();
-  const reviewsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,8 +39,6 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-
-
   if (location === "/thank-you") {
     return <ThankYouPage />;
   }
@@ -52,39 +46,24 @@ export default function Home() {
   const diets = [
     {
       title: "오피스",
-      image: "/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg",
+      image: "/manus-storage/aJQxyOi4VuZM_5d0eef51.jpg",
       description: "정통 한식부터 건강한 샐러드까지, 직원들의 다양한 입맛을 만족시키는 균형잡힌 식단입니다. 신선한 재료로 만든 한끼 식사로 업무 효율을 높입니다.",
       tags: ["균형잡힌 영양", "신선한 재료", "다양한 메뉴"],
+      testimonialImages: ["/manus-storage/office-meal-01_b17cd0b5.jpg", "/manus-storage/finger-food-01_3f568f56.jpg", "/manus-storage/dessert-01_710601c9.webp"],
     },
     {
       title: "산업체",
-      image: "/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg",
+      image: "/manus-storage/xtFlBsOX65yJ_f72a2817.jpg",
       description: "육체적 노동으로 소모되는 에너지를 충분히 보충할 수 있는 푸짐한 식단입니다. 고단백 메뉴와 든든한 밥상으로 근로자의 건강을 지킵니다.",
       tags: ["고단백 식단", "푸짐한 양", "에너지 보충"],
+      testimonialImages: ["/manus-storage/mobile-meal-07_c09fc712.jpg", "/manus-storage/process-04_18409a8e.jpg", "/manus-storage/finger-food-01_3f568f56.jpg"],
     },
     {
       title: "병원",
-      image: "/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg",
+      image: "/manus-storage/NaGhdZqdJImL_197b26e6.jpg",
       description: "환자의 건강 상태를 고려한 특별식 제공이 가능합니다. 영양사 상담을 통한 맞춤형 메뉴로 빠른 회복을 돕습니다.",
       tags: ["영양관리", "특별식", "위생관리"],
-    },
-    {
-      title: "카페/음료",
-      image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg",
-      description: "프리미엄 커피와 다양한 음료로 직원들의 휴식 시간을 더욱 특별하게 만듭니다. 신선한 재료로 만든 건강한 음료 메뉴를 제공합니다.",
-      tags: ["프리미엄 음료", "카페", "휴식시간"],
-    },
-    {
-      title: "핑거푸드",
-      image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg",
-      description: "회의나 행사에 어울리는 세련된 핑거푸드로 특별한 순간을 더욱 돋보이게 합니다. 신선한 재료로 만든 고급스러운 메뉴입니다.",
-      tags: ["핑거푸드", "행사용", "고급스러움"],
-    },
-    {
-      title: "음료/음식",
-      image: "/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg",
-      description: "다양한 음료와 간식으로 직원들의 일상에 활력을 더합니다. 건강과 맛을 모두 고려한 프리미엄 음식 및 음료 솔루션입니다.",
-      tags: ["음료", "간식", "다양한선택"],
+      testimonialImages: ["/manus-storage/hospital-meal-01_7d7c6bb6.webp", "/manus-storage/hospital-meal-02_8afc5e57.webp", "/manus-storage/hospital-meal-03_225a3bdb.webp"],
     },
   ];
 
@@ -167,12 +146,12 @@ export default function Home() {
   ];
 
   const operatingPhotos = [
-    { image: '/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
-    { image: '/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
-    { image: '/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
-    { image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
-    { image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
-    { image: '/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
+    { image: diets[0]?.testimonialImages?.[0] || '', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
+    { image: diets[0]?.testimonialImages?.[1] || '', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
+    { image: diets[1]?.testimonialImages?.[0] || '', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
+    { image: diets[1]?.testimonialImages?.[1] || '', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
+    { image: diets[2]?.testimonialImages?.[0] || '', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
+    { image: diets[2]?.testimonialImages?.[1] || '', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
   ];
 
   const reviews = [
@@ -206,79 +185,7 @@ export default function Home() {
       emoji: "⭐",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=park",
     },
-    {
-      company: "현대자동차",
-      department: "인사팀",
-      name: "이수현",
-      position: "부장",
-      rating: 5,
-      comment: "프레시밀온의 이동형 솔루션으로 다양한 사업장에서 직원 식사를 제공할 수 있게 되었습니다.",
-      emoji: "🚗",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=hyun",
-    },
-    {
-      company: "삼성화재",
-      department: "영업팀",
-      name: "최지훈",
-      position: "과장",
-      rating: 5,
-      comment: "신선한 재료와 정성스러운 조리로 만든 식사가 정말 맛있습니다. 직원들의 만족도가 매우 높습니다.",
-      emoji: "😋",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=choi",
-    },
-    {
-      company: "네이버",
-      department: "개발팀",
-      name: "정혜린",
-      position: "팀장",
-      rating: 5,
-      comment: "프레시밀온 덕분에 사무실에서도 편하게 신선한 식사를 즐길 수 있습니다. 정말 추천합니다!",
-      emoji: "🌟",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=jung",
-    },
   ];
-
-  // Auto-slide for reviews
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentReviewIndex((prevIndex) => {
-        const maxIndex = reviews.length - 3;
-        return prevIndex >= maxIndex ? 0 : prevIndex + 1;
-      });
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [reviews.length]);
-
-  // Handle touch swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    setTouchEnd(e.changedTouches[0].clientX);
-    handleSwipe(e.targetTouches[0]?.clientX || e.changedTouches[0].clientX);
-  };
-
-  const handleSwipe = (endX: number) => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - endX;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      // Swipe left - go to next
-      setCurrentReviewIndex((prevIndex) => {
-        const maxIndex = reviews.length - 3;
-        return prevIndex >= maxIndex ? 0 : prevIndex + 1;
-      });
-    } else if (isRightSwipe) {
-      // Swipe right - go to previous
-      setCurrentReviewIndex((prevIndex) => {
-        return prevIndex <= 0 ? reviews.length - 3 : prevIndex - 1;
-      });
-    }
-  };
 
   const faqs = [
     {
@@ -323,9 +230,9 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 md:h-16 py-2 md:py-0">
+          <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-10 md:h-12" />
+              <div className="text-2xl font-bold text-[#005B44]">🥗 프레시밀온</div>
             </div>
             
             {/* Desktop Menu */}
@@ -369,51 +276,6 @@ export default function Home() {
           )}
         </div>
       </header>
-
-      {/* Floating Contact Button - Mobile Only */}
-      <style>{`
-        @keyframes pulse-ring {
-          0% {
-            box-shadow: 0 0 0 0 rgba(0, 91, 68, 0.7);
-          }
-          50% {
-            box-shadow: 0 0 0 10px rgba(0, 91, 68, 0);
-          }
-          100% {
-            box-shadow: 0 0 0 0 rgba(0, 91, 68, 0);
-          }
-        }
-        @keyframes bounce-scale {
-          0%, 100% {
-            transform: translateX(-50%) scale(1);
-          }
-          50% {
-            transform: translateX(-50%) scale(1.08);
-          }
-        }
-        .floating-btn {
-          animation: pulse-ring 2s infinite;
-        }
-        .floating-btn-center {
-          animation: bounce-scale 2s ease-in-out infinite;
-        }
-      `}</style>
-      <button
-        onClick={() => setConsultationOpen(true)}
-        className="floating-btn fixed bottom-6 right-6 md:hidden z-40 w-14 h-14 bg-[#005B44] text-white rounded-full shadow-lg hover:bg-[#004433] transition-all duration-300 flex items-center justify-center text-2xl font-bold hover:scale-110"
-        title="문의하기"
-      >
-        ?
-      </button>
-
-      {/* Center bottom floating button - All devices */}
-      <button
-        onClick={() => setConsultationOpen(true)}
-        className="floating-btn-center fixed bottom-6 left-1/2 z-40 px-8 py-4 bg-[#005B44] text-white rounded-2xl shadow-xl hover:bg-[#004433] transition-all duration-300 font-bold text-lg hover:shadow-2xl whitespace-nowrap"
-        title="지금 바로 상담 신청"
-      >
-        지금 바로 상담 신청
-      </button>
 
       {/* Hero Section */}
       <section className="relative h-96 md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
@@ -529,7 +391,13 @@ export default function Home() {
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">{diets[currentDietIndex].title}</h3>
                   <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
-
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {diets[currentDietIndex].tags.map((tag, i) => (
+                      <span key={i} className="px-4 py-2 bg-[#005B44]/10 text-[#005B44] rounded-full text-sm font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                   <div className="flex items-center gap-4">
                     <div className="flex gap-2">
                       {diets.map((_, idx) => (
@@ -609,14 +477,19 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-white/90">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {processes.map((process, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                  <div className="text-4xl md:text-5xl mb-3 md:mb-4">{process.icon}</div>
-                  <h3 className="text-base md:text-xl font-bold text-white mb-2">{process.title}</h3>
-                  <p className="text-white/80 text-xs md:text-sm">{process.description}</p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
+                  <div className="text-5xl mb-4">{process.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-2">{process.title}</h3>
+                  <p className="text-white/80 text-sm">{process.description}</p>
                 </div>
+                {idx < processes.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
+                    <ChevronRight className="w-6 h-6 text-white/40" />
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -634,114 +507,146 @@ export default function Home() {
           <style>{`
             @keyframes scroll-infinite {
               0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
+              100% { transform: translateX(calc(-100% - 2rem)); }
+            }
+            @keyframes scroll-infinite-reverse {
+              0% { transform: translateX(calc(-100% - 2rem)); }
+              100% { transform: translateX(0); }
             }
             .scroll-content {
               display: flex;
-              gap: 2rem;
-              width: max-content;
-              animation: scroll-infinite 60s linear infinite;
+              gap: 1.5rem;
+              width: fit-content;
+            }
+            .scroll-content-row1 {
+              animation: scroll-infinite 100s linear infinite;
+            }
+            .scroll-content-row2 {
+              animation: scroll-infinite-reverse 100s linear infinite;
+              animation-delay: 3s;
             }
             .scroll-content:hover {
               animation-play-state: paused;
             }
             @media (max-width: 768px) {
               .scroll-content {
-                gap: 1.5rem;
-                animation: scroll-infinite 50s linear infinite;
+                gap: 0.75rem;
+              }
+              .scroll-content-row1 {
+                animation: scroll-infinite 80s linear infinite;
+              }
+              .scroll-content-row2 {
+                animation: scroll-infinite-reverse 80s linear infinite;
               }
             }
           `}</style>
 
           <div className="relative w-full overflow-hidden bg-gray-50">
-            <div className="overflow-hidden">
-              <div className="scroll-content scroll-content-row1">
-                {[...Array(3)].map((_, iteration) => (
-                  companies.map((company, idx) => (
-                    <div key={`logo-${iteration}-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+            <div className="space-y-4 md:space-y-6">
+              <div className="overflow-hidden">
+                <div className="scroll-content scroll-content-row1">
+                  {companies.map((company, idx) => (
+                    <div key={`row1-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <img
                         src={company.logo}
                         alt={company.name}
                         className="max-w-full max-h-full object-contain"
                       />
                     </div>
-                  ))
-                ))}
+                  ))}
+                  {companies.map((company, idx) => (
+                    <div key={`row1-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="overflow-hidden">
+                <div className="scroll-content scroll-content-row2">
+                  {[...companies].reverse().map((company, idx) => (
+                    <div key={`row2-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                  {[...companies].reverse().map((company, idx) => (
+                    <div key={`row2-dup-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section - Card Grid with Play Button */}
+      {/* Testimonials Section - Photo Gallery Style */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">고객 후기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 성공 스토리</p>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 실제 운영 사진과 후기</p>
           </div>
 
-          {/* Card Grid Reviews */}
-          <div className="relative px-4 sm:px-6 lg:px-8">
-            {/* Navigation Arrows - Left */}
-            <button
-              onClick={() => {
-                setCurrentReviewIndex(Math.max(0, currentReviewIndex - 1));
-              }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
-              disabled={currentReviewIndex === 0}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            {/* Grid */}
-            <div
-              ref={reviewsContainerRef}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-            >
-              {reviews.slice(currentReviewIndex, currentReviewIndex + 3).map((review, idx) => (
-                <div key={idx} className="flex flex-col">
-                  {/* Image Card */}
-                  <div className="relative rounded-2xl overflow-hidden bg-gray-200 aspect-square group mb-4">
+          {/* Operating Photos Gallery with Comments */}
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {operatingPhotos.map((photo, pIdx) => (
+                <div key={pIdx} className="group">
+                  {/* Photo with Comment Bubble */}
+                  <div className="relative overflow-hidden rounded-lg bg-gray-100 h-56 mb-0">
                     <img
-                      src={operatingPhotos[currentReviewIndex + idx]?.image}
-                      alt={review.company}
+                      src={photo.image}
+                      alt={`운영 사진 ${pIdx + 1}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    
+                    {/* Comment Bubble with Tail */}
+                    <div className="absolute top-4 left-4 right-4">
+                      <div className="bg-white rounded-2xl px-4 py-3 shadow-lg relative">
+                        <p className="text-gray-800 text-sm font-medium leading-relaxed">\"{ photo.comment}\"</p>
+                        {/* Tail */}
+                        <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white transform rotate-45"></div>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Company Name and Review - Left Aligned */}
-                  <div className="text-left">
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">{review.company}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">"{review.comment}"</p>
+                  
+                  {/* Customer Info Bubble Below Photo */}
+                  <div className="mt-4 bg-white rounded-2xl px-4 py-3 shadow-lg relative">
+                    <div className="flex items-start gap-3 mb-2">
+                      <img
+                        src={photo.customerImage}
+                        alt={photo.name}
+                        className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-gray-800 text-sm">{photo.company}</p>
+                        <p className="text-xs text-gray-600">{photo.department}</p>
+                      </div>
+                      <span className="text-lg flex-shrink-0">{photo.emoji}</span>
+                    </div>
+                    
+                    {/* Comment */}
+                    <p className="text-gray-700 text-xs leading-relaxed italic ml-11">\"{ photo.comment}\"</p>
+                    
+                    {/* Tail */}
+                    <div className="absolute -top-2 left-6 w-4 h-4 bg-white transform rotate-45"></div>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Navigation Arrows - Right */}
-            <button
-              onClick={() => {
-                setCurrentReviewIndex(Math.min(reviews.length - 3, currentReviewIndex + 1));
-              }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
-              disabled={currentReviewIndex >= reviews.length - 3}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {[...Array(Math.ceil(reviews.length / 3))].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentReviewIndex(i * 3)}
-                className={`w-2 h-2 rounded-full transition ${i === Math.floor(currentReviewIndex / 3) ? 'bg-[#005B44]' : 'bg-gray-300'}`}
-              />
-            ))}
           </div>
         </div>
       </section>
@@ -802,7 +707,7 @@ export default function Home() {
 
       {/* FAQ Section with Accordion */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">자주 묻는 질문</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온 서비스에 대한 자주 묻는 질문들입니다</p>
@@ -835,7 +740,7 @@ export default function Home() {
 
           {/* Video Section */}
       <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4">프레시밀온 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
@@ -885,7 +790,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             <div>
-              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-12 mb-4" />
+              <div className="text-2xl font-bold text-white mb-4">🥗 프레시밀온</div>
               <p className="text-gray-400 mb-6">Food Business Partner Creating the success way</p>
               <div className="space-y-2 text-sm">
                 <p><span className="font-semibold">상호명:</span> 씨제이프레시웨이 주식회사</p>
