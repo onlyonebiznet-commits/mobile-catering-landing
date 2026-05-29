@@ -238,6 +238,14 @@ export default function Home() {
     },
   ];
 
+  // Auto-rotate hero banner every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDietIndex((prev) => (prev + 1) % 3);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Auto-slide for reviews
   useEffect(() => {
     const interval = setInterval(() => {
@@ -325,7 +333,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-16 py-2 md:py-0">
             <div className="flex items-center gap-2">
-              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-10 md:h-12" />
+              <span className="text-[#005B44] font-bold text-lg md:text-xl">이동형 F&B 서비스</span>
             </div>
             
             {/* Desktop Menu */}
@@ -409,35 +417,102 @@ export default function Home() {
       {/* Center bottom floating button - All devices */}
       <button
         onClick={() => setConsultationOpen(true)}
-        className="floating-btn-center fixed bottom-6 left-1/2 z-40 px-8 py-4 bg-[#005B44] text-white rounded-2xl shadow-xl hover:bg-[#004433] transition-all duration-300 font-bold text-lg hover:shadow-2xl whitespace-nowrap"
+        className="floating-btn-center fixed bottom-6 left-1/2 z-40 px-8 py-4 bg-[#ED6325] text-white rounded-2xl shadow-xl hover:bg-[#d45a1f] transition-all duration-300 font-bold text-lg hover:shadow-2xl whitespace-nowrap"
         title="지금 바로 상담 신청"
       >
         지금 바로 상담 신청
       </button>
 
-      {/* Hero Section */}
-      <section className="relative h-96 md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{ backgroundImage: "url('/manus-storage/hero-office-meal_08208dd3.png')" }}>
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative h-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto w-full text-center">
-            <p className="text-white text-lg mb-4 font-semibold drop-shadow-lg">신선함 속 있는 이동형 밀솔루션</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">직원 복지의 새로운 기준</h1>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#ED6325] mb-8 drop-shadow-lg">프레시밀온</h2>
-            <p className="text-white text-lg md:text-xl max-w-2xl mx-auto mb-8 drop-shadow-lg leading-relaxed">신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.</p>
-            <div className="flex gap-4 justify-center">
-              <button
-                onClick={() => setConsultationOpen(true)}
-                className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
-              >
-                지금 상담받기
-              </button>
-              <button
-                onClick={() => setMaterialOpen(true)}
-                className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
-              >
-                자료 다운로드
-              </button>
+      {/* Hero Section - Rolling Banner */}
+      <section className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
+        {/* Banner Carousel */}
+        <div className="relative h-full">
+          {[
+            {
+              image: '/manus-storage/hero-office-meal_08208dd3.png',
+              subtitle: '신선함 속 있는 이동형 밀솔루션',
+              title: '직원 복지의 새로운 기준',
+              highlight: '프레시밀온',
+              description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+            },
+            {
+              image: '/manus-storage/hero-office-meal_08208dd3.png',
+              subtitle: '언제 어디서나 신선한 식사',
+              title: '이동형 밀솔루션의 혁신',
+              highlight: '프레시밀온',
+              description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+            },
+            {
+              image: '/manus-storage/hero-office-meal_08208dd3.png',
+              subtitle: '직원 만족도 99%',
+              title: '신뢰할 수 있는 파트너',
+              highlight: '프레시밀온',
+              description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+            }
+          ].map((banner, idx) => (
+            <div
+              key={idx}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                idx === currentDietIndex % 3 ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url('${banner.image}')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="relative h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto w-full">
+                  <p className="text-white text-lg mb-4 font-semibold drop-shadow-lg animate-in fade-in slide-in-from-left-4 duration-700">{banner.subtitle}</p>
+                  <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg animate-in fade-in slide-in-from-left-4 duration-700 delay-100">{banner.title}</h1>
+                  <h2 className="text-4xl md:text-5xl font-bold text-[#ED6325] mb-8 drop-shadow-lg animate-in fade-in slide-in-from-left-4 duration-700 delay-200">{banner.highlight}</h2>
+                  <p className="text-white text-lg md:text-xl max-w-2xl mb-8 drop-shadow-lg leading-relaxed animate-in fade-in slide-in-from-left-4 duration-700 delay-300">{banner.description}</p>
+                  <div className="flex gap-4 animate-in fade-in slide-in-from-left-4 duration-700 delay-500">
+                    <button
+                      onClick={() => setConsultationOpen(true)}
+                      className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
+                    >
+                      지금 상담받기
+                    </button>
+                    <button
+                      onClick={() => setMaterialOpen(true)}
+                      className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
+                    >
+                      자료 다운로드
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Banner Navigation */}
+        <div className="absolute bottom-8 left-8 flex items-center gap-6 z-10">
+          <div className="flex items-center gap-2">
+            <span className="text-white font-bold text-lg">0{(currentDietIndex % 3) + 1}</span>
+            <div className="w-16 h-1 bg-white/30 rounded-full">
+              <div
+                className="h-full bg-white rounded-full transition-all duration-500"
+                style={{ width: `${((currentDietIndex % 3) + 1) * 33.33}%` }}
+              ></div>
+            </div>
+            <span className="text-white font-bold text-lg">03</span>
+          </div>
+          <div className="flex gap-3">
+            <button
+              onClick={() => setCurrentDietIndex((prev) => (prev - 1 + 3) % 3)}
+              className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition text-white"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => setCurrentDietIndex((prev) => (prev + 1) % 3)}
+              className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition text-white"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </section>
@@ -682,26 +757,12 @@ export default function Home() {
           </div>
 
           {/* Card Grid Reviews */}
-          <div className="relative px-4 sm:px-6 lg:px-8">
-            {/* Navigation Arrows - Left */}
-            <button
-              onClick={() => {
-                setCurrentReviewIndex(Math.max(0, currentReviewIndex - 1));
-              }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
-              disabled={currentReviewIndex === 0}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
+          <div className="px-4 sm:px-6 lg:px-8">
             {/* Grid */}
             <div
-              ref={reviewsContainerRef}
               className="grid grid-cols-1 md:grid-cols-3 gap-6"
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
             >
-              {reviews.slice(currentReviewIndex, currentReviewIndex + 3).map((review, idx) => (
+              {reviews.slice(0, 3).map((review, idx) => (
                 <div key={idx} className="flex flex-col">
                   {/* Image Card */}
                   <div className="relative rounded-2xl overflow-hidden bg-gray-200 aspect-square group mb-4">
@@ -720,28 +781,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
-            {/* Navigation Arrows - Right */}
-            <button
-              onClick={() => {
-                setCurrentReviewIndex(Math.min(reviews.length - 3, currentReviewIndex + 1));
-              }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004433] transition disabled:opacity-50 hidden md:flex items-center justify-center"
-              disabled={currentReviewIndex >= reviews.length - 3}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {[...Array(Math.ceil(reviews.length / 3))].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentReviewIndex(i * 3)}
-                className={`w-2 h-2 rounded-full transition ${i === Math.floor(currentReviewIndex / 3) ? 'bg-[#005B44]' : 'bg-gray-300'}`}
-              />
-            ))}
           </div>
         </div>
       </section>
@@ -757,25 +796,25 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
               {
-                image: "/manus-storage/pasted_file_GLjdwZ_03_ab8063d4.jpg",
+                image: "/manus-storage/story1_c7ff773c.webp",
                 subtitle: "대형 오피스 추천",
                 title: "50인 이상 대형 오피스",
                 description: "넓은 공간에 최적화된 프레시밀온 솔루션으로 직원 만족도를 높였습니다."
               },
               {
-                image: "/manus-storage/pasted_file_process01_244fb723.jpg",
+                image: "/manus-storage/story2_b2dd90e7.jpg",
                 subtitle: "즉시 입주 가능",
                 title: "즉시 입주 가능한 오피스",
                 description: "빠른 설치와 운영으로 입주 첫날부터 서비스를 시작할 수 있습니다."
               },
               {
-                image: "/manus-storage/pasted_file_meal01_af4e645b.webp",
+                image: "/manus-storage/story3_fa3a1529.jpg",
                 subtitle: "신규 오피스 추천",
                 title: "새로운 오피스에서 근무하고 싶다면",
                 description: "현대적이고 쾌적한 환경에서 프레시밀온의 신선한 식사를 즐기세요."
               },
               {
-                image: "/manus-storage/pasted_file_cafe01_91a573f8.webp",
+                image: "/manus-storage/story4_823f1f8c.webp",
                 subtitle: "1인 오피스 추천",
                 title: "혼자 집중하며 일하는 공간",
                 description: "소규모 오피스도 프레시밀온으로 직원 복지를 충실하게 구성할 수 있습니다."
@@ -788,7 +827,7 @@ export default function Home() {
                     alt={story.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-all duration-300"></div>
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                     <p className="text-sm font-medium mb-2 opacity-90">{story.subtitle}</p>
                     <h3 className="text-lg md:text-xl font-bold leading-tight">{story.title}</h3>
@@ -885,7 +924,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             <div>
-              <img src="/manus-storage/freshmeal_logo_0d3ce110.png" alt="프레시밀온" className="h-12 mb-4" />
+              <h3 className="text-white font-bold text-xl mb-4">이동형 F&B 서비스</h3>
               <p className="text-gray-400 mb-6">Food Business Partner Creating the success way</p>
               <div className="space-y-2 text-sm">
                 <p><span className="font-semibold">상호명:</span> 씨제이프레시웨이 주식회사</p>
