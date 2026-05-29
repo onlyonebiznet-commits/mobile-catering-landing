@@ -39,7 +39,10 @@ export default function FloatingActionButtons() {
   };
 
   const handleTouchEnd = () => {
-    setTouchedButton(null);
+    // Keep touch state visible for a moment, then fade out
+    setTimeout(() => {
+      setTouchedButton(null);
+    }, 1500);
   };
 
   // Get expanded state (hover on desktop or touch on mobile)
@@ -70,73 +73,75 @@ export default function FloatingActionButtons() {
 
   return (
     <>
-      {/* Top Button - Telegram Style */}
+      {/* Top Button */}
       {isVisible && (
         <div
-          className="fixed bottom-24 right-6 z-40"
+          className="fixed bottom-24 right-6 z-40 flex items-center"
           onMouseEnter={() => setHoveredButton("top")}
           onMouseLeave={() => setHoveredButton(null)}
           onTouchStart={() => handleTouchStart("top")}
           onTouchEnd={handleTouchEnd}
         >
+          {/* Expanded Text Pill - Behind the icon */}
+          <div
+            className={`absolute right-14 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
+              isExpanded("top") ? "w-40 pr-4" : "w-0"
+            }`}
+          >
+            <div
+              className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
+                isExpanded("top") ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              맨 위로
+            </div>
+          </div>
+
+          {/* Circular Icon Button - Always on top */}
           <button
             onClick={scrollToTop}
-            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
+            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0 relative z-10"
             aria-label="맨 위로 이동"
             title="Top"
           >
             <ChevronUp className="w-6 h-6" />
           </button>
-
-          {/* Expanded Text Area */}
-          <div
-            className={`absolute right-0 top-1/2 -translate-y-1/2 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-              isExpanded("top") ? "w-40 pr-14" : "w-0"
-            }`}
-          >
-            <div
-              className={`pl-4 whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
-                isExpanded("top") ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              맨 위로 이동
-            </div>
-          </div>
         </div>
       )}
 
-      {/* Consultation Button - Telegram Style */}
+      {/* Consultation Button */}
       {isVisible && (
         <div
-          className="fixed bottom-6 right-6 z-40"
+          className="fixed bottom-6 right-6 z-40 flex items-center"
           onMouseEnter={() => setHoveredButton("consultation")}
           onMouseLeave={() => setHoveredButton(null)}
           onTouchStart={() => handleTouchStart("consultation")}
           onTouchEnd={handleTouchEnd}
         >
-          <button
-            onClick={scrollToChatbot}
-            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0"
-            aria-label="맞춤 상담"
-            title="맞춤 상담"
-          >
-            <MessageCircle className="w-6 h-6" />
-          </button>
-
-          {/* Expanded Text Area */}
+          {/* Expanded Text Pill - Behind the icon */}
           <div
-            className={`absolute right-0 top-1/2 -translate-y-1/2 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-              isExpanded("consultation") ? "w-40 pr-14" : "w-0"
+            className={`absolute right-14 h-14 bg-[#005B44] rounded-full shadow-lg transition-all duration-300 flex items-center justify-end overflow-hidden ${
+              isExpanded("consultation") ? "w-40 pr-4" : "w-0"
             }`}
           >
             <div
-              className={`pl-4 whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
+              className={`whitespace-nowrap text-white font-medium text-sm transition-opacity duration-300 ${
                 isExpanded("consultation") ? "opacity-100" : "opacity-0"
               }`}
             >
               맞춤 상담하기
             </div>
           </div>
+
+          {/* Circular Icon Button - Always on top */}
+          <button
+            onClick={scrollToChatbot}
+            className="w-14 h-14 rounded-full bg-[#005B44] text-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center flex-shrink-0 relative z-10"
+            aria-label="맞춤 상담"
+            title="맞춤 상담"
+          >
+            <MessageCircle className="w-6 h-6" />
+          </button>
         </div>
       )}
     </>
