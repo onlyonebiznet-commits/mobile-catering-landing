@@ -82,6 +82,15 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [consultationOpen]);
 
+  useEffect(() => {
+    const handleCloseConsultation = () => {
+      setConsultationOpen(false);
+    };
+
+    window.addEventListener('closeConsultationForm', handleCloseConsultation);
+    return () => window.removeEventListener('closeConsultationForm', handleCloseConsultation);
+  }, []);
+
   // Auto-play banner carousel
   useEffect(() => {
     const interval = setInterval(() => {

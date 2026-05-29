@@ -15,8 +15,11 @@ export default function FloatingActionButtons() {
     }
   };
 
-  // Scroll to top smoothly
+  // Scroll to top smoothly and close consultation form
   const scrollToTop = () => {
+    // Dispatch event to close consultation form
+    window.dispatchEvent(new CustomEvent('closeConsultationForm'));
+    
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -92,7 +95,7 @@ export default function FloatingActionButtons() {
               style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
             >
               <div className="whitespace-nowrap text-white font-medium text-sm">
-                맨 위로
+                위로 이동
               </div>
             </div>
 

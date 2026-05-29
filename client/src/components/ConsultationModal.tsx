@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,7 @@ interface ConsultationModalProps {
 
 export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   const [, navigate] = useLocation();
+  const contentRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     companyName: "",
     contactPerson: "",
@@ -35,6 +36,37 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (contentRef.current && !contentRef.current.contains(e.target as Node)) {
+        onClose();
+      }
+    };
+
+    // Add slight delay to avoid closing immediately on open
+    const timer = setTimeout(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
+  // Handle ESC key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -153,7 +185,19 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+      <DialogContent 
+        ref={contentRef}
+        className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto relative"
+        onMouseDown={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 p-1 hover:bg-gray-100 rounded-md transition-colors"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
         <DialogHeader>
           <DialogTitle>온라인 상담 신청</DialogTitle>
         </DialogHeader>
