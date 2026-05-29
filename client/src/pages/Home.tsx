@@ -349,12 +349,7 @@ export default function Home() {
       <section className="relative h-[85vh] overflow-hidden">
         {/* Banner Carousel Background */}
         <div className="absolute inset-0 overflow-hidden">
-          <div 
-            className="flex h-full transition-transform duration-700 ease-in-out"
-            style={{
-              transform: `translateX(${-currentDietIndex * 100}%)`
-            }}
-          >
+          <div className="relative w-full h-full">
             {[
               {
                 image: '/manus-storage/banner1_8f01aafa.png',
@@ -377,15 +372,16 @@ export default function Home() {
             ].map((banner, idx) => (
               <div
                 key={idx}
-                className="relative w-full h-full flex-shrink-0"
+                className="absolute inset-0 transition-opacity duration-700 ease-in-out"
                 style={{
                   backgroundImage: `url('${banner.image}')`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center'
+                  backgroundPosition: 'center',
+                  opacity: currentDietIndex === idx ? 1 : 0
                 }}
               >
                 <div className={`absolute inset-0 transition-all duration-300 ${
-                  scrolled ? 'bg-black/60' : 'bg-black/40'
+                  scrolled ? 'bg-black/40' : 'bg-black/20'
                 }`}></div>
               </div>
             ))}
