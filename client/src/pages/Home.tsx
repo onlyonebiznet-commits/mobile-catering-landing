@@ -433,19 +433,19 @@ export default function Home() {
           <div className="relative w-full h-full">
             {[
               {
-                image: '/manus-storage/banner1_8f01aafa.png',
+                video: '/manus-storage/freshmelon_d0c0f9a9.mp4',
                 title: '직원 복지의 새로운 기준',
                 highlight: '프레시밀온',
                 description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
               },
               {
-                image: '/manus-storage/banner2_f378c80a.webp',
+                video: '/manus-storage/inbound_snack_fcff7dcf.mp4',
                 title: '이동형 밀솔루션의 혁신',
                 highlight: '프레시밀온',
                 description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
               },
               {
-                image: '/manus-storage/banner3_3165e25d.jpg',
+                video: '/manus-storage/cafe_fresh_39cc91e6.mp4',
                 title: '신뢰할 수 있는 파트너',
                 highlight: '프레시밀온',
                 description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
@@ -455,12 +455,16 @@ export default function Home() {
                 key={idx}
                 className="absolute inset-0 transition-opacity duration-700 ease-in-out"
                 style={{
-                  backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.5) 100%), url('${banner.image}')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
                   opacity: currentDietIndex === idx ? 1 : 0
                 }}
               >
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={banner.video}
+                />
                 <div className={`absolute inset-0 transition-all duration-300 ${
                   scrolled ? 'bg-black/40' : 'bg-black/20'
                 }`}></div>
@@ -540,19 +544,19 @@ export default function Home() {
           <div className="container mx-auto px-4 w-full scroll-reveal">
             {[
               {
-                image: '/manus-storage/banner1_8f01aafa.png',
+                video: '/manus-storage/freshmelon_d0c0f9a9.mp4',
                 title: '직원 복지의 새로운 기준',
                 highlight: '프레시밀온',
                 description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
               },
               {
-                image: '/manus-storage/banner2_f378c80a.webp',
+                video: '/manus-storage/inbound_snack_fcff7dcf.mp4',
                 title: '이동형 밀솔루션의 혁신',
                 highlight: '프레시밀온',
                 description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
               },
               {
-                image: '/manus-storage/banner3_3165e25d.jpg',
+                video: '/manus-storage/cafe_fresh_39cc91e6.mp4',
                 title: '신뢰할 수 있는 파트너',
                 highlight: '프레시밀온',
                 description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
