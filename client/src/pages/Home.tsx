@@ -394,22 +394,22 @@ export default function Home() {
   ];
 
     const companies = [
-    { name: "CJ ENM", logo: "/manus-storage/cj-enm_2a8c8970.png" },
-    { name: "LG Display", logo: "/manus-storage/lg-display_3d1481b4.png" },
-    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_a938b8a4.png" },
-    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_0142c34c.png" },
-    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_0d1f886f.png" },
-    { name: "STECO", logo: "/manus-storage/steco_634b5b3d.png" },
-    { name: "Severance", logo: "/manus-storage/severance_6f269ece.png" },
+    { name: "CJ ENM", logo: "/manus-storage/cj-enm_ed8dd60d.png" },
+    { name: "LG Display", logo: "/manus-storage/lg-display_f8fbbfde.png" },
+    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_7343dc74.png" },
+    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_dbb78fa3.png" },
+    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_b875af1c.png" },
+    { name: "STECO", logo: "/manus-storage/steco_2c9e8d1c.png" },
+    { name: "Severance", logo: "/manus-storage/severance_a5cf8952.png" },
   ];
   const companiesRow2 = [
-    { name: "CJ Daesang 2", logo: "/manus-storage/cj-daesang-2_285f3da3.png" },
-    { name: "CJ ENM", logo: "/manus-storage/cj-enm_2a8c8970.png" },
-    { name: "LG Display", logo: "/manus-storage/lg-display_3d1481b4.png" },
-    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_a938b8a4.png" },
-    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_0142c34c.png" },
-    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_0d1f886f.png" },
-    { name: "STECO", logo: "/manus-storage/steco_634b5b3d.png" },
+    { name: "CJ Daesang 2", logo: "/manus-storage/cj-daesang-2_629751a8.png" },
+    { name: "CJ ENM", logo: "/manus-storage/cj-enm_ed8dd60d.png" },
+    { name: "LG Display", logo: "/manus-storage/lg-display_f8fbbfde.png" },
+    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_7343dc74.png" },
+    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_dbb78fa3.png" },
+    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_b875af1c.png" },
+    { name: "STECO", logo: "/manus-storage/steco_2c9e8d1c.png" },
   ];
 
   return (
@@ -903,11 +903,11 @@ export default function Home() {
                 <div className="scroll-content-row1">
                   {[...Array(3)].map((_, iteration) => (
                     companies.map((company, idx) => (
-                      <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
                           alt={company.name}
-                          className="h-[60px] w-auto object-contain"
+                          className="max-h-[56px] max-w-[160px] w-auto h-auto object-contain"
                         />
                       </div>
                     ))
@@ -921,11 +921,11 @@ export default function Home() {
                 <div className="scroll-content-row2">
                   {[...Array(3)].map((_, iteration) => (
                     companiesRow2.map((company, idx) => (
-                      <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
                           alt={company.name}
-                          className="h-[60px] w-auto object-contain"
+                          className="max-h-[56px] max-w-[160px] w-auto h-auto object-contain"
                         />
                       </div>
                     ))
