@@ -394,22 +394,22 @@ export default function Home() {
   ];
 
     const companies = [
-    { name: "CJ ENM", logo: "/manus-storage/cj-enm_f7611505.png" },
-    { name: "LG Display", logo: "/manus-storage/lg-display_cedf659b.png" },
-    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_ae6b0629.png" },
-    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_3a4354f7.png" },
-    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_85c57c13.png" },
-    { name: "STECO", logo: "/manus-storage/steco_ea93e310.png" },
-    { name: "Severance", logo: "/manus-storage/severance_10b716bf.png" },
+    { name: "CJ ENM", logo: "/manus-storage/cj-enm_2a8c8970.png" },
+    { name: "LG Display", logo: "/manus-storage/lg-display_3d1481b4.png" },
+    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_a938b8a4.png" },
+    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_0142c34c.png" },
+    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_0d1f886f.png" },
+    { name: "STECO", logo: "/manus-storage/steco_634b5b3d.png" },
+    { name: "Severance", logo: "/manus-storage/severance_6f269ece.png" },
   ];
   const companiesRow2 = [
-    { name: "CJ Daesang 2", logo: "/manus-storage/cj-daesang-2_4ab5d5e6.png" },
-    { name: "CJ ENM", logo: "/manus-storage/cj-enm_f7611505.png" },
-    { name: "LG Display", logo: "/manus-storage/lg-display_cedf659b.png" },
-    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_ae6b0629.png" },
-    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_3a4354f7.png" },
-    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_85c57c13.png" },
-    { name: "STECO", logo: "/manus-storage/steco_ea93e310.png" },
+    { name: "CJ Daesang 2", logo: "/manus-storage/cj-daesang-2_285f3da3.png" },
+    { name: "CJ ENM", logo: "/manus-storage/cj-enm_2a8c8970.png" },
+    { name: "LG Display", logo: "/manus-storage/lg-display_3d1481b4.png" },
+    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_a938b8a4.png" },
+    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_0142c34c.png" },
+    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_0d1f886f.png" },
+    { name: "STECO", logo: "/manus-storage/steco_634b5b3d.png" },
   ];
 
   return (
@@ -903,11 +903,11 @@ export default function Home() {
                 <div className="scroll-content-row1">
                   {[...Array(3)].map((_, iteration) => (
                     companies.map((company, idx) => (
-                      <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
                           alt={company.name}
-                          className="max-w-full max-h-full object-contain"
+                          className="h-[60px] w-auto object-contain"
                         />
                       </div>
                     ))
@@ -921,11 +921,11 @@ export default function Home() {
                 <div className="scroll-content-row2">
                   {[...Array(3)].map((_, iteration) => (
                     companiesRow2.map((company, idx) => (
-                      <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 w-20 sm:w-24 md:w-36 lg:w-44 h-14 sm:h-18 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
                           alt={company.name}
-                          className="max-w-full max-h-full object-contain"
+                          className="h-[60px] w-auto object-contain"
                         />
                       </div>
                     ))
