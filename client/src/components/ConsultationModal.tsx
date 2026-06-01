@@ -456,7 +456,17 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
             <Button
               type="submit"
               disabled={isSubmitting}
+              data-event="consultation_submit_click"
+              data-form="consultation_form"
               className="w-full bg-[#005B44] hover:bg-[#004a37] text-white font-medium rounded-lg py-2 mt-6"
+              onClick={() => {
+                window.dataLayer?.push({
+                  event: "consultation_submit_click",
+                  form_name: "consultation_form",
+                  button_text: "상담 신청하기",
+                  page_location: window.location.href
+                });
+              }}
             >
               {isSubmitting ? "신청 중..." : "상담 신청하기"}
             </Button>

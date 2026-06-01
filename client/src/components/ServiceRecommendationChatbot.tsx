@@ -246,7 +246,17 @@ const ServiceRecommendationChatbot = () => {
                     </button>
                     <button
                       type="submit"
+                      data-event="consultation_submit_click"
+                      data-form="chatbot_consultation_form"
                       className="flex-1 px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a35] transition-colors duration-200 font-medium text-sm"
+                      onClick={() => {
+                        window.dataLayer?.push({
+                          event: "consultation_submit_click",
+                          form_name: "chatbot_consultation_form",
+                          button_text: "문의하기",
+                          page_location: window.location.href
+                        });
+                      }}
                     >
                       문의하기
                     </button>
