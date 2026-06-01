@@ -465,9 +465,11 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full object-cover"
                   src={banner.video}
                 />
-                <div className={`absolute inset-0 transition-all duration-300 ${
-                  scrolled ? 'bg-black/40' : 'bg-black/20'
-                }`}></div>
+                <div className="absolute inset-0 transition-all duration-300" style={{
+                  background: scrolled 
+                    ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.6) 100%)'
+                    : 'linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.5) 100%)'
+                }}></div>
               </div>
             ))}
           </div>
