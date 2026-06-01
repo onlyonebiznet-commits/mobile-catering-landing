@@ -618,12 +618,14 @@ export default function Home() {
                 <div className="flex gap-4 animate-in fade-in slide-in-from-left-4 delay-500">
                   <button
                     onClick={() => setConsultationOpen(true)}
+                    data-event="consultation_click"
                     className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
                   >
                     지금 상담받기
                   </button>
                   <button
                     onClick={() => setMaterialOpen(true)}
+                    data-event="material_request_click"
                     className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
                   >
                     자료 다운로드
@@ -728,6 +730,7 @@ export default function Home() {
                   </div>
                   <button
                     onClick={() => setConsultationOpen(true)}
+                    data-event="consultation_click"
                     className="w-full px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
                   >
                     견적 문의

@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { X } from "lucide-react";
 import { toast } from "sonner";
 import { useGTMTracking } from "@/hooks/useGTM";
+import { trackConsultationFormView, trackConsultationSubmit } from "@/utils/ga4-events";
 
 interface ConsultationModalProps {
   onClose: () => void;
@@ -18,6 +19,7 @@ interface ConsultationModalProps {
 export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const { trackFormSubmit } = useGTMTracking();
+  const [hasTrackedFormView, setHasTrackedFormView] = useState(false);
   const [formData, setFormData] = useState({
     companyName: "",
     contactPerson: "",
@@ -68,6 +70,13 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
+  // Track form view on mount
+  useEffect(() => {
+    if (!hasTrackedFormView) {
+      trackConsultationFormView();
+      setHasTrackedFormView(true);
+    }
+  }, [hasTrackedFormView]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -145,9 +154,13 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
+      // GA4 이벤트: 상담 신청 완료 (성공)
+      trackConsultationSubmit(true);
       toast.success("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
       onClose();
     } catch (error) {
+      // GA4 이벤트: 상담 신청 실패
+      trackConsultationSubmit(false);
       toast.error("상담 신청 중 오류가 발생했습니다");
     } finally {
       setIsSubmitting(false);

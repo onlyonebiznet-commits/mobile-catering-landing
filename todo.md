@@ -116,3 +116,18 @@
   - 모바일에서도 자연스러운 크기 유지
 - [x] 모든 테스트 통과 (34/34 ✓)
 - [x] 빌드 에러 없음
+
+
+## GA4 이벤트 추적 구현
+
+- [x] GA4 이벤트 추적 유틸리티 구현 (trackGA4Event 함수)
+- [x] 상담 신청 버튼 클릭 이벤트 (consultation_click)
+- [x] 상담 신청 폼 노출 이벤트 (consultation_form_view)
+- [x] 상담 신청 완료 이벤트 (consultation_submit) - 성공 시에만
+- [x] 자료 요청 버튼 클릭 이벤트 (material_request_click)
+- [x] 자료 요청 완료 이벤트 (material_request_submit) - 성공 시에만
+- [x] 버튼 data-event 속성 추가
+- [x] 이벤트 추적 테스트 및 검증
+- [ ] GTM Preview에서 이벤트 확인
+- [ ] 이벤트 추적 테스트 및 검증
+- [ ] GTM Preview에서 이벤트 확인

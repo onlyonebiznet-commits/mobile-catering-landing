@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import React from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
@@ -7,13 +8,18 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ThankYou from "./pages/ThankYou";
 import { useGTM, useGTMScrollTracking } from "./hooks/useGTM";
+import { initializeButtonTracking } from "./utils/ga4-events";
 
 
 function Router() {
   // GTM 초기화 및 페이지 뷰 추적
   useGTM();
-  // GTM 스크롤 깊이 추적
+  // GTM 스크롬 깊이 추적
   useGTMScrollTracking();
+  // GA4 버튼 클릭 추적 초기화
+  React.useEffect(() => {
+    initializeButtonTracking();
+  }, []);
 
   return (
     <Switch>
