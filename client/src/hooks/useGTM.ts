@@ -16,6 +16,7 @@ import {
   trackGTMScrollDepth,
   setGTMUserData,
 } from "@/utils/gtm";
+import { debugGTMOnLoad } from "@/utils/gtm-debug";
 
 /**
  * GTM 초기화 및 페이지 뷰 추적 훅
@@ -36,6 +37,9 @@ export function useGTM() {
     if (isGTMEnabled()) {
       initializeDataLayer();
       console.log("[GTM] GTM initialized");
+      
+      // GTM 로드 상태 디버깅
+      debugGTMOnLoad();
     }
   }, []);
 
