@@ -19,10 +19,20 @@ interface StatisticItemProps {
 function StatisticItem({ end, suffix, label, index = 0 }: StatisticItemProps) {
   const { count, elementRef } = useCountUp({ end, duration: 1800 });
 
+  // 특수 포맷팅 함수
+  const formatNumber = (num: number): string => {
+    if (suffix === "명") {
+      // 300,000 → 30만
+      const wan = Math.round(num / 10000);
+      return wan.toLocaleString('ko-KR');
+    }
+    return num.toLocaleString('ko-KR');
+  };
+
   return (
     <div ref={elementRef} className="text-center scroll-reveal-stagger">
       <div className="text-3xl md:text-4xl font-bold text-[#005B44] mb-2 whitespace-nowrap">
-        {count.toLocaleString()}
+        {formatNumber(count)}
         <span className="ml-1">{suffix}</span>
       </div>
       <p className="text-sm md:text-base text-gray-600">
