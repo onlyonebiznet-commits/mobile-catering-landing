@@ -57,6 +57,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
   const reviewsContainerRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([null, null, null]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -108,6 +109,38 @@ export default function Home() {
     }, 5000); // Change banner every 5 seconds
     return () => clearInterval(interval);
   }, []);
+
+  // Control video playback based on current index
+  useEffect(() => {
+    // 모든 비디오를 먼저 일시정지
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+
+    // 현재 비디오만 재생
+    const currentVideo = videoRefs.current[currentDietIndex];
+    if (currentVideo) {
+      // 비디오가 로드되었는지 확인
+      if (currentVideo.readyState >= 2) {
+        // HAVE_CURRENT_DATA 이상이면 즉시 재생
+        currentVideo.play().catch((err) => {
+          console.warn(`Video ${currentDietIndex} autoplay failed:`, err);
+        });
+      } else {
+        // 로드 대기 후 재생
+        const handleCanPlay = () => {
+          currentVideo.play().catch((err) => {
+            console.warn(`Video ${currentDietIndex} autoplay failed:`, err);
+          });
+          currentVideo.removeEventListener('canplay', handleCanPlay);
+        };
+        currentVideo.addEventListener('canplay', handleCanPlay);
+      }
+    }
+  }, [currentDietIndex]);
 
   // Scroll Reveal Animation
   useEffect(() => {
@@ -459,9 +492,13 @@ export default function Home() {
                 }}
               >
                 <video
-                  autoPlay
+                  ref={(el) => {
+                    if (el) videoRefs.current[idx] = el;
+                  }}
                   muted
                   loop
+                  playsInline
+                  preload="metadata"
                   className="absolute inset-0 w-full h-full object-cover"
                   src={banner.video}
                 />
@@ -473,20 +510,20 @@ export default function Home() {
               </div>
             ))}
 
-          {/* Progress Indicator */}
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex gap-2">
-            {[0, 1, 2].map((idx) => (
-              <div
-                key={idx}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  currentDietIndex === idx 
-                    ? 'w-8 bg-white' 
-                    : 'w-2 bg-white/50 hover:bg-white/75'
-                }`}
-              />
-            ))}
+            {/* Progress Indicator */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex gap-2">
+              {[0, 1, 2].map((idx) => (
+                <div
+                  key={idx}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    currentDietIndex === idx 
+                      ? 'w-8 bg-white' 
+                      : 'w-2 bg-white/50 hover:bg-white/75'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
         </div>
 
         {/* Fixed Header */}
