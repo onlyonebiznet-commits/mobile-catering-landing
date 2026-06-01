@@ -13,10 +13,10 @@
   "experiments": null,
   "git_remote": {
     "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4",
-    "access_key_id": "ASIAZV3A2ECZPOM5AH7V",
-    "secret_access_key": "YGxTtIIMwALDcfrtQCsCqPjECOprS1NuJQHDTuUj",
-    "session_token": "IQoJb3JpZ2luX2VjEB0aCXVzLWVhc3QtMSJIMEYCIQDaxdv3ACX7Kr8ggQYXS1ZZ1JBVZ+SJflW04QEXVgDJ7gIhAO+TKf3ytvdswdteMcOP0ZnuQ2zPcgpQyHD13rz1P/tPKv8DCOb//////////wEQBBoMNjY1Mzg2MDk4ODY2Igw9YumOROYcUF9hyTEq0wPud8rlw2VLNb6AsM7j/2TNNmNUwArEKaDmZiDV52ccrzrPodp+iyPvafLdMGSPRruOZ9iBHA193NgUEqiZQ//Mh1Yz4mknMrXbjJPZVhG7CK6kD+lNEuGQOFBLexarnTslw1oERHesaOMvyDH9a0w7vfGxBTh2ZjvjTHJ6pbNNDaUdnfgxQ3q1gymTOjqKxSjIjVsGXnPmbE7uJYFKAONtX8Cl3W+Ab3do/21aJAZyfvNb2YTNCvreXzRThXTtIqKxGv7E2p1cIT2ezE2hLIjsGVb7w7us8j9iYxtuibjjQELd3rCLcKeGaO9po58zEz6zsJzpXgpgjV/G4QY0vMzmP3sZwixPfXKksvOnj+33eBWadpved3RtTTOgnpMr3dXimG4X2fM9FP9PvyiqtH/XUY/XGROCGfYhw7zceRm3Mu/dKkmXkQwXc9t7vhIQUu0jKb0lTfQdASWuKnh8QrQlXjyU8okEEYhxEbj1IGNbP9Tdnb8gkO2clFoeOerMfFCBMPZiJCe6gZO0BYDfa3oFkFVZ6pe55zE9L/7bHDZ7q3HfqOgcbpeQ9HfUMbHyk7FukjXIdshZ4EJ5x+G6EO5ZQFj7h9X+8siAg+xKNP6ajOunFTCh9LTQBjqcAeix8zuH5x8AQagsMF2wR121pTH/HEATrCrOaZsZwmffPWiOOdg6DE6QS2iEult8q/bvmaCSlHd6VdlM/jxUvWY+tJcEn1WLs8EBPhrrKQQgoUzdwS48IAWR+kEdfFg8PubRd1ALxDUnhvaivX0zxpSXJLftRK016vIYeKngJv1nKfVZ/tNHA5vVul0+InA7m+sDqKZzmVf8z/ARJA==",
-    "expiration": "2026-05-20T16:35:45.000Z"
+    "access_key_id": "ASIAZV3A2ECZH3T5V5OL",
+    "secret_access_key": "op35PG1kPGqYIuPBlTXQ0qOFIt8wQ0nCJvsxL+6f",
+    "session_token": "IQoJb3JpZ2luX2VjED8aCXVzLWVhc3QtMSJIMEYCIQDpxcmBSltz5oamIprB3TZ6Svja35jUEIKjnMqCJbevOgIhAOl8t6csm6Y7as+fXDsqwBB2GJGGYqN6XoBq89VI4lUIKvYDCAcQBBoMNjY1Mzg2MDk4ODY2IgzIOioaa0ZZdE2vbvgq0wPwohDRu/Uw5g2Cg8l4FDzY6OCfK6ympqQER7tVaw3BAkMg6pSgD+F9u4DVCL1p0ehtabiKi02TK3kxrH/zV7aqVgnH7SU4VwjzfDejoI+Y1UfS66Sh/U07XHs0syZZ+e55LMPtVU7JKuDImYSTTtDtUg6AMHx61HMmPmbVj7jlYpMprhXb+jKu9lbQCNUz8dthJM95DFNn3q6Ty73im2MCrWjvi+D9aFQzUiZudMWZxNyelgt7W53VhY0nKdWzrLZXCmitNf8xiDegs7tOTosGEajazGNcqQZXJqU17DPY8VSX1nKICNe5b/Swq4MaYK2Hd47eblxL0RYQOMXYVqe9Qq6mhNr5wg/GMvzRiCNGbB8YhPW33kS6YbSCij8VivYNurByCwu7XaUFvCFkuD1HzAaYA9XC+3bJAnipbd7aLIsMd7BmVekDiixUjkmxOPD8v5uYQd4BEpQXTOqU7Htwrq94QXgATSIVXmw0VYp8ZsTG85/oAijNlexybOFYGLowNn8ZWHuYkalpWU6w7YdiIch5HfpFVXhq7vzZ8/ZXyYcbfpcQuDo1HZ21rlStrtGA7Of2mkZSDLWkJVDjMhzOhyvUGOz0HHBoHxsTpDlTFk3wPDCDxvTQBjqcAQq/9nZF7VniSpqdbwVDv0Cwto5VjSg0Kdr0YxLnNKRl/jQrwVwXf6Uib6fR5aL1oV/O0HSTDJYXyw9TYDOHkFCx5xCIkY7hcEuPIcw31in3WlduEGTqpBxH8ExOLJk0eHRY6I7rrVYqoGuPgRpppZQXOpuBB/b+qEHIzzWYvTdciqyXYX0mkhIXt7BafHGiXX0TImkf++OCr+FkmQ==",
+    "expiration": "2026-06-01T18:13:23.000Z"
   },
   "name": "mobile-catering-landing",
   "path": "/home/ubuntu/mobile-catering-landing",
@@ -35,6 +35,7 @@
     "VITE_APP_TITLE": "프레시밀온 - 이동형 밀솔루션 랜딩페이지",
     "VITE_FRONTEND_FORGE_API_KEY": "igTinvivBhJWAJZiyZmJmf",
     "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_GTM_ID": "GTM-W2S7VCKH",
     "VITE_OAUTH_PORTAL_URL": "https://manus.im"
   },
   "template_id": "web-static",

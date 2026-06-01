@@ -6,9 +6,15 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ThankYou from "./pages/ThankYou";
+import { useGTM, useGTMScrollTracking } from "./hooks/useGTM";
 
 
 function Router() {
+  // GTM 초기화 및 페이지 뷰 추적
+  useGTM();
+  // GTM 스크롤 깊이 추적
+  useGTMScrollTracking();
+
   return (
     <Switch>
       <Route path="/" component={Home} />

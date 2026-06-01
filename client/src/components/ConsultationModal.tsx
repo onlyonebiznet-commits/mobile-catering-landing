@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { X } from "lucide-react";
 import { toast } from "sonner";
+import { useGTMTracking } from "@/hooks/useGTM";
 
 interface ConsultationModalProps {
   onClose: () => void;
@@ -16,6 +17,7 @@ interface ConsultationModalProps {
 
 export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const { trackFormSubmit } = useGTMTracking();
   const [formData, setFormData] = useState({
     companyName: "",
     contactPerson: "",
@@ -131,6 +133,16 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
 
     setIsSubmitting(true);
     try {
+      // GTM 이벤트 추적
+      trackFormSubmit("consultation_request", {
+        company_name: formData.companyName,
+        contact_person: formData.contactPerson,
+        service_type: formData.service || "not_selected",
+        region: formData.region || "not_selected",
+        estimated_meals: formData.estimatedMeals || "not_specified",
+        form_type: "consultation",
+      });
+
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
       toast.success("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");

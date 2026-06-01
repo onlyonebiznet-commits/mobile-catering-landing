@@ -39,26 +39,65 @@
 
 ## 단계별 개선 로드맨
 
-### 단계 1: 기본 기능 추가
+### 단계 1: 기본 기능 추가 (향후 개선)
 - [ ] 추가 배너 이미지 (현재 모두 동일 이미지 사용)
 
-### 단계 2: 성능 최적화
+### 단계 2: 성능 최적화 (향후 개선)
 - [ ] 이미지 lazy loading 적용
 - [ ] 번들 최적화
 
-### 단계 3: SEO 및 분석
+### 단계 3: SEO 및 분석 (향후 개선)
 - [ ] SEO 최적화 (메타 태그, 구조화 데이터)
 - [ ] 분석 도구 통합 (Google Analytics)
 
 ### 완료
 - [x] Scroll Reveal Animation 적용 (Fade In + Up 효과, 0.6~1초, 20~30px 이동)
 
-## 로고 자동 처리 시스템
+## 로고 자동 처리 시스템 (완료)
 
 - [x] 로고 처리 API 엔드포인트 구현 (POST /api/logos/process)
 - [x] 배경 제거 로직 (Python PIL 기반 흰색/회색 배경 자동 감지 및 제거)
 - [x] 흰색 로고 감지 및 보존 처리 (RGB > 240 기준)
 - [x] 이미지 정규화 (동일 높이 60px 정렬, 비율 유지)
-- [ ] 로고 업로드 UI 컴포넌트 (향후 대시보드에서 관리)
 - [x] 배치 처리 기능 (여러 로고 동시 업로드)
-- [ ] 처리 결과 미리보기 (향후 대시보드에서 관리)
+
+## 향후 개선 사항
+
+- [ ] 로고 업로드 UI 컴포넌트 (대시보드에서 로고 관리)
+- [ ] 처리 결과 미리보기 (대시보드에서 배경 제거 결과 확인)
+
+
+## Google Tag Manager (GTM) 통합
+
+- [x] GTM ID 환경 변수 설정 (VITE_GTM_ID: GTM-W2S7VCKH)
+- [x] GTM Head 스니펫 client/index.html에 삽입
+- [x] GTM Body noscript 스니펫 client/index.html에 삽입
+- [x] GTM 유틸리티 함수 구현 (client/src/utils/gtm.ts)
+  - isGTMEnabled(): GTM 활성화 여부 확인
+  - initializeDataLayer(): dataLayer 초기화
+  - trackGTMEvent(): 일반 이벤트 추적
+  - trackGTMPageView(): 페이지 뷰 추적
+  - trackGTMFormSubmit(): 양식 제출 추적
+  - trackGTMClick(): 클릭 이벤트 추적
+  - trackGTMScrollDepth(): 스크롤 깊이 추적
+  - setGTMUserData(): 사용자 정보 설정
+- [x] GTM Head 컴포넌트 (client/src/components/GTMHead.tsx)
+- [x] GTM Body 컴포넌트 (client/src/components/GTMBody.tsx)
+- [x] useGTM 훅 구현 (client/src/hooks/useGTM.ts)
+  - useGTM(): GTM 초기화 및 페이지 뷰 추적
+  - useGTMScrollTracking(): 스크롤 깊이 추적
+  - useGTMTracking(): GTM 추적 메서드 반환
+- [x] App.tsx에 GTM 초기화 훅 추가
+- [x] ConsultationModal에 GTM 이벤트 추적 추가 (상담 신청 폼)
+- [x] MaterialRequestModal에 GTM 이벤트 추적 추가 (자료 요청 폼)
+- [x] GTM 환경 변수 검증 테스트 (client/src/utils/gtm.test.ts)
+- [x] 모든 테스트 통과 (34/34 ✓)
+
+## 향후 GTM 연동 예정 사항
+
+- [ ] GA4 (Google Analytics 4) GTM 태그 설정
+- [ ] Meta Pixel 이벤트 추적 설정
+- [ ] Microsoft Clarity 세션 분석 설정
+- [ ] 추가 이벤트 추적 (버튼 클릭, 스크롤 깊이, 동영상 재생 등)
+- [ ] 전환 목표 설정 (상담 신청, 자료 다운로드)
+- [ ] 사용자 정보 동기화 (회사명, 지역, 예상 식수 등)

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { X } from "lucide-react";
 import { toast } from "sonner";
+import { useGTMTracking } from "@/hooks/useGTM";
 
 interface MaterialRequestModalProps {
   onClose: () => void;
@@ -14,6 +15,7 @@ interface MaterialRequestModalProps {
 
 export default function MaterialRequestModal({ onClose }: MaterialRequestModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const { trackFormSubmit } = useGTMTracking();
   const [formData, setFormData] = useState({
     companyName: "",
     manager: "",
@@ -118,6 +120,13 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
 
     setIsSubmitting(true);
     try {
+      // GTM 이벤트 추적
+      trackFormSubmit("material_request", {
+        company_name: formData.companyName,
+        manager: formData.manager,
+        form_type: "material_request",
+      });
+
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
       toast.success("자료 신청이 완료되었습니다. 이메일로 자료를 보내드리겠습니다.");
