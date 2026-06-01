@@ -267,10 +267,11 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                   <SelectValue placeholder="서비스를 선택해주세요" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="cafeteria">구내식당</SelectItem>
+                  <SelectItem value="snack">간식</SelectItem>
+                  <SelectItem value="breakfast">조식</SelectItem>
+                  <SelectItem value="cafe">사내카페</SelectItem>
                   <SelectItem value="catering">케이터링</SelectItem>
-                  <SelectItem value="meal">도시락</SelectItem>
-                  <SelectItem value="buffet">뷔페</SelectItem>
-                  <SelectItem value="other">기타</SelectItem>
                 </SelectContent>
               </Select>
             </div>
