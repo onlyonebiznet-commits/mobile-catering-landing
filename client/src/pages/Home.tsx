@@ -21,11 +21,11 @@ function StatisticItem({ end, suffix, label, index = 0 }: StatisticItemProps) {
 
   return (
     <div ref={elementRef} className="text-center scroll-reveal-stagger">
-      <div className="text-4xl md:text-5xl font-bold text-[#005B44] mb-2">
+      <div className="text-3xl md:text-4xl font-bold text-[#005B44] mb-2 whitespace-nowrap">
         {count.toLocaleString()}
         <span className="ml-1">{suffix}</span>
       </div>
-      <p className="text-gray-600">
+      <p className="text-sm md:text-base text-gray-600">
         {label}
       </p>
     </div>
@@ -549,7 +549,7 @@ export default function Home() {
               }
             ][currentDietIndex % 3] && (
               <div>
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-3 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '32px'}}>
+                <h1 className="text-5xl md:text-6xl font-bold text-white mb-3 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '36px'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -571,7 +571,7 @@ export default function Home() {
                     }
                   ][currentDietIndex % 3].title}
                 </h1>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200" style={{fontSize: '30px'}}>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200" style={{fontSize: '34px'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
