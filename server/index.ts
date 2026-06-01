@@ -2,6 +2,9 @@ import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
+import { execSync } from "child_process";
+import * as fs from "fs";
+import * as os from "os";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -87,6 +90,56 @@ async function startServer() {
       consultationRequests,
       materialRequests,
     });
+  });
+
+  // 로고 처리 API
+  app.post("/api/logos/process", async (req, res) => {
+    try {
+      const { imageBase64, logoName } = req.body;
+      if (!imageBase64 || !logoName) {
+        return res.status(400).json({ error: "이미지와 로고 이름이 필요합니다" });
+      }
+
+      const tempDir = os.tmpdir();
+      const inputPath = path.join(tempDir, `logo_input_${Date.now()}.png`);
+      const outputPath = path.join(tempDir, `logo_output_${Date.now()}.png`);
+
+      try {
+        // Base64를 파일로 변환
+        const buffer = Buffer.from(imageBase64, 'base64');
+        fs.writeFileSync(inputPath, buffer);
+
+        // Python 스크립트로 처리
+        const scriptPath = path.join(__dirname, 'logo-processor.py');
+        execSync(`python3 "${scriptPath}" "${inputPath}" "${outputPath}" --normalize`, {
+          stdio: 'pipe',
+          timeout: 30000,
+        });
+
+        // 처리된 이미지를 Base64로 반환
+        const processedBuffer = fs.readFileSync(outputPath);
+        const processedBase64 = processedBuffer.toString('base64');
+
+        res.json({
+          success: true,
+          imageBase64: processedBase64,
+          name: logoName,
+        });
+      } finally {
+        // 임시 파일 정리
+        try {
+          if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath);
+          if (fs.existsSync(outputPath)) fs.unlinkSync(outputPath);
+        } catch (e) {
+          // 정리 실패는 무시
+        }
+      }
+    } catch (error) {
+      console.error('Logo processing error:', error);
+      res.status(500).json({
+        error: `로고 처리 실패: ${error instanceof Error ? error.message : '알 수 없는 오류'}`,
+      });
+    }
   });
 
   // Serve static files from dist/public in production
