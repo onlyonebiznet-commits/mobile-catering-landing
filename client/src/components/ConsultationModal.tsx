@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { X } from "lucide-react";
 import { toast } from "sonner";
+import { useLocation } from "wouter";
 import { useGTMTracking } from "@/hooks/useGTM";
 import { trackConsultationFormView, trackConsultationSubmit } from "@/utils/ga4-events";
 
@@ -18,6 +19,7 @@ interface ConsultationModalProps {
 
 export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const [, navigate] = useLocation();
   const { trackFormSubmit } = useGTMTracking();
   const [hasTrackedFormView, setHasTrackedFormView] = useState(false);
   const [formData, setFormData] = useState({
@@ -185,11 +187,14 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
       trackConsultationSubmit(true);
       toast.success("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
       onClose();
+      // 감사 페이지로 리다이렉트
+      setTimeout(() => navigate("/thank-you"), 500);
     } catch (error) {
       console.error("Consultation request error:", error);
       // GA4 이벤트: 상담 신청 실패
       trackConsultationSubmit(false);
       toast.error(error instanceof Error ? error.message : "상담 신청 중 오류가 발생했습니다");
+      // 실패 시 모달은 열린 상태 유지
     } finally {
       setIsSubmitting(false);
     }
