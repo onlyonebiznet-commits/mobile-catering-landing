@@ -394,22 +394,24 @@ export default function Home() {
   ];
 
     const companies = [
-    { name: "CJ ENM", logo: "/manus-storage/cj-enm_ed8dd60d.png" },
-    { name: "LG Display", logo: "/manus-storage/lg-display_f8fbbfde.png" },
-    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_7343dc74.png" },
-    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_dbb78fa3.png" },
-    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_b875af1c.png" },
-    { name: "STECO", logo: "/manus-storage/steco_2c9e8d1c.png" },
-    { name: "Severance", logo: "/manus-storage/severance_a5cf8952.png" },
+    { name: "아시아나항공", logo: "/manus-storage/asia-na-hwang-gong_9a54cda7.png" },
+    { name: "INSPIRE", logo: "/manus-storage/inspire_7018fe59.png" },
+    { name: "SAMSUNG", logo: "/manus-storage/samsung_5aab8709.png" },
+    { name: "TBT", logo: "/manus-storage/tbt_d956e8b5.png" },
+    { name: "SK 바이오닉스", logo: "/manus-storage/sk-bionics_b30c6820.png" },
+    { name: "LG Display", logo: "/manus-storage/lg-display_310d67e8.png" },
+    { name: "Kakao", logo: "/manus-storage/kakao_5d39ef93.png" },
+    { name: "STECO", logo: "/manus-storage/steco_14994f81.png" },
   ];
   const companiesRow2 = [
-    { name: "CJ Daesang 2", logo: "/manus-storage/cj-daesang-2_629751a8.png" },
-    { name: "CJ ENM", logo: "/manus-storage/cj-enm_ed8dd60d.png" },
-    { name: "LG Display", logo: "/manus-storage/lg-display_f8fbbfde.png" },
-    { name: "Asia Nah Gong", logo: "/manus-storage/asia-nah-gong_7343dc74.png" },
-    { name: "CJ Olive Networks", logo: "/manus-storage/cj-olivenetworks_dbb78fa3.png" },
-    { name: "CJ Daesang", logo: "/manus-storage/cj-daesang_b875af1c.png" },
-    { name: "STECO", logo: "/manus-storage/steco_2c9e8d1c.png" },
+    { name: "Severance", logo: "/manus-storage/severance_e94a957c.png" },
+    { name: "Coupang", logo: "/manus-storage/coupang_035fc0fb.png" },
+    { name: "시대언재", logo: "/manus-storage/sidaeon-jae_1752a23c.png" },
+    { name: "Hyundai", logo: "/manus-storage/hyundai_afb2ef79.png" },
+    { name: "CGV", logo: "/manus-storage/cgv_e205ad60.png" },
+    { name: "KAL", logo: "/manus-storage/kal_02c52bc8.png" },
+    { name: "바노바기클리닉", logo: "/manus-storage/banobagi-clinic_3128d981.png" },
+    { name: "MUSINSA", logo: "/manus-storage/musinsa_02d98551.png" },
   ];
 
   return (

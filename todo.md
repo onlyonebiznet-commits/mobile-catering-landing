@@ -33,6 +33,7 @@
 - [x] 고객사 로고 배경 완전 제거 (흰색/회색 배경 제거, 투명 PNG 변환)
 - [x] 고객사 로고 크기 통일 (높이 60px, 너비 auto, object-fit contain)
 - [x] 고객사 로고 URL 업데이트 (배경 제거 버전으로 재업로드)
+- [x] 추가 로고 16개 동일 방식 처리 및 업로드 (아시아나항공, INSPIRE, SAMSUNG, TBT, SK 바이오닉스, LG Display, Kakao, STECO, Severance, Coupang, 시대언재, Hyundai, CGV, KAL, 바노바기클리닉, MUSINSA)
 
 ## 단계별 개선 로드맨
 
