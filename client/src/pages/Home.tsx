@@ -472,7 +472,21 @@ export default function Home() {
                 }}></div>
               </div>
             ))}
+
+          {/* Progress Indicator */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex gap-2">
+            {[0, 1, 2].map((idx) => (
+              <div
+                key={idx}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  currentDietIndex === idx 
+                    ? 'w-8 bg-white' 
+                    : 'w-2 bg-white/50 hover:bg-white/75'
+                }`}
+              />
+            ))}
           </div>
+        </div>
         </div>
 
         {/* Fixed Header */}
