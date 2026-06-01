@@ -549,7 +549,8 @@ export default function Home() {
               }
             ][currentDietIndex % 3] && (
               <div>
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-3 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '36px'}}>
+                {/* MO: 36px, PC: 72px */}
+                <h1 className="md:hidden font-bold text-white mb-3 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '36px', lineHeight: '1.2'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -571,7 +572,52 @@ export default function Home() {
                     }
                   ][currentDietIndex % 3].title}
                 </h1>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200" style={{fontSize: '34px'}}>
+                <h1 className="hidden md:block font-bold text-white mb-3 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '72px', lineHeight: '1.2'}}>
+                  {[
+                    {
+                      image: '/manus-storage/hero-office-meal_08208dd3.png',
+                      title: '직원 복지의 새로운 기준',
+                      highlight: '프레시밀온',
+                      description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                    },
+                    {
+                      image: '/manus-storage/hero-office-meal_08208dd3.png',
+                      title: '이동형 밀솔루션의 혁신',
+                      highlight: '프레시밀온',
+                      description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                    },
+                    {
+                      image: '/manus-storage/hero-office-meal_08208dd3.png',
+                      title: '신뢰할 수 있는 파트너',
+                      highlight: '프레시밀온',
+                      description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                    }
+                  ][currentDietIndex % 3].title}
+                </h1>
+                {/* MO: 18px, PC: 36px */}
+                <h2 className="md:hidden font-bold text-white mb-4 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200" style={{fontSize: '18px', lineHeight: '1.2'}}>
+                  {[
+                    {
+                      image: '/manus-storage/hero-office-meal_08208dd3.png',
+                      title: '직원 복지의 새로운 기준',
+                      highlight: '프레시밀온',
+                      description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                    },
+                    {
+                      image: '/manus-storage/hero-office-meal_08208dd3.png',
+                      title: '이동형 밀솔루션의 혁신',
+                      highlight: '프레시밀온',
+                      description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                    },
+                    {
+                      image: '/manus-storage/hero-office-meal_08208dd3.png',
+                      title: '신뢰할 수 있는 파트너',
+                      highlight: '프레시밀온',
+                      description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                    }
+                  ][currentDietIndex % 3].highlight}
+                </h2>
+                <h2 className="hidden md:block font-bold text-white mb-4 drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200" style={{fontSize: '36px', lineHeight: '1.2'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
