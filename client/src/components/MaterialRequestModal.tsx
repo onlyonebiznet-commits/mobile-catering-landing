@@ -129,23 +129,47 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
 
     setIsSubmitting(true);
     try {
-      // GTM 이벤트 추적
+      // 실제 API 호출
+      const response = await fetch("/api/material-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          companyName: formData.companyName,
+          manager: formData.manager,
+          phone: formData.phone,
+          email: formData.email,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "API 요청 실패");
+      }
+
+      const data = await response.json();
+      
+      if (!data.success) {
+        throw new Error(data.error || "자료 신청 처리 실패");
+      }
+
+      // API 성공 후에만 GTM 이벤트 추적
       trackFormSubmit("material_request", {
         company_name: formData.companyName,
         manager: formData.manager,
         form_type: "material_request",
       });
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // GA4 이벤트: 자료 신청 완료 (성공)
+      // GA4 이벤트: 자료 신청 완료 (API 성공 후에만 발생)
       trackMaterialRequestSubmit(true);
-      toast.success("자료 신청이 완료되었습니다. 이메일로 자료를 보내드리겠습니다.");
+      toast.success("자료 신청이 완료되었습니다. 이메일로 자료를 보내드리검습니다.");
       onClose();
     } catch (error) {
+      console.error("Material request error:", error);
       // GA4 이벤트: 자료 신청 실패
       trackMaterialRequestSubmit(false);
-      toast.error("자료 신청 중 오류가 발생했습니다");
+      toast.error(error instanceof Error ? error.message : "자료 신청 중 오류가 발생했습니다");
     } finally {
       setIsSubmitting(false);
     }

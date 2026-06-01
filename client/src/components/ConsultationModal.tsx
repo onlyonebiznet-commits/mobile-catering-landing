@@ -142,7 +142,36 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
 
     setIsSubmitting(true);
     try {
-      // GTM 이벤트 추적
+      // 실제 API 호출
+      const response = await fetch("/api/consultation-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          companyName: formData.companyName,
+          manager: formData.contactPerson,
+          phone: formData.phoneNumber,
+          email: formData.email,
+          serviceType: formData.service,
+          region: formData.region,
+          expectedMealCount: formData.estimatedMeals,
+          inquiries: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "API 요청 실패");
+      }
+
+      const data = await response.json();
+      
+      if (!data.success) {
+        throw new Error(data.error || "상담 신청 처리 실패");
+      }
+
+      // API 성공 후에만 GTM 이벤트 추적
       trackFormSubmit("consultation_request", {
         company_name: formData.companyName,
         contact_person: formData.contactPerson,
@@ -152,16 +181,15 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
         form_type: "consultation",
       });
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // GA4 이벤트: 상담 신청 완료 (성공)
+      // GA4 이벤트: 상담 신청 완료 (API 성공 후에만 발생)
       trackConsultationSubmit(true);
       toast.success("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
       onClose();
     } catch (error) {
+      console.error("Consultation request error:", error);
       // GA4 이벤트: 상담 신청 실패
       trackConsultationSubmit(false);
-      toast.error("상담 신청 중 오류가 발생했습니다");
+      toast.error(error instanceof Error ? error.message : "상담 신청 중 오류가 발생했습니다");
     } finally {
       setIsSubmitting(false);
     }
