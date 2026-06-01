@@ -890,7 +890,7 @@ export default function Home() {
             @media (max-width: 768px) {
               .scroll-content-row1,
               .scroll-content-row2 {
-                gap: 1.5rem;
+                gap: 1rem;
                 animation-duration: 50s;
               }
               .scroll-content-row2 {
@@ -905,11 +905,11 @@ export default function Home() {
                 <div className="scroll-content-row1">
                   {[...Array(3)].map((_, iteration) => (
                     companies.map((company, idx) => (
-                      <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] md:w-[180px] md:h-[80px] sm:w-[140px] sm:h-[60px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
                           alt={company.name}
-                          className="max-h-[56px] max-w-[160px] w-auto h-auto object-contain"
+                          className="max-h-[56px] md:max-h-[56px] sm:max-h-[40px] max-w-[160px] md:max-w-[160px] sm:max-w-[120px] w-auto h-auto object-contain"
                         />
                       </div>
                     ))
@@ -923,11 +923,11 @@ export default function Home() {
                 <div className="scroll-content-row2">
                   {[...Array(3)].map((_, iteration) => (
                     companiesRow2.map((company, idx) => (
-                      <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                      <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] md:w-[180px] md:h-[80px] sm:w-[140px] sm:h-[60px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
                           alt={company.name}
-                          className="max-h-[56px] max-w-[160px] w-auto h-auto object-contain"
+                          className="max-h-[56px] md:max-h-[56px] sm:max-h-[40px] max-w-[160px] md:max-w-[160px] sm:max-w-[120px] w-auto h-auto object-contain"
                         />
                       </div>
                     ))

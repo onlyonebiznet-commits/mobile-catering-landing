@@ -34,6 +34,8 @@
 - [x] 고객사 로고 크기 통일 (높이 60px, 너비 auto, object-fit contain)
 - [x] 고객사 로고 URL 업데이트 (배경 제거 버전으로 재업로드)
 - [x] 추가 로고 16개 동일 방식 처리 및 업로드 (아시아나항공, INSPIRE, SAMSUNG, TBT, SK 바이오닉스, LG Display, Kakao, STECO, Severance, Coupang, 시대언재, Hyundai, CGV, KAL, 바노바기클리닉, MUSINSA)
+- [x] 모바일 로고 크기 축소 (sm: 140x60px, max-height 40px, max-width 120px)
+- [x] 모바일 로고 갭 감소 (2rem → 1rem)
 
 ## 단계별 개선 로드맨
 
@@ -57,6 +59,6 @@
 - [x] 배경 제거 로직 (Python PIL 기반 흰색/회색 배경 자동 감지 및 제거)
 - [x] 흰색 로고 감지 및 보존 처리 (RGB > 240 기준)
 - [x] 이미지 정규화 (동일 높이 60px 정렬, 비율 유지)
-- [ ] 로고 업로드 UI 컴포넌트
+- [ ] 로고 업로드 UI 컴포넌트 (향후 대시보드에서 관리)
 - [x] 배치 처리 기능 (여러 로고 동시 업로드)
-- [ ] 처리 결과 미리보기
+- [ ] 처리 결과 미리보기 (향후 대시보드에서 관리)
