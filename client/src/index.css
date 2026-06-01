@@ -139,13 +139,21 @@
   
   html {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    /* 모바일에서 스크롤바 숨기기 */
     scrollbar-width: none;
+    overflow-y: scroll;
   }
   
-  /* 크롬/사파리 스크롤바 숨기기 */
   html::-webkit-scrollbar {
-    display: none;
+    width: 0;
+    background: transparent;
+  }
+  
+  html::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  html::-webkit-scrollbar-thumb {
+    background: transparent;
   }
   
   body {
