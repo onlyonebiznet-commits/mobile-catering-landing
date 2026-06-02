@@ -41,6 +41,15 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const clearError = (field: string) => {
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field];
+      return newErrors;
+    });
+  };
 
   // Handle outside click
   useEffect(() => {
@@ -72,6 +81,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
+
   // Track form view on mount
   useEffect(() => {
     if (!hasTrackedFormView) {
@@ -86,6 +96,9 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
       ...prev,
       [name]: value,
     }));
+    if (value.trim()) {
+      clearError(name);
+    }
   };
 
   const handleSelectChange = (name: string, value: string) => {
@@ -93,6 +106,9 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
       ...prev,
       [name]: value,
     }));
+    if (value.trim()) {
+      clearError(name);
+    }
   };
 
   const handleAgreementChange = (key: string, value: boolean) => {
@@ -119,33 +135,34 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const newErrors: Record<string, string> = {};
+
     // Validation
     if (!formData.companyName.trim()) {
-      toast.error("회사명을 입력해주세요");
-      return;
+      newErrors.companyName = "회사명을 입력해주세요";
     }
     if (!formData.contactPerson.trim()) {
-      toast.error("담당자명을 입력해주세요");
-      return;
+      newErrors.contactPerson = "담당자명을 입력해주세요";
     }
     if (!formData.phoneNumber.trim()) {
-      toast.error("연락처를 입력해주세요");
-      return;
+      newErrors.phoneNumber = "연락처를 입력해주세요";
     }
     if (!formData.email.trim()) {
-      toast.error("이메일을 입력해주세요");
-      return;
+      newErrors.email = "이메일을 입력해주세요";
     }
     if (!formData.service.trim()) {
-      toast.error("관심서비스를 선택해주세요");
-      return;
+      newErrors.service = "관심서비스를 선택해주세요";
     }
     if (!formData.region.trim()) {
-      toast.error("지역을 선택해주세요");
-      return;
+      newErrors.region = "지역을 선택해주세요";
     }
     if (!formData.estimatedMeals.trim()) {
-      toast.error("예상 인원을 입력해주세요");
+      newErrors.estimatedMeals = "예상 인원을 입력해주세요";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      toast.error("필수 항목을 입력해주세요");
       return;
     }
 
@@ -242,7 +259,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
         <div className="px-6 py-6 overflow-y-auto" style={{ maxHeight: 'calc(75vh - 140px)' }}>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Company Name */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="companyName" className="text-sm font-medium">
                 회사명 <span className="text-red-500">*</span>
               </Label>
@@ -252,12 +269,15 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 placeholder="예: 프레시 테크"
                 value={formData.companyName}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300"
+                className={`rounded-lg border-gray-300 ${errors.companyName ? 'border-red-500' : ''}`}
               />
+              {errors.companyName && (
+                <p className="text-red-500 text-xs mt-1">{errors.companyName}</p>
+              )}
             </div>
 
             {/* Contact Person */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="contactPerson" className="text-sm font-medium">
                 담당자명 <span className="text-red-500">*</span>
               </Label>
@@ -267,12 +287,15 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 placeholder="담당자명을 입력해주세요"
                 value={formData.contactPerson}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300"
+                className={`rounded-lg border-gray-300 ${errors.contactPerson ? 'border-red-500' : ''}`}
               />
+              {errors.contactPerson && (
+                <p className="text-red-500 text-xs mt-1">{errors.contactPerson}</p>
+              )}
             </div>
 
             {/* Phone Number */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="phoneNumber" className="text-sm font-medium">
                 연락처 <span className="text-red-500">*</span>
               </Label>
@@ -282,12 +305,15 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 placeholder="010-0000-0000"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300"
+                className={`rounded-lg border-gray-300 ${errors.phoneNumber ? 'border-red-500' : ''}`}
               />
+              {errors.phoneNumber && (
+                <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
+              )}
             </div>
 
             {/* Email */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="email" className="text-sm font-medium">
                 이메일 <span className="text-red-500">*</span>
               </Label>
@@ -298,17 +324,20 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 placeholder="example@company.com"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300"
+                className={`rounded-lg border-gray-300 ${errors.email ? 'border-red-500' : ''}`}
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
 
             {/* Service Type */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="service" className="text-sm font-medium">
-                관심 서비스
+                관심 서비스 <span className="text-red-500">*</span>
               </Label>
               <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
-                <SelectTrigger className="rounded-lg border-gray-300">
+                <SelectTrigger className={`rounded-lg border-gray-300 ${errors.service ? 'border-red-500' : ''}`}>
                   <SelectValue placeholder="서비스를 선택해주세요" />
                 </SelectTrigger>
                 <SelectContent>
@@ -319,12 +348,15 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                   <SelectItem value="catering">케이터링</SelectItem>
                 </SelectContent>
               </Select>
+              {errors.service && (
+                <p className="text-red-500 text-xs mt-1">{errors.service}</p>
+              )}
             </div>
 
             {/* Region */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="region" className="text-sm font-medium">
-                지역
+                지역 <span className="text-red-500">*</span>
               </Label>
               <Input
                 id="region"
@@ -332,14 +364,17 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 placeholder="서울, 경기 등"
                 value={formData.region}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300"
+                className={`rounded-lg border-gray-300 ${errors.region ? 'border-red-500' : ''}`}
               />
+              {errors.region && (
+                <p className="text-red-500 text-xs mt-1">{errors.region}</p>
+              )}
             </div>
 
             {/* Estimated Meals */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="estimatedMeals" className="text-sm font-medium">
-                예상 인원
+                예상 인원 <span className="text-red-500">*</span>
               </Label>
               <Input
                 id="estimatedMeals"
@@ -347,12 +382,15 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                 placeholder="예: 50명"
                 value={formData.estimatedMeals}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300"
+                className={`rounded-lg border-gray-300 ${errors.estimatedMeals ? 'border-red-500' : ''}`}
               />
+              {errors.estimatedMeals && (
+                <p className="text-red-500 text-xs mt-1">{errors.estimatedMeals}</p>
+              )}
             </div>
 
             {/* Message */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="message" className="text-sm font-medium">
                 추가 요청사항
               </Label>
@@ -396,17 +434,13 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-600 pb-3 pt-2 border-t space-y-3">
-                    <div className="space-y-2">
-                      <p>CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다. 수집한 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 고객님께 안내하고 동의를 받을 예정입니다.</p>
-                      <ul className="list-disc list-inside space-y-1 text-gray-600">
-                        <li>수집·이용 항목: 성명, 휴대폰번호, 이메일주소, 기업명, 주소, 예상 식수</li>
-                        <li>목적: 이동급식 서비스 상담 및 진행</li>
-                        <li>보유·이용 기간: 서비스 상담 신청 후 3년</li>
-                        <li>근거: 개인정보 보호법 제15조 제1항 제4호에 따른 서비스 이행</li>
-                      </ul>
-                      <p className="text-gray-500 text-xs">개인정보를 기입하지 않으실 수 있으나, 기재하지 않으실 경우 이동급식 서비스 상담 진행이 어렵습니다.</p>
-                    </div>
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded">
+                    <p className="mb-2">프레시밀온은 다음과 같이 개인정보를 수집 및 이용합니다:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>수집항목: 회사명, 담당자명, 연락처, 이메일, 지역, 예상 인원</li>
+                      <li>수집목적: 상담 신청 처리 및 서비스 제공</li>
+                      <li>보유기간: 상담 완료 후 1년</li>
+                    </ul>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -421,19 +455,12 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                         className="flex-shrink-0"
                       />
                       <Label htmlFor="marketingConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
-                        마케팅 목적 이용 동의
+                        마케팅 정보 수신 동의 (선택)
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-600 pb-3 pt-2 border-t space-y-3">
-                    <div className="space-y-2">
-                      <ul className="list-disc list-inside space-y-1 text-gray-600">
-                        <li>수집·이용 항목: 성명, 휴대폰번호, 이메일, 기업명</li>
-                        <li>목적: 서비스 홍보 등 마케팅</li>
-                        <li>보유·이용 기간: 수집·이용 동의 후 3년</li>
-                      </ul>
-                      <p className="text-gray-500 text-xs">개인정보 수집 및 이용 동의를 거부할 수 있습니다. 동의 거부 시 마케팅 서비스 이용이 어려우나, 상담에는 지장이 없습니다.</p>
-                    </div>
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded">
+                    <p>프레시밀온의 최신 소식, 이벤트, 프로모션 정보를 이메일로 받으실 수 있습니다.</p>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -448,17 +475,12 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
                         className="flex-shrink-0"
                       />
                       <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
-                        광고성 정보 수신 동의
+                        광고성 정보 수신 동의 (선택)
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-600 pb-3 pt-2 border-t space-y-3">
-                    <div className="space-y-2">
-                      <p>CJ프레시웨이㈜는 '마케팅 목적의 개인정보 수집 및 이용'에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다. 본 동의를 거부하실 수 있으며, 거부 시 광고성 정보를 받으실 수 없으나, 서비스 이용에 지장이 없습니다.</p>
-                      <p className="font-medium text-xs">광고성 정보 수신 설정 변경</p>
-                      <p>고객센터(02-2149-6114)를 통한 광고성 정보 수신 동의 변경 신청</p>
-                      <p className="text-gray-500 text-xs">ㅁ SMS(문자) ㅁ 이메일 ㅁ 카카오톡</p>
-                    </div>
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded">
+                    <p>프레시밀온의 신상품, 할인 정보 등 광고성 정보를 이메일로 받으실 수 있습니다.</p>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
@@ -468,17 +490,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
             <Button
               type="submit"
               disabled={isSubmitting}
-              data-event="consultation_submit_click"
-              data-form="consultation_form"
-              className="w-full bg-[#005B44] hover:bg-[#004a37] text-white font-medium rounded-lg py-2 mt-6"
-              onClick={() => {
-                window.dataLayer?.push({
-                  event: "consultation_submit_click",
-                  form_name: "consultation_form",
-                  button_text: "상담 신청하기",
-                  page_location: window.location.href
-                });
-              }}
+              className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-2 rounded-lg font-medium transition-colors"
             >
               {isSubmitting ? "신청 중..." : "상담 신청하기"}
             </Button>
