@@ -136,6 +136,18 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
       toast.error("이메일을 입력해주세요");
       return;
     }
+    if (!formData.service.trim()) {
+      toast.error("관심서비스를 선택해주세요");
+      return;
+    }
+    if (!formData.region.trim()) {
+      toast.error("지역을 선택해주세요");
+      return;
+    }
+    if (!formData.estimatedMeals.trim()) {
+      toast.error("예상 인원을 입력해주세요");
+      return;
+    }
 
     if (!agreements.personalInfoCollection) {
       toast.error("개인정보 수집에 동의해주세요");
@@ -157,7 +169,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
           email: formData.email,
           serviceType: formData.service,
           expectedMealCount: formData.estimatedMeals,
-          inquiries: formData.message,
+          inquiries: formData.message || null,
           region: formData.region,
         }),
       });
