@@ -22,7 +22,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
   const [hasTrackedFormView, setHasTrackedFormView] = useState(false);
   const [formData, setFormData] = useState({
     companyName: "",
-    manager: "",
+    managerName: "",
     phone: "",
     email: "",
   });
@@ -111,7 +111,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
       toast.error("회사명을 입력해주세요");
       return;
     }
-    if (!formData.manager.trim()) {
+    if (!formData.managerName.trim()) {
       toast.error("담당자를 입력해주세요");
       return;
     }
@@ -139,7 +139,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
         },
         body: JSON.stringify({
           companyName: formData.companyName,
-          manager: formData.manager,
+          managerName: formData.managerName,
           phone: formData.phone,
           email: formData.email,
         }),
@@ -159,7 +159,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
       // API 성공 후에만 GTM 이벤트 추적
       trackFormSubmit("material_request", {
         company_name: formData.companyName,
-        manager: formData.manager,
+        manager: formData.managerName,
         form_type: "material_request",
       });
 
@@ -230,10 +230,10 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                 담당자명 <span className="text-red-500">*</span>
               </Label>
               <Input
-                id="manager"
-                name="manager"
+                id="managerName"
+                name="managerName"
                 placeholder="담당자명을 입력해주세요"
-                value={formData.manager}
+                value={formData.managerName}
                 onChange={handleChange}
                 className="rounded-lg border-gray-300"
               />

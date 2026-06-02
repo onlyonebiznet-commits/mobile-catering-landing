@@ -152,13 +152,12 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
         },
         body: JSON.stringify({
           companyName: formData.companyName,
-          manager: formData.contactPerson,
+          managerName: formData.contactPerson,
           phone: formData.phoneNumber,
           email: formData.email,
-          serviceType: formData.service,
-          region: formData.region,
-          expectedMealCount: formData.estimatedMeals,
-          inquiries: formData.message,
+          inquiryType: formData.service,
+          employeeCount: formData.estimatedMeals,
+          message: formData.message,
         }),
       });
 

@@ -131,3 +131,17 @@
 - [ ] GTM Preview에서 이벤트 확인
 - [ ] 이벤트 추적 테스트 및 검증
 - [ ] GTM Preview에서 이벤트 확인
+
+
+## 데이터베이스 및 API 구현
+
+- [x] web-static을 web-db-user로 업그레이드
+- [x] consultation_requests 테이블 생성 (companyName, managerName, phone, email, employeeCount, inquiryType, message, createdAt)
+- [x] material_requests 테이블 생성 (companyName, managerName, phone, email, downloadFile, createdAt)
+- [x] /api/consultation-request 엔드포인트 구현 (POST, 201 응답)
+- [x] /api/material-request 엔드포인트 구현 (POST, 201 응답)
+- [x] 상담 신청 성공 시 consultation_submit 이벤트 발생
+- [x] 자료 신청 성공 시 material_request_submit 이벤트 발생
+- [x] 프론트엔드 폼 필드명 업데이트 (manager → managerName, inquiries → message 등)
+- [ ] 관리자 대시보드에서 제출된 데이터 조회 기능
+- [ ] API 테스트 및 검증
