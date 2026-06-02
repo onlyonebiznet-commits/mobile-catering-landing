@@ -39,9 +39,10 @@ async function startServer() {
       }
 
       try {
+        console.log("[consultation-request] Received:", { companyName, manager, phone, email, region, expectedMealCount, serviceType, inquiries });
         const db = await getDb();
+        console.log("[consultation-request] DB connection OK");
         
-        // Insert into database
         const result = await db.insert(consultationRequests).values({
           companyName,
           manager,
@@ -54,14 +55,17 @@ async function startServer() {
         });
 
         console.log("✓ Consultation Request Saved to DB:", { companyName, manager, phone });
-
         res.json({ success: true, message: "상담 신청이 완료되었습니다" });
       } catch (dbError) {
-        console.error("Database error:", dbError instanceof Error ? dbError.message : dbError);
-        console.error("Full error:", dbError);
+        console.error("\n=== consultation_requests insert failed ===");
+        console.error("Error:", dbError);
+        console.error("Message:", dbError instanceof Error ? dbError.message : String(dbError));
+        console.error("Code:", (dbError as any)?.code);
+        console.error("State:", (dbError as any)?.sqlState);
+        console.error("===");
         res.status(500).json({ 
           error: "데이터베이스 저장 중 오류가 발생했습니다",
-          details: process.env.NODE_ENV === 'development' ? (dbError instanceof Error ? dbError.message : String(dbError)) : undefined
+          details: process.env.NODE_ENV === 'development' ? { message: dbError instanceof Error ? dbError.message : String(dbError), code: (dbError as any)?.code } : undefined
         });
       }
     } catch (error) {
@@ -80,9 +84,10 @@ async function startServer() {
       }
 
       try {
+        console.log("[material-request] Received:", { companyName, manager, phone, email });
         const db = await getDb();
+        console.log("[material-request] DB connection OK");
         
-        // Insert into database
         const result = await db.insert(materialRequests).values({
           companyName,
           manager,
@@ -91,14 +96,17 @@ async function startServer() {
         });
 
         console.log("✓ Material Request Saved to DB:", { companyName, manager, phone });
-
         res.json({ success: true, message: "자료 신청이 완료되었습니다" });
       } catch (dbError) {
-        console.error("Database error:", dbError instanceof Error ? dbError.message : dbError);
-        console.error("Full error:", dbError);
+        console.error("\n=== material_requests insert failed ===");
+        console.error("Error:", dbError);
+        console.error("Message:", dbError instanceof Error ? dbError.message : String(dbError));
+        console.error("Code:", (dbError as any)?.code);
+        console.error("State:", (dbError as any)?.sqlState);
+        console.error("===");
         res.status(500).json({ 
           error: "데이터베이스 저장 중 오류가 발생했습니다",
-          details: process.env.NODE_ENV === 'development' ? (dbError instanceof Error ? dbError.message : String(dbError)) : undefined
+          details: process.env.NODE_ENV === 'development' ? { message: dbError instanceof Error ? dbError.message : String(dbError), code: (dbError as any)?.code } : undefined
         });
       }
     } catch (error) {
