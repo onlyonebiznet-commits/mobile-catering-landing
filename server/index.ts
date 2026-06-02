@@ -54,7 +54,7 @@ async function startServer() {
           region: region || null,
           expectedMealCount: expectedMealCount || null,
           serviceType: serviceType || null,
-          inquiries: inquiries || null,
+          inquiries: inquiries && inquiries.trim() ? inquiries : null,
         });
 
         console.log("✓ consultation_requests saved:", { companyName, manager, phone });
@@ -111,7 +111,7 @@ async function startServer() {
           manager,
           phone,
           email: email || null,
-          downloadFile: downloadFile || null,
+          downloadFile: downloadFile && downloadFile.trim() ? downloadFile : null,
         });
 
         console.log("✓ material_requests saved:", { companyName, manager, phone });
