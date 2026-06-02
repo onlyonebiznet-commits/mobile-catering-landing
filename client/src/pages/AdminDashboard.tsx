@@ -4,6 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface ConsultationRequest {
   id: number;
@@ -36,6 +42,21 @@ interface Stats {
   materialMonth: number;
 }
 
+const STATUS_OPTIONS = ['신규', '처리중', '완료'];
+
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case '신규':
+      return 'bg-blue-100 text-blue-800 border-blue-300';
+    case '처리중':
+      return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+    case '완료':
+      return 'bg-green-100 text-green-800 border-green-300';
+    default:
+      return 'bg-gray-100 text-gray-800 border-gray-300';
+  }
+};
+
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
   const [consultations, setConsultations] = useState<ConsultationRequest[]>([]);
@@ -45,6 +66,7 @@ export default function AdminDashboard() {
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('');
+  const [updatingId, setUpdatingId] = useState<number | null>(null);
 
   const getToken = () => localStorage.getItem('adminToken');
 
@@ -133,6 +155,8 @@ export default function AdminDashboard() {
     const token = getToken();
     if (!token) return;
 
+    setUpdatingId(id);
+
     try {
       const response = await fetch('/api/admin/update-status', {
         method: 'PATCH',
@@ -145,10 +169,24 @@ export default function AdminDashboard() {
 
       if (!response.ok) throw new Error('Status update failed');
 
-      fetchData();
+      // 로컬 상태 업데이트
+      if (type === 'consultation') {
+        setConsultations(consultations.map(c => 
+          c.id === id ? { ...c, status: newStatus } : c
+        ));
+      } else {
+        setMaterials(materials.map(m => 
+          m.id === id ? { ...m, status: newStatus } : m
+        ));
+      }
+
+      // 통계 새로고침
+      await fetchData();
     } catch (err) {
       setError('상태 업데이트 중 오류가 발생했습니다');
       console.error('Status update error:', err);
+    } finally {
+      setUpdatingId(null);
     }
   };
 
@@ -278,15 +316,27 @@ export default function AdminDashboard() {
                             <td className="py-3 px-4">{item.email}</td>
                             <td className="py-3 px-4">{item.inquiry_type}</td>
                             <td className="py-3 px-4">
-                              <select
-                                value={item.status || '신규'}
-                                onChange={(e) => handleStatusChange('consultation', item.id, e.target.value)}
-                                className="px-2 py-1 border border-slate-300 rounded text-sm"
-                              >
-                                <option value="신규">신규</option>
-                                <option value="처리중">처리중</option>
-                                <option value="완료">완료</option>
-                              </select>
+                              <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                  <button
+                                    disabled={updatingId === item.id}
+                                    className={`px-3 py-1 rounded-full border font-medium text-xs cursor-pointer transition-colors hover:opacity-80 ${getStatusColor(item.status || '신규')}`}
+                                  >
+                                    {item.status || '신규'}
+                                  </button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                  {STATUS_OPTIONS.map((status) => (
+                                    <DropdownMenuItem
+                                      key={status}
+                                      onClick={() => handleStatusChange('consultation', item.id, status)}
+                                      disabled={updatingId === item.id}
+                                    >
+                                      {status}
+                                    </DropdownMenuItem>
+                                  ))}
+                                </DropdownMenuContent>
+                              </DropdownMenu>
                             </td>
                           </tr>
                         ))}
@@ -337,15 +387,27 @@ export default function AdminDashboard() {
                             <td className="py-3 px-4">{item.email}</td>
                             <td className="py-3 px-4">{item.download_file}</td>
                             <td className="py-3 px-4">
-                              <select
-                                value={item.status || '신규'}
-                                onChange={(e) => handleStatusChange('material', item.id, e.target.value)}
-                                className="px-2 py-1 border border-slate-300 rounded text-sm"
-                              >
-                                <option value="신규">신규</option>
-                                <option value="처리중">처리중</option>
-                                <option value="완료">완료</option>
-                              </select>
+                              <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                  <button
+                                    disabled={updatingId === item.id}
+                                    className={`px-3 py-1 rounded-full border font-medium text-xs cursor-pointer transition-colors hover:opacity-80 ${getStatusColor(item.status || '신규')}`}
+                                  >
+                                    {item.status || '신규'}
+                                  </button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                  {STATUS_OPTIONS.map((status) => (
+                                    <DropdownMenuItem
+                                      key={status}
+                                      onClick={() => handleStatusChange('material', item.id, status)}
+                                      disabled={updatingId === item.id}
+                                    >
+                                      {status}
+                                    </DropdownMenuItem>
+                                  ))}
+                                </DropdownMenuContent>
+                              </DropdownMenu>
                             </td>
                           </tr>
                         ))}
