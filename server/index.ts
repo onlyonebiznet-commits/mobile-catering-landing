@@ -57,8 +57,12 @@ async function startServer() {
 
         res.json({ success: true, message: "상담 신청이 완료되었습니다" });
       } catch (dbError) {
-        console.error("Database error:", dbError);
-        res.status(500).json({ error: "데이터베이스 저장 중 오류가 발생했습니다" });
+        console.error("Database error:", dbError instanceof Error ? dbError.message : dbError);
+        console.error("Full error:", dbError);
+        res.status(500).json({ 
+          error: "데이터베이스 저장 중 오류가 발생했습니다",
+          details: process.env.NODE_ENV === 'development' ? (dbError instanceof Error ? dbError.message : String(dbError)) : undefined
+        });
       }
     } catch (error) {
       console.error("Consultation request error:", error);
@@ -90,8 +94,12 @@ async function startServer() {
 
         res.json({ success: true, message: "자료 신청이 완료되었습니다" });
       } catch (dbError) {
-        console.error("Database error:", dbError);
-        res.status(500).json({ error: "데이터베이스 저장 중 오류가 발생했습니다" });
+        console.error("Database error:", dbError instanceof Error ? dbError.message : dbError);
+        console.error("Full error:", dbError);
+        res.status(500).json({ 
+          error: "데이터베이스 저장 중 오류가 발생했습니다",
+          details: process.env.NODE_ENV === 'development' ? (dbError instanceof Error ? dbError.message : String(dbError)) : undefined
+        });
       }
     } catch (error) {
       console.error("Material request error:", error);
