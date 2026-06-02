@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -240,6 +240,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         onMouseDown={(e) => e.stopPropagation()}
         showCloseButton={false}
       >
+        {/* Accessible Dialog Title (hidden visually) */}
+        <DialogTitle className="sr-only">상담 신청</DialogTitle>
+
         {/* Header */}
         <div className="bg-[#005B44] px-6 py-6 relative">
           <button

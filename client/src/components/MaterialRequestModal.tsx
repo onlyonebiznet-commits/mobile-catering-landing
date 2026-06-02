@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -193,6 +193,9 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
         onMouseDown={(e) => e.stopPropagation()}
         showCloseButton={false}
       >
+        {/* Accessible Dialog Title (hidden visually) */}
+        <DialogTitle className="sr-only">자료 신청</DialogTitle>
+
         {/* Header */}
         <div className="bg-[#005B44] px-6 py-6 relative">
           <button
