@@ -249,6 +249,22 @@
     }
   }
 
+  @media (min-width: 1440px) {
+    .container {
+      padding-left: 3rem; /* 48px - large desktop padding */
+      padding-right: 3rem;
+      max-width: 1440px; /* Large desktop content width */
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .container {
+      padding-left: 4rem; /* 64px - extra large desktop padding */
+      padding-right: 4rem;
+      max-width: 1600px; /* Extra large desktop content width */
+    }
+  }
+
   /* Fade in animation for hero section */
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
