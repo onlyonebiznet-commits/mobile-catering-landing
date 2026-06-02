@@ -177,12 +177,17 @@ async function startServer() {
   // Admin Dashboard - Get Consultations
   app.get("/api/admin/consultations", async (req, res) => {
     try {
+      console.log("[/api/admin/consultations] START");
       if (!verifyAdminToken(req)) {
+        console.log("[/api/admin/consultations] Token verification failed");
         return res.status(401).json({ error: "인증이 필요합니다" });
       }
 
+      console.log("[/api/admin/consultations] Token verified");
       const db = await getDb();
+      console.log("[/api/admin/consultations] DB connection OK");
       const { status, search, startDate, endDate } = req.query;
+      console.log("[/api/admin/consultations] Query params:", { status, search, startDate, endDate });
 
       let query = db.select().from(consultationRequests);
 
@@ -202,22 +207,41 @@ async function startServer() {
       }
 
       const data = await query.orderBy(sql`created_at DESC`);
+      console.log("[/api/admin/consultations] Query result:", data.length, "rows");
+      console.log("[/api/admin/consultations] END");
       res.json({ data, total: data.length });
     } catch (error) {
-      console.error("Admin consultations error:", error);
-      res.status(500).json({ error: "데이터 조회 중 오류가 발생했습니다" });
+      console.error("\n=== /api/admin/consultations error ===");
+      console.error("Error:", error);
+      console.error("Message:", error instanceof Error ? error.message : String(error));
+      console.error("Code:", (error as any)?.code);
+      console.error("State:", (error as any)?.sqlState);
+      console.error("Stack:", (error as any)?.stack);
+      console.error("===\n");
+      res.status(500).json({ 
+        error: "데이터 조회 중 오류가 발생했습니다",
+        details: process.env.NODE_ENV === 'development' ? {
+          message: error instanceof Error ? error.message : String(error),
+          code: (error as any)?.code
+        } : undefined
+      });
     }
   });
 
   // Admin Dashboard - Get Materials
   app.get("/api/admin/materials", async (req, res) => {
     try {
+      console.log("[/api/admin/materials] START");
       if (!verifyAdminToken(req)) {
+        console.log("[/api/admin/materials] Token verification failed");
         return res.status(401).json({ error: "인증이 필요합니다" });
       }
 
+      console.log("[/api/admin/materials] Token verified");
       const db = await getDb();
+      console.log("[/api/admin/materials] DB connection OK");
       const { status, search, startDate, endDate } = req.query;
+      console.log("[/api/admin/materials] Query params:", { status, search, startDate, endDate });
 
       let query = db.select().from(materialRequests);
 
@@ -237,23 +261,42 @@ async function startServer() {
       }
 
       const data = await query.orderBy(sql`created_at DESC`);
+      console.log("[/api/admin/materials] Query result:", data.length, "rows");
+      console.log("[/api/admin/materials] END");
       res.json({ data, total: data.length });
     } catch (error) {
-      console.error("Admin materials error:", error);
-      res.status(500).json({ error: "데이터 조회 중 오류가 발생했습니다" });
+      console.error("\n=== /api/admin/materials error ===");
+      console.error("Error:", error);
+      console.error("Message:", error instanceof Error ? error.message : String(error));
+      console.error("Code:", (error as any)?.code);
+      console.error("State:", (error as any)?.sqlState);
+      console.error("Stack:", (error as any)?.stack);
+      console.error("===\n");
+      res.status(500).json({ 
+        error: "데이터 조회 중 오류가 발생했습니다",
+        details: process.env.NODE_ENV === 'development' ? {
+          message: error instanceof Error ? error.message : String(error),
+          code: (error as any)?.code
+        } : undefined
+      });
     }
   });
 
   // Admin Dashboard - Get Stats
   app.get("/api/admin/stats", async (req, res) => {
     try {
+      console.log("[/api/admin/stats] START");
       if (!verifyAdminToken(req)) {
+        console.log("[/api/admin/stats] Token verification failed");
         return res.status(401).json({ error: "인증이 필요합니다" });
       }
 
+      console.log("[/api/admin/stats] Token verified");
       const db = await getDb();
+      console.log("[/api/admin/stats] DB connection OK");
       const today = new Date().toISOString().split('T')[0];
       const monthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().split('T')[0];
+      console.log("[/api/admin/stats] Date range:", { today, monthStart });
 
       const consultationToday = await db
         .select()
@@ -275,6 +318,14 @@ async function startServer() {
         .from(materialRequests)
         .where(sql`DATE(created_at) >= ${monthStart}`);
 
+      console.log("[/api/admin/stats] Results:", {
+        consultationToday: consultationToday.length,
+        consultationMonth: consultationMonth.length,
+        materialToday: materialToday.length,
+        materialMonth: materialMonth.length,
+      });
+      console.log("[/api/admin/stats] END");
+
       res.json({
         consultationToday: consultationToday.length,
         consultationMonth: consultationMonth.length,
@@ -282,8 +333,20 @@ async function startServer() {
         materialMonth: materialMonth.length,
       });
     } catch (error) {
-      console.error("Admin stats error:", error);
-      res.status(500).json({ error: "통계 조회 중 오류가 발생했습니다" });
+      console.error("\n=== /api/admin/stats error ===");
+      console.error("Error:", error);
+      console.error("Message:", error instanceof Error ? error.message : String(error));
+      console.error("Code:", (error as any)?.code);
+      console.error("State:", (error as any)?.sqlState);
+      console.error("Stack:", (error as any)?.stack);
+      console.error("===\n");
+      res.status(500).json({ 
+        error: "통계 조회 중 오류가 발생했습니다",
+        details: process.env.NODE_ENV === 'development' ? {
+          message: error instanceof Error ? error.message : String(error),
+          code: (error as any)?.code
+        } : undefined
+      });
     }
   });
 
