@@ -687,7 +687,7 @@ export default function Home() {
                       }
                     ][currentDietIndex % 3].title}
                   </h1>
-                  <h2 className="font-bold text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '72px', lineHeight: '1.2', marginBottom: '1rem'}}>
+                  <h2 className="font-bold text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
