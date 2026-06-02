@@ -845,8 +845,8 @@ export default function Home() {
       <section id="services" className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center">키친리스 밀솔루션</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>키친리스 밀솔루션</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -888,8 +888,8 @@ export default function Home() {
       <section id="diet" className="py-20 bg-gray-50">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center">고객 특성에 맞춘 식단</h2>
-            <p className="text-[15px] md:text-[25px] text-gray-600 text-center">각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>고객 특성에 맞춘 식단</h2>
+            <p className="text-[15px] md:text-[25px] text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
           <div className="relative">
@@ -942,8 +942,8 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center">실제 운영중인 식단</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center">신선한 재료로 만든 다양한 메뉴</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>실제 운영중인 식단</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 재료로 만든 다양한 메뉴</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -981,8 +981,8 @@ export default function Home() {
       <section id="process" className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center">신선함을 보장하는 프로세스</h2>
-            <p className="text-sm sm:text-base md:text-xl text-white/90 text-center">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>신선함을 보장하는 프로세스</h2>
+            <p className="text-sm sm:text-base md:text-xl text-white/90 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -1003,8 +1003,8 @@ export default function Home() {
       <section className="py-16 bg-gray-50 overflow-hidden">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center">함께하는 고객사</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>함께하는 고객사</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
           </div>
           <style>{`
             @keyframes scroll-infinite-ltr {
@@ -1088,8 +1088,8 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center">고객 후기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center">프레시밀온과 함께하는 고객들의 성공 스토리</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>고객 후기</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
           {/* Card Grid Reviews */}
@@ -1125,8 +1125,8 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center">우리의 이야기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center">프레시밀온과 함께 만들어가는 성공 사례들</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>우리의 이야기</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온과 함께 만들어가는 성공 사례들</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
@@ -1179,8 +1179,8 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center">자주 묻는 질문</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center">프레시밀온 서비스에 대한 자주 묻는 질문들입니다</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>자주 묻는 질문</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온 서비스에 대한 자주 묻는 질문들입니다</p>
           </div>
 
           <div className="space-y-4">
@@ -1212,8 +1212,8 @@ export default function Home() {
       <section className="py-12 md:py-20 bg-white">
         <div className="container">
           <div className="text-center mb-8 md:mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4" style={{fontSize: '30px'}}>프레시밀온 이야기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>프레시밀온 이야기</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
           </div>
 
           <div className="bg-black rounded-lg overflow-hidden aspect-video w-full scroll-reveal">
@@ -1236,8 +1236,8 @@ export default function Home() {
       {/* Final CTA Section */}
       <section className="py-20 bg-[#005B44]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2">직원 복지의 새로운 기준을 경험하세요</h2>
-            <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8">신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
+            <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
+            <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal-stagger" data-reveal-item="0">
             <button
               onClick={() => setConsultationOpen(true)}
