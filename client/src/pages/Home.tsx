@@ -600,19 +600,19 @@ export default function Home() {
                 video: '/manus-storage/0601_compressed_9dc9f144.mp4',
                 title: '어디든지 찾아가는 사내 복지',
                 highlight: '프레시밀온',
-                description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
               },
               {
                 video: '/manus-storage/inbound_snack_fcff7dcf.mp4',
                 title: '직원 만족을 높이는 간식 복지',
                 highlight: '스낵픽',
-                description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
               },
               {
                 video: '/manus-storage/cafe_fresh_39cc91e6.mp4',
                 title: '기업 문화를 만드는 사내 카페',
                 highlight: '카페프레시',
-                description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
               }
             ][currentDietIndex % 3] && (
               <div>
@@ -624,19 +624,19 @@ export default function Home() {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '어디든지 찾아가는 사내 복지',
                         highlight: '프레시밀온',
-                        description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                        description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
                         highlight: '스낵픽',
-                        description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                        description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
                         highlight: '카페프레시',
-                        description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                        description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].title}
                   </h1>
@@ -646,19 +646,19 @@ export default function Home() {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '어디든지 찾아가는 사내 복지',
                         highlight: '프레시밀온',
-                        description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                        description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
                         highlight: '스낵픽',
-                        description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                        description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
                         highlight: '카페프레시',
-                        description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                        description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].highlight}
                   </h2>
@@ -671,19 +671,19 @@ export default function Home() {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '어디든지 찾아가는 사내 복지',
                         highlight: '프레시밀온',
-                        description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                        description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
                         highlight: '스낵픽',
-                        description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                        description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
                         highlight: '카페프레시',
-                        description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                        description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].title}
                   </h1>
@@ -693,19 +693,19 @@ export default function Home() {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '어디든지 찾아가는 사내 복지',
                         highlight: '프레시밀온',
-                        description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                        description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
                         highlight: '스낵픽',
-                        description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                        description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
                         highlight: '카페프레시',
-                        description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                        description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].highlight}
                   </h2>
@@ -718,19 +718,19 @@ export default function Home() {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '어디든지 찾아가는 사내 복지',
                       highlight: '프레시밀온',
-                      description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                      description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '직원 만족을 높이는 간식 복지',
                       highlight: '스낵픽',
-                      description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                      description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '기업 문화를 만드는 사내 카페',
                       highlight: '카페프레시',
-                      description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                      description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                     }
                   ][currentDietIndex % 3].description}
                 </p>
@@ -740,19 +740,19 @@ export default function Home() {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '어디든지 찾아가는 사내 복지',
                       highlight: '프레시밀온',
-                      description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
+                      description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '직원 만족을 높이는 간식 복지',
                       highlight: '스낵픽',
-                      description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
+                      description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '기업 문화를 만드는 사내 카페',
                       highlight: '카페프레시',
-                      description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
+                      description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                     }
                   ][currentDietIndex % 3].description}
                 </p>
