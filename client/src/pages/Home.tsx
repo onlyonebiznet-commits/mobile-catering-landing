@@ -466,7 +466,7 @@ export default function Home() {
           <div className="relative w-full h-full">
             {[
               {
-                video: '/manus-storage/0601_0dde6813.mp4',
+                video: '/manus-storage/0601_compressed_9dc9f144.mp4',
                 title: '직원 복지의 새로운 기준',
                 highlight: '프레시밀온',
                 description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
@@ -597,7 +597,7 @@ export default function Home() {
           <div className="container mx-auto px-4 w-full scroll-reveal">
             {[
               {
-                video: '/manus-storage/0601_0dde6813.mp4',
+                video: '/manus-storage/0601_compressed_9dc9f144.mp4',
                 title: '직원 복지의 새로운 기준',
                 highlight: '프레시밀온',
                 description: '신선한 재료와 정성스러운 조리로 만든 건강한 식사가 직원들의 만족도를 높입니다.'
