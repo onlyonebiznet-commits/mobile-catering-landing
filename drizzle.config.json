@@ -1,0 +1,8 @@
+{
+  "schema": "./drizzle/schema.ts",
+  "out": "./drizzle/migrations",
+  "dialect": "mysql",
+  "dbCredentials": {
+    "url": "mysql://2RpxjNqTJBAJwcG.root:WI4464SI7AA1TFSlAXVy@gateway06.us-east-1.prod.aws.tidbcloud.com:4000/BNzd6XnofgDBbo2EVE2Tz4?ssl={\"rejectUnauthorized\":true}"
+  }
+}

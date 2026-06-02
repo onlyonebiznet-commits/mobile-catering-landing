@@ -28,44 +28,56 @@ async function startServer() {
     // Continue anyway for development
   }
 
-  // API Routes
+  // API Routes - Consultation Request
   app.post("/api/consultation-request", async (req, res) => {
     try {
-      const { companyName, manager, phone, email, region, expectedMealCount, serviceType, inquiries } = req.body;
+      const { companyName, managerName, phone, email, employeeCount, inquiryType, message } = req.body;
 
       // Validation
-      if (!companyName || !manager || !phone) {
+      if (!companyName || !managerName || !phone) {
         return res.status(400).json({ error: "필수 필드를 입력해주세요" });
       }
 
       try {
-        console.log("[consultation-request] Received:", { companyName, manager, phone, email, region, expectedMealCount, serviceType, inquiries });
+        console.log("[consultation-request] START");
+        console.log("[consultation-request] Received:", { companyName, managerName, phone, email, employeeCount, inquiryType, message });
+        
         const db = await getDb();
         console.log("[consultation-request] DB connection OK");
         
         const result = await db.insert(consultationRequests).values({
           companyName,
-          manager,
+          managerName,
           phone,
           email: email || null,
-          region: region || null,
-          expectedMealCount: expectedMealCount || null,
-          serviceType: serviceType || null,
-          inquiries: inquiries || null,
+          employeeCount: employeeCount || null,
+          inquiryType: inquiryType || null,
+          message: message || null,
         });
 
-        console.log("✓ Consultation Request Saved to DB:", { companyName, manager, phone });
-        res.json({ success: true, message: "상담 신청이 완료되었습니다" });
+        console.log("✓ consultation_requests saved:", { companyName, managerName, phone });
+        console.log("[consultation-request] END");
+        
+        res.status(201).json({ 
+          success: true, 
+          message: "상담 신청이 완료되었습니다",
+          event: "consultation_submit"
+        });
       } catch (dbError) {
         console.error("\n=== consultation_requests insert failed ===");
         console.error("Error:", dbError);
         console.error("Message:", dbError instanceof Error ? dbError.message : String(dbError));
         console.error("Code:", (dbError as any)?.code);
         console.error("State:", (dbError as any)?.sqlState);
-        console.error("===");
+        console.error("Stack:", (dbError as any)?.stack);
+        console.error("===\n");
+        
         res.status(500).json({ 
           error: "데이터베이스 저장 중 오류가 발생했습니다",
-          details: process.env.NODE_ENV === 'development' ? { message: dbError instanceof Error ? dbError.message : String(dbError), code: (dbError as any)?.code } : undefined
+          details: process.env.NODE_ENV === 'development' ? { 
+            message: dbError instanceof Error ? dbError.message : String(dbError), 
+            code: (dbError as any)?.code 
+          } : undefined
         });
       }
     } catch (error) {
@@ -74,39 +86,54 @@ async function startServer() {
     }
   });
 
+  // API Routes - Material Request
   app.post("/api/material-request", async (req, res) => {
     try {
-      const { companyName, manager, phone, email } = req.body;
+      const { companyName, managerName, phone, email, downloadFile } = req.body;
 
       // Validation
-      if (!companyName || !manager || !phone) {
+      if (!companyName || !managerName || !phone) {
         return res.status(400).json({ error: "필수 필드를 입력해주세요" });
       }
 
       try {
-        console.log("[material-request] Received:", { companyName, manager, phone, email });
+        console.log("[material-request] START");
+        console.log("[material-request] Received:", { companyName, managerName, phone, email, downloadFile });
+        
         const db = await getDb();
         console.log("[material-request] DB connection OK");
         
         const result = await db.insert(materialRequests).values({
           companyName,
-          manager,
+          managerName,
           phone,
           email: email || null,
+          downloadFile: downloadFile || null,
         });
 
-        console.log("✓ Material Request Saved to DB:", { companyName, manager, phone });
-        res.json({ success: true, message: "자료 신청이 완료되었습니다" });
+        console.log("✓ material_requests saved:", { companyName, managerName, phone });
+        console.log("[material-request] END");
+        
+        res.status(201).json({ 
+          success: true, 
+          message: "자료 신청이 완료되었습니다",
+          event: "material_request_submit"
+        });
       } catch (dbError) {
         console.error("\n=== material_requests insert failed ===");
         console.error("Error:", dbError);
         console.error("Message:", dbError instanceof Error ? dbError.message : String(dbError));
         console.error("Code:", (dbError as any)?.code);
         console.error("State:", (dbError as any)?.sqlState);
-        console.error("===");
+        console.error("Stack:", (dbError as any)?.stack);
+        console.error("===\n");
+        
         res.status(500).json({ 
           error: "데이터베이스 저장 중 오류가 발생했습니다",
-          details: process.env.NODE_ENV === 'development' ? { message: dbError instanceof Error ? dbError.message : String(dbError), code: (dbError as any)?.code } : undefined
+          details: process.env.NODE_ENV === 'development' ? { 
+            message: dbError instanceof Error ? dbError.message : String(dbError), 
+            code: (dbError as any)?.code 
+          } : undefined
         });
       }
     } catch (error) {
