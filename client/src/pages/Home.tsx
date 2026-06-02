@@ -530,7 +530,7 @@ export default function Home() {
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? 'bg-white shadow-lg' : 'bg-transparent'
         }`}>
-          <div className="container mx-auto px-4">
+          <div className="container">
             <div className="flex justify-between items-center h-16 md:h-16 py-2 md:py-0">
               <div className="flex items-center gap-2">
                 <span className={`font-bold text-lg md:text-xl transition ${
@@ -594,7 +594,7 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative h-full flex flex-col justify-center pt-20">
-          <div className="container mx-auto px-4 w-full scroll-reveal">
+          <div className="container w-full scroll-reveal">
             {[
               {
                 video: '/manus-storage/0601_compressed_9dc9f144.mp4',
@@ -831,7 +831,7 @@ export default function Home() {
 
       {/* Statistics Section */}
       <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <StatisticItem end={20} suffix="년" label="이상의 운영 경험" index={0} />
             <StatisticItem end={300000} suffix="명" label="일일 제공 식수" index={1} />
@@ -843,7 +843,7 @@ export default function Home() {
 
       {/* Kitchenless Solutions Section */}
       <section id="services" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2">키친리스 밀솔루션</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
@@ -886,7 +886,7 @@ export default function Home() {
 
       {/* Customer Diet Section - Wide Layout */}
       <section id="diet" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2">고객 특성에 맞춘 식단</h2>
             <p className="text-[15px] md:text-[25px] text-gray-600">각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
@@ -940,7 +940,7 @@ export default function Home() {
 
       {/* Actual Operating Meals Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2">실제 운영중인 식단</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">신선한 재료로 만든 다양한 메뉴</p>
@@ -979,7 +979,7 @@ export default function Home() {
 
       {/* Process Section - Professional Layout */}
       <section id="process" className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2">신선함을 보장하는 프로세스</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
@@ -1001,7 +1001,7 @@ export default function Home() {
 
             {/* Partner Companies Section - 2 Row Infinite Scroll */}
       <section className="py-16 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2">함께하는 고객사</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
@@ -1086,7 +1086,7 @@ export default function Home() {
 
       {/* Testimonials Section - Card Grid with Play Button */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2">고객 후기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께하는 고객들의 성공 스토리</p>
@@ -1123,7 +1123,7 @@ export default function Home() {
 
       {/* Our Story Section - Magazine Style */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2">우리의 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온과 함께 만들어가는 성공 사례들</p>
@@ -1177,7 +1177,7 @@ export default function Home() {
 
       {/* FAQ Section with Accordion */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2">자주 묻는 질문</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온 서비스에 대한 자주 묻는 질문들입니다</p>
@@ -1210,7 +1210,7 @@ export default function Home() {
 
           {/* Video Section */}
       <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-8 md:mb-16 scroll-reveal">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4" style={{fontSize: '30px'}}>프레시밀온 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600">프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
@@ -1257,7 +1257,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 py-12">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             <div>
               <h3 className="text-white font-bold text-xl mb-4">이동형 F&B 서비스</h3>
