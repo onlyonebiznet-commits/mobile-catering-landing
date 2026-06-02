@@ -75,10 +75,11 @@ async function startServer() {
         
         res.status(500).json({ 
           error: "데이터베이스 저장 중 오류가 발생했습니다",
-          details: process.env.NODE_ENV === 'development' ? { 
+          details: { 
             message: dbError instanceof Error ? dbError.message : String(dbError), 
-            code: (dbError as any)?.code 
-          } : undefined
+            code: (dbError as any)?.code,
+            sqlState: (dbError as any)?.sqlState
+          }
         });
       }
     } catch (error) {
@@ -131,10 +132,11 @@ async function startServer() {
         
         res.status(500).json({ 
           error: "데이터베이스 저장 중 오류가 발생했습니다",
-          details: process.env.NODE_ENV === 'development' ? { 
+          details: { 
             message: dbError instanceof Error ? dbError.message : String(dbError), 
-            code: (dbError as any)?.code 
-          } : undefined
+            code: (dbError as any)?.code,
+            sqlState: (dbError as any)?.sqlState
+          }
         });
       }
     } catch (error) {
