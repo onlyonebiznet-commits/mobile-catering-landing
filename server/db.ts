@@ -54,13 +54,13 @@ export async function createTables() {
         CREATE TABLE IF NOT EXISTS consultation_requests (
           id INT PRIMARY KEY AUTO_INCREMENT,
           company_name VARCHAR(255) NOT NULL,
-          manager VARCHAR(255) NOT NULL,
+          manager_name VARCHAR(255) NOT NULL,
           phone VARCHAR(20) NOT NULL,
           email VARCHAR(255),
-          region VARCHAR(100),
-          expected_meal_count VARCHAR(100),
-          service_type VARCHAR(100),
-          inquiries TEXT,
+          employee_count VARCHAR(100),
+          inquiry_type VARCHAR(100),
+          message TEXT,
+          status VARCHAR(50) DEFAULT 'new',
           created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
       `);
@@ -69,9 +69,11 @@ export async function createTables() {
         CREATE TABLE IF NOT EXISTS material_requests (
           id INT PRIMARY KEY AUTO_INCREMENT,
           company_name VARCHAR(255) NOT NULL,
-          manager VARCHAR(255) NOT NULL,
+          manager_name VARCHAR(255) NOT NULL,
           phone VARCHAR(20) NOT NULL,
           email VARCHAR(255),
+          download_file VARCHAR(255),
+          status VARCHAR(50) DEFAULT 'new',
           created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
       `);
