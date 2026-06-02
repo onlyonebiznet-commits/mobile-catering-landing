@@ -139,7 +139,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
         },
         body: JSON.stringify({
           companyName: formData.companyName,
-          managerName: formData.managerName,
+          manager: formData.managerName,
           phone: formData.phone,
           email: formData.email,
         }),

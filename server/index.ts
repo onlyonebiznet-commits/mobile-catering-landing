@@ -32,31 +32,32 @@ async function startServer() {
   // API Routes - Consultation Request
   app.post("/api/consultation-request", async (req, res) => {
     try {
-      const { companyName, managerName, phone, email, employeeCount, inquiryType, message } = req.body;
+      const { companyName, manager, phone, email, region, expectedMealCount, serviceType, inquiries } = req.body;
 
       // Validation
-      if (!companyName || !managerName || !phone) {
+      if (!companyName || !manager || !phone) {
         return res.status(400).json({ error: "필수 필드를 입력해주세요" });
       }
 
       try {
         console.log("[consultation-request] START");
-        console.log("[consultation-request] Received:", { companyName, managerName, phone, email, employeeCount, inquiryType, message });
+        console.log("[consultation-request] Received:", { companyName, manager, phone, email, region, expectedMealCount, serviceType, inquiries });
         
         const db = await getDb();
         console.log("[consultation-request] DB connection OK");
         
         const result = await db.insert(consultationRequests).values({
           companyName,
-          managerName,
+          manager,
           phone,
           email: email || null,
-          employeeCount: employeeCount || null,
-          inquiryType: inquiryType || null,
-          message: message || null,
+          region: region || null,
+          expectedMealCount: expectedMealCount || null,
+          serviceType: serviceType || null,
+          inquiries: inquiries || null,
         });
 
-        console.log("✓ consultation_requests saved:", { companyName, managerName, phone });
+        console.log("✓ consultation_requests saved:", { companyName, manager, phone });
         console.log("[consultation-request] END");
         
         res.status(201).json({ 
@@ -91,29 +92,29 @@ async function startServer() {
   // API Routes - Material Request
   app.post("/api/material-request", async (req, res) => {
     try {
-      const { companyName, managerName, phone, email, downloadFile } = req.body;
+      const { companyName, manager, phone, email, downloadFile } = req.body;
 
       // Validation
-      if (!companyName || !managerName || !phone) {
+      if (!companyName || !manager || !phone) {
         return res.status(400).json({ error: "필수 필드를 입력해주세요" });
       }
 
       try {
         console.log("[material-request] START");
-        console.log("[material-request] Received:", { companyName, managerName, phone, email, downloadFile });
+        console.log("[material-request] Received:", { companyName, manager, phone, email, downloadFile });
         
         const db = await getDb();
         console.log("[material-request] DB connection OK");
         
         const result = await db.insert(materialRequests).values({
           companyName,
-          managerName,
+          manager,
           phone,
           email: email || null,
           downloadFile: downloadFile || null,
         });
 
-        console.log("✓ material_requests saved:", { companyName, managerName, phone });
+        console.log("✓ material_requests saved:", { companyName, manager, phone });
         console.log("[material-request] END");
         
         res.status(201).json({ 
