@@ -1354,7 +1354,7 @@ export default function Home() {
       )}
 
       {/* Modals */}
-      {consultationOpen && <ConsultationModal onClose={() => setConsultationOpen(false)} />}
+      {consultationOpen && <ConsultationModal isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />}
       {materialOpen && <MaterialRequestModal onClose={() => setMaterialOpen(false)} />}
 
       {/* Floating Action Buttons */}

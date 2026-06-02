@@ -15,9 +15,10 @@ import { trackConsultationFormView, trackConsultationSubmit } from "@/utils/ga4-
 
 interface ConsultationModalProps {
   onClose: () => void;
+  isOpen?: boolean;
 }
 
-export default function ConsultationModal({ onClose }: ConsultationModalProps) {
+export default function ConsultationModal({ onClose, isOpen = true }: ConsultationModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const [, navigate] = useLocation();
   const { trackFormSubmit } = useGTMTracking();
@@ -227,7 +228,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
   };
 
   return (
-    <Dialog open={true} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent 
         ref={contentRef}
         className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-lg overflow-hidden bg-white"
