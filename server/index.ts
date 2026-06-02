@@ -46,6 +46,13 @@ async function startServer() {
         const db = await getDb();
         console.log("[consultation-request] DB connection OK");
         
+        // expectedMealCount에서 숫자만 추출 (예: "100명" -> 100)
+        let mealCount = null;
+        if (expectedMealCount) {
+          const numMatch = expectedMealCount.toString().match(/\d+/);
+          mealCount = numMatch ? parseInt(numMatch[0], 10) : null;
+        }
+        
         const now = new Date();
         const result = await db.insert(consultationRequests).values({
           companyName,
@@ -53,7 +60,7 @@ async function startServer() {
           phone,
           email: email || null,
           region: region || null,
-          expectedMealCount: expectedMealCount || null,
+          expectedMealCount: mealCount,
           serviceType: serviceType || null,
           inquiries: inquiries && inquiries.trim() ? inquiries : null,
           status: 'pending',
