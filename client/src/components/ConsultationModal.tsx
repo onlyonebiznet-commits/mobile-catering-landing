@@ -150,9 +150,6 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
     if (!formData.email.trim()) {
       newErrors.email = "이메일을 입력해주세요";
     }
-    if (!formData.service.trim()) {
-      newErrors.service = "관심서비스를 선택해주세요";
-    }
     if (!formData.region.trim()) {
       newErrors.region = "지역을 선택해주세요";
     }
@@ -334,7 +331,7 @@ export default function ConsultationModal({ onClose }: ConsultationModalProps) {
             {/* Service Type */}
             <div className="space-y-1">
               <Label htmlFor="service" className="text-sm font-medium">
-                관심 서비스 <span className="text-red-500">*</span>
+                관심 서비스
               </Label>
               <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
                 <SelectTrigger className={`rounded-lg border-gray-300 ${errors.service ? 'border-red-500' : ''}`}>
