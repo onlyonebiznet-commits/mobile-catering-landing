@@ -165,11 +165,11 @@
   }
   
   h1 {
-    @apply text-[26px] md:text-5xl text-center md:text-left;
+    @apply text-[30px] md:text-5xl text-center md:text-left;
   }
   
   h2 {
-    @apply text-[26px] md:text-4xl text-center md:text-left;
+    @apply text-[30px] md:text-4xl text-center md:text-left;
   }
   
   h3 {
@@ -182,7 +182,7 @@
   
   @media (max-width: 768px) {
     p {
-      @apply text-[16px] text-center;
+      @apply text-[15px] text-center;
     }
   }
   button:not(:disabled),
