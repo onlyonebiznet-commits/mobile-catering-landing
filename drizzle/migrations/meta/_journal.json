@@ -15,6 +15,13 @@
       "when": 1780376269193,
       "tag": "0001_overrated_garia",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1780389974181,
+      "tag": "0002_tearful_wasp",
+      "breakpoints": true
     }
   ]
 }

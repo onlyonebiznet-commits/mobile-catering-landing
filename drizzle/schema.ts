@@ -8,13 +8,13 @@ export const consultationRequests = mysqlTable("consultation_requests", {
   manager: varchar("manager_name", { length: 255 }).notNull(),
   phone: varchar("phone", { length: 20 }).notNull(),
   email: varchar("email", { length: 255 }),
-  region: varchar("employee_count", { length: 100 }),
+  region: varchar("region", { length: 100 }),
   expectedMealCount: varchar("employee_count", { length: 100 }),
   serviceType: varchar("inquiry_type", { length: 100 }),
   inquiries: text("message"),
-  status: varchar("status", { length: 50 }).default("new"),
+  status: varchar("status", { length: 50 }).default("pending"),
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: datetime("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });
 
 // 자료 요청 테이블
