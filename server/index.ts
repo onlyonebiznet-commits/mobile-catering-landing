@@ -46,6 +46,7 @@ async function startServer() {
         const db = await getDb();
         console.log("[consultation-request] DB connection OK");
         
+        const now = new Date();
         const result = await db.insert(consultationRequests).values({
           companyName,
           manager,
@@ -55,6 +56,9 @@ async function startServer() {
           expectedMealCount: expectedMealCount || null,
           serviceType: serviceType || null,
           inquiries: inquiries && inquiries.trim() ? inquiries : null,
+          status: 'pending',
+          createdAt: now,
+          updatedAt: now,
         });
 
         console.log("✓ consultation_requests saved:", { companyName, manager, phone });
@@ -106,12 +110,16 @@ async function startServer() {
         const db = await getDb();
         console.log("[material-request] DB connection OK");
         
+        const now = new Date();
         const result = await db.insert(materialRequests).values({
           companyName,
           manager,
           phone,
           email: email || null,
           downloadFile: downloadFile && downloadFile.trim() ? downloadFile : null,
+          status: 'pending',
+          createdAt: now,
+          updatedAt: now,
         });
 
         console.log("✓ material_requests saved:", { companyName, manager, phone });
