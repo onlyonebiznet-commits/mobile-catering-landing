@@ -43,6 +43,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [completionCountdown, setCompletionCountdown] = useState(5);
 
   const clearError = (field: string) => {
     setErrors((prev) => {
@@ -90,6 +92,21 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
       setHasTrackedFormView(true);
     }
   }, [hasTrackedFormView]);
+
+  // Auto-redirect after completion
+  useEffect(() => {
+    if (isCompleted && completionCountdown > 0) {
+      const timer = setTimeout(() => {
+        setCompletionCountdown(completionCountdown - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+
+    if (isCompleted && completionCountdown === 0) {
+      onClose();
+      navigate("/");
+    }
+  }, [isCompleted, completionCountdown, onClose, navigate]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -212,10 +229,10 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
 
       // GA4 이벤트: 상담 신청 완료 (API 성공 후에만 발생)
       trackConsultationSubmit(true);
-      toast.success("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
-      onClose();
-      // 감사 페이지로 리다이렉트
-      setTimeout(() => navigate("/thank-you"), 500);
+      
+      // 완료 화면 표시
+      setIsCompleted(true);
+      setCompletionCountdown(5);
     } catch (error) {
       console.error("Consultation request error:", error);
       // GA4 이벤트: 상담 신청 실패
@@ -256,8 +273,32 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           <p className="text-sm text-green-100 mt-2">우리 현장에 맞는 맞춤형 서비스를 제안해드립니다.</p>
         </div>
 
-        {/* Form Content */}
-        <div className="px-6 py-6 overflow-y-auto" style={{ maxHeight: 'calc(75vh - 140px)' }}>
+        {/* Completion Screen */}
+        {isCompleted ? (
+          <div className="px-6 py-12 flex flex-col items-center justify-center text-center" style={{ minHeight: 'calc(75vh - 140px)' }}>
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">상담신청이 완료 되었습니다!</h3>
+            <p className="text-gray-600 mb-8">감사합니다. 빠른 시일 내에 연락드리겠습니다.</p>
+            <Button
+              onClick={() => {
+                onClose();
+                navigate("/");
+              }}
+              className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-2 rounded-lg font-medium transition-colors mb-4"
+            >
+              홈으로 돌아가기
+            </Button>
+            <p className="text-sm text-gray-500">{completionCountdown}초 후 자동으로 홈으로 이동합니다.</p>
+          </div>
+        ) : (
+          /* Form Content */
+          <div className="px-6 py-6 overflow-y-auto" style={{ maxHeight: 'calc(75vh - 140px)' }}>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Company Name */}
             <div className="space-y-1">
@@ -497,6 +538,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             </Button>
           </form>
         </div>
+        )}
       </DialogContent>
     </Dialog>
   );
