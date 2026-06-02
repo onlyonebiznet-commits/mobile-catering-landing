@@ -605,13 +605,13 @@ export default function Home() {
               {
                 video: '/manus-storage/inbound_snack_fcff7dcf.mp4',
                 title: '직원 만족을 높이는 간식 복지',
-                highlight: '프레시밀온',
+                highlight: '스낵픽',
                 description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
               },
               {
                 video: '/manus-storage/cafe_fresh_39cc91e6.mp4',
                 title: '기업 문화를 만드는 사내 카페',
-                highlight: '프레시밀온',
+                highlight: '카페프레시',
                 description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
               }
             ][currentDietIndex % 3] && (
@@ -629,13 +629,13 @@ export default function Home() {
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
-                        highlight: '프레시밀온',
+                        highlight: '스낵픽',
                         description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
-                        highlight: '프레시밀온',
+                        highlight: '카페프레시',
                         description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].title}
@@ -651,13 +651,13 @@ export default function Home() {
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
-                        highlight: '프레시밀온',
+                        highlight: '스낵픽',
                         description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
-                        highlight: '프레시밀온',
+                        highlight: '카페프레시',
                         description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].highlight}
@@ -676,13 +676,13 @@ export default function Home() {
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
-                        highlight: '프레시밀온',
+                        highlight: '스낵픽',
                         description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
-                        highlight: '프레시밀온',
+                        highlight: '카페프레시',
                         description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].title}
@@ -698,13 +698,13 @@ export default function Home() {
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '직원 만족을 높이는 간식 복지',
-                        highlight: '프레시밀온',
+                        highlight: '스낵픽',
                         description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
                         title: '기업 문화를 만드는 사내 카페',
-                        highlight: '프레시밀온',
+                        highlight: '카페프레시',
                         description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
                       }
                     ][currentDietIndex % 3].highlight}
@@ -723,13 +723,13 @@ export default function Home() {
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '직원 만족을 높이는 간식 복지',
-                      highlight: '프레시밀온',
+                      highlight: '스낵픽',
                       description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '기업 문화를 만드는 사내 카페',
-                      highlight: '프레시밀온',
+                      highlight: '카페프레시',
                       description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
                     }
                   ][currentDietIndex % 3].description}
@@ -745,13 +745,13 @@ export default function Home() {
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '직원 만족을 높이는 간식 복지',
-                      highlight: '프레시밀온',
+                      highlight: '스낵픽',
                       description: '공간의 제약 없이 모든 직원에게 프리미엄 식사 경험을 제공합니다.'
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
                       title: '기업 문화를 만드는 사내 카페',
-                      highlight: '프레시밀온',
+                      highlight: '카페프레시',
                       description: '20년 이상의 경험과 노하우로 최고의 서비스를 제공합니다.'
                     }
                   ][currentDietIndex % 3].description}
