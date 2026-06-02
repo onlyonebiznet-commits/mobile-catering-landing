@@ -31,11 +31,11 @@ function StatisticItem({ end, suffix, label, index = 0 }: StatisticItemProps) {
 
   return (
     <div ref={elementRef} className="text-center scroll-reveal-stagger">
-      <div className="text-3xl md:text-6xl font-bold text-[#005B44] mb-2 whitespace-nowrap">
+      <div className="text-3xl md:text-6xl font-bold text-[#005B44] mb-2 whitespace-nowrap text-center">
         {formatNumber(count)}
         <span className="ml-1">{suffix}</span>
       </div>
-      <p className="text-sm md:text-base text-gray-600">
+      <p className="text-sm md:text-base text-gray-600 text-center">
         {label}
       </p>
     </div>
