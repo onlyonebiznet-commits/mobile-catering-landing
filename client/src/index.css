@@ -165,11 +165,11 @@
   }
   
   h1 {
-    @apply text-[30px] md:text-5xl text-center md:text-left;
+    @apply text-[60px] md:text-[60px] text-left;
   }
   
   h2 {
-    @apply text-[30px] md:text-4xl text-center;
+    @apply text-[30px] md:text-[40px] text-left;
   }
   
   h3 {
@@ -177,7 +177,7 @@
   }
   
   p {
-    @apply text-base md:text-base text-center;
+    @apply text-base md:text-base text-left;
   }
   
   @media (max-width: 768px) {
