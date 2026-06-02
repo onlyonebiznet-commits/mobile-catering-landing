@@ -143,5 +143,20 @@
 - [x] 상담 신청 성공 시 consultation_submit 이벤트 발생
 - [x] 자료 신청 성공 시 material_request_submit 이벤트 발생
 - [x] 프론트엔드 폼 필드명 업데이트 (manager → managerName, inquiries → message 등)
-- [ ] 관리자 대시보드에서 제출된 데이터 조회 기능
-- [ ] API 테스트 및 검증
+- [x] 데이터베이스 스키마 업데이트 (status 커라른 추가)
+- [x] 관리자 인증 API (/api/admin/login, /api/admin/verify)
+- [ ] 이메일 알림 서비스 구현 (상담/자료 신청 시)
+- [x] 관리자 대시보드 조회 API (/api/admin/consultations, /api/admin/materials)
+- [x] 관리자 대시보드 아래 KPI API (/api/admin/stats)
+- [x] 관리자 대시보드 CSV 내보내기 API (/api/admin/export)
+- [x] 관리자 대시보드 상태 업데이트 API (/api/admin/update-status)
+- [x] 관리자 대시보드 프론트엔드 로그인 페이지 (/admin/login)
+- [x] 관리자 대시보드 프론트엔드 데이터 조회 테이블 (/admin/dashboard)
+- [x] 관리자 대시보드 필터 및 정렬 기능 (검색, 상태 필터)
+- [x] 관리자 대시보드 CSV 내보내기 기능
+- [x] 관리자 대시보드 KPI 통계 (오늘, 이번 달)
+- [x] 관리자 대시보드 라우팅 추가
+- [x] 관리자 대시보드 테이블에 문의 유형(상담) 및 신청 자료(자료 신청) 커라른 추가
+- [x] 관리자 대시보드 상태 필터 UI 및 API 연동 구현
+- [ ] 관리자 대시보드 기간 필터(시작일/종료일) 구현 (추후 추가 예정)
+- [x] 관리자 대시보드 최신순 정렬 보장 및 정렬 기준 검증

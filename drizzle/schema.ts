@@ -11,6 +11,7 @@ export const consultationRequests = mysqlTable("consultation_requests", {
   employeeCount: varchar("employee_count", { length: 100 }),
   inquiryType: varchar("inquiry_type", { length: 100 }),
   message: text("message"),
+  status: varchar("status", { length: 50 }).default("new"), // new, processing, completed
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
 });
 
@@ -22,6 +23,7 @@ export const materialRequests = mysqlTable("material_requests", {
   phone: varchar("phone", { length: 20 }).notNull(),
   email: varchar("email", { length: 255 }),
   downloadFile: varchar("download_file", { length: 255 }),
+  status: varchar("status", { length: 50 }).default("new"), // new, processing, completed
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
 });
 

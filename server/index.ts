@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 import * as fs from "fs";
 import * as os from "os";
+import { sql } from "drizzle-orm";
 import { getDb, createTables } from "./db";
 import { consultationRequests, materialRequests } from "../drizzle/schema";
 
@@ -139,6 +140,244 @@ async function startServer() {
     } catch (error) {
       console.error("Material request error:", error);
       res.status(500).json({ error: "요청 처리 중 오류가 발생했습니다" });
+    }
+  });
+
+  // Admin Authentication
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { password } = req.body;
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
+
+      if (password === adminPassword) {
+        // In production, use proper JWT tokens
+        const token = Buffer.from(`admin:${Date.now()}`).toString('base64');
+        res.json({ success: true, token });
+      } else {
+        res.status(401).json({ error: "비밀번호가 올바르지 않습니다" });
+      }
+    } catch (error) {
+      console.error("Admin login error:", error);
+      res.status(500).json({ error: "로그인 중 오류가 발생했습니다" });
+    }
+  });
+
+  // Admin verify token
+  const verifyAdminToken = (req: any) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) return false;
+    try {
+      const decoded = Buffer.from(token, 'base64').toString();
+      return decoded.startsWith('admin:');
+    } catch {
+      return false;
+    }
+  };
+
+  // Admin Dashboard - Get Consultations
+  app.get("/api/admin/consultations", async (req, res) => {
+    try {
+      if (!verifyAdminToken(req)) {
+        return res.status(401).json({ error: "인증이 필요합니다" });
+      }
+
+      const db = await getDb();
+      const { status, search, startDate, endDate } = req.query;
+
+      let query = db.select().from(consultationRequests);
+
+      // Apply filters
+      if (status) {
+        query = query.where(sql`status = ${status}`);
+      }
+      if (search) {
+        query = query.where(
+          sql`company_name LIKE ${`%${search}%`} OR manager_name LIKE ${`%${search}%`} OR phone LIKE ${`%${search}%`}`
+        );
+      }
+      if (startDate && endDate) {
+        query = query.where(
+          sql`created_at BETWEEN ${startDate} AND ${endDate}`
+        );
+      }
+
+      const data = await query.orderBy(sql`created_at DESC`);
+      res.json({ data, total: data.length });
+    } catch (error) {
+      console.error("Admin consultations error:", error);
+      res.status(500).json({ error: "데이터 조회 중 오류가 발생했습니다" });
+    }
+  });
+
+  // Admin Dashboard - Get Materials
+  app.get("/api/admin/materials", async (req, res) => {
+    try {
+      if (!verifyAdminToken(req)) {
+        return res.status(401).json({ error: "인증이 필요합니다" });
+      }
+
+      const db = await getDb();
+      const { status, search, startDate, endDate } = req.query;
+
+      let query = db.select().from(materialRequests);
+
+      // Apply filters
+      if (status) {
+        query = query.where(sql`status = ${status}`);
+      }
+      if (search) {
+        query = query.where(
+          sql`company_name LIKE ${`%${search}%`} OR manager_name LIKE ${`%${search}%`} OR phone LIKE ${`%${search}%`}`
+        );
+      }
+      if (startDate && endDate) {
+        query = query.where(
+          sql`created_at BETWEEN ${startDate} AND ${endDate}`
+        );
+      }
+
+      const data = await query.orderBy(sql`created_at DESC`);
+      res.json({ data, total: data.length });
+    } catch (error) {
+      console.error("Admin materials error:", error);
+      res.status(500).json({ error: "데이터 조회 중 오류가 발생했습니다" });
+    }
+  });
+
+  // Admin Dashboard - Get Stats
+  app.get("/api/admin/stats", async (req, res) => {
+    try {
+      if (!verifyAdminToken(req)) {
+        return res.status(401).json({ error: "인증이 필요합니다" });
+      }
+
+      const db = await getDb();
+      const today = new Date().toISOString().split('T')[0];
+      const monthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().split('T')[0];
+
+      const consultationToday = await db
+        .select()
+        .from(consultationRequests)
+        .where(sql`DATE(created_at) = ${today}`);
+
+      const consultationMonth = await db
+        .select()
+        .from(consultationRequests)
+        .where(sql`DATE(created_at) >= ${monthStart}`);
+
+      const materialToday = await db
+        .select()
+        .from(materialRequests)
+        .where(sql`DATE(created_at) = ${today}`);
+
+      const materialMonth = await db
+        .select()
+        .from(materialRequests)
+        .where(sql`DATE(created_at) >= ${monthStart}`);
+
+      res.json({
+        consultationToday: consultationToday.length,
+        consultationMonth: consultationMonth.length,
+        materialToday: materialToday.length,
+        materialMonth: materialMonth.length,
+      });
+    } catch (error) {
+      console.error("Admin stats error:", error);
+      res.status(500).json({ error: "통계 조회 중 오류가 발생했습니다" });
+    }
+  });
+
+  // Admin Dashboard - Update Status
+  app.patch("/api/admin/update-status", async (req, res) => {
+    try {
+      if (!verifyAdminToken(req)) {
+        return res.status(401).json({ error: "인증이 필요합니다" });
+      }
+
+      const { type, id, status } = req.body;
+      const db = await getDb();
+
+      if (type === 'consultation') {
+        await db.update(consultationRequests).set({ status }).where(sql`id = ${id}`);
+      } else if (type === 'material') {
+        await db.update(materialRequests).set({ status }).where(sql`id = ${id}`);
+      }
+
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Admin update status error:", error);
+      res.status(500).json({ error: "상태 업데이트 중 오류가 발생했습니다" });
+    }
+  });
+
+  // Admin Dashboard - Export CSV
+  app.get("/api/admin/export", async (req, res) => {
+    try {
+      if (!verifyAdminToken(req)) {
+        return res.status(401).json({ error: "인증이 필요합니다" });
+      }
+
+      const { type } = req.query;
+      const db = await getDb();
+
+      let data: any[] = [];
+      let headers: string[] = [];
+
+      if (type === 'consultation') {
+        data = await db.select().from(consultationRequests);
+        headers = ['ID', '신청일시', '회사명', '담당자명', '연락처', '이메일', '직원수', '문의유형', '메시지', '상태'];
+      } else if (type === 'material') {
+        data = await db.select().from(materialRequests);
+        headers = ['ID', '신청일시', '회사명', '담당자명', '연락처', '이메일', '신청자료', '상태'];
+      }
+
+      // Helper to escape CSV fields
+      const escapeCSV = (field: any) => {
+        const str = String(field || '');
+        if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+          return `"${str.replace(/"/g, '""')}`;
+        }
+        return str;
+      };
+
+      // Convert to CSV
+      const csv = [
+        headers.join(','),
+        ...data.map((row: any) => {
+          if (type === 'consultation') {
+            return [
+              row.id,
+              row.created_at,
+              escapeCSV(row.company_name),
+              escapeCSV(row.manager_name),
+              row.phone,
+              row.email || '',
+              row.employee_count || '',
+              row.inquiry_type || '',
+              escapeCSV(row.message || ''),
+              row.status,
+            ].join(',');
+          } else {
+            return [
+              row.id,
+              row.created_at,
+              escapeCSV(row.company_name),
+              escapeCSV(row.manager_name),
+              row.phone,
+              row.email || '',
+              row.download_file || '',
+              row.status,
+            ].join(',');
+          }
+        }),
+      ].join('\n');
+
+      res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+      res.setHeader('Content-Disposition', `attachment; filename="${type}_${new Date().toISOString().split('T')[0]}.csv"`);
+      res.send(csv);
+    } catch (error) {
+      console.error("Admin export error:", error);
+      res.status(500).json({ error: "내보내기 중 오류가 발생했습니다" });
     }
   });
 
