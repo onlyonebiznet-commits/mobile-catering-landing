@@ -276,15 +276,18 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         {/* Completion Screen */}
         {isCompleted ? (
           <div className="px-6 py-12 flex flex-col items-center justify-center text-center" style={{ minHeight: 'calc(75vh - 140px)' }}>
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="mb-8">
+              <div className="w-16 h-16 bg-[#005B44] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-[#005B44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">상담신청이 완료 되었습니다!</h3>
-            <p className="text-gray-600 mb-8">감사합니다. 빠른 시일 내에 연락드리겠습니다.</p>
+            <h3 className="text-4xl font-bold text-[#005B44] mb-8">상담신청이 완료 되었습니다!</h3>
+            <div className="mb-8">
+              <p className="text-gray-700 text-base leading-relaxed">감사합니다.</p>
+              <p className="text-gray-700 text-base leading-relaxed">빠른 시일 내에 연락드리겠습니다.</p>
+            </div>
             <Button
               onClick={() => {
                 onClose();
