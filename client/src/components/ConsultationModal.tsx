@@ -277,7 +277,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         {/* Completion Screen */}
         {isCompleted ? (
           <SuccessModal
-            title="상담신청이 완료 되었습니다!"
+            title="상담 신청이 완료 되었습니다!"
             messages={["감사합니다.", "빠른 시일 내에 연락드리겠습니다."]}
             countdown={completionCountdown}
             onClose={() => {
