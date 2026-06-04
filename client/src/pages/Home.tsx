@@ -1003,7 +1003,8 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 재료로 만든 다양한 메뉴</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* PC: 3 columns, Mobile: Horizontal scroll */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
             {meals.map((meal, idx) => (
               <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
                 <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
@@ -1027,9 +1028,39 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
               </div>
             ))}
+          </div>
+
+          {/* Mobile: Horizontal scroll */}
+          <div className="md:hidden">
+            <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
+              {meals.map((meal, idx) => (
+                <div key={idx} className="flex-shrink-0 w-80 snap-center">
+                  <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="relative h-64 overflow-hidden group">
+                      <img
+                        src={meal.image}
+                        alt={meal.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
+                      <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {meal.tags.map((tag, i) => (
+                          <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
