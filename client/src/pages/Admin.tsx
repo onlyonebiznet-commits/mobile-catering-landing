@@ -46,6 +46,8 @@ export default function Admin() {
   const [materialSearchQuery, setMaterialSearchQuery] = useState("");
   const [consultationStatusFilter, setConsultationStatusFilter] = useState("all");
   const [materialStatusFilter, setMaterialStatusFilter] = useState("all");
+  const [consultationServiceFilter, setConsultationServiceFilter] = useState("all");
+  const [materialServiceFilter, setMaterialServiceFilter] = useState("all");
   const [consultationSortOrder, setConsultationSortOrder] = useState<"newest" | "oldest">("newest");
   const [materialSortOrder, setMaterialSortOrder] = useState<"newest" | "oldest">("newest");
   
@@ -221,7 +223,7 @@ export default function Admin() {
   };
 
   // Phase 2: 검색 및 필터링 함수
-  const filterAndSortData = (data: any[], searchQuery: string, statusFilter: string, sortOrder: "newest" | "oldest") => {
+  const filterAndSortData = (data: any[], searchQuery: string, statusFilter: string, serviceFilter: string, sortOrder: "newest" | "oldest") => {
     let filtered = data;
 
     // 검색 필터
@@ -240,6 +242,11 @@ export default function Admin() {
       filtered = filtered.filter(item => item.status === statusFilter);
     }
 
+    // 희망 서비스 필터
+    if (serviceFilter !== "all") {
+      filtered = filtered.filter(item => item.serviceType === serviceFilter);
+    }
+
     // 정렬
     filtered.sort((a, b) => {
       const dateA = new Date(a.createdAt).getTime();
@@ -254,6 +261,7 @@ export default function Admin() {
     consultationRequests,
     consultationSearchQuery,
     consultationStatusFilter,
+    consultationServiceFilter,
     consultationSortOrder
   );
 
@@ -261,6 +269,7 @@ export default function Admin() {
     materialRequests,
     materialSearchQuery,
     materialStatusFilter,
+    materialServiceFilter,
     materialSortOrder
   );
 
@@ -404,6 +413,22 @@ export default function Admin() {
                       className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
                     />
                   </div>
+                </div>
+
+                {/* 희망 서비스 필터 */}
+                <div>
+                  <select
+                    value={consultationServiceFilter}
+                    onChange={(e) => setConsultationServiceFilter(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+                  >
+                    <option value="all">전체 서비스</option>
+                    <option value="cafeteria">구내식당</option>
+                    <option value="catering">케이터링</option>
+                    <option value="snack">간식/스낵</option>
+                    <option value="cafe">카페</option>
+                    <option value="breakfast">조식</option>
+                  </select>
                 </div>
 
                 {/* 상태 필터 */}
@@ -552,7 +577,7 @@ export default function Admin() {
             <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* 검색 */}
-                <div className="md:col-span-2">
+                <div>
                   <div className="relative">
                     <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
                     <input
@@ -563,6 +588,22 @@ export default function Admin() {
                       className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
                     />
                   </div>
+                </div>
+
+                {/* 희망 서비스 필터 */}
+                <div>
+                  <select
+                    value={materialServiceFilter}
+                    onChange={(e) => setMaterialServiceFilter(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+                  >
+                    <option value="all">전체 서비스</option>
+                    <option value="cafeteria">구내식당</option>
+                    <option value="catering">케이터링</option>
+                    <option value="snack">간식/스낵</option>
+                    <option value="cafe">카페</option>
+                    <option value="breakfast">조식</option>
+                  </select>
                 </div>
 
                 {/* 상태 필터 */}
