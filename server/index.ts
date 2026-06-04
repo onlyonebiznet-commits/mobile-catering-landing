@@ -271,16 +271,16 @@ async function startServer() {
       }
       if (search) {
         query = query.where(
-          sql`companyName LIKE ${`%${search}%`} OR manager LIKE ${`%${search}%`} OR phone LIKE ${`%${search}%`}`
+          sql`company_name LIKE ${`%${search}%`} OR manager_name LIKE ${`%${search}%`} OR phone LIKE ${`%${search}%`}`
         );
       }
       if (startDate && endDate) {
         query = query.where(
-          sql`createdAt BETWEEN ${startDate} AND ${endDate}`
+          sql`created_at BETWEEN ${startDate} AND ${endDate}`
         );
       }
 
-      const data = await query.orderBy(sql`createdAt DESC`);
+      const data = await query.orderBy(sql`created_at DESC`);
       console.log("[/api/admin/materials] Query result:", data.length, "rows");
       console.log("[/api/admin/materials] END");
       res.json({ data, total: data.length });
@@ -333,12 +333,12 @@ async function startServer() {
       const materialToday = await db
         .select()
         .from(materialRequests)
-        .where(sql`DATE(createdAt) = ${today}`);
+        .where(sql`DATE(created_at) = ${today}`);
 
       const materialMonth = await db
         .select()
         .from(materialRequests)
-        .where(sql`DATE(createdAt) >= ${monthStart}`);
+        .where(sql`DATE(created_at) >= ${monthStart}`);
 
       console.log("[/api/admin/stats] Results:", {
         consultationToday: consultationToday.length,
