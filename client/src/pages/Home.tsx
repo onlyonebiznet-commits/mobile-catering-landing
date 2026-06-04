@@ -1163,16 +1163,20 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Mobile: 4x2 Grid - Large Circle Icon Buttons */}
-            <div className="md:hidden grid grid-cols-4 gap-4 px-2">
+            {/* Mobile: 4x2 Grid - Circle Cards (Delivery App Style) */}
+            <div className="md:hidden grid grid-cols-4 gap-3">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`flex flex-col items-center justify-center gap-3 py-6 px-2 rounded-full transition-all duration-300 ${selectedSnackCategory === category.id ? 'bg-[#006B4F] text-white shadow-lg scale-105' : 'bg-white text-gray-700 shadow-md hover:shadow-lg'}`}
+                  className={`aspect-square flex flex-col items-center justify-center gap-1 rounded-3xl transition-all duration-300 shadow-sm ${
+                    selectedSnackCategory === category.id
+                      ? 'bg-[#006B4F] text-white shadow-md'
+                      : 'bg-white text-gray-700 border border-gray-100'
+                  }`}
                 >
-                  <span className="text-5xl leading-none">{categoryIcons[category.id]}</span>
-                  <span className="text-xs font-semibold text-center leading-tight">{category.name}</span>
+                  <span className="text-2xl">{categoryIcons[category.id]}</span>
+                  <span className="text-xs font-semibold text-center px-1 leading-tight">{category.name}</span>
                 </button>
               ))}
             </div>
