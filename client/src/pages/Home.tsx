@@ -1192,11 +1192,11 @@ export default function Home() {
                   ?.products.map((product, idx) => (
                     <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
                       <div className="overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-shadow">
-                        <div className="relative w-full aspect-square overflow-hidden group">
+                        <div className="relative w-full aspect-square overflow-hidden group bg-white">
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           />
                         </div>
                         <div className="p-2 text-center bg-white">
@@ -1214,11 +1214,11 @@ export default function Home() {
                   ?.products.map((product, idx) => (
                     <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
                       <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                        <div className="relative h-32 overflow-hidden group">
+                        <div className="relative h-32 overflow-hidden group bg-white">
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           />
                         </div>
                         <div className="p-2 text-center bg-white">
