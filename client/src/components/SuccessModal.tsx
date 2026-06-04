@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 
 interface SuccessModalProps {
   title: string;
-  message: string;
+  messages: string[];
   onClose: () => void;
   countdown?: number;
   onCountdownEnd?: () => void;
@@ -11,7 +11,7 @@ interface SuccessModalProps {
 
 export default function SuccessModal({
   title,
-  message,
+  messages,
   onClose,
   countdown = 5,
   onCountdownEnd,
@@ -27,7 +27,7 @@ export default function SuccessModal({
       </div>
       <h3 className="text-4xl font-bold text-[#005B44] mb-8 text-center">{title}</h3>
       <div className="mb-8 text-center">
-        {message.split('\n').map((line, index) => (
+        {messages.map((line, index) => (
           <p key={index} className="text-gray-700 text-base leading-relaxed">
             {line}
           </p>
