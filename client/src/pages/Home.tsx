@@ -238,6 +238,18 @@ export default function Home() {
   ];
 
   const [selectedSnackCategory, setSelectedSnackCategory] = useState('bakery');
+  // 카테고리 아이콘 매핑
+  const categoryIcons: { [key: string]: string } = {
+    bakery: '🥐',
+    salad: '🥗',
+    sandwich: '🥪',
+    rice: '🍱',
+    ramen: '🍜',
+    beverage: '🥤',
+    yogurt: '🥛',
+    energybar: '⚡',
+  };
+
 
   const snackCategories = [
     {
@@ -1104,66 +1116,91 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
           </div>
 
-          {/* Category Buttons */}
+          {/* Category Buttons - PC Pill Style */}
           <div className="mb-12">
-            <div className="hidden md:grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="hidden md:grid grid-cols-4 gap-4">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`py-3 px-4 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`py-3 px-4 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#005B44] text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-[#005B44] text-white shadow-lg scale-105'
+                      : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#005B44] hover:text-[#005B44]'
                   }`}
                 >
-                  {category.name}
+                  <span className="text-xl">{categoryIcons[category.id]}</span>
+                  <span>{category.name}</span>
                 </button>
               ))}
             </div>
 
-            {/* Mobile: Horizontal scroll */}
-            <div className="md:hidden">
-              <div className="flex overflow-x-auto gap-3 pb-2 snap-x snap-mandatory">
-                {snackCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setSelectedSnackCategory(category.id)}
-                    className={`flex-shrink-0 py-2 px-4 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap ${
-                      selectedSnackCategory === category.id
-                        ? 'bg-[#005B44] text-white shadow-lg'
-                        : 'bg-gray-100 text-gray-700'
-                    }`}
-                  >
-                    {category.name}
-                  </button>
-                ))}
-              </div>
+            {/* Mobile: 2x4 Grid */}
+            <div className="md:hidden grid grid-cols-4 gap-3">
+              {snackCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedSnackCategory(category.id)}
+                  className={`flex flex-col items-center gap-2 py-3 px-2 rounded-lg transition-all duration-300 ${
+                    selectedSnackCategory === category.id
+                      ? 'bg-[#005B44] text-white shadow-lg'
+                      : 'bg-white text-gray-700 border-2 border-gray-200'
+                  }`}
+                >
+                  <span className="text-2xl">{categoryIcons[category.id]}</span>
+                  <span className="text-xs font-semibold text-center">{category.name}</span>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Product Gallery - 2x2 Grid */}
+          {/* Product Gallery - PC: 4x1, Mobile: 2x2 */}
           {snackCategories.find((cat) => cat.id === selectedSnackCategory) && (
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-8">
-              {snackCategories
-                .find((cat) => cat.id === selectedSnackCategory)
-                ?.products.map((product, idx) => (
-                  <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                    <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                      <div className="relative h-48 md:h-64 overflow-hidden group">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-4 md:p-6 text-center">
-                        <h3 className="text-lg md:text-xl font-bold text-gray-900">{product.name}</h3>
+            <>
+              {/* PC: 4x1 Grid */}
+              <div className="hidden md:grid grid-cols-4 gap-4">
+                {snackCategories
+                  .find((cat) => cat.id === selectedSnackCategory)
+                  ?.products.map((product, idx) => (
+                    <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div className="relative h-40 overflow-hidden group">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="p-2 text-center bg-white">
+                          <h3 className="text-sm font-semibold text-gray-900">{product.name}</h3>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-            </div>
+                  ))}
+              </div>
+
+              {/* Mobile: 2x2 Grid */}
+              <div className="md:hidden grid grid-cols-2 gap-4">
+                {snackCategories
+                  .find((cat) => cat.id === selectedSnackCategory)
+                  ?.products.map((product, idx) => (
+                    <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
+                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div className="relative h-32 overflow-hidden group">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="p-2 text-center bg-white">
+                          <h3 className="text-xs font-semibold text-gray-900">{product.name}</h3>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </>
           )}
         </div>
       </section>
