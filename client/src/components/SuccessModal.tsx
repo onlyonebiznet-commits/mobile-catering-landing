@@ -26,9 +26,9 @@ export default function SuccessModal({
         </div>
       </div>
       <h3 className="text-4xl font-bold text-[#005B44] mb-8 text-center">{title}</h3>
-      <div className="mb-8 text-center">
+      <div className="mb-8 text-center w-full">
         {messages.map((line, index) => (
-          <p key={index} className="text-gray-700 text-base leading-relaxed">
+          <p key={index} className="text-gray-700 text-base leading-relaxed text-center">
             {line}
           </p>
         ))}
