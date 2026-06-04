@@ -237,6 +237,60 @@ export default function Home() {
     },
   ];
 
+  const healthyMeals = [
+    {
+      name: "샐러드 보울",
+      image: "https://via.placeholder.com/400x300?text=Salad+Bowl",
+      description: "신선한 재료로 만든 건강한 샐러드",
+      fullDescription: "제철 야채와 신선한 단백질을 담은 영양 만점 샐러드 보울입니다. 매일 다른 드레싱으로 맛의 변화를 즐길 수 있습니다.",
+      summary: "신선한 야채와 단백질의 완벽한 조화",
+      tags: ["건강식", "신선함", "저칼로리"],
+    },
+    {
+      name: "콤보 밀",
+      image: "https://via.placeholder.com/400x300?text=Combo+Meal",
+      description: "다양한 메뉴의 조합",
+      fullDescription: "주식, 반찬, 음료를 한 번에 즐길 수 있는 콤보 밀입니다. 영양 균형을 맞춘 건강한 한끼를 제공합니다.",
+      summary: "한 번에 즐기는 완벽한 한끼",
+      tags: ["편리함", "영양균형", "다양한맛"],
+    },
+    {
+      name: "라이스 밀",
+      image: "https://via.placeholder.com/400x300?text=Rice+Meal",
+      description: "건강한 곡물 기반 식사",
+      fullDescription: "현미, 보리, 귀리 등 건강한 곡물을 기반으로 한 라이스 밀입니다. 포만감 있으면서도 소화가 잘 되는 메뉴입니다.",
+      summary: "건강한 곡물로 만든 든든한 한끼",
+      tags: ["고섬유질", "건강식", "포만감"],
+    },
+  ];
+
+  const snackMeals = [
+    {
+      name: "CJ상품",
+      image: "https://via.placeholder.com/400x300?text=CJ+Products",
+      description: "CJ의 프리미엄 상품 모음",
+      fullDescription: "CJ의 엄선된 프리미엄 식품으로 구성된 스낵 박스입니다. 품질 좋은 상품으로 직원들의 만족도를 높입니다.",
+      summary: "CJ의 신뢰할 수 있는 프리미엄 상품",
+      tags: ["프리미엄", "CJ상품", "신뢰도"],
+    },
+    {
+      name: "음료",
+      image: "https://via.placeholder.com/400x300?text=Beverages",
+      description: "다양한 음료 선택지",
+      fullDescription: "커피, 주스, 스포츠 음료 등 다양한 음료를 준비했습니다. 직원들의 휴식 시간을 더욱 특별하게 만듭니다.",
+      summary: "상큼함과 활기를 더하는 음료",
+      tags: ["음료", "다양한선택", "휴식"],
+    },
+    {
+      name: "요거트&에너지바",
+      image: "https://via.placeholder.com/400x300?text=Yogurt+Energy",
+      description: "건강한 간식 선택",
+      fullDescription: "프로바이오틱스가 풍부한 요거트와 영양가 있는 에너지바로 건강한 간식 시간을 제공합니다.",
+      summary: "건강과 맛을 모두 잡은 간식",
+      tags: ["건강간식", "고단백", "영양"],
+    },
+  ];
+
   const meals = [
     {
       name: "정통 한식",
@@ -263,6 +317,9 @@ export default function Home() {
       tags: ["양식", "프리미엄", "세련된맛"],
     },
   ];
+
+  const [currentHealthyMealIndex, setCurrentHealthyMealIndex] = useState(0);
+  const [currentSnackMealIndex, setCurrentSnackMealIndex] = useState(0);
 
   const processes = [
     {
@@ -973,6 +1030,146 @@ export default function Home() {
 
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Healthy Homemade Meals Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container">
+          <div className="text-center mb-16 scroll-reveal">
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>건강하고 트렌디한 수제 간편식</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>매일 바뀌는 다양한 형태의 메뉴 구성을 제공합니다</p>
+          </div>
+
+          {/* PC: 3 columns, Mobile: Horizontal scroll */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
+            {healthyMeals.map((meal, idx) => (
+              <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
+                <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="relative h-64 overflow-hidden group">
+                    <img
+                      src={meal.image}
+                      alt={meal.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
+                    <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {meal.tags.map((tag, i) => (
+                        <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: Horizontal scroll */}
+          <div className="md:hidden">
+            <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
+              {healthyMeals.map((meal, idx) => (
+                <div key={idx} className="flex-shrink-0 w-80 snap-center">
+                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="relative h-64 overflow-hidden group">
+                      <img
+                        src={meal.image}
+                        alt={meal.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
+                      <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {meal.tags.map((tag, i) => (
+                          <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Snack Pick Curation Section */}
+      <section className="py-20 bg-white">
+        <div className="container">
+          <div className="text-center mb-16 scroll-reveal">
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 큐레이션 스낵픽</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
+          </div>
+
+          {/* PC: 3 columns, Mobile: Horizontal scroll */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
+            {snackMeals.map((meal, idx) => (
+              <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
+                <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="relative h-64 overflow-hidden group">
+                    <img
+                      src={meal.image}
+                      alt={meal.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
+                    <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {meal.tags.map((tag, i) => (
+                        <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: Horizontal scroll */}
+          <div className="md:hidden">
+            <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
+              {snackMeals.map((meal, idx) => (
+                <div key={idx} className="flex-shrink-0 w-80 snap-center">
+                  <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="relative h-64 overflow-hidden group">
+                      <img
+                        src={meal.image}
+                        alt={meal.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
+                      <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {meal.tags.map((tag, i) => (
+                          <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
