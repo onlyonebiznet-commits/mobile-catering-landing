@@ -213,6 +213,33 @@ export default function Home() {
     },
   ];
 
+  const cafeItems = [
+    {
+      name: "프리미엄 커피",
+      image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=600&h=600&fit=crop",
+      description: "최고급 원두로 만든 커피",
+      fullDescription: "세계 각지에서 엄선한 최고급 원두를 사용하여 만든 프리미엄 커피입니다. 바리스타의 정성으로 완성된 각 잔은 특별한 맛과 향을 선사합니다.",
+      summary: "세계 최고급 원두로 만든 특별한 커피",
+      tags: ["프리미엄", "커피", "바리스타"],
+    },
+    {
+      name: "건강한 음료",
+      image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop",
+      description: "신선한 과일로 만든 음료",
+      fullDescription: "신선한 과일과 건강한 재료로 만든 다양한 음료입니다. 설탕을 최소화하고 영양가를 극대화한 웰니스 음료 라인입니다.",
+      summary: "신선한 과일로 만든 건강한 음료",
+      tags: ["건강식", "음료", "웰니스"],
+    },
+    {
+      name: "디저트 & 스낵",
+      image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop",
+      description: "정성스러운 디저트와 스낵",
+      fullDescription: "카페만의 특별한 디저트와 건강한 스낵을 준비했습니다. 신선한 재료로 매일 만드는 베이커리 제품과 함께 커피의 맛을 더욱 돋보이게 합니다.",
+      summary: "정성스럽게 만든 디저트와 스낵",
+      tags: ["디저트", "베이커리", "스낵"],
+    },
+  ];
+
   const kitchenlessSolutions = [
     {
       name: "프레시밀온",
@@ -1109,7 +1136,7 @@ export default function Home() {
 
       {/* Healthy Homemade Meals Section */}
       {/* Snack Pick Curation Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-amber-50">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 큐레이션 스낵픽</h2>
@@ -1202,6 +1229,76 @@ export default function Home() {
               </div>
             </>
           )}
+        </div>
+      </section>
+
+      {/* Customized In-house Cafe Section */}
+      <section className="py-20 bg-white">
+        <div className="container">
+          <div className="text-center mb-16 scroll-reveal">
+            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 사내카페</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>고객의 니즈를 녹이고 고객사의 색깔을 듬뿍 담은 서비스를 제공합니다.</p>
+          </div>
+
+          {/* PC: 3 Column Grid */}
+          <div className="hidden md:grid grid-cols-3 gap-8">
+            {cafeItems.map((cafe, idx) => (
+              <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
+                <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="relative h-64 overflow-hidden group">
+                    <img
+                      src={cafe.image}
+                      alt={cafe.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{cafe.name}</h3>
+                    <p className="text-[#005B44] font-semibold text-sm mb-3">{cafe.summary}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {cafe.tags.map((tag, i) => (
+                        <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: Horizontal scroll */}
+          <div className="md:hidden">
+            <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
+              {cafeItems.map((cafe, idx) => (
+                <div key={idx} className="flex-shrink-0 w-80 snap-center">
+                  <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="relative h-48 overflow-hidden group bg-gray-100 flex items-center justify-center">
+                      <img
+                        src={cafe.image}
+                        alt={cafe.name}
+                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{cafe.name}</h3>
+                      <p className="text-[#005B44] font-semibold text-sm mb-3">{cafe.summary}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {cafe.tags.map((tag, i) => (
+                          <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
