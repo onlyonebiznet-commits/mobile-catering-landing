@@ -1157,14 +1157,14 @@ export default function Home() {
           {/* Product Gallery - PC: 4x1, Mobile: 2x2 */}
           {snackCategories.find((cat) => cat.id === selectedSnackCategory) && (
             <>
-              {/* PC: 4x1 Grid */}
+              {/* PC: 4x1 Grid - 1:1 Square with Rounded Corners */}
               <div className="hidden md:grid grid-cols-4 gap-4">
                 {snackCategories
                   .find((cat) => cat.id === selectedSnackCategory)
                   ?.products.map((product, idx) => (
                     <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                        <div className="relative h-40 overflow-hidden group">
+                      <div className="overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+                        <div className="relative w-full aspect-square overflow-hidden group">
                           <img
                             src={product.image}
                             alt={product.name}
