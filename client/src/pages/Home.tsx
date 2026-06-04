@@ -240,7 +240,7 @@ export default function Home() {
   const healthyMeals = [
     {
       name: "샐러드 보울",
-      image: "https://via.placeholder.com/400x300?text=Salad+Bowl",
+      image: "/manus-storage/pasted_file_r3QVaw_image_7533a9c0.png",
       description: "신선한 재료로 만든 건강한 샐러드",
       fullDescription: "제철 야채와 신선한 단백질을 담은 영양 만점 샐러드 보울입니다. 매일 다른 드레싱으로 맛의 변화를 즐길 수 있습니다.",
       summary: "신선한 야채와 단백질의 완벽한 조화",
@@ -248,7 +248,7 @@ export default function Home() {
     },
     {
       name: "콤보 밀",
-      image: "https://via.placeholder.com/400x300?text=Combo+Meal",
+      image: "/manus-storage/pasted_file_fKgEtV_image_a933e20b.png",
       description: "다양한 메뉴의 조합",
       fullDescription: "주식, 반찬, 음료를 한 번에 즐길 수 있는 콤보 밀입니다. 영양 균형을 맞춘 건강한 한끼를 제공합니다.",
       summary: "한 번에 즐기는 완벽한 한끼",
@@ -256,7 +256,7 @@ export default function Home() {
     },
     {
       name: "라이스 밀",
-      image: "https://via.placeholder.com/400x300?text=Rice+Meal",
+      image: "/manus-storage/pasted_file_gUJLst_image_05c6c176.png",
       description: "건강한 곡물 기반 식사",
       fullDescription: "현미, 보리, 귀리 등 건강한 곡물을 기반으로 한 라이스 밀입니다. 포만감 있으면서도 소화가 잘 되는 메뉴입니다.",
       summary: "건강한 곡물로 만든 든든한 한끼",
