@@ -284,7 +284,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
               </div>
             </div>
             <h3 className="text-4xl font-bold text-[#005B44] mb-8">상담신청이 완료 되었습니다!</h3>
-            <div className="mb-8">
+            <div className="mb-8 text-center">
               <p className="text-gray-700 text-base leading-relaxed">감사합니다.</p>
               <p className="text-gray-700 text-base leading-relaxed">빠른 시일 내에 연락드리겠습니다.</p>
             </div>
