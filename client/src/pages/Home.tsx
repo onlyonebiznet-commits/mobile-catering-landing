@@ -1145,37 +1145,37 @@ export default function Home() {
 
           {/* Category Buttons - PC Pill Style */}
           <div className="mb-12">
-            <div className="hidden md:grid grid-cols-4 gap-4">
+            <div className="hidden md:flex flex-wrap gap-3 justify-center">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`py-3 px-4 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                  className={`h-14 px-8 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#005B44] text-white shadow-lg scale-105'
-                      : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#005B44] hover:text-[#005B44]'
+                      ? 'bg-[#006B4F] text-white shadow-lg'
+                      : 'bg-white text-gray-600 border-2 border-[#D9D9D9] hover:bg-[#E8F5F0] hover:text-[#006B4F]'
                   }`}
                 >
                   <span className="text-xl">{categoryIcons[category.id]}</span>
-                  <span>{category.name}</span>
+                  <span className="text-sm font-semibold">{category.name}</span>
                 </button>
               ))}
             </div>
 
-            {/* Mobile: 2x4 Grid */}
-            <div className="md:hidden grid grid-cols-4 gap-3">
+            {/* Mobile: Horizontal Scroll */}
+            <div className="md:hidden flex overflow-x-auto gap-3 pb-2 snap-x snap-mandatory">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`flex flex-col items-center gap-2 py-3 px-2 rounded-lg transition-all duration-300 ${
+                  className={`flex-shrink-0 h-14 px-6 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 snap-center ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#005B44] text-white shadow-lg'
-                      : 'bg-white text-gray-700 border-2 border-gray-200'
+                      ? 'bg-[#006B4F] text-white shadow-lg'
+                      : 'bg-white text-gray-600 border-2 border-[#D9D9D9]'
                   }`}
                 >
-                  <span className="text-2xl">{categoryIcons[category.id]}</span>
-                  <span className="text-xs font-semibold text-center">{category.name}</span>
+                  <span className="text-lg">{categoryIcons[category.id]}</span>
+                  <span className="text-xs font-semibold whitespace-nowrap">{category.name}</span>
                 </button>
               ))}
             </div>
@@ -1185,20 +1185,20 @@ export default function Home() {
           {snackCategories.find((cat) => cat.id === selectedSnackCategory) && (
             <>
               {/* PC: 4x1 Grid - 1:1 Square with Rounded Corners */}
-              <div className="hidden md:grid grid-cols-4 gap-4">
+              <div className="hidden md:grid grid-cols-4 gap-6">
                 {snackCategories
                   .find((cat) => cat.id === selectedSnackCategory)
                   ?.products.map((product, idx) => (
                     <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                      <div className="overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-shadow">
-                        <div className="relative w-full aspect-square overflow-hidden group">
+                      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow overflow-hidden">
+                        <div className="relative w-full aspect-square overflow-hidden group bg-white flex items-center justify-center p-6">
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           />
                         </div>
-                        <div className="p-2 text-center bg-white">
+                        <div className="p-4 text-center">
                           <h3 className="text-sm font-semibold text-gray-900">{product.name}</h3>
                         </div>
                       </div>
@@ -1212,15 +1212,15 @@ export default function Home() {
                   .find((cat) => cat.id === selectedSnackCategory)
                   ?.products.map((product, idx) => (
                     <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                      <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                        <div className="relative h-32 overflow-hidden group">
+                      <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+                        <div className="relative w-full aspect-square overflow-hidden group bg-white flex items-center justify-center p-4">
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           />
                         </div>
-                        <div className="p-2 text-center bg-white">
+                        <div className="p-3 text-center">
                           <h3 className="text-xs font-semibold text-gray-900">{product.name}</h3>
                         </div>
                       </div>
