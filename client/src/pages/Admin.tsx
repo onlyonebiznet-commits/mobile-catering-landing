@@ -400,9 +400,10 @@ export default function Admin() {
 
             {/* Phase 2: 검색 및 필터 UI */}
             <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
+              {/* 첫 번째 줄: 검색창, 희망 서비스, 진행 현황 */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* 검색 */}
-                <div className="md:col-span-2">
+                <div>
                   <div className="relative">
                     <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
                     <input
@@ -450,7 +451,7 @@ export default function Admin() {
                 </div>
               </div>
 
-              {/* 정렬 */}
+              {/* 두 번째 줄: 총 n건 (왼쪽) | 정렬 드롭다운 (오른쪽) */}
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">총 {filteredConsultations.length}건</span>
                 <select
@@ -575,6 +576,7 @@ export default function Admin() {
 
             {/* Phase 2: 검색 및 필터 UI */}
             <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
+              {/* 첫 번째 줄: 검색창, 희망 서비스, 진행 현황 */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* 검색 */}
                 <div>
@@ -625,7 +627,7 @@ export default function Admin() {
                 </div>
               </div>
 
-              {/* 정렬 */}
+              {/* 두 번째 줄: 총 n건 (왼쪽) | 정렬 드롭다운 (오른쪽) */}
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">총 {filteredMaterials.length}건</span>
                 <select
