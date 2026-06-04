@@ -434,25 +434,25 @@ async function startServer() {
           if (type === 'consultation') {
             return [
               row.id,
-              row.created_at,
-              escapeCSV(row.company_name),
-              escapeCSV(row.manager_name),
+              row.createdAt,
+              escapeCSV(row.companyName),
+              escapeCSV(row.manager),
               row.phone,
               row.email || '',
-              row.employee_count || '',
-              row.inquiry_type || '',
-              escapeCSV(row.message || ''),
+              row.expectedMealCount || '',
+              row.serviceType || '',
+              escapeCSV(row.inquiries || ''),
               row.status,
             ].join(',');
           } else {
             return [
               row.id,
-              row.created_at,
-              escapeCSV(row.company_name),
-              escapeCSV(row.manager_name),
+              row.createdAt,
+              escapeCSV(row.companyName),
+              escapeCSV(row.manager),
               row.phone,
               row.email || '',
-              row.download_file || '',
+              row.downloadFile || '',
               row.status,
             ].join(',');
           }
