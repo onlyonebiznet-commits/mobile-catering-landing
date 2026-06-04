@@ -1038,7 +1038,7 @@ export default function Home() {
               {meals.map((meal, idx) => (
                 <div key={idx} className="flex-shrink-0 w-80 snap-center">
                   <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="relative h-64 overflow-hidden group">
+                    <div className="relative h-48 overflow-hidden group">
                       <img
                         src={meal.image}
                         alt={meal.name}
@@ -1108,7 +1108,7 @@ export default function Home() {
               {healthyMeals.map((meal, idx) => (
                 <div key={idx} className="flex-shrink-0 w-80 snap-center">
                   <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="relative h-64 overflow-hidden group">
+                    <div className="relative h-48 overflow-hidden group">
                       <img
                         src={meal.image}
                         alt={meal.name}
@@ -1178,7 +1178,7 @@ export default function Home() {
               {snackMeals.map((meal, idx) => (
                 <div key={idx} className="flex-shrink-0 w-80 snap-center">
                   <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="relative h-64 overflow-hidden group">
+                    <div className="relative h-48 overflow-hidden group">
                       <img
                         src={meal.image}
                         alt={meal.name}
