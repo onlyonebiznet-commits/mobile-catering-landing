@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ interface ConsultationRequest {
   expectedMealCount: string | null;
   serviceType: string | null;
   inquiries: string | null;
+  status: string;
   createdAt: string;
 }
 
@@ -25,6 +26,7 @@ interface MaterialRequest {
   manager: string;
   phone: string;
   email: string | null;
+  status: string;
   createdAt: string;
 }
 
@@ -104,30 +106,58 @@ export default function Admin() {
     setMaterialRequests([]);
   };
 
-  // If no token, show login form
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleString('ko-KR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  const getStatusBadge = (status: string) => {
+    const statusMap: { [key: string]: { label: string; variant: any } } = {
+      'pending': { label: '대기중', variant: 'secondary' },
+      'in_progress': { label: '진행중', variant: 'default' },
+      'target': { label: '타겟처', variant: 'outline' },
+      'prospect': { label: '가망처', variant: 'default' },
+      'won': { label: '수주완료', variant: 'default' },
+      'dropped': { label: 'DROP', variant: 'destructive' },
+      'new': { label: '신규', variant: 'secondary' }
+    };
+    
+    const statusInfo = statusMap[status] || { label: status, variant: 'secondary' };
+    return <Badge variant={statusInfo.variant}>{statusInfo.label}</Badge>;
+  };
+
   if (!adminToken) {
     return (
-      <div className="min-h-screen bg-gray-50 p-4 md:p-8 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>관리자 로그인</CardTitle>
-            <CardDescription>관리자 대시보드에 접근하려면 로그인하세요</CardDescription>
+            <CardDescription>관리자 비밀번호를 입력해주세요</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
-              <div>
-                <label className="text-sm font-medium">비밀번호</label>
-                <input
-                  type="password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                  className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md"
-                  placeholder="관리자 비밀번호를 입력하세요"
-                  required
-                />
-              </div>
-              {loginError && <p className="text-red-600 text-sm">{loginError}</p>}
-              <Button type="submit" className="w-full">로그인</Button>
+              <input
+                type="password"
+                placeholder="비밀번호"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+              />
+              {loginError && (
+                <Alert variant="destructive">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>{loginError}</AlertDescription>
+                </Alert>
+              )}
+              <Button type="submit" className="w-full bg-[#005B44] hover:bg-[#004a37]">
+                로그인
+              </Button>
             </form>
           </CardContent>
         </Card>
@@ -135,60 +165,24 @@ export default function Admin() {
     );
   }
 
-  const downloadCSV = (data: any[], filename: string) => {
-    if (data.length === 0) {
-      alert("다운로드할 데이터가 없습니다");
-      return;
-    }
-
-    const headers = Object.keys(data[0]);
-    const csv = [
-      headers.join(","),
-      ...data.map((row) =>
-        headers
-          .map((header) => {
-            const value = row[header];
-            if (value === null || value === undefined) return "";
-            if (typeof value === "string" && value.includes(",")) {
-              return `"${value}"`;
-            }
-            return value;
-          })
-          .join(",")
-      ),
-    ].join("\n");
-
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    const url = URL.createObjectURL(blob);
-    link.setAttribute("href", url);
-    link.setAttribute("download", filename);
-    link.style.visibility = "hidden";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">관리자 대시보드</h1>
-            <p className="text-gray-600 mt-2">상담 신청 및 자료 요청 데이터 관리</p>
+            <p className="text-gray-600 mt-2">상담 신청 및 자료 요청 관리</p>
           </div>
           <Button
-            variant="outline"
             onClick={handleLogout}
+            variant="outline"
             className="gap-2"
           >
-            <LogOut className="h-4 w-4" />
+            <LogOut className="w-4 h-4" />
             로그아웃
           </Button>
         </div>
 
-        {/* Error Alert */}
         {error && (
           <Alert variant="destructive" className="mb-6">
             <AlertCircle className="h-4 w-4" />
@@ -196,159 +190,138 @@ export default function Admin() {
           </Alert>
         )}
 
-        {/* Refresh Button */}
-        <div className="mb-6">
-          <Button
-            onClick={() => adminToken && fetchRequests(adminToken)}
-            disabled={isLoading}
-            className="gap-2"
-          >
-            <RefreshCw className="h-4 w-4" />
-            {isLoading ? "로딩 중..." : "새로고침"}
-          </Button>
-        </div>
-
-        {/* Tabs */}
         <Tabs defaultValue="consultation" className="space-y-4">
           <TabsList>
-            <TabsTrigger value="consultation">
-              상담 신청 ({consultationRequests.length})
-            </TabsTrigger>
-            <TabsTrigger value="material">
-              자료 요청 ({materialRequests.length})
-            </TabsTrigger>
+            <TabsTrigger value="consultation">상담 신청 ({consultationRequests.length})</TabsTrigger>
+            <TabsTrigger value="material">자료 요청 ({materialRequests.length})</TabsTrigger>
           </TabsList>
 
           {/* Consultation Requests Tab */}
           <TabsContent value="consultation" className="space-y-4">
-            {consultationRequests.length === 0 ? (
-              <Card>
-                <CardContent className="pt-6">
-                  <p className="text-center text-gray-500">상담 신청 데이터가 없습니다</p>
-                </CardContent>
-              </Card>
-            ) : (
-              <>
-                <div className="flex justify-end">
-                  <Button
-                    variant="outline"
-                    onClick={() => downloadCSV(consultationRequests, "consultation-requests.csv")}
-                    className="gap-2"
-                  >
-                    <Download className="h-4 w-4" />
-                    CSV 다운로드
-                  </Button>
-                </div>
-                <div className="space-y-4">
-                  {consultationRequests.map((request) => (
-                    <Card key={request.id}>
-                      <CardHeader>
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <CardTitle className="text-lg">{request.companyName}</CardTitle>
-                            <CardDescription>
-                              ID: {request.id} • {new Date(request.createdAt).toLocaleString("ko-KR")}
-                            </CardDescription>
-                          </div>
-                          <Badge variant="outline">상담 신청</Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">담당자</p>
-                            <p className="text-gray-900">{request.manager}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">연락처</p>
-                            <p className="text-gray-900">{request.phone}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">이메일</p>
-                            <p className="text-gray-900">{request.email || "-"}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">희망 서비스</p>
-                            <p className="text-gray-900">{request.serviceType || "-"}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">지역</p>
-                            <p className="text-gray-900">{request.region || "-"}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">예상 식수</p>
-                            <p className="text-gray-900">{request.expectedMealCount || "-"}</p>
-                          </div>
-                        </div>
-                        {request.inquiries && (
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">문의사항</p>
-                            <p className="text-gray-900 whitespace-pre-wrap">{request.inquiries}</p>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </>
-            )}
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold">상담 신청 목록</h2>
+              <Button
+                onClick={() => fetchRequests(adminToken!)}
+                variant="outline"
+                size="sm"
+                className="gap-2"
+                disabled={isLoading}
+              >
+                <RefreshCw className="w-4 h-4" />
+                새로고침
+              </Button>
+            </div>
+
+            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-gray-50">
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">회사명</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">담당자</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">연락처</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">이메일</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">희망 서비스</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">지역</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">예상 식수</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">문의 사항</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">접수 일시</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">진행 현황</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {isLoading ? (
+                      <tr>
+                        <td colSpan={10} className="px-4 py-8 text-center text-gray-500">
+                          로딩 중...
+                        </td>
+                      </tr>
+                    ) : consultationRequests.length === 0 ? (
+                      <tr>
+                        <td colSpan={10} className="px-4 py-8 text-center text-gray-500">
+                          데이터가 없습니다
+                        </td>
+                      </tr>
+                    ) : (
+                      consultationRequests.map((request) => (
+                        <tr key={request.id} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                          <td className="px-4 py-3 text-gray-900 font-medium whitespace-nowrap">{request.companyName}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.manager}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.phone}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.email || '-'}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.serviceType || '-'}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.region || '-'}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.expectedMealCount || '-'}</td>
+                          <td className="px-4 py-3 text-gray-700 max-w-xs truncate">{request.inquiries || '-'}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap text-xs">{formatDate(request.createdAt)}</td>
+                          <td className="px-4 py-3">{getStatusBadge(request.status)}</td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </TabsContent>
 
           {/* Material Requests Tab */}
           <TabsContent value="material" className="space-y-4">
-            {materialRequests.length === 0 ? (
-              <Card>
-                <CardContent className="pt-6">
-                  <p className="text-center text-gray-500">자료 요청 데이터가 없습니다</p>
-                </CardContent>
-              </Card>
-            ) : (
-              <>
-                <div className="flex justify-end">
-                  <Button
-                    variant="outline"
-                    onClick={() => downloadCSV(materialRequests, "material-requests.csv")}
-                    className="gap-2"
-                  >
-                    <Download className="h-4 w-4" />
-                    CSV 다운로드
-                  </Button>
-                </div>
-                <div className="space-y-4">
-                  {materialRequests.map((request) => (
-                    <Card key={request.id}>
-                      <CardHeader>
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <CardTitle className="text-lg">{request.companyName}</CardTitle>
-                            <CardDescription>
-                              ID: {request.id} • {new Date(request.createdAt).toLocaleString("ko-KR")}
-                            </CardDescription>
-                          </div>
-                          <Badge variant="secondary">자료 요청</Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">담당자</p>
-                            <p className="text-gray-900">{request.manager}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">연락처</p>
-                            <p className="text-gray-900">{request.phone}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-600">이메일</p>
-                            <p className="text-gray-900">{request.email || "-"}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </>
-            )}
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold">자료 요청 목록</h2>
+              <Button
+                onClick={() => fetchRequests(adminToken!)}
+                variant="outline"
+                size="sm"
+                className="gap-2"
+                disabled={isLoading}
+              >
+                <RefreshCw className="w-4 h-4" />
+                새로고침
+              </Button>
+            </div>
+
+            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-gray-50">
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">회사명</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">담당자</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">연락처</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">이메일</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">접수 일시</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">진행 현황</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {isLoading ? (
+                      <tr>
+                        <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                          로딩 중...
+                        </td>
+                      </tr>
+                    ) : materialRequests.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                          데이터가 없습니다
+                        </td>
+                      </tr>
+                    ) : (
+                      materialRequests.map((request) => (
+                        <tr key={request.id} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                          <td className="px-4 py-3 text-gray-900 font-medium whitespace-nowrap">{request.companyName}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.manager}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.phone}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.email || '-'}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap text-xs">{formatDate(request.createdAt)}</td>
+                          <td className="px-4 py-3">{getStatusBadge(request.status)}</td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
