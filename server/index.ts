@@ -375,7 +375,7 @@ async function startServer() {
   });
 
   // Admin Dashboard - Update Status
-  app.patch("/api/admin/update-status", async (req, res) => {
+  app.put("/api/admin/update-status", async (req, res) => {
     try {
       if (!verifyAdminToken(req)) {
         return res.status(401).json({ error: "인증이 필요합니다" });

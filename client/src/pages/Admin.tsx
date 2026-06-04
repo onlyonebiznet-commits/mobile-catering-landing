@@ -142,6 +142,36 @@ export default function Admin() {
     return <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${statusInfo.color}`}>{statusInfo.label}</span>;
   };
 
+  // Phase 3: 상태 업데이트 함수
+  const handleStatusChange = async (id: number, newStatus: string, isConsultation: boolean) => {
+    try {
+      const headers: HeadersInit = {
+        'Authorization': `Bearer ${adminToken}`,
+        'Content-Type': 'application/json'
+      };
+
+      const res = await fetch('/api/admin/update-status', {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          id,
+          status: newStatus,
+          type: isConsultation ? 'consultation' : 'material'
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error('상태 업데이트 실패');
+      }
+
+      // 데이터 새로고침
+      await fetchRequests(adminToken!);
+    } catch (err) {
+      alert('상태 업데이트 중 오류가 발생했습니다');
+      console.error(err);
+    }
+  };
+
   // Phase 2: 검색 및 필터링 함수
   const filterAndSortData = (data: any[], searchQuery: string, statusFilter: string, sortOrder: "newest" | "oldest") => {
     let filtered = data;
@@ -417,7 +447,28 @@ export default function Admin() {
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.expectedMealCount || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap max-w-xs truncate">{request.inquiries || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{formatDate(request.createdAt)}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{getStatusBadge(request.status)}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">
+                            <select
+                              value={request.status}
+                              onChange={(e) => handleStatusChange(request.id, e.target.value, true)}
+                              className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
+                                request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
+                                request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                                request.status === 'target' ? 'bg-orange-100 text-orange-800' :
+                                request.status === 'prospect' ? 'bg-green-100 text-green-800' :
+                                request.status === 'won' ? 'bg-purple-100 text-purple-800' :
+                                request.status === 'dropped' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
+                              }`}
+                            >
+                              <option value="pending">대기중</option>
+                              <option value="in_progress">진행중</option>
+                              <option value="target">타겟처</option>
+                              <option value="prospect">가망처</option>
+                              <option value="won">수주완료</option>
+                              <option value="dropped">DROP</option>
+                            </select>
+                          </td>
                         </tr>
                       ))
                     )}
@@ -538,7 +589,28 @@ export default function Admin() {
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.phone}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.email || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{formatDate(request.createdAt)}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{getStatusBadge(request.status)}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">
+                            <select
+                              value={request.status}
+                              onChange={(e) => handleStatusChange(request.id, e.target.value, false)}
+                              className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
+                                request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
+                                request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                                request.status === 'target' ? 'bg-orange-100 text-orange-800' :
+                                request.status === 'prospect' ? 'bg-green-100 text-green-800' :
+                                request.status === 'won' ? 'bg-purple-100 text-purple-800' :
+                                request.status === 'dropped' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
+                              }`}
+                            >
+                              <option value="pending">대기중</option>
+                              <option value="in_progress">진행중</option>
+                              <option value="target">타겟처</option>
+                              <option value="prospect">가망처</option>
+                              <option value="won">수주완료</option>
+                              <option value="dropped">DROP</option>
+                            </select>
+                          </td>
                         </tr>
                       ))
                     )}
