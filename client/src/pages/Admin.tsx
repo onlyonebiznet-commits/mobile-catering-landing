@@ -48,6 +48,9 @@ export default function Admin() {
   const [materialStatusFilter, setMaterialStatusFilter] = useState("all");
   const [consultationSortOrder, setConsultationSortOrder] = useState<"newest" | "oldest">("newest");
   const [materialSortOrder, setMaterialSortOrder] = useState<"newest" | "oldest">("newest");
+  
+  // Phase 4: 삭제 기능
+  const [deleteConfirm, setDeleteConfirm] = useState<{ id: number; type: 'consultation' | 'material' } | null>(null);
 
   const fetchRequests = async (token: string) => {
     setIsLoading(true);
@@ -168,6 +171,38 @@ export default function Admin() {
       await fetchRequests(adminToken!);
     } catch (err) {
       alert('상태 업데이트 중 오류가 발생했습니다');
+      console.error(err);
+    }
+  };
+
+  // Phase 4: 삭제 함수
+  const handleDelete = async () => {
+    if (!deleteConfirm) return;
+    
+    try {
+      const headers: HeadersInit = {
+        'Authorization': `Bearer ${adminToken}`,
+        'Content-Type': 'application/json'
+      };
+
+      const res = await fetch('/api/admin/delete', {
+        method: 'DELETE',
+        headers,
+        body: JSON.stringify({
+          id: deleteConfirm.id,
+          type: deleteConfirm.type
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error('데이터 삭제 실패');
+      }
+
+      // 데이터 새로고침
+      await fetchRequests(adminToken!);
+      setDeleteConfirm(null);
+    } catch (err) {
+      alert('데이터 삭제 중 오류가 발생했습니다');
       console.error(err);
     }
   };
@@ -448,26 +483,34 @@ export default function Admin() {
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap max-w-xs truncate">{request.inquiries || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{formatDate(request.createdAt)}</td>
                           <td className="px-4 py-3 whitespace-nowrap">
-                            <select
-                              value={request.status}
-                              onChange={(e) => handleStatusChange(request.id, e.target.value, true)}
-                              className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
-                                request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
-                                request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
-                                request.status === 'target' ? 'bg-orange-100 text-orange-800' :
-                                request.status === 'prospect' ? 'bg-green-100 text-green-800' :
-                                request.status === 'won' ? 'bg-purple-100 text-purple-800' :
-                                request.status === 'dropped' ? 'bg-red-100 text-red-800' :
-                                'bg-gray-100 text-gray-800'
-                              }`}
-                            >
-                              <option value="pending">대기중</option>
-                              <option value="in_progress">진행중</option>
-                              <option value="target">타겟처</option>
-                              <option value="prospect">가망처</option>
-                              <option value="won">수주완료</option>
-                              <option value="dropped">DROP</option>
-                            </select>
+                            <div className="flex items-center gap-2">
+                              <select
+                                value={request.status}
+                                onChange={(e) => handleStatusChange(request.id, e.target.value, true)}
+                                className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
+                                  request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
+                                  request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                                  request.status === 'target' ? 'bg-orange-100 text-orange-800' :
+                                  request.status === 'prospect' ? 'bg-green-100 text-green-800' :
+                                  request.status === 'won' ? 'bg-purple-100 text-purple-800' :
+                                  request.status === 'dropped' ? 'bg-red-100 text-red-800' :
+                                  'bg-gray-100 text-gray-800'
+                                }`}
+                              >
+                                <option value="pending">대기중</option>
+                                <option value="in_progress">진행중</option>
+                                <option value="target">타겟처</option>
+                                <option value="prospect">가망처</option>
+                                <option value="won">수주완료</option>
+                                <option value="dropped">DROP</option>
+                              </select>
+                              <button
+                                onClick={() => setDeleteConfirm({ id: request.id, type: 'consultation' })}
+                                className="text-red-600 hover:text-red-800 text-xs font-semibold"
+                              >
+                                삭제
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))
@@ -590,26 +633,34 @@ export default function Admin() {
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.email || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{formatDate(request.createdAt)}</td>
                           <td className="px-4 py-3 whitespace-nowrap">
-                            <select
-                              value={request.status}
-                              onChange={(e) => handleStatusChange(request.id, e.target.value, false)}
-                              className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
-                                request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
-                                request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
-                                request.status === 'target' ? 'bg-orange-100 text-orange-800' :
-                                request.status === 'prospect' ? 'bg-green-100 text-green-800' :
-                                request.status === 'won' ? 'bg-purple-100 text-purple-800' :
-                                request.status === 'dropped' ? 'bg-red-100 text-red-800' :
-                                'bg-gray-100 text-gray-800'
-                              }`}
-                            >
-                              <option value="pending">대기중</option>
-                              <option value="in_progress">진행중</option>
-                              <option value="target">타겟처</option>
-                              <option value="prospect">가망처</option>
-                              <option value="won">수주완료</option>
-                              <option value="dropped">DROP</option>
-                            </select>
+                            <div className="flex items-center gap-2">
+                              <select
+                                value={request.status}
+                                onChange={(e) => handleStatusChange(request.id, e.target.value, false)}
+                                className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
+                                  request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
+                                  request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                                  request.status === 'target' ? 'bg-orange-100 text-orange-800' :
+                                  request.status === 'prospect' ? 'bg-green-100 text-green-800' :
+                                  request.status === 'won' ? 'bg-purple-100 text-purple-800' :
+                                  request.status === 'dropped' ? 'bg-red-100 text-red-800' :
+                                  'bg-gray-100 text-gray-800'
+                                }`}
+                              >
+                                <option value="pending">대기중</option>
+                                <option value="in_progress">진행중</option>
+                                <option value="target">타겟처</option>
+                                <option value="prospect">가망처</option>
+                                <option value="won">수주완료</option>
+                                <option value="dropped">DROP</option>
+                              </select>
+                              <button
+                                onClick={() => setDeleteConfirm({ id: request.id, type: 'material' })}
+                                className="text-red-600 hover:text-red-800 text-xs font-semibold"
+                              >
+                                삭제
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))
@@ -647,6 +698,35 @@ export default function Admin() {
             </div>
           </div>
         </div>
+
+        {/* Phase 4: 삭제 확인 모달 */}
+        {deleteConfirm && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <Card className="w-full max-w-md">
+              <CardHeader>
+                <CardTitle>데이터 삭제</CardTitle>
+                <CardDescription>이 데이터를 삭제하시겠습니까? 이 동작은 되돌릴 수 없습니다.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex gap-3">
+                  <Button
+                    onClick={() => setDeleteConfirm(null)}
+                    variant="outline"
+                    className="flex-1"
+                  >
+                    취소
+                  </Button>
+                  <Button
+                    onClick={handleDelete}
+                    className="flex-1 bg-red-600 hover:bg-red-700"
+                  >
+                    삭제
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
     </div>
   );

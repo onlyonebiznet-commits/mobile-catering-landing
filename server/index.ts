@@ -397,6 +397,31 @@ async function startServer() {
     }
   });
 
+  // Admin Dashboard - Delete (Soft Delete)
+  app.delete("/api/admin/delete", async (req, res) => {
+    try {
+      if (!verifyAdminToken(req)) {
+        return res.status(401).json({ error: "인증이 필요합니다" });
+      }
+
+      const { type, id } = req.body;
+      const db = await getDb();
+
+      if (type === 'consultation') {
+        // Hard delete for now (soft delete requires migration)
+        await db.delete(consultationRequests).where(sql`id = ${id}`);
+      } else if (type === 'material') {
+        // Hard delete for now (soft delete requires migration)
+        await db.delete(materialRequests).where(sql`id = ${id}`);
+      }
+
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Admin delete error:", error);
+      res.status(500).json({ error: "데이터 삭제 중 오류가 발생했습니다" });
+    }
+  });
+
   // Admin Dashboard - Export CSV
   app.get("/api/admin/export", async (req, res) => {
     try {
