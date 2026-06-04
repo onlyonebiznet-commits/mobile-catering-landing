@@ -537,10 +537,9 @@ async function startServer() {
   });
 
   // Serve static files from dist/public in production
-  const staticPath =
-    process.env.NODE_ENV === "production"
-      ? path.resolve(__dirname, "public")
-      : path.resolve(__dirname, "..", "dist", "public");
+  const staticPath = path.resolve(__dirname, "public");
+  // In production, __dirname is dist/, so public is dist/public
+  // In development, we use dist/public (built by vite)
 
   app.use(express.static(staticPath));
 
