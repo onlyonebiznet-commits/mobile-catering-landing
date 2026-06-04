@@ -20,13 +20,13 @@ export const consultationRequests = mysqlTable("consultation_requests", {
 // 자료 요청 테이블
 export const materialRequests = mysqlTable("material_requests", {
   id: int("id").primaryKey().autoincrement(),
-  companyName: varchar("company_name", { length: 255 }).notNull(),
-  manager: varchar("manager_name", { length: 255 }).notNull(),
+  companyName: varchar("companyName", { length: 255 }).notNull(),
+  manager: varchar("manager", { length: 255 }).notNull(),
   phone: varchar("phone", { length: 20 }).notNull(),
   email: varchar("email", { length: 255 }),
-  downloadFile: varchar("download_file", { length: 255 }),
   status: varchar("status", { length: 50 }).default("new"),
-  createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
+  createdAt: datetime("createdAt").default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: datetime("updatedAt").default(sql`CURRENT_TIMESTAMP`),
 });
 
 // 타입 정의
