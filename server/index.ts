@@ -238,7 +238,9 @@ async function startServer() {
       console.error("===\n");
       res.status(500).json({ 
         error: "데이터 조회 중 오류가 발생했습니다",
-        details: process.env.NODE_ENV === 'development' ? {
+        message: error instanceof Error ? error.message : String(error),
+        code: (error as any)?.code,
+        details: process.env.NODE_ENV === "development" ? {
           message: error instanceof Error ? error.message : String(error),
           code: (error as any)?.code
         } : undefined
@@ -292,7 +294,9 @@ async function startServer() {
       console.error("===\n");
       res.status(500).json({ 
         error: "데이터 조회 중 오류가 발생했습니다",
-        details: process.env.NODE_ENV === 'development' ? {
+        message: error instanceof Error ? error.message : String(error),
+        code: (error as any)?.code,
+        details: process.env.NODE_ENV === "development" ? {
           message: error instanceof Error ? error.message : String(error),
           code: (error as any)?.code
         } : undefined
@@ -360,7 +364,9 @@ async function startServer() {
       console.error("===\n");
       res.status(500).json({ 
         error: "통계 조회 중 오류가 발생했습니다",
-        details: process.env.NODE_ENV === 'development' ? {
+        message: error instanceof Error ? error.message : String(error),
+        code: (error as any)?.code,
+        details: process.env.NODE_ENV === "development" ? {
           message: error instanceof Error ? error.message : String(error),
           code: (error as any)?.code
         } : undefined
