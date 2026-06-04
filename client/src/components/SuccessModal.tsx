@@ -17,25 +17,25 @@ export default function SuccessModal({
   onCountdownEnd,
 }: SuccessModalProps) {
   return (
-    <div className="px-4 md:px-6 py-8 md:py-12 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(75vh - 140px)' }}>
-      <div className="mb-6 md:mb-8 flex-shrink-0">
-        <div className="w-12 md:w-16 h-12 md:h-16 bg-[#005B44] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+    <div className="px-4 md:px-6 py-6 md:py-12 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(90vh - 100px)', minHeight: 'auto' }}>
+      <div className="mb-4 md:mb-8 flex-shrink-0">
+        <div className="w-12 md:w-16 h-12 md:h-16 bg-[#005B44] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-6">
           <svg className="w-6 md:w-8 h-6 md:h-8 text-[#005B44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
       </div>
-      <h3 className="text-2xl md:text-4xl font-bold text-[#005B44] mb-6 md:mb-8 text-center max-w-xs md:max-w-none leading-tight">{title}</h3>
-      <div className="mb-6 md:mb-8 text-center w-full flex-shrink-0">
+      <h3 className="text-xl md:text-4xl font-bold text-[#005B44] mb-4 md:mb-8 text-center max-w-sm md:max-w-none leading-snug md:leading-tight break-words">{title}</h3>
+      <div className="mb-4 md:mb-8 text-center w-full flex-shrink-0">
         {messages.map((line, index) => (
-          <p key={index} className="text-gray-700 text-sm md:text-base leading-relaxed text-center">
+          <p key={index} className="text-gray-700 text-xs md:text-base leading-relaxed text-center mb-1 md:mb-2">
             {line}
           </p>
         ))}
       </div>
       <Button
         onClick={onClose}
-        className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-2 rounded-lg font-medium transition-colors mb-3 md:mb-4 flex-shrink-0"
+        className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-2 md:py-3 rounded-lg font-medium transition-colors mb-2 md:mb-4 flex-shrink-0 text-sm md:text-base"
       >
         홈으로 돌아가기
       </Button>
