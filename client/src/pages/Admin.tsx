@@ -130,6 +130,19 @@ export default function Admin() {
     });
   };
 
+  // Phase 4: serviceType 한글 변환 함수
+  const getServiceTypeLabel = (serviceType: string | null | undefined) => {
+    if (!serviceType) return "-";
+    const serviceMap: { [key: string]: string } = {
+      'cafeteria': '구내식당',
+      'catering': '케이터링',
+      'snack': '간식/스낵',
+      'cafe': '카페',
+      'breakfast': '조식'
+    };
+    return serviceMap[serviceType] || serviceType;
+  };
+
   const getStatusBadge = (status: string) => {
     const statusMap: { [key: string]: { label: string; color: string } } = {
       'pending': { label: '대기중', color: 'bg-gray-100 text-gray-800' },
@@ -253,34 +266,21 @@ export default function Admin() {
 
   // Phase 2: CSV 다운로드 함수 (개선된 컬럼 순서)
   const downloadCSV = (data: any[], filename: string, isConsultation: boolean) => {
-    const headers = isConsultation
-      ? ["회사명", "담당자", "연락처", "이메일", "희망 서비스", "지역", "예상 식수", "문의 사항", "접수 일시", "진행 현황"]
-      : ["회사명", "담당자", "연락처", "이메일", "접수 일시", "진행 현황"];
+    const headers = ["회사명", "담당자", "연락처", "이메일", "희망 서비스", "지역", "예상 식수", "문의 사항", "접수 일시", "진행 현황"];
 
     const rows = data.map(item => {
-      if (isConsultation) {
-        return [
-          item.companyName,
-          item.manager,
-          item.phone,
-          item.email || "-",
-          item.serviceType || "-",
-          item.region || "-",
-          item.expectedMealCount || "-",
-          item.inquiries || "-",
-          formatDate(item.createdAt),
-          item.status
-        ];
-      } else {
-        return [
-          item.companyName,
-          item.manager,
-          item.phone,
-          item.email || "-",
-          formatDate(item.createdAt),
-          item.status
-        ];
-      }
+      return [
+        item.companyName,
+        item.manager,
+        item.phone,
+        item.email || "-",
+        isConsultation ? getServiceTypeLabel(item.serviceType) : "-",
+        item.region || "-",
+        item.expectedMealCount || "-",
+        item.inquiries || "-",
+        formatDate(item.createdAt),
+        item.status
+      ];
     });
 
     const csv = [
@@ -455,18 +455,19 @@ export default function Admin() {
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">문의 사항</th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">접수 일시</th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">진행 현황</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">삭제</th>
                     </tr>
                   </thead>
                   <tbody>
                     {isLoading ? (
                       <tr>
-                        <td colSpan={10} className="px-4 py-8 text-center text-gray-500">
+                        <td colSpan={11} className="px-4 py-8 text-center text-gray-500">
                           로딩 중...
                         </td>
                       </tr>
                     ) : filteredConsultations.length === 0 ? (
                       <tr>
-                        <td colSpan={10} className="px-4 py-8 text-center text-gray-500">
+                        <td colSpan={11} className="px-4 py-8 text-center text-gray-500">
                           데이터가 없습니다
                         </td>
                       </tr>
@@ -477,40 +478,40 @@ export default function Admin() {
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.manager}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.phone}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.email || "-"}</td>
-                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.serviceType || "-"}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{getServiceTypeLabel(request.serviceType)}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.region || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.expectedMealCount || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap max-w-xs truncate">{request.inquiries || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{formatDate(request.createdAt)}</td>
                           <td className="px-4 py-3 whitespace-nowrap">
-                            <div className="flex items-center gap-2">
-                              <select
-                                value={request.status}
-                                onChange={(e) => handleStatusChange(request.id, e.target.value, true)}
-                                className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
-                                  request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
-                                  request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
-                                  request.status === 'target' ? 'bg-orange-100 text-orange-800' :
-                                  request.status === 'prospect' ? 'bg-green-100 text-green-800' :
-                                  request.status === 'won' ? 'bg-purple-100 text-purple-800' :
-                                  request.status === 'dropped' ? 'bg-red-100 text-red-800' :
-                                  'bg-gray-100 text-gray-800'
-                                }`}
-                              >
-                                <option value="pending">대기중</option>
-                                <option value="in_progress">진행중</option>
-                                <option value="target">타겟처</option>
-                                <option value="prospect">가망처</option>
-                                <option value="won">수주완료</option>
-                                <option value="dropped">DROP</option>
-                              </select>
-                              <button
-                                onClick={() => setDeleteConfirm({ id: request.id, type: 'consultation' })}
-                                className="text-red-600 hover:text-red-800 text-xs font-semibold"
-                              >
-                                삭제
-                              </button>
-                            </div>
+                            <select
+                              value={request.status}
+                              onChange={(e) => handleStatusChange(request.id, e.target.value, true)}
+                              className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer w-full ${
+                                request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
+                                request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                                request.status === 'target' ? 'bg-orange-100 text-orange-800' :
+                                request.status === 'prospect' ? 'bg-green-100 text-green-800' :
+                                request.status === 'won' ? 'bg-purple-100 text-purple-800' :
+                                request.status === 'dropped' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
+                              }`}
+                            >
+                              <option value="pending">대기중</option>
+                              <option value="in_progress">진행중</option>
+                              <option value="target">타겟처</option>
+                              <option value="prospect">가망처</option>
+                              <option value="won">수주완료</option>
+                              <option value="dropped">DROP</option>
+                            </select>
+                          </td>
+                          <td className="px-4 py-3 whitespace-nowrap text-center">
+                            <button
+                              onClick={() => setDeleteConfirm({ id: request.id, type: 'consultation' })}
+                              className="text-red-600 hover:text-red-800 text-xs font-semibold"
+                            >
+                              삭제
+                            </button>
                           </td>
                         </tr>
                       ))
@@ -607,20 +608,25 @@ export default function Admin() {
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">담당자</th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">연락처</th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">이메일</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">희망 서비스</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">지역</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">예상 식수</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">문의 사항</th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">접수 일시</th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">진행 현황</th>
+                      <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">삭제</th>
                     </tr>
                   </thead>
                   <tbody>
                     {isLoading ? (
                       <tr>
-                        <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                        <td colSpan={11} className="px-4 py-8 text-center text-gray-500">
                           로딩 중...
                         </td>
                       </tr>
                     ) : filteredMaterials.length === 0 ? (
                       <tr>
-                        <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                        <td colSpan={11} className="px-4 py-8 text-center text-gray-500">
                           데이터가 없습니다
                         </td>
                       </tr>
@@ -631,36 +637,40 @@ export default function Admin() {
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.manager}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.phone}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.email || "-"}</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">-</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">-</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap">-</td>
+                          <td className="px-4 py-3 text-gray-700 whitespace-nowrap max-w-xs truncate">{request.inquiries || "-"}</td>
                           <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{formatDate(request.createdAt)}</td>
                           <td className="px-4 py-3 whitespace-nowrap">
-                            <div className="flex items-center gap-2">
-                              <select
-                                value={request.status}
-                                onChange={(e) => handleStatusChange(request.id, e.target.value, false)}
-                                className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
-                                  request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
-                                  request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
-                                  request.status === 'target' ? 'bg-orange-100 text-orange-800' :
-                                  request.status === 'prospect' ? 'bg-green-100 text-green-800' :
-                                  request.status === 'won' ? 'bg-purple-100 text-purple-800' :
-                                  request.status === 'dropped' ? 'bg-red-100 text-red-800' :
-                                  'bg-gray-100 text-gray-800'
-                                }`}
-                              >
-                                <option value="pending">대기중</option>
-                                <option value="in_progress">진행중</option>
-                                <option value="target">타겟처</option>
-                                <option value="prospect">가망처</option>
-                                <option value="won">수주완료</option>
-                                <option value="dropped">DROP</option>
-                              </select>
-                              <button
-                                onClick={() => setDeleteConfirm({ id: request.id, type: 'material' })}
-                                className="text-red-600 hover:text-red-800 text-xs font-semibold"
-                              >
-                                삭제
-                              </button>
-                            </div>
+                            <select
+                              value={request.status}
+                              onChange={(e) => handleStatusChange(request.id, e.target.value, false)}
+                              className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer w-full ${
+                                request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
+                                request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                                request.status === 'target' ? 'bg-orange-100 text-orange-800' :
+                                request.status === 'prospect' ? 'bg-green-100 text-green-800' :
+                                request.status === 'won' ? 'bg-purple-100 text-purple-800' :
+                                request.status === 'dropped' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
+                              }`}
+                            >
+                              <option value="pending">대기중</option>
+                              <option value="in_progress">진행중</option>
+                              <option value="target">타겟처</option>
+                              <option value="prospect">가망처</option>
+                              <option value="won">수주완료</option>
+                              <option value="dropped">DROP</option>
+                            </select>
+                          </td>
+                          <td className="px-4 py-3 whitespace-nowrap text-center">
+                            <button
+                              onClick={() => setDeleteConfirm({ id: request.id, type: 'material' })}
+                              className="text-red-600 hover:text-red-800 text-xs font-semibold"
+                            >
+                              삭제
+                            </button>
                           </td>
                         </tr>
                       ))
