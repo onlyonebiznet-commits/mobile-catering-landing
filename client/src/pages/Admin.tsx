@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlertCircle, Download, RefreshCw } from "lucide-react";
+import { AlertCircle, Download, RefreshCw, LogOut } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface ConsultationRequest {
@@ -33,18 +33,32 @@ export default function Admin() {
   const [materialRequests, setMaterialRequests] = useState<MaterialRequest[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [adminToken, setAdminToken] = useState<string | null>(localStorage.getItem('adminToken'));
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const [loginPassword, setLoginPassword] = useState("");
 
-  const fetchRequests = async () => {
+  const fetchRequests = async (token: string) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("/api/debug/requests");
-      if (!response.ok) {
+      const headers: HeadersInit = {
+        'Authorization': `Bearer ${token}`
+      };
+
+      const [consultationRes, materialRes] = await Promise.all([
+        fetch("/api/admin/consultations", { headers }),
+        fetch("/api/admin/materials", { headers })
+      ]);
+
+      if (!consultationRes.ok || !materialRes.ok) {
         throw new Error("요청 데이터를 불러올 수 없습니다");
       }
-      const data = await response.json();
-      setConsultationRequests(data.consultationRequests || []);
-      setMaterialRequests(data.materialRequests || []);
+
+      const consultationData = await consultationRes.json();
+      const materialData = await materialRes.json();
+      
+      setConsultationRequests(consultationData.data || []);
+      setMaterialRequests(materialData.data || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "오류가 발생했습니다");
     } finally {
@@ -53,8 +67,73 @@ export default function Admin() {
   };
 
   useEffect(() => {
-    fetchRequests();
-  }, []);
+    if (adminToken) {
+      fetchRequests(adminToken);
+    }
+  }, [adminToken]);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError(null);
+    
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: loginPassword })
+      });
+
+      const data = await res.json();
+      
+      if (data.success && data.token) {
+        localStorage.setItem('adminToken', data.token);
+        setAdminToken(data.token);
+        setLoginPassword("");
+      } else {
+        setLoginError(data.error || '로그인 실패');
+      }
+    } catch (err) {
+      setLoginError('로그인 중 오류가 발생했습니다');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken');
+    setAdminToken(null);
+    setConsultationRequests([]);
+    setMaterialRequests([]);
+  };
+
+  // If no token, show login form
+  if (!adminToken) {
+    return (
+      <div className="min-h-screen bg-gray-50 p-4 md:p-8 flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>관리자 로그인</CardTitle>
+            <CardDescription>관리자 대시보드에 접근하려면 로그인하세요</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label className="text-sm font-medium">비밀번호</label>
+                <input
+                  type="password"
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
+                  className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md"
+                  placeholder="관리자 비밀번호를 입력하세요"
+                  required
+                />
+              </div>
+              {loginError && <p className="text-red-600 text-sm">{loginError}</p>}
+              <Button type="submit" className="w-full">로그인</Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   const downloadCSV = (data: any[], filename: string) => {
     if (data.length === 0) {
@@ -94,9 +173,19 @@ export default function Admin() {
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">관리자 대시보드</h1>
-          <p className="text-gray-600 mt-2">상담 신청 및 자료 요청 데이터 관리</p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">관리자 대시보드</h1>
+            <p className="text-gray-600 mt-2">상담 신청 및 자료 요청 데이터 관리</p>
+          </div>
+          <Button
+            variant="outline"
+            onClick={handleLogout}
+            className="gap-2"
+          >
+            <LogOut className="h-4 w-4" />
+            로그아웃
+          </Button>
         </div>
 
         {/* Error Alert */}
@@ -110,7 +199,7 @@ export default function Admin() {
         {/* Refresh Button */}
         <div className="mb-6">
           <Button
-            onClick={fetchRequests}
+            onClick={() => adminToken && fetchRequests(adminToken)}
             disabled={isLoading}
             className="gap-2"
           >
