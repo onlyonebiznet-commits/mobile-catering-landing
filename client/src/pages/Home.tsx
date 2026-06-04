@@ -1143,39 +1143,40 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
           </div>
 
-          {/* Category Buttons - PC Pill Style */}
+          {/* Category Buttons - PC: Rounded Rectangle, Mobile: Circle */}
           <div className="mb-12">
+            {/* PC: Rounded Rectangle Buttons (Starbucks Kiosk Style) */}
             <div className="hidden md:grid grid-cols-4 gap-4">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`py-3 px-4 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                  className={`py-4 px-5 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#005B44] text-white shadow-lg scale-105'
-                      : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#005B44] hover:text-[#005B44]'
+                      ? 'bg-[#006B4F] text-white shadow-md'
+                      : 'bg-white text-gray-700 border-2 border-[#D8D8D8] hover:bg-gray-50'
                   }`}
                 >
-                  <span className="text-xl">{categoryIcons[category.id]}</span>
-                  <span>{category.name}</span>
+                  <span className="text-lg">{categoryIcons[category.id]}</span>
+                  <span className="text-sm font-semibold">{category.name}</span>
                 </button>
               ))}
             </div>
 
-            {/* Mobile: 2x4 Grid */}
+            {/* Mobile: 4x2 Grid - Circle Cards (Delivery App Style) */}
             <div className="md:hidden grid grid-cols-4 gap-3">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`flex flex-col items-center gap-2 py-3 px-2 rounded-lg transition-all duration-300 ${
+                  className={`aspect-square flex flex-col items-center justify-center gap-1 rounded-3xl transition-all duration-300 shadow-sm ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#005B44] text-white shadow-lg'
-                      : 'bg-white text-gray-700 border-2 border-gray-200'
+                      ? 'bg-[#006B4F] text-white shadow-md'
+                      : 'bg-white text-gray-700 border border-gray-100'
                   }`}
                 >
                   <span className="text-2xl">{categoryIcons[category.id]}</span>
-                  <span className="text-xs font-semibold text-center">{category.name}</span>
+                  <span className="text-xs font-semibold text-center px-1 leading-tight">{category.name}</span>
                 </button>
               ))}
             </div>
