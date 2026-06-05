@@ -470,7 +470,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
-                        <p className="font-semibold mb-2">CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다.</p>
+                        <p className="text-xs mb-2">CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다.</p>
                         <p className="text-xs mb-2">수집한 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 고객님께 안내하고 동의를 받을 예정입니다.</p>
                       </div>
                       <div>
@@ -514,9 +514,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
-                        <p className="font-semibold mb-2">마케팅 목적 개인정보 수집·이용 동의 (선택)</p>
-                      </div>
-                      <div>
                         <p className="font-semibold text-xs mb-1">◼ 수집·이용 항목</p>
                         <p className="text-xs">성명, 휴대폰번호, 이메일, 기업명</p>
                       </div>
@@ -536,49 +533,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="ad" className="border border-gray-200 rounded-lg px-3">
-                  <AccordionTrigger className="hover:no-underline py-3">
-                    <div className="flex items-center space-x-2 text-left flex-nowrap">
-                      <Checkbox
-                        id="adConsent"
-                        checked={agreements.adConsent}
-                        onCheckedChange={(checked) => handleAgreementChange("adConsent", checked as boolean)}
-                        onClick={handleCheckboxClick}
-                        className="flex-shrink-0"
-                      />
-                      <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
-                        광고성 정보 수신 동의 (선택)
-                      </Label>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
-                    <div className="space-y-3">
-                      <div>
-                        <p className="font-semibold mb-2">CJ프레시웨이㈜는 마케팅 목적의 개인정보 수집 및 이용에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다.</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-2">수신 매체 선택:</p>
-                        <div className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <Checkbox id="sms-consent" />
-                            <Label htmlFor="sms-consent" className="text-xs cursor-pointer">SMS(문자)</Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <Checkbox id="email-consent" />
-                            <Label htmlFor="email-consent" className="text-xs cursor-pointer">이메일</Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <Checkbox id="kakao-consent" />
-                            <Label htmlFor="kakao-consent" className="text-xs cursor-pointer">카카오톡</Label>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="border-t pt-2">
-                        <p className="text-xs font-semibold mb-1">고객센터 : 02-2149-6114</p>
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
               </Accordion>
             </div>
 
