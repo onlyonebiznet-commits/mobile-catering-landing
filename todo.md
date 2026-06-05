@@ -146,7 +146,7 @@
 - [x] 프론트엔드 폼 필드명 업데이트 (manager → managerName, inquiries → message 등)
 - [x] 데이터베이스 스키마 업데이트 (status 커라른 추가)
 - [x] 관리자 인증 API (/api/admin/login, /api/admin/verify)
-- [ ] 이메일 알림 서비스 구현 (상담 신청 시) (Phase 5)
+- [ ] 이메일 알림 서비스 구현 (상담/자료 신청 시) (Phase 5)
 - [x] 맞춤상담신청 API 호출 기능 추가 (플로팅 버튼 데이터 대시보드 반영)
 - [x] 관리자 대시보드 조회 API (/api/admin/consultations, /api/admin/materials)
 - [x] 관리자 대시보드 아래 KPI API (/api/admin/stats)
@@ -242,7 +242,6 @@
 - [ ] 스낵픽 텍스트-only 카테고리 디자인 고급화 (타이포, 표면 스타일 개선)
 - [x] 아코디언 상태 제어 - 클릭했을 때만 펼쳐지도록 수정
 - [x] 전체동의 체크 시 아코디언 자동 닫기
-- [x] 자료신청 기능 완전 제거 (프론트/백/대시보드)
 
 ## Phase 31: 모바일 스낵픽 카테고리 UI 개선
 

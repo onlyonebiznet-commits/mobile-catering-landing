@@ -856,7 +856,7 @@ export default function Home() {
                   ][currentDietIndex % 3].description}
                 </p>
                 
-                <div className="flex justify-start animate-in fade-in slide-in-from-left-4 delay-500">
+                <div className="flex justify-center animate-in fade-in slide-in-from-left-4 delay-500">
                   <button
                     onClick={() => setConsultationOpen(true)}
                     data-event="consultation_click"
