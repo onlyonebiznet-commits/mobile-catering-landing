@@ -6,8 +6,9 @@ interface StickyTabNavigationProps {
 }
 
 export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTabNavigationProps) {
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+  const [underlineStyle, setUnderlineStyle] = useState({ width: 0, left: 0 });
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const activeTabRef = useRef<HTMLButtonElement>(null);
 
   const tabs = [
     { id: 'intro', label: '서비스 소개' },
@@ -20,22 +21,36 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
     { id: 'faq', label: 'FAQ' },
   ];
 
+  // 언더라인 위치 업데이트
+  useEffect(() => {
+    if (activeTabRef.current && tabsContainerRef.current) {
+      const tabRect = activeTabRef.current.getBoundingClientRect();
+      const containerRect = tabsContainerRef.current.getBoundingClientRect();
+      setUnderlineStyle({
+        width: tabRect.width,
+        left: tabRect.left - containerRect.left,
+      });
+    }
+  }, [activeTab]);
+
   return (
-    <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <div className="sticky top-0 z-40 bg-white border-b border-[#EAEAEA]" style={{
+      boxShadow: '0 2px 10px rgba(0,0,0,0.04)'
+    }}>
       {/* PC: Horizontal Tab Menu */}
-      <div className="hidden md:flex items-center justify-center h-16 gap-8 px-4 sm:px-6 lg:px-8">
+      <div 
+        ref={tabsContainerRef}
+        className="hidden md:flex items-center h-16 px-4 sm:px-6 lg:px-8 relative"
+      >
         {tabs.map((tab) => (
           <button
             key={tab.id}
+            ref={activeTab === tab.id ? activeTabRef : null}
             onClick={() => onTabClick(tab.id)}
-            onMouseEnter={() => setHoveredTab(tab.id)}
-            onMouseLeave={() => setHoveredTab(null)}
-            className={`px-2 py-4 font-semibold text-sm whitespace-nowrap transition-all duration-300 ${
+            className={`px-4 py-3 font-semibold text-sm whitespace-nowrap transition-all duration-300 ${
               activeTab === tab.id
-                ? 'text-gray-900'
-                : hoveredTab === tab.id
-                ? 'text-gray-900'
-                : 'text-gray-600'
+                ? 'text-white bg-[#006B4F] rounded-lg'
+                : 'text-gray-900 hover:text-[#006B4F]'
             }`}
           >
             {tab.label}
@@ -44,15 +59,15 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
       </div>
 
       {/* Mobile: Horizontal Scrollable Tab Menu */}
-      <div className="md:hidden flex items-center gap-4 h-14 overflow-x-auto scrollbar-hide px-4">
+      <div className="md:hidden flex items-center h-14 overflow-x-auto scrollbar-hide px-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => onTabClick(tab.id)}
-            className={`px-3 py-2 font-medium text-xs whitespace-nowrap flex-shrink-0 transition-all duration-300 ${
+            className={`px-3 py-2 font-medium text-xs whitespace-nowrap flex-shrink-0 transition-all duration-300 rounded-lg ${
               activeTab === tab.id
-                ? 'text-gray-900'
-                : 'text-gray-600'
+                ? 'text-white bg-[#006B4F]'
+                : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             {tab.label}
