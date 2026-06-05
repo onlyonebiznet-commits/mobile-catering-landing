@@ -9,6 +9,7 @@ import FloatingActionButtons from "@/components/FloatingActionButtons";
 import ThankYouPage from "@/pages/ThankYou";
 import StickyTabNavigation from "@/components/StickyTabNavigation";
 import PCNavigation from "@/components/PCNavigation";
+import SectionNavigation from "@/components/SectionNavigation";
 import { useLocation } from "wouter";
 
 interface StatisticItemProps {
@@ -921,17 +922,11 @@ export default function Home() {
           animation: bounce-scale 2s ease-in-out infinite;
         }
       `}</style>
+      {/* Section Navigation - Hero Section 아래 */}
+      <SectionNavigation activeSection={activeTab} onSectionClick={scrollToSection} />
+
       {/* Service Recommendation Chatbot */}
       <ServiceRecommendationChatbot />
-
-
-      {/* PC Navigation */}
-      <div className="hidden md:block">
-        <PCNavigation activeTab={activeTab} onTabClick={scrollToSection} />
-      </div>
-
-      {/* Mobile Navigation */}
-      <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
 
       {/* Kitchenless Solutions Section */}
       <section
