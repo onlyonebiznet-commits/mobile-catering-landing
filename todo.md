@@ -267,3 +267,13 @@
 
 - [x] 모바일 메인헤더: 50vh → 40vh로 축소
 - [x] 첫 화면에서 네비게이션 버튼 첫 번째 줄 표시
+
+## Phase 35: Sticky Navigation 구현
+
+- [x] StickyTabNavigation: position: sticky, top: 0, z-index: 1000 적용
+- [x] 배경: 흰색 반투명 (bg-white/95) + backdrop-blur-sm
+- [x] 하단 구분선 제거
+- [x] 그림자 최소화 (shadow-sm)
+- [x] 메인 비주얼 아래에 네비게이션 배치
+- [x] 스크롤 시 상단 고정
+- [x] PC/모바일 반응형 유지
