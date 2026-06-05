@@ -42,6 +42,12 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
     adConsent: false,
   });
 
+  const [adMediaConsents, setAdMediaConsents] = useState({
+    sms: false,
+    email: false,
+    kakao: false,
+  });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isCompleted, setIsCompleted] = useState(false);
@@ -116,6 +122,25 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         marketingConsent: value,
         adConsent: value,
       });
+    } else if (key === "adConsent") {
+      // 광고성 정보 수신 동의 체크 시 하위 항목 모두 자동 체크
+      setAgreements({
+        ...agreements,
+        [key]: value,
+      });
+      if (value) {
+        setAdMediaConsents({
+          sms: true,
+          email: true,
+          kakao: true,
+        });
+      } else {
+        setAdMediaConsents({
+          sms: false,
+          email: false,
+          kakao: false,
+        });
+      }
     } else {
       const newAgreements = {
         ...agreements,
@@ -557,15 +582,27 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         <p className="font-semibold text-xs mb-2">수신 매체 선택:</p>
                         <div className="space-y-2">
                           <div className="flex items-center space-x-2">
-                            <Checkbox id="sms-consent" />
+                            <Checkbox 
+                              id="sms-consent" 
+                              checked={adMediaConsents.sms}
+                              onCheckedChange={(checked) => setAdMediaConsents({...adMediaConsents, sms: checked as boolean})}
+                            />
                             <Label htmlFor="sms-consent" className="text-xs cursor-pointer">SMS(문자)</Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <Checkbox id="email-consent" />
+                            <Checkbox 
+                              id="email-consent" 
+                              checked={adMediaConsents.email}
+                              onCheckedChange={(checked) => setAdMediaConsents({...adMediaConsents, email: checked as boolean})}
+                            />
                             <Label htmlFor="email-consent" className="text-xs cursor-pointer">이메일</Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <Checkbox id="kakao-consent" />
+                            <Checkbox 
+                              id="kakao-consent" 
+                              checked={adMediaConsents.kakao}
+                              onCheckedChange={(checked) => setAdMediaConsents({...adMediaConsents, kakao: checked as boolean})}
+                            />
                             <Label htmlFor="kakao-consent" className="text-xs cursor-pointer">카카오톡</Label>
                           </div>
                         </div>
