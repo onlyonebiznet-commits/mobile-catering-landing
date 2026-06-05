@@ -10,6 +10,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
   const tabsRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
   const tabs = [
     { id: 'intro', label: '서비스 소개' },
@@ -71,16 +72,24 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
               <button
                 key={tab.id}
                 onClick={() => onTabClick(tab.id)}
-                className={`px-2 py-4 font-semibold text-sm whitespace-nowrap flex-shrink-0 transition-all duration-300 relative ${
+                onMouseEnter={() => setHoveredTab(tab.id)}
+                onMouseLeave={() => setHoveredTab(null)}
+                className={`px-2 py-4 font-semibold text-sm whitespace-nowrap flex-shrink-0 transition-all duration-300 relative group ${
                   activeTab === tab.id
                     ? 'text-gray-900'
-                    : 'text-gray-600 hover:text-gray-900'
+                    : hoveredTab === tab.id
+                    ? 'text-gray-900'
+                    : 'text-gray-600'
                 }`}
               >
                 {tab.label}
                 {/* Underline for active tab */}
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-900 rounded-t-full"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-900 rounded-t-full animate-slideIn"></div>
+                )}
+                {/* Underline for hover tab (only if not active) */}
+                {activeTab !== tab.id && hoveredTab === tab.id && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-400 rounded-t-full animate-slideIn"></div>
                 )}
               </button>
             ))}
@@ -145,6 +154,19 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+        @keyframes slideIn {
+          from {
+            width: 0;
+            opacity: 0;
+          }
+          to {
+            width: 100%;
+            opacity: 1;
+          }
+        }
+        .animate-slideIn {
+          animation: slideIn 0.3s ease-out;
         }
       `}</style>
     </div>
