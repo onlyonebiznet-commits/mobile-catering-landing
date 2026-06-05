@@ -1518,14 +1518,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Video Section */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container">
-
-          <div className="bg-black rounded-lg overflow-hidden aspect-video w-full scroll-reveal">
+          {/* Video in FAQ Section */}
+          <div className="mt-16 bg-black rounded-lg overflow-hidden aspect-video w-full scroll-reveal">
             <video
               width="100%"
               height="100%"
