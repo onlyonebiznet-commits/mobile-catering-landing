@@ -616,9 +616,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Sticky Tab Navigation */}
-      <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
-
       {/* Hero Section with Integrated Header */}
       <section className="relative h-[85vh] overflow-hidden">
         {/* Banner Carousel Background */}
@@ -988,6 +985,13 @@ export default function Home() {
       {/* Service Recommendation Chatbot */}
       <ServiceRecommendationChatbot />
 
+
+      {/* Tab Navigation Section */}
+      <section className="py-12 bg-white border-b border-gray-200">
+        <div className="container">
+          <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
+        </div>
+      </section>
 
       {/* Kitchenless Solutions Section */}
       <section
