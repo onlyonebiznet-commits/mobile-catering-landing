@@ -21,7 +21,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
   return (
     <>
       {/* PC Version */}
-      <section className="hidden md:block w-full bg-white sticky top-0 z-40">
+      <section className="hidden md:block w-full bg-white">
         <div className="container py-8">
           <div className="grid grid-cols-8 gap-6 w-full">
             {sections.map((section) => {
