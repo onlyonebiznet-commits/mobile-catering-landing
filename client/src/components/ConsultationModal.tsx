@@ -467,13 +467,32 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded">
-                    <p className="mb-2">프레시밀온은 다음과 같이 개인정보를 수집 및 이용합니다:</p>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>수집항목: 회사명, 담당자명, 연락처, 이메일, 지역, 예상 인원</li>
-                      <li>수집목적: 상담 신청 처리 및 서비스 제공</li>
-                      <li>보유기간: 상담 완료 후 1년</li>
-                    </ul>
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
+                    <div className="space-y-3">
+                      <div>
+                        <p className="font-semibold mb-2">CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다.</p>
+                        <p className="text-xs mb-2">수집한 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 고객님께 안내하고 동의를 받을 예정입니다.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-1">◼ 수집·이용 항목</p>
+                        <p className="text-xs">성명, 휴대폰번호, 이메일주소, 기업명, 주소, 예상 식수</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-1">◼ 목적</p>
+                        <p className="text-xs">이동급식 서비스 상담 및 진행</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-1">◼ 보유·이용 기간</p>
+                        <p className="text-xs">서비스 상담 신청 후 3년</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-1">◼ 근거</p>
+                        <p className="text-xs">개인정보 보호법 제15조 제1항 제4호에 따른 서비스 이행</p>
+                      </div>
+                      <div className="border-t pt-2">
+                        <p className="text-xs">개인정보를 기입하지 않으실 수 있으나, 기재하지 않으실 경우 이동급식 서비스 상담 진행이 어렵습니다.</p>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -492,8 +511,28 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded">
-                    <p>프레시밀온의 최신 소식, 이벤트, 프로모션 정보를 이메일로 받으실 수 있습니다.</p>
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
+                    <div className="space-y-3">
+                      <div>
+                        <p className="font-semibold mb-2">마케팅 목적 개인정보 수집·이용 동의 (선택)</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-1">◼ 수집·이용 항목</p>
+                        <p className="text-xs">성명, 휴대폰번호, 이메일, 기업명</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-1">◼ 목적</p>
+                        <p className="text-xs">서비스 홍보 등 마케팅</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-1">◼ 보유·이용 기간</p>
+                        <p className="text-xs">수집·이용 동의 후 3년</p>
+                      </div>
+                      <div className="border-t pt-2">
+                        <p className="text-xs mb-2">개인정보 수집 및 이용 동의를 거부할 수 있습니다.</p>
+                        <p className="text-xs">동의 거부 시 마케팅 서비스 이용이 어렵으나, 상담에는 지장이 없습니다.</p>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -512,8 +551,32 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       </Label>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded">
-                    <p className="mb-2">프레시밀온의 신상품, 할인 정보 등 광고성 정보를 이메일로 받으실 수 있습니다.</p>
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
+                    <div className="space-y-3">
+                      <div>
+                        <p className="font-semibold mb-2">CJ프레시웨이㈜는 마케팅 목적의 개인정보 수집 및 이용에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-xs mb-2">수신 매체 선택:</p>
+                        <div className="space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <Checkbox id="sms-consent" />
+                            <Label htmlFor="sms-consent" className="text-xs cursor-pointer">SMS(문자)</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <Checkbox id="email-consent" />
+                            <Label htmlFor="email-consent" className="text-xs cursor-pointer">이메일</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <Checkbox id="kakao-consent" />
+                            <Label htmlFor="kakao-consent" className="text-xs cursor-pointer">카카오톡</Label>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="border-t pt-2">
+                        <p className="text-xs font-semibold mb-1">고객센터 : 02-2149-6114</p>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
