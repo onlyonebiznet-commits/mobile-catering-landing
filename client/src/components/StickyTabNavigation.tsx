@@ -22,8 +22,8 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
     <div className="sticky top-0 z-40 bg-white">
       {/* PC: Horizontal Rounded Rectangle Button Navigation */}
       <div className="hidden md:block border-b border-gray-100">
-        <div className="container px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex gap-3 justify-center flex-wrap">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex gap-3 justify-between items-center">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
