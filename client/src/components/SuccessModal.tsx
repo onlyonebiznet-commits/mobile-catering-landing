@@ -17,7 +17,7 @@ export default function SuccessModal({
   onCountdownEnd,
 }: SuccessModalProps) {
   return (
-    <div className="px-4 md:px-6 py-6 md:py-12 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(90vh - 100px)', minHeight: 'auto' }}>
+    <div className="px-4 md:px-6 py-8 md:py-16 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(90vh - 100px)', minHeight: 'auto' }}>
       <div className="mb-4 md:mb-8 flex-shrink-0">
         <div className="w-12 md:w-16 h-12 md:h-16 bg-[#005B44] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-6">
           <svg className="w-6 md:w-8 h-6 md:h-8 text-[#005B44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
