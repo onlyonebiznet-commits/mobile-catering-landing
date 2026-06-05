@@ -8,6 +8,7 @@ import ServiceRecommendationChatbot from "@/components/ServiceRecommendationChat
 import FloatingActionButtons from "@/components/FloatingActionButtons";
 import ThankYouPage from "@/pages/ThankYou";
 import StickyTabNavigation from "@/components/StickyTabNavigation";
+import PCNavigation from "@/components/PCNavigation";
 import { useLocation } from "wouter";
 
 interface StatisticItemProps {
@@ -924,12 +925,13 @@ export default function Home() {
       <ServiceRecommendationChatbot />
 
 
-      {/* Tab Navigation Section */}
-      <section className="py-12 bg-white border-b border-gray-200">
-        <div className="container">
-          <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
-        </div>
-      </section>
+      {/* PC Navigation */}
+      <div className="hidden md:block">
+        <PCNavigation activeTab={activeTab} onTabClick={scrollToSection} />
+      </div>
+
+      {/* Mobile Navigation */}
+      <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
 
       {/* Kitchenless Solutions Section */}
       <section
