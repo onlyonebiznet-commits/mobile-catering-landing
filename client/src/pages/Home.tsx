@@ -1133,26 +1133,24 @@ export default function Home() {
                       : 'bg-white text-gray-700 border-2 border-[#D8D8D8] hover:bg-gray-50'
                   }`}
                 >
-                  <span className="text-lg">{categoryIcons[category.id]}</span>
                   <span className="text-sm font-semibold">{category.name}</span>
                 </button>
               ))}
             </div>
 
-            {/* Mobile: 4x2 Grid - Circle Cards (Delivery App Style) */}
+            {/* Mobile: 4x2 Grid - Rounded Rectangle Cards (Text Only) */}
             <div className="md:hidden grid grid-cols-4 gap-3">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`aspect-square flex flex-col items-center justify-center gap-1 rounded-3xl transition-all duration-300 shadow-sm ${
+                  className={`py-3 px-2 rounded-[20px] transition-all duration-300 shadow-sm ${
                     selectedSnackCategory === category.id
                       ? 'bg-[#006B4F] text-white shadow-md'
-                      : 'bg-white text-gray-700 border border-gray-100'
+                      : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
                   }`}
                 >
-                  <span className="text-2xl">{categoryIcons[category.id]}</span>
-                  <span className="text-xs font-semibold text-center px-1 leading-tight">{category.name}</span>
+                  <span className="text-xs font-semibold text-center px-1 leading-tight block">{category.name}</span>
                 </button>
               ))}
             </div>

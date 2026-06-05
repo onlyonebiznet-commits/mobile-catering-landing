@@ -20,32 +20,24 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
 
   return (
     <div className="sticky top-0 z-40 bg-white">
-      {/* PC: Horizontal Circular Button Navigation */}
-      <div className="hidden md:block">
-        <div className="container px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex gap-6 justify-center flex-wrap">
+      {/* PC: Horizontal Rounded Rectangle Button Navigation */}
+      <div className="hidden md:block border-b border-gray-100">
+        <div className="container px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex gap-3 justify-center flex-wrap">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => onTabClick(tab.id)}
-                  className={`flex flex-col items-center gap-3 transition-all duration-300 ${
-                    activeTab === tab.id ? '' : ''
+                  className={`flex flex-col items-center gap-2 px-5 py-4 rounded-[20px] transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? 'bg-[#006B4F] text-white shadow-md'
+                      : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                   }`}
                 >
-                  <div className={`w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? 'bg-[#006B4F] text-white'
-                      : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300'
-                  }`}>
-                    <Icon className="w-10 h-10" />
-                  </div>
-                  <span className={`text-sm font-semibold text-center transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? 'text-[#006B4F]'
-                      : 'text-gray-700'
-                  }`}>{tab.label}</span>
+                  <Icon className="w-6 h-6" />
+                  <span className="text-xs font-semibold text-center leading-tight">{tab.label}</span>
                 </button>
               );
             })}
@@ -53,30 +45,24 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
         </div>
       </div>
 
-      {/* Mobile: Circular Button Grid (4x2) */}
-      <div className="md:hidden">
-        <div className="px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-4 gap-4">
+      {/* Mobile: Rounded Rectangle Button Grid (4x2) */}
+      <div className="md:hidden border-b border-gray-100">
+        <div className="px-4 sm:px-6 lg:px-8 py-4">
+          <div className="grid grid-cols-4 gap-3">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => onTabClick(tab.id)}
-                  className="flex flex-col items-center gap-2 transition-all duration-300"
+                  className={`flex flex-col items-center gap-1 px-2 py-3 rounded-[20px] transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? 'bg-[#006B4F] text-white shadow-sm'
+                      : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                  }`}
                 >
-                  <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? 'bg-[#006B4F] text-white'
-                      : 'bg-white text-gray-700 border-2 border-gray-200'
-                  }`}>
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <span className={`text-xs font-semibold text-center leading-tight transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? 'text-[#006B4F]'
-                      : 'text-gray-700'
-                  }`}>{tab.label}</span>
+                  <Icon className="w-5 h-5" />
+                  <span className="text-xs font-semibold text-center leading-tight">{tab.label}</span>
                 </button>
               );
             })}
