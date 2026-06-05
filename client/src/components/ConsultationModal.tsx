@@ -116,8 +116,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         marketingConsent: value,
         adConsent: value,
       });
-      // 전체동의 체크 시 아코디언 닫기
-      setAccordionValue("");
     } else {
       const newAgreements = {
         ...agreements,
@@ -128,8 +126,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
       const allChecked = newAgreements.personalInfoCollection && newAgreements.marketingConsent && newAgreements.adConsent;
       newAgreements.allAgree = allChecked;
       setAgreements(newAgreements);
-      // 개별 체크박스 클릭 시 아코디언 닫기
-      setAccordionValue("");
     }
   };
 
