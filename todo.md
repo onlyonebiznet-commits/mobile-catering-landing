@@ -284,3 +284,9 @@
 - [x] 8개 버튼: grid-cols-8 균등 배치
 - [x] 좌우 정렬이 본문 섹션과 정확히 일치
 - [x] Sticky 상태에서도 동일한 폭 유지
+
+## Phase 39: 네비게이션 container 클래스 통일
+
+- [x] 네비게이션에 .container 클래스 직접 적용
+- [x] 카드 섹션과 동일한 responsive padding 적용
+- [x] 좌우 정렬이 완벽하게 일치

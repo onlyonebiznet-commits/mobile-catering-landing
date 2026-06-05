@@ -22,7 +22,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
     <div className="sticky top-0 z-40 bg-white">
       {/* PC: Card Navigation - 8 columns */}
       <div className="hidden md:block w-full">
-        <div className="max-w-[1200px] w-full mx-auto px-6 py-8">
+        <div className="container py-8">
           <div className="grid grid-cols-8 gap-4">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -59,7 +59,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
 
       {/* Mobile: Card Navigation - 4x2 Grid */}
       <div className="md:hidden w-full">
-        <div className="max-w-[1200px] w-full mx-auto px-6 py-6">
+        <div className="container py-6">
           <div className="grid grid-cols-4 gap-3">
             {tabs.map((tab) => {
               const Icon = tab.icon;
