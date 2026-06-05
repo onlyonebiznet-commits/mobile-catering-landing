@@ -21,7 +21,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
   return (
     <div className="sticky top-0 z-40 bg-white">
       {/* PC: Card Navigation - 8 columns */}
-      <div className="hidden md:block border-b border-gray-100">
+      <div className="hidden md:block">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-8 gap-4">
             {tabs.map((tab) => {
@@ -58,7 +58,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
       </div>
 
       {/* Mobile: Card Navigation - 4x2 Grid */}
-      <div className="md:hidden border-b border-gray-100">
+      <div className="md:hidden">
         <div className="px-4 sm:px-6 py-6">
           <div className="grid grid-cols-4 gap-3">
             {tabs.map((tab) => {
