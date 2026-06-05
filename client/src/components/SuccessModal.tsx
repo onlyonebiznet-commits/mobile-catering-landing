@@ -17,7 +17,7 @@ export default function SuccessModal({
   onCountdownEnd,
 }: SuccessModalProps) {
   return (
-    <div className="px-4 md:px-6 py-8 md:py-16 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(90vh - 100px)', minHeight: 'auto' }}>
+    <div className="px-8 md:px-8 py-12 md:py-16 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(100vh - 120px)', minHeight: 'auto' }}>
       <div className="mb-4 md:mb-8 flex-shrink-0">
         <div className="w-12 md:w-16 h-12 md:h-16 bg-[#005B44] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-6">
           <svg className="w-6 md:w-8 h-6 md:h-8 text-[#005B44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,11 +35,11 @@ export default function SuccessModal({
       </div>
       <Button
         onClick={onClose}
-        className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-2 md:py-3 rounded-lg font-medium transition-colors mb-2 md:mb-4 flex-shrink-0 text-sm md:text-base"
+        className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-3 md:py-3 rounded-lg font-medium transition-colors mb-4 md:mb-6 flex-shrink-0 text-sm md:text-base"
       >
         홈으로 돌아가기
       </Button>
-      <p className="text-xs md:text-sm text-gray-500 flex-shrink-0">{countdown}초 후 자동으로 홈으로 이동합니다.</p>
+      <p className="text-xs md:text-sm text-gray-500 flex-shrink-0 pb-4">{countdown}초 후 자동으로 홈으로 이동합니다.</p>
     </div>
   );
 }

@@ -249,11 +249,12 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent 
         ref={contentRef}
-        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-lg overflow-hidden bg-white"
+        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[560px] p-0 gap-0 rounded-2xl overflow-hidden bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         style={{
-          maxHeight: 'min(75vh, calc(100vh - 120px))',
+          maxHeight: 'calc(100vh - 60px)',
           width: 'calc(100vw - 32px)',
-          maxWidth: '600px'
+          maxWidth: '560px',
+          zIndex: 9999
         }}
         onMouseDown={(e) => e.stopPropagation()}
         showCloseButton={false}
