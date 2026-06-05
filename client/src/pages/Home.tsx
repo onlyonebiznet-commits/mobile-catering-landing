@@ -925,7 +925,11 @@ export default function Home() {
 
 
       {/* Tab Navigation Section */}
-      <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
+      <section className="py-12 bg-white border-b border-gray-200">
+        <div className="container">
+          <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
+        </div>
+      </section>
 
       {/* Kitchenless Solutions Section */}
       <section

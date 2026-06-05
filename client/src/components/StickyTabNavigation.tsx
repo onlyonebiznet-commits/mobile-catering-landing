@@ -19,10 +19,10 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
   ];
 
   return (
-    <div className="sticky top-0 z-[1000] bg-white/95 backdrop-blur-sm">
+    <div className="sticky top-0 z-40 bg-white">
       {/* PC: Card Navigation - 8 columns */}
-      <div className="hidden md:block">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="hidden md:block border-b border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-8 gap-4">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -32,7 +32,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
                   onClick={() => onTabClick(tab.id)}
                   className={`flex flex-col items-center justify-center gap-3 p-5 rounded-[20px] transition-all duration-300 ${
                     activeTab === tab.id
-                      ? 'bg-[#006B4F] text-white shadow-sm'
+                      ? 'bg-[#006B4F] text-white shadow-md'
                       : 'bg-white text-gray-700 border border-[#F1F3F5] hover:bg-[#F7FAF8] hover:shadow-sm'
                   }`}
                   style={{
@@ -58,8 +58,8 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
       </div>
 
       {/* Mobile: Card Navigation - 4x2 Grid */}
-      <div className="md:hidden">
-        <div className="px-4 sm:px-6 py-5">
+      <div className="md:hidden border-b border-gray-100">
+        <div className="px-4 sm:px-6 py-6">
           <div className="grid grid-cols-4 gap-3">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -69,7 +69,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
                   onClick={() => onTabClick(tab.id)}
                   className={`flex flex-col items-center justify-center gap-2 p-4 rounded-[16px] transition-all duration-300 ${
                     activeTab === tab.id
-                      ? 'bg-[#006B4F] text-white shadow-sm'
+                      ? 'bg-[#006B4F] text-white shadow-md'
                       : 'bg-white text-gray-700 border border-[#F1F3F5] hover:bg-[#F7FAF8]'
                   }`}
                   style={{
