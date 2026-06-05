@@ -19,7 +19,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
   ];
 
   return (
-    <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
+    <div className="sticky top-0 z-40 bg-white">
       {/* PC: Horizontal Button Navigation with Icons */}
       <div className="hidden md:block">
         <div className="container px-4 sm:px-6 lg:px-8 py-6">
