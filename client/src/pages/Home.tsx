@@ -1138,19 +1138,19 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Mobile: 2x4 Grid - Wide Rounded Rectangle Cards (Text Only) */}
-            <div className="md:hidden grid grid-cols-2 gap-3">
+            {/* Mobile: 4x2 Grid - Rounded Rectangle Tiles (Text Only) */}
+            <div className="md:hidden grid grid-cols-4 gap-2">
               {snackCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`py-3 px-4 rounded-[20px] transition-all duration-300 shadow-sm ${
+                  className={`py-3 px-2 rounded-[16px] transition-all duration-300 shadow-sm ${
                     selectedSnackCategory === category.id
                       ? 'bg-[#006B4F] text-white shadow-md'
                       : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
                   }`}
                 >
-                  <span className="text-sm font-semibold text-center leading-tight block">{category.name}</span>
+                  <span className="text-xs font-semibold text-center leading-tight block">{category.name}</span>
                 </button>
               ))}
             </div>
