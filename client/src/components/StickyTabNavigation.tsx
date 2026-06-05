@@ -19,7 +19,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
   ];
 
   return (
-    <div className="sticky top-0 z-40 bg-white">
+    <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
       {/* PC: Horizontal Button Navigation with Icons */}
       <div className="hidden md:block">
         <div className="container px-4 sm:px-6 lg:px-8 py-6">
@@ -45,40 +45,30 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
         </div>
       </div>
 
-      {/* Mobile: Scrollable Button Navigation with Icons */}
+      {/* Mobile: 4x2 Grid Button Navigation */}
       <div className="md:hidden">
-        <div className="px-4 py-4 overflow-x-auto scrollbar-hide">
-          <div className="flex gap-2 min-w-max">
+        <div className="px-4 sm:px-6 lg:px-8 py-4">
+          <div className="grid grid-cols-4 gap-3">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => onTabClick(tab.id)}
-                  className={`flex flex-col items-center gap-1 px-3 py-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
+                  className={`flex flex-col items-center justify-center gap-1 h-[72px] rounded-2xl transition-all duration-300 ${
                     activeTab === tab.id
                       ? 'text-[#006B4F] bg-[#EEF7F2]'
-                      : 'text-gray-700 bg-white hover:bg-gray-50'
+                      : 'text-gray-700 bg-white hover:bg-gray-50 border border-gray-200'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
-                  <span className="text-xs font-semibold whitespace-nowrap">{tab.label}</span>
+                  <span className="text-xs font-semibold text-center leading-tight">{tab.label}</span>
                 </button>
               );
             })}
           </div>
         </div>
       </div>
-
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   );
 }
