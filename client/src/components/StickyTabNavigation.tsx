@@ -49,18 +49,18 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
   };
 
   return (
-    <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-md">
+    <div className="bg-white">
       <div className="container px-4 sm:px-6 lg:px-8">
         {/* PC: Horizontal Tab Menu */}
-        <div className="hidden md:flex items-center justify-center h-16 gap-2">
-          {tabs.map((tab) => (
+        <div className="hidden md:flex items-center justify-center py-6 gap-3">
+          {tabs.map((tab, idx) => (
             <button
               key={tab.id}
               onClick={() => onTabClick(tab.id)}
-              className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
+              className={`px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300 whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-[#006B4F] text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
+                  ? 'bg-gradient-to-r from-[#006B4F] to-[#008a5f] text-white shadow-lg shadow-[#006B4F]/30 scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
               }`}
             >
               {tab.label}
@@ -69,11 +69,11 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
         </div>
 
         {/* Mobile: Horizontal Scrollable Tab Menu */}
-        <div className="md:hidden flex items-center gap-2 h-16 overflow-hidden">
+        <div className="md:hidden flex items-center gap-2 py-4 overflow-hidden">
           {canScrollLeft && (
             <button
               onClick={() => scroll('left')}
-              className="flex-shrink-0 p-2 text-gray-600 hover:text-gray-900"
+              className="flex-shrink-0 p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -87,10 +87,10 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
               <button
                 key={tab.id}
                 onClick={() => onTabClick(tab.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                className={`px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
                   activeTab === tab.id
-                    ? 'bg-[#006B4F] text-white'
-                    : 'bg-white text-gray-700 border border-gray-200'
+                    ? 'bg-gradient-to-r from-[#006B4F] to-[#008a5f] text-white shadow-md shadow-[#006B4F]/30'
+                    : 'bg-gray-100 text-gray-700 border border-gray-200'
                 }`}
               >
                 {tab.label}
@@ -100,7 +100,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
           {canScrollRight && (
             <button
               onClick={() => scroll('right')}
-              className="flex-shrink-0 p-2 text-gray-600 hover:text-gray-900"
+              className="flex-shrink-0 p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
