@@ -130,8 +130,8 @@ const ServiceRecommendationChatbot = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-gray-900 font-semibold mb-2">문의가 접수되었습니다</p>
-                <p className="text-sm text-gray-600">담당자가 빠르게 연락드리겠습니다.</p>
+                <p className="text-gray-900 font-semibold mb-2 text-center">문의가 접수되었습니다</p>
+                <p className="text-sm text-gray-600 text-center">담당자가 빠르게 연락드리겠습니다.</p>
               </div>
             ) : step === 1 ? (
               <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
