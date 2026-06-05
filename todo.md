@@ -272,3 +272,8 @@
 
 - [x] 네비게이션 밑의 border-b 제거
 - [x] PC 여백: container mx-auto 적용으로 다른 섹션과 통일
+
+## Phase 37: PC 네비게이션 좌우 여백 통일
+
+- [x] PC 네비게이션: container mx-auto로 다른 섹션과 동일한 여백 적용
+- [x] 좌우 여백이 이제 다른 섹션과 일치
