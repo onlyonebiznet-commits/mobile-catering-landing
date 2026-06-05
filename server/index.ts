@@ -7,7 +7,7 @@ import * as fs from "fs";
 import * as os from "os";
 import { sql } from "drizzle-orm";
 import { getDb, createTables } from "./db";
-import { consultationRequests, materialRequests } from "../drizzle/schema";
+import { consultationRequests } from "../drizzle/schema";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -100,66 +100,7 @@ async function startServer() {
     }
   });
 
-  // API Routes - Material Request
-  app.post("/api/material-request", async (req, res) => {
-    try {
-      const { companyName, manager, phone, email, downloadFile } = req.body;
 
-      // Validation
-      if (!companyName || !manager || !phone) {
-        return res.status(400).json({ error: "필수 필드를 입력해주세요" });
-      }
-
-      try {
-        console.log("[material-request] START");
-        console.log("[material-request] Received:", { companyName, manager, phone, email, downloadFile });
-        
-        const db = await getDb();
-        console.log("[material-request] DB connection OK");
-        
-        const now = new Date();
-        const result = await db.insert(materialRequests).values({
-          companyName,
-          manager,
-          phone,
-          email: email || null,
-          downloadFile: downloadFile && downloadFile.trim() ? downloadFile : null,
-          status: 'pending',
-          createdAt: now,
-          updatedAt: now,
-        });
-
-        console.log("✓ material_requests saved:", { companyName, manager, phone });
-        console.log("[material-request] END");
-        
-        res.status(201).json({ 
-          success: true, 
-          message: "자료 신청이 완료되었습니다",
-          event: "material_request_submit"
-        });
-      } catch (dbError) {
-        console.error("\n=== material_requests insert failed ===");
-        console.error("Error:", dbError);
-        console.error("Message:", dbError instanceof Error ? dbError.message : String(dbError));
-        console.error("Code:", (dbError as any)?.code);
-        console.error("State:", (dbError as any)?.sqlState);
-        console.error("Stack:", (dbError as any)?.stack);
-        console.error("===\n");
-        
-        res.status(500).json({ 
-          error: "데이터베이스 저장 중 오류가 발생했습니다",
-          details: { 
-            message: dbError instanceof Error ? dbError.message : String(dbError), 
-            code: (dbError as any)?.code,
-            sqlState: (dbError as any)?.sqlState
-          }
-        });
-      }
-    } catch (error) {
-      console.error("Material request error:", error);
-      res.status(500).json({ error: "요청 처리 중 오류가 발생했습니다" });
-    }
-  });
 
   // Admin Authentication
   app.post("/api/admin/login", async (req, res) => {
@@ -248,61 +189,7 @@ async function startServer() {
     }
   });
 
-  // Admin Dashboard - Get Materials
-  app.get("/api/admin/materials", async (req, res) => {
-    try {
-      console.log("[/api/admin/materials] START");
-      if (!verifyAdminToken(req)) {
-        console.log("[/api/admin/materials] Token verification failed");
-        return res.status(401).json({ error: "인증이 필요합니다" });
-      }
 
-      console.log("[/api/admin/materials] Token verified");
-      const db = await getDb();
-      console.log("[/api/admin/materials] DB connection OK");
-      const { status, search, startDate, endDate } = req.query;
-      console.log("[/api/admin/materials] Query params:", { status, search, startDate, endDate });
-
-      let query = db.select().from(materialRequests);
-
-      // Apply filters
-      if (status) {
-        query = query.where(sql`status = ${status}`);
-      }
-      if (search) {
-        query = query.where(
-          sql`companyName LIKE ${`%${search}%`} OR manager LIKE ${`%${search}%`} OR phone LIKE ${`%${search}%`}`
-        );
-      }
-      if (startDate && endDate) {
-        query = query.where(
-          sql`createdAt BETWEEN ${startDate} AND ${endDate}`
-        );
-      }
-
-      const data = await query.orderBy(sql`createdAt DESC`);
-      console.log("[/api/admin/materials] Query result:", data.length, "rows");
-      console.log("[/api/admin/materials] END");
-      res.json({ data, total: data.length });
-    } catch (error) {
-      console.error("\n=== /api/admin/materials error ===");
-      console.error("Error:", error);
-      console.error("Message:", error instanceof Error ? error.message : String(error));
-      console.error("Code:", (error as any)?.code);
-      console.error("State:", (error as any)?.sqlState);
-      console.error("Stack:", (error as any)?.stack);
-      console.error("===\n");
-      res.status(500).json({ 
-        error: "데이터 조회 중 오류가 발생했습니다",
-        message: error instanceof Error ? error.message : String(error),
-        code: (error as any)?.code,
-        details: process.env.NODE_ENV === "development" ? {
-          message: error instanceof Error ? error.message : String(error),
-          code: (error as any)?.code
-        } : undefined
-      });
-    }
-  });
 
   // Admin Dashboard - Get Stats
   app.get("/api/admin/stats", async (req, res) => {
@@ -330,29 +217,15 @@ async function startServer() {
         .from(consultationRequests)
         .where(sql`DATE(createdAt) >= ${monthStart}`);
 
-      const materialToday = await db
-        .select()
-        .from(materialRequests)
-        .where(sql`DATE(createdAt) = ${today}`);
-
-      const materialMonth = await db
-        .select()
-        .from(materialRequests)
-        .where(sql`DATE(createdAt) >= ${monthStart}`);
-
       console.log("[/api/admin/stats] Results:", {
         consultationToday: consultationToday.length,
         consultationMonth: consultationMonth.length,
-        materialToday: materialToday.length,
-        materialMonth: materialMonth.length,
       });
       console.log("[/api/admin/stats] END");
 
       res.json({
         consultationToday: consultationToday.length,
         consultationMonth: consultationMonth.length,
-        materialToday: materialToday.length,
-        materialMonth: materialMonth.length,
       });
     } catch (error) {
       console.error("\n=== /api/admin/stats error ===");
@@ -386,8 +259,6 @@ async function startServer() {
 
       if (type === 'consultation') {
         await db.update(consultationRequests).set({ status }).where(sql`id = ${id}`);
-      } else if (type === 'material') {
-        await db.update(materialRequests).set({ status }).where(sql`id = ${id}`);
       }
 
       res.json({ success: true });
@@ -410,9 +281,6 @@ async function startServer() {
       if (type === 'consultation') {
         // Hard delete for now (soft delete requires migration)
         await db.delete(consultationRequests).where(sql`id = ${id}`);
-      } else if (type === 'material') {
-        // Hard delete for now (soft delete requires migration)
-        await db.delete(materialRequests).where(sql`id = ${id}`);
       }
 
       res.json({ success: true });
@@ -438,9 +306,6 @@ async function startServer() {
       if (type === 'consultation') {
         data = await db.select().from(consultationRequests);
         headers = ['ID', '신청일시', '회사명', '담당자명', '연락처', '이메일', '직원수', '문의유형', '메시지', '상태'];
-      } else if (type === 'material') {
-        data = await db.select().from(materialRequests);
-        headers = ['ID', '신청일시', '회사명', '담당자명', '연락처', '이메일', '신청자료', '상태'];
       }
 
       // Helper to escape CSV fields
@@ -499,11 +364,9 @@ async function startServer() {
       const db = await getDb();
       
       const consultationData = await db.select().from(consultationRequests);
-      const materialData = await db.select().from(materialRequests);
 
       res.json({
         consultationRequests: consultationData,
-        materialRequests: materialData,
       });
     } catch (error) {
       console.error("Debug endpoint error:", error);

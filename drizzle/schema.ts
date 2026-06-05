@@ -17,18 +17,5 @@ export const consultationRequests = mysqlTable("consultation_requests", {
   updatedAt: datetime("updatedAt").default(sql`CURRENT_TIMESTAMP`),
 });
 
-// 자료 요청 테이블
-export const materialRequests = mysqlTable("material_requests", {
-  id: int("id").primaryKey().autoincrement(),
-  companyName: varchar("companyName", { length: 255 }).notNull(),
-  manager: varchar("manager", { length: 255 }).notNull(),
-  phone: varchar("phone", { length: 20 }).notNull(),
-  email: varchar("email", { length: 255 }),
-  status: varchar("status", { length: 50 }).default("new"),
-  createdAt: datetime("createdAt").default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: datetime("updatedAt").default(sql`CURRENT_TIMESTAMP`),
-});
-
 // 타입 정의
 export type ConsultationRequest = typeof consultationRequests.$inferSelect;
-export type MaterialRequest = typeof materialRequests.$inferSelect;

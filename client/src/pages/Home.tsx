@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock,
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
-import MaterialRequestModal from "@/components/MaterialRequestModal";
+
 import ServiceRecommendationChatbot from "@/components/ServiceRecommendationChatbot";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
 import ThankYouPage from "@/pages/ThankYou";
@@ -47,7 +47,7 @@ function StatisticItem({ end, suffix, label, index = 0 }: StatisticItemProps) {
 
 export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
-  const [materialOpen, setMaterialOpen] = useState(false);
+
   const [currentDietIndex, setCurrentDietIndex] = useState(0);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -98,7 +98,7 @@ export default function Home() {
 
   useEffect(() => {
     // 모달이 열려있으면 스크롤 이벤트 리스너 제거
-    if (consultationOpen || materialOpen) {
+    if (consultationOpen) {
       return;
     }
 
@@ -118,7 +118,7 @@ export default function Home() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [consultationOpen, materialOpen]);
+  }, [consultationOpen]);
 
   const scrollToSection = (sectionKey: string) => {
     const ref = sectionRefs.current[sectionKey];
@@ -856,20 +856,13 @@ export default function Home() {
                   ][currentDietIndex % 3].description}
                 </p>
                 
-                <div className="flex gap-4 animate-in fade-in slide-in-from-left-4 delay-500">
+                <div className="flex justify-center animate-in fade-in slide-in-from-left-4 delay-500">
                   <button
                     onClick={() => setConsultationOpen(true)}
                     data-event="consultation_click"
                     className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
                   >
                     지금 상담받기
-                  </button>
-                  <button
-                    onClick={() => setMaterialOpen(true)}
-                    data-event="material_request_click"
-                    className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
-                  >
-                    자료 다운로드
                   </button>
                 </div>
               </div>
@@ -1544,18 +1537,12 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal-stagger" data-reveal-item="0">
+          <div className="flex justify-center scroll-reveal-stagger" data-reveal-item="0">
             <button
               onClick={() => setConsultationOpen(true)}
               className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
             >
               지금 상담받기
-            </button>
-            <button
-              onClick={() => setMaterialOpen(true)}
-              className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
-            >
-              자료 다운로드
             </button>
           </div>
         </div>
@@ -1661,7 +1648,7 @@ export default function Home() {
 
       {/* Modals */}
       {consultationOpen && <ConsultationModal isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />}
-      {materialOpen && <MaterialRequestModal onClose={() => setMaterialOpen(false)} />}
+
 
       {/* Floating Action Buttons */}
       <FloatingActionButtons />
