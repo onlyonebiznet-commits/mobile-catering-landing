@@ -147,6 +147,7 @@
 - [x] 데이터베이스 스키마 업데이트 (status 커라른 추가)
 - [x] 관리자 인증 API (/api/admin/login, /api/admin/verify)
 - [ ] 이메일 알림 서비스 구현 (상담/자료 신청 시) (Phase 5)
+- [x] 맞춤상담신청 API 호출 기능 추가 (플로팅 버튼 데이터 대시보드 반영)
 - [x] 관리자 대시보드 조회 API (/api/admin/consultations, /api/admin/materials)
 - [x] 관리자 대시보드 아래 KPI API (/api/admin/stats)
 - [x] 관리자 대시보드 CSV 내보내기 API (/api/admin/export)

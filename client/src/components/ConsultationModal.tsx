@@ -46,6 +46,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [completionCountdown, setCompletionCountdown] = useState(5);
+  const [accordionValue, setAccordionValue] = useState<string>("");
 
   const clearError = (field: string) => {
     setErrors((prev) => {
@@ -434,7 +435,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 </Label>
               </div>
 
-              <Accordion type="single" collapsible className="w-full space-y-2">
+              <Accordion type="single" collapsible className="w-full space-y-2" value={accordionValue} onValueChange={setAccordionValue}>
                 <AccordionItem value="personal-info" className="border border-gray-200 rounded-lg px-3">
                   <AccordionTrigger className="hover:no-underline py-3">
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
