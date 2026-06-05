@@ -115,6 +115,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         marketingConsent: value,
         adConsent: value,
       });
+      // 전체동의 체크 시 아코디언 닫기
+      setAccordionValue("");
     } else {
       const newAgreements = {
         ...agreements,
