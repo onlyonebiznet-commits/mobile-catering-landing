@@ -686,7 +686,7 @@ export default function Home() {
 
 
         {/* Hero Content */}
-        <div className="relative h-full flex flex-col justify-center pt-20">
+        <div className="relative h-full flex flex-col justify-center items-center">
           <div className="container w-full scroll-reveal">
             {[
               {
