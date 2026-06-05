@@ -59,29 +59,53 @@ const ServiceRecommendationChatbot = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Here you would typically send the data to your backend
-    console.log('Form submitted:', formData);
-    
-    // For now, just show success message
-    setSubmitted(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setStep(1);
-      setSelectedService('');
-      setSelectedEnvironment('');
-      setFormData({
-        name: '',
-        company: '',
-        phone: '',
-        email: '',
-        service: '',
-        environment: '',
-        people: '',
-        region: '',
-        inquiry: ''
+    try {
+      // 백엔드로 데이터 전송
+      const response = await fetch('/api/consultation-request', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          companyName: formData.company,
+          contactPerson: formData.name,
+          phoneNumber: formData.phone,
+          email: formData.email,
+          serviceType: formData.service,
+          region: formData.region,
+          estimatedMeals: formData.people,
+          message: formData.inquiry,
+        }),
       });
-      setSubmitted(false);
-    }, 3000);
+
+      if (!response.ok) {
+        throw new Error('Failed to submit consultation request');
+      }
+
+      // 성공 시 완료 메시지 표시
+      setSubmitted(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setStep(1);
+        setSelectedService('');
+        setSelectedEnvironment('');
+        setFormData({
+          name: '',
+          company: '',
+          phone: '',
+          email: '',
+          service: '',
+          environment: '',
+          people: '',
+          region: '',
+          inquiry: ''
+        });
+        setSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('문의 접수에 실패했습니다. 다시 시도해주세요.');
+    }
   };
 
   const handleBack = () => {
