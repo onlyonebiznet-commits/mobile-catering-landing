@@ -97,11 +97,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    // 모달이 열려있으면 스크롤 이벤트 리스너 제거
+    if (consultationOpen || materialOpen) {
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      if (consultationOpen) {
-        setConsultationOpen(false);
-      }
 
       const sections = Object.entries(sectionRefs.current);
       for (const [key, ref] of sections) {
@@ -116,7 +118,7 @@ export default function Home() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [consultationOpen]);
+  }, [consultationOpen, materialOpen]);
 
   const scrollToSection = (sectionKey: string) => {
     const ref = sectionRefs.current[sectionKey];

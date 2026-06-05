@@ -58,7 +58,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
   // Handle outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (contentRef.current && !contentRef.current.contains(e.target as Node)) {
+      if (contentRef.current && !contentRef.current.contains(e.target as Node) && !isCompleted) {
         onClose();
       }
     };
@@ -72,19 +72,19 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
       clearTimeout(timer);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [onClose]);
+  }, [onClose, isCompleted]);
 
   // Handle ESC key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !isCompleted) {
         onClose();
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  }, [onClose, isCompleted]);
 
   // Track form view on mount
   useEffect(() => {
@@ -246,7 +246,11 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={(open) => {
+      if (!open && !isCompleted) {
+        onClose();
+      }
+    }}>
       <DialogContent 
         ref={contentRef}
         className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-lg overflow-hidden bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
