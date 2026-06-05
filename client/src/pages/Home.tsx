@@ -1521,13 +1521,9 @@ export default function Home() {
         </div>
       </section>
 
-          {/* Video Section */}
+      {/* Video Section */}
       <section className="py-12 md:py-20 bg-white">
         <div className="container">
-          <div className="text-center mb-8 md:mb-16 scroll-reveal">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>프레시밀온 이야기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온의 서비스와 고객 사례를 영상으로 만나보세요</p>
-          </div>
 
           <div className="bg-black rounded-lg overflow-hidden aspect-video w-full scroll-reveal">
             <video
