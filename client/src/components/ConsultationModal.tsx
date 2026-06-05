@@ -55,36 +55,12 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
     });
   };
 
-  // Handle outside click
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (contentRef.current && !contentRef.current.contains(e.target as Node) && !isCompleted) {
-        onClose();
-      }
-    };
+  // Handle outside click - REMOVED
+  // Radix Dialog handles outside click dismissal via onOpenChange
+  // Custom handler was causing issues with Select Portal (dropdown rendered outside Dialog)
 
-    // Add slight delay to avoid closing immediately on open
-    const timer = setTimeout(() => {
-      document.addEventListener('mousedown', handleClickOutside);
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [onClose, isCompleted]);
-
-  // Handle ESC key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && !isCompleted) {
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, isCompleted]);
+  // ESC key handling is already managed by Radix Dialog
+  // No need for custom ESC handler
 
   // Track form view on mount
   useEffect(() => {
