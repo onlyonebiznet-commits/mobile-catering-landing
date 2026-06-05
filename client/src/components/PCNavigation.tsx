@@ -20,7 +20,7 @@ export default function PCNavigation({ activeTab, onTabClick }: PCNavigationProp
   return (
     <div className="sticky top-0 z-40 bg-white">
       <div className="w-full max-w-[1200px] mx-auto px-6 py-8">
-        <div className="grid grid-cols-8 gap-4 w-full">
+        <div className="grid grid-cols-8 gap-6 w-full">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
