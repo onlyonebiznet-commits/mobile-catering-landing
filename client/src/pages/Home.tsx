@@ -7,6 +7,7 @@ import MaterialRequestModal from "@/components/MaterialRequestModal";
 import ServiceRecommendationChatbot from "@/components/ServiceRecommendationChatbot";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
 import ThankYouPage from "@/pages/ThankYou";
+import StickyTabNavigation from "@/components/StickyTabNavigation";
 import { useLocation } from "wouter";
 
 interface StatisticItemProps {
@@ -55,9 +56,20 @@ export default function Home() {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [activeTab, setActiveTab] = useState('intro');
   const [location] = useLocation();
   const reviewsContainerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([null, null, null]);
+  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({
+    intro: null,
+    kitchen: null,
+    snack: null,
+    snacks: null,
+    cafe: null,
+    process: null,
+    reviews: null,
+    faq: null,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -88,10 +100,29 @@ export default function Home() {
       if (consultationOpen) {
         setConsultationOpen(false);
       }
+
+      const sections = Object.entries(sectionRefs.current);
+      for (const [key, ref] of sections) {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            setActiveTab(key);
+            break;
+          }
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [consultationOpen]);
+
+  const scrollToSection = (sectionKey: string) => {
+    const ref = sectionRefs.current[sectionKey];
+    if (ref) {
+      ref.scrollIntoView({ behavior: 'smooth' });
+      setActiveTab(sectionKey);
+    }
+  };
 
   useEffect(() => {
     const handleCloseConsultation = () => {
@@ -585,6 +616,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Sticky Tab Navigation */}
+      <StickyTabNavigation activeTab={activeTab} onTabClick={scrollToSection} />
+
       {/* Hero Section with Integrated Header */}
       <section className="relative h-[85vh] overflow-hidden">
         {/* Banner Carousel Background */}
@@ -955,20 +989,12 @@ export default function Home() {
       <ServiceRecommendationChatbot />
 
 
-      {/* Statistics Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatisticItem end={20} suffix="년" label="이상의 운영 경험" index={0} />
-            <StatisticItem end={300000} suffix="명" label="일일 제공 식수" index={1} />
-            <StatisticItem end={730} suffix="점" label="평균 만족도" index={2} />
-            <StatisticItem end={99} suffix="%" label="고객 만족도" index={3} />
-          </div>
-        </div>
-      </section>
-
       {/* Kitchenless Solutions Section */}
-      <section id="services" className="py-20 bg-white">
+      <section
+        ref={(el) => { if (el) sectionRefs.current.intro = el; }}
+        id="intro"
+        className="py-20 bg-white"
+      >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>키친리스 밀솔루션</h2>
@@ -1065,7 +1091,11 @@ export default function Home() {
       </section>
 
       {/* Actual Operating Meals Section */}
-      <section className="py-20 bg-white">
+      <section
+        ref={(el) => { if (el) sectionRefs.current.kitchen = el; }}
+        id="kitchen"
+        className="py-20 bg-white"
+      >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>실제 운영중인 식단</h2>
@@ -1136,7 +1166,11 @@ export default function Home() {
 
       {/* Healthy Homemade Meals Section */}
       {/* Snack Pick Curation Section */}
-      <section className="py-20 bg-amber-50">
+      <section
+        ref={(el) => { if (el) sectionRefs.current.snacks = el; }}
+        id="snacks"
+        className="py-20 bg-amber-50"
+      >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 큐레이션 스낵픽</h2>
@@ -1234,7 +1268,11 @@ export default function Home() {
       </section>
 
       {/* Customized In-house Cafe Section */}
-      <section className="py-20 bg-white">
+      <section
+        ref={(el) => { if (el) sectionRefs.current.cafe = el; }}
+        id="cafe"
+        className="py-20 bg-white"
+      >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 사내카페</h2>
@@ -1304,7 +1342,11 @@ export default function Home() {
       </section>
 
       {/* Process Section - Professional Layout */}
-      <section id="process" className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]">
+      <section
+        ref={(el) => { if (el) sectionRefs.current.process = el; }}
+        id="process"
+        className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]"
+      >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>신선함을 보장하는 프로세스</h2>
@@ -1411,7 +1453,11 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section - Card Grid with Play Button */}
-      <section className="py-20 bg-white">
+      <section
+        ref={(el) => { if (el) sectionRefs.current.reviews = el; }}
+        id="reviews"
+        className="py-20 bg-white"
+      >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>고객 후기</h2>
@@ -1502,7 +1548,11 @@ export default function Home() {
       </section>
 
       {/* FAQ Section with Accordion */}
-      <section className="py-20 bg-gray-50">
+      <section
+        ref={(el) => { if (el) sectionRefs.current.faq = el; }}
+        id="faq"
+        className="py-20 bg-gray-50"
+      >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>자주 묻는 질문</h2>
