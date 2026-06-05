@@ -256,7 +256,11 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           maxWidth: '600px',
           zIndex: 9999
         }}
-        onMouseDown={(e) => e.stopPropagation()}
+        onMouseDown={(e) => {
+          if (e.target === e.currentTarget) {
+            e.stopPropagation();
+          }
+        }}
         showCloseButton={false}
       >
         {/* Accessible Dialog Title (hidden visually) */}
