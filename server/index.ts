@@ -7,7 +7,7 @@ import * as fs from "fs";
 import * as os from "os";
 import { sql } from "drizzle-orm";
 import { getDb, createTables } from "./db";
-import { consultationRequests } from "../drizzle/schema";
+import { consultationRequests, webhookLogs } from "../drizzle/schema";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,6 +27,111 @@ async function startServer() {
   } catch (error) {
     console.error("✗ Failed to initialize database:", error);
     // Continue anyway for development
+  }
+
+  // Webhook 호출 함수
+  async function callWebhook(submissionId: number, consultationData: any) {
+    const webhookUrl = process.env.POWER_AUTOMATE_WEBHOOK_URL;
+    
+    if (!webhookUrl) {
+      console.log(`[webhook] No webhook URL configured for submission ${submissionId}`);
+      // webhook_logs에 not_configured 기록
+      try {
+        const db = await getDb();
+        await db.insert(webhookLogs).values({
+          submissionId,
+          webhookStatus: 'not_configured',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+      } catch (err) {
+        console.error(`[webhook] Failed to log not_configured status:`, err);
+      }
+      return;
+    }
+
+    try {
+      console.log(`[webhook] Calling webhook for submission ${submissionId}`);
+      
+      // Power Automate로 전송할 JSON
+      const webhookPayload = {
+        submissionId: consultationData.id,
+        submittedAt: consultationData.createdAt?.toISOString() || new Date().toISOString(),
+        name: consultationData.manager,
+        phone: consultationData.phone,
+        email: consultationData.email || null,
+        company: consultationData.companyName,
+        address: consultationData.region || null,
+        expectedMeals: consultationData.expectedMealCount || null,
+        serviceType: consultationData.serviceType || null,
+        message: consultationData.inquiries || null,
+        privacyConsent: true,
+        marketingConsent: consultationData.marketingConsent || false,
+        advertisingConsent: consultationData.adConsent || false,
+        smsConsent: consultationData.smsConsent || false,
+        emailConsent: consultationData.emailConsent || false,
+        kakaoConsent: consultationData.kakaoConsent || false,
+        source: "프레시밀온 랜딩페이지"
+      };
+
+      const webhookResponse = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookPayload),
+      });
+
+      const responseCode = webhookResponse.status;
+      const isSuccess = webhookResponse.ok;
+
+      console.log(`[webhook] Response code: ${responseCode}`);
+
+      // webhook_logs에 결과 기록
+      try {
+        const db = await getDb();
+        let errorMessage = null;
+        
+        if (!isSuccess) {
+          try {
+            const errorBody = await webhookResponse.text();
+            errorMessage = errorBody.substring(0, 500);
+          } catch (e) {
+            errorMessage = `HTTP ${responseCode}`;
+          }
+        }
+
+        await db.insert(webhookLogs).values({
+          submissionId,
+          webhookStatus: isSuccess ? 'success' : 'failed',
+          webhookResponseCode: responseCode,
+          webhookErrorMessage: errorMessage,
+          webhookSentAt: new Date(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+
+        console.log(`[webhook] Logged webhook result for submission ${submissionId}`);
+      } catch (logErr) {
+        console.error(`[webhook] Failed to log webhook result:`, logErr);
+      }
+    } catch (error) {
+      console.error(`[webhook] Webhook call failed for submission ${submissionId}:`, error);
+      
+      // 실패 기록
+      try {
+        const db = await getDb();
+        await db.insert(webhookLogs).values({
+          submissionId,
+          webhookStatus: 'failed',
+          webhookErrorMessage: error instanceof Error ? error.message.substring(0, 500) : 'Unknown error',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+      } catch (logErr) {
+        console.error(`[webhook] Failed to log webhook error:`, logErr);
+      }
+    }
   }
 
   // API Routes - Consultation Request
@@ -68,14 +173,34 @@ async function startServer() {
           updatedAt: now,
         });
 
-        console.log("✓ consultation_requests saved:", { companyName, manager, phone });
+        const submissionId = (result as any).insertId;
+        console.log("✓ consultation_requests saved:", { companyName, manager, phone, submissionId });
         console.log("[consultation-request] END");
+        
+        const consultationData = {
+          id: submissionId,
+          companyName,
+          manager,
+          phone,
+          email: email || null,
+          region: region || null,
+          expectedMealCount: mealCount,
+          serviceType: serviceType || null,
+          inquiries: inquiries && inquiries.trim() ? inquiries : null,
+          createdAt: now,
+        };
+        
+        callWebhook(submissionId, consultationData).catch(err => 
+          console.error("[webhook] Unhandled error:", err)
+        );
         
         res.status(201).json({ 
           success: true, 
           message: "상담 신청이 완료되었습니다",
-          event: "consultation_submit"
+          event: "consultation_submit",
+          submissionId
         });
+
       } catch (dbError) {
         console.error("\n=== consultation_requests insert failed ===");
         console.error("Error:", dbError);

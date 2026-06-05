@@ -116,12 +116,28 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
 
   const handleAgreementChange = (key: string, value: boolean) => {
     if (key === "allAgree") {
+      // 전체 동의 체크 시 아코디언은 닫기 (상태 분리)
+      setAccordionValue("");
       setAgreements({
         allAgree: value,
         personalInfoCollection: value,
         marketingConsent: value,
         adConsent: value,
       });
+      // 전체 동의 체크 시 하위 항목도 모두 체크
+      if (value) {
+        setAdMediaConsents({
+          sms: true,
+          email: true,
+          kakao: true,
+        });
+      } else {
+        setAdMediaConsents({
+          sms: false,
+          email: false,
+          kakao: false,
+        });
+      }
     } else if (key === "adConsent") {
       // 광고성 정보 수신 동의 체크 시 하위 항목 모두 자동 체크
       setAgreements({
@@ -155,18 +171,14 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
   };
 
   const handleAccordionValueChange = (value: string) => {
-    // Checkbox 클릭 중이면 아코디언 열기 무시
-    if (checkboxClickRef.current) {
-      checkboxClickRef.current = false;
-      return;
-    }
-    setAccordionValue(value);
+    // 아코디언 상태와 동의 상태를 완전히 분리
+    // 아코디언은 사용자의 명시적 클릭에만 반응
+    setAccordionValue(value === accordionValue ? "" : value);
   };
 
   const handleCheckboxClick = (e: React.MouseEvent) => {
-    checkboxClickRef.current = true;
+    // 체크박스 클릭 시 이벤트 전파 중지
     e.stopPropagation();
-    e.preventDefault();
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -564,8 +576,10 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       <Checkbox
                         id="adConsent"
                         checked={agreements.adConsent}
-                        onCheckedChange={(checked) => handleAgreementChange("adConsent", checked as boolean)}
-                        onClick={handleCheckboxClick}
+                        onCheckedChange={(checked) => {
+                          handleAgreementChange("adConsent", checked as boolean);
+                        }}
+                        onClick={(e) => e.stopPropagation()}
                         className="flex-shrink-0"
                       />
                       <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
@@ -585,7 +599,13 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                             <Checkbox 
                               id="sms-consent" 
                               checked={adMediaConsents.sms}
-                              onCheckedChange={(checked) => setAdMediaConsents({...adMediaConsents, sms: checked as boolean})}
+                              onCheckedChange={(checked) => {
+                                const newState = {...adMediaConsents, sms: checked as boolean};
+                                setAdMediaConsents(newState);
+                              }}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                              }}
                             />
                             <Label htmlFor="sms-consent" className="text-xs cursor-pointer">SMS(문자)</Label>
                           </div>
@@ -593,7 +613,13 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                             <Checkbox 
                               id="email-consent" 
                               checked={adMediaConsents.email}
-                              onCheckedChange={(checked) => setAdMediaConsents({...adMediaConsents, email: checked as boolean})}
+                              onCheckedChange={(checked) => {
+                                const newState = {...adMediaConsents, email: checked as boolean};
+                                setAdMediaConsents(newState);
+                              }}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                              }}
                             />
                             <Label htmlFor="email-consent" className="text-xs cursor-pointer">이메일</Label>
                           </div>
@@ -601,7 +627,13 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                             <Checkbox 
                               id="kakao-consent" 
                               checked={adMediaConsents.kakao}
-                              onCheckedChange={(checked) => setAdMediaConsents({...adMediaConsents, kakao: checked as boolean})}
+                              onCheckedChange={(checked) => {
+                                const newState = {...adMediaConsents, kakao: checked as boolean};
+                                setAdMediaConsents(newState);
+                              }}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                              }}
                             />
                             <Label htmlFor="kakao-consent" className="text-xs cursor-pointer">카카오톡</Label>
                           </div>

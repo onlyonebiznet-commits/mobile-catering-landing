@@ -17,5 +17,18 @@ export const consultationRequests = mysqlTable("consultation_requests", {
   updatedAt: datetime("updatedAt").default(sql`CURRENT_TIMESTAMP`),
 });
 
+// Webhook 로그 테이블
+export const webhookLogs = mysqlTable("webhook_logs", {
+  id: int("id").primaryKey().autoincrement(),
+  submissionId: int("submissionId").notNull(),
+  webhookStatus: varchar("webhookStatus", { length: 50 }).default("pending"), // not_configured, pending, success, failed
+  webhookResponseCode: int("webhookResponseCode"),
+  webhookErrorMessage: text("webhookErrorMessage"),
+  webhookSentAt: datetime("webhookSentAt"),
+  createdAt: datetime("createdAt").default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: datetime("updatedAt").default(sql`CURRENT_TIMESTAMP`),
+});
+
 // 타입 정의
 export type ConsultationRequest = typeof consultationRequests.$inferSelect;
+export type WebhookLog = typeof webhookLogs.$inferSelect;
