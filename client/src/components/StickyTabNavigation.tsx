@@ -18,39 +18,37 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
   ];
 
   return (
-    <div className="sticky top-0 z-40 bg-white border-b border-gray-100">
-      {/* PC: Horizontal Tab Menu */}
+    <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
+      {/* PC: Full Width Button Navigation */}
       <div className="hidden md:block">
-        <div className="container px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-20 gap-1">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => onTabClick(tab.id)}
-                className={`px-6 py-3 font-semibold text-lg whitespace-nowrap transition-all duration-300 rounded-lg ${
-                  activeTab === tab.id
-                    ? 'text-white bg-[#006B4F]'
-                    : 'text-gray-800 hover:text-[#006B4F] hover:bg-gray-50'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile: Horizontal Scrollable Tab Menu */}
-      <div className="md:hidden">
-        <div className="flex items-center h-16 overflow-x-auto scrollbar-hide px-4">
+        <div className="flex h-24">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => onTabClick(tab.id)}
-              className={`px-4 py-2 font-semibold text-sm whitespace-nowrap flex-shrink-0 transition-all duration-300 rounded-lg ${
+              className={`flex-1 px-4 py-6 font-bold text-lg transition-all duration-300 border-r border-gray-200 last:border-r-0 ${
                 activeTab === tab.id
                   ? 'text-white bg-[#006B4F]'
-                  : 'text-gray-700 hover:text-[#006B4F]'
+                  : 'text-gray-900 bg-white hover:bg-gray-50'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile: Scrollable Button Navigation */}
+      <div className="md:hidden">
+        <div className="flex h-20 overflow-x-auto scrollbar-hide">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => onTabClick(tab.id)}
+              className={`flex-shrink-0 px-4 py-4 font-bold text-base whitespace-nowrap transition-all duration-300 border-r border-gray-200 last:border-r-0 ${
+                activeTab === tab.id
+                  ? 'text-white bg-[#006B4F]'
+                  : 'text-gray-900 bg-white hover:bg-gray-50'
               }`}
             >
               {tab.label}

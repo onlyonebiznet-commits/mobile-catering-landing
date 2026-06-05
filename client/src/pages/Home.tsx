@@ -617,7 +617,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Integrated Header */}
-      <section className="relative h-[750px] overflow-hidden">
+      <section className="relative h-[680px] overflow-hidden">
         {/* Banner Carousel Background */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="relative w-full h-full">
