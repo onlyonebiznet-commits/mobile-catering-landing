@@ -297,8 +297,19 @@
 
 ## Power Automate Webhook 통합 (Phase 40)
 
+- [x] 상담 신청 폼 제출 테스트 완료 (데이터베이스 저장 확인)
+- [x] 관리자 대시보드에서 데이터 표시 확인
 - [ ] POWER_AUTOMATE_WEBHOOK_URL 환경 변수 설정
 - [ ] 새로운 상담 신청 시 Webhook 호출 테스트
 - [ ] Webhook 상태 업데이트 확인 (not_configured → success/failed)
 - [ ] 관리자 대시보드에서 Webhook 상태 모니터링
 - [ ] 실제 Power Automate 플로우 연동 테스트
+
+
+## 자료 신청 기능 제거 (Phase 41)
+
+- [x] Admin.tsx에서 자료 신청 탭 제거
+- [x] /api/admin/materials 호출 제거
+- [x] 관리자 대시보드 상담 신청 전용으로 단순화
+- [x] 대시보드 제목 업데이트 (상담 신청 및 자료 요청 관리 → 상담 신청 관리)
+- [x] 대시보드 정상 로드 및 데이터 표시 확인
