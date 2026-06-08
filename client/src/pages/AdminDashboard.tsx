@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { getApiBaseUrl } from '@/lib/api';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -121,11 +122,12 @@ export default function AdminDashboard() {
     setError('');
 
     try {
+      const baseUrl = getApiBaseUrl();
       const [consultResponse, statsResponse] = await Promise.all([
-        fetch('/api/admin/consultations', {
+        fetch(`${baseUrl}/api/admin/consultations`, {
           headers: { 'Authorization': `Bearer ${token}` },
         }),
-        fetch('/api/admin/stats', {
+        fetch(`${baseUrl}/api/admin/stats`, {
           headers: { 'Authorization': `Bearer ${token}` },
         }),
       ]);
@@ -167,7 +169,8 @@ export default function AdminDashboard() {
     if (!token) return;
 
     try {
-      const response = await fetch(`/api/admin/export?type=consultation`, {
+      const baseUrl = getApiBaseUrl();
+      const response = await fetch(`${baseUrl}/api/admin/export?type=consultation`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
 
@@ -195,7 +198,8 @@ export default function AdminDashboard() {
     setUpdatingId(id);
 
     try {
-      const response = await fetch('/api/admin/update-status', {
+      const baseUrl = getApiBaseUrl();
+      const response = await fetch(`${baseUrl}/api/admin/update-status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

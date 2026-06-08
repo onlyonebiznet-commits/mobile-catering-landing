@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { getApiBaseUrl } from '@/lib/api';
 
 export default function AdminLogin() {
   const [password, setPassword] = useState('');
@@ -16,7 +17,8 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/admin/login', {
+      const baseUrl = getApiBaseUrl();
+      const response = await fetch(`${baseUrl}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
