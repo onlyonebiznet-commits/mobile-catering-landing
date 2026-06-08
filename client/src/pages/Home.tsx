@@ -673,16 +673,18 @@ export default function Home() {
               </div>
             ))}
 
-            {/* Progress Indicator */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex gap-2">
+            {/* Progress Indicator - Centered at bottom */}
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-40 flex gap-2 pb-6">
               {[0, 1, 2].map((idx) => (
-                <div
+                <button
                   key={idx}
-                  className={`h-1 rounded-full transition-all duration-300 ${
+                  onClick={() => setCurrentDietIndex(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                     currentDietIndex === idx 
                       ? 'w-8 bg-white' 
                       : 'w-2 bg-white/50 hover:bg-white/75'
                   }`}
+                  aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
