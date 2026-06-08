@@ -405,6 +405,25 @@ async function startServer() {
     }
   });
 
+  // Admin Dashboard - Update Service Type
+  app.put("/api/admin/update-service-type", async (req, res) => {
+    try {
+      if (!verifyAdminToken(req)) {
+        return res.status(401).json({ error: "인증이 필요합니다" });
+      }
+
+      const { id, serviceType } = req.body;
+      const db = await getDb();
+
+      await db.update(consultationRequests).set({ serviceType }).where(sql`id = ${id}`);
+
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Admin update service type error:", error);
+      res.status(500).json({ error: "서비스 타입 업데이트 중 오류가 발생했습니다" });
+    }
+  });
+
   // Admin Dashboard - Delete (Soft Delete)
   app.delete("/api/admin/delete", async (req, res) => {
     try {

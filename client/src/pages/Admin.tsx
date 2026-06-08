@@ -1,11 +1,11 @@
-'use client';
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Download, RefreshCw, LogOut, Search, Filter } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { maskName, maskPhone, maskEmail, maskCompanyName } from "@/lib/maskingUtils";
+import ConsultationDetailModal from "@/components/ConsultationDetailModal";
 
 interface ConsultationRequest {
   id: number;
@@ -37,6 +37,15 @@ export default function Admin() {
   
   // Phase 4: 삭제 기능
   const [deleteConfirm, setDeleteConfirm] = useState<{ id: number; type: 'consultation' } | null>(null);
+
+  // Phase 5: 상세보기 모달
+  const [selectedConsultation, setSelectedConsultation] = useState<ConsultationRequest | null>(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+
+  // Phase 6: 희망 서비스 변경 중 상태
+  const [updatingServiceId, setUpdatingServiceId] = useState<number | null>(null);
+
+  const getToken = () => localStorage.getItem('adminToken');
 
   const fetchRequests = async (token: string) => {
     setIsLoading(true);
@@ -117,8 +126,9 @@ export default function Admin() {
       'cafeteria': '구내식당',
       'catering': '케이터링',
       'snack': '간식/스낵',
-      'cafe': '카페',
-      'breakfast': '조식'
+      'cafe': '사내카페',
+      'breakfast': '조식',
+      'other': '기타'
     };
     return serviceMap[serviceType] || serviceType;
   };
@@ -149,54 +159,45 @@ export default function Admin() {
       const res = await fetch('/api/admin/update-status', {
         method: 'PUT',
         headers,
-        body: JSON.stringify({
-          id,
-          status: newStatus,
-          type: 'consultation'
-        })
+        body: JSON.stringify({ type: 'consultation', id, status: newStatus })
       });
 
-      if (!res.ok) {
-        throw new Error('상태 업데이트 실패');
-      }
+      if (!res.ok) throw new Error('상태 업데이트 실패');
 
-      // 데이터 새로고침
-      await fetchRequests(adminToken!);
+      // 로컬 상태 업데이트
+      setConsultationRequests(consultationRequests.map(c => 
+        c.id === id ? { ...c, status: newStatus } : c
+      ));
     } catch (err) {
-      alert('상태 업데이트 중 오류가 발생했습니다');
-      console.error(err);
+      setError('상태 업데이트 중 오류가 발생했습니다');
     }
   };
 
-  // Phase 4: 삭제 함수
-  const handleDelete = async () => {
-    if (!deleteConfirm) return;
-    
+  // Phase 6: 희망 서비스 변경 함수
+  const handleServiceTypeChange = async (id: number, newServiceType: string) => {
+    setUpdatingServiceId(id);
     try {
       const headers: HeadersInit = {
         'Authorization': `Bearer ${adminToken}`,
         'Content-Type': 'application/json'
       };
 
-      const res = await fetch('/api/admin/delete', {
-        method: 'DELETE',
+      const res = await fetch('/api/admin/update-service-type', {
+        method: 'PUT',
         headers,
-        body: JSON.stringify({
-          id: deleteConfirm.id,
-          type: 'consultation'
-        })
+        body: JSON.stringify({ id, serviceType: newServiceType })
       });
 
-      if (!res.ok) {
-        throw new Error('데이터 삭제 실패');
-      }
+      if (!res.ok) throw new Error('서비스 타입 업데이트 실패');
 
-      // 데이터 새로고침
-      await fetchRequests(adminToken!);
-      setDeleteConfirm(null);
+      // 로컬 상태 업데이트
+      setConsultationRequests(consultationRequests.map(c => 
+        c.id === id ? { ...c, serviceType: newServiceType } : c
+      ));
     } catch (err) {
-      alert('데이터 삭제 중 오류가 발생했습니다');
-      console.error(err);
+      setError('서비스 타입 업데이트 중 오류가 발생했습니다');
+    } finally {
+      setUpdatingServiceId(null);
     }
   };
 
@@ -276,6 +277,12 @@ export default function Admin() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  // Phase 5: 상세보기 열기
+  const handleOpenDetail = (consultation: ConsultationRequest) => {
+    setSelectedConsultation(consultation);
+    setIsDetailModalOpen(true);
   };
 
   if (!adminToken) {
@@ -391,8 +398,9 @@ export default function Admin() {
                   <option value="cafeteria">구내식당</option>
                   <option value="catering">케이터링</option>
                   <option value="snack">간식/스낵</option>
-                  <option value="cafe">카페</option>
+                  <option value="cafe">사내카페</option>
                   <option value="breakfast">조식</option>
+                  <option value="other">기타</option>
                 </select>
               </div>
 
@@ -442,36 +450,56 @@ export default function Admin() {
                     <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">희망 서비스</th>
                     <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">지역</th>
                     <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">예상 식수</th>
-                    <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">문의 사항</th>
                     <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">접수 일시</th>
                     <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">진행 현황</th>
-                    <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">삭제</th>
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700 whitespace-nowrap">액션</th>
                   </tr>
                 </thead>
                 <tbody>
                   {isLoading ? (
                     <tr>
-                      <td colSpan={11} className="px-4 py-8 text-center text-gray-500">
+                      <td colSpan={10} className="px-4 py-8 text-center text-gray-500">
                         로딩 중...
                       </td>
                     </tr>
                   ) : filteredConsultations.length === 0 ? (
                     <tr>
-                      <td colSpan={11} className="px-4 py-8 text-center text-gray-500">
+                      <td colSpan={10} className="px-4 py-8 text-center text-gray-500">
                         데이터가 없습니다
                       </td>
                     </tr>
                   ) : (
                     filteredConsultations.map((request) => (
                       <tr key={request.id} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
-                        <td className="px-4 py-3 text-gray-900 font-medium whitespace-nowrap">{request.companyName}</td>
-                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.manager}</td>
-                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.phone}</td>
-                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.email || "-"}</td>
-                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{getServiceTypeLabel(request.serviceType)}</td>
+                        <td className="px-4 py-3 text-gray-900 font-medium whitespace-nowrap">{maskCompanyName(request.companyName)}</td>
+                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{maskName(request.manager)}</td>
+                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{maskPhone(request.phone)}</td>
+                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{maskEmail(request.email)}</td>
+                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
+                          <select
+                            value={request.serviceType || ""}
+                            onChange={(e) => handleServiceTypeChange(request.id, e.target.value)}
+                            disabled={updatingServiceId === request.id}
+                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
+                              request.serviceType === 'cafeteria' ? 'bg-blue-100 text-blue-800' :
+                              request.serviceType === 'catering' ? 'bg-green-100 text-green-800' :
+                              request.serviceType === 'snack' ? 'bg-yellow-100 text-yellow-800' :
+                              request.serviceType === 'cafe' ? 'bg-purple-100 text-purple-800' :
+                              request.serviceType === 'breakfast' ? 'bg-orange-100 text-orange-800' :
+                              'bg-gray-100 text-gray-800'
+                            }`}
+                          >
+                            <option value="">미설정</option>
+                            <option value="cafeteria">구내식당</option>
+                            <option value="catering">케이터링</option>
+                            <option value="snack">간식/스낵</option>
+                            <option value="cafe">사내카페</option>
+                            <option value="breakfast">조식</option>
+                            <option value="other">기타</option>
+                          </select>
+                        </td>
                         <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.region || "-"}</td>
                         <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{request.expectedMealCount || "-"}</td>
-                        <td className="px-4 py-3 text-gray-700 whitespace-nowrap max-w-xs truncate">{request.inquiries || "-"}</td>
                         <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{formatDate(request.createdAt)}</td>
                         <td className="px-4 py-3 whitespace-nowrap">
                           <select
@@ -495,7 +523,13 @@ export default function Admin() {
                             <option value="dropped">DROP</option>
                           </select>
                         </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-center">
+                        <td className="px-4 py-3 whitespace-nowrap text-center space-x-2">
+                          <button
+                            onClick={() => handleOpenDetail(request)}
+                            className="text-blue-600 hover:text-blue-800 text-xs font-semibold"
+                          >
+                            상세보기
+                          </button>
                           <button
                             onClick={() => setDeleteConfirm({ id: request.id, type: 'consultation' })}
                             className="text-red-600 hover:text-red-800 text-xs font-semibold"
@@ -511,35 +545,14 @@ export default function Admin() {
             </div>
           </div>
         </div>
-
-        {/* Delete Confirmation Dialog */}
-        {deleteConfirm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <Card className="w-full max-w-sm">
-              <CardHeader>
-                <CardTitle>삭제 확인</CardTitle>
-                <CardDescription>정말 이 항목을 삭제하시겠습니까?</CardDescription>
-              </CardHeader>
-              <CardContent className="flex gap-3">
-                <Button
-                  variant="outline"
-                  onClick={() => setDeleteConfirm(null)}
-                  className="flex-1"
-                >
-                  취소
-                </Button>
-                <Button
-                  variant="destructive"
-                  onClick={handleDelete}
-                  className="flex-1"
-                >
-                  삭제
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        )}
       </div>
+
+      {/* Phase 5: 상세보기 모달 */}
+      <ConsultationDetailModal 
+        isOpen={isDetailModalOpen}
+        onClose={() => setIsDetailModalOpen(false)}
+        consultation={selectedConsultation}
+      />
     </div>
   );
 }
