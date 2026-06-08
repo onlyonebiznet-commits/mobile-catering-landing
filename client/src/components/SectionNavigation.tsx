@@ -22,7 +22,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
     <>
       {/* PC Version */}
       <section className="hidden md:block w-full bg-white">
-        <div className="container py-8">
+        <div className="container py-16">
           <div className="grid grid-cols-8 gap-6 w-full">
             {sections.map((section) => {
               const Icon = section.icon;
@@ -58,7 +58,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
 
       {/* Mobile Version */}
       <section className="md:hidden w-full bg-white">
-        <div className="container py-6">
+        <div className="container py-12">
           <div className="grid grid-cols-4 gap-3 w-full">
             {sections.map((section) => {
               const Icon = section.icon;
