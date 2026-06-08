@@ -58,7 +58,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
 
       {/* Mobile Version */}
       <section className="md:hidden w-full bg-white">
-        <div className="container py-12">
+        <div className="container flex items-center justify-center py-12">
           <div className="grid grid-cols-4 gap-3 w-full">
             {sections.map((section) => {
               const Icon = section.icon;
