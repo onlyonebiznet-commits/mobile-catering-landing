@@ -994,18 +994,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <button
-              onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-16 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004a36] transition-colors shadow-lg"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-16 bg-[#005B44] text-white p-3 rounded-full hover:bg-[#004a36] transition-colors shadow-lg"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+            {/* Navigation arrows removed - using indicators only */}
           </div>
         </div>
       </section>
