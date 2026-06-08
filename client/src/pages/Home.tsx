@@ -964,10 +964,26 @@ export default function Home() {
             <p className="text-[15px] md:text-[25px] text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
-          <div className="relative">
+          <div 
+            className="relative"
+            onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
+            onTouchEnd={(e) => {
+              if (!touchStart) return;
+              const touchEnd = e.changedTouches[0].clientX;
+              const diff = touchStart - touchEnd;
+              if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                  setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1));
+                } else {
+                  setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1));
+                }
+              }
+              setTouchStart(0);
+            }}
+          >
             <div className="bg-white rounded-lg overflow-hidden shadow-lg scroll-reveal">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96">
-                <div className="relative h-96 md:h-auto overflow-hidden group">
+                <div className="relative h-96 md:h-auto overflow-hidden group cursor-grab active:cursor-grabbing">
                   <img
                     src={diets[currentDietIndex].image}
                     alt={diets[currentDietIndex].title}
