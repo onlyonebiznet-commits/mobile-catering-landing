@@ -293,3 +293,12 @@
 - [x] 네비게이션에 .container 클래스 직접 적용
 - [x] 카드 섹션과 동일한 responsive padding 적용
 - [x] 좌우 정렬이 완벽하게 일치
+
+
+## Power Automate Webhook 통합 (Phase 40)
+
+- [ ] POWER_AUTOMATE_WEBHOOK_URL 환경 변수 설정
+- [ ] 새로운 상담 신청 시 Webhook 호출 테스트
+- [ ] Webhook 상태 업데이트 확인 (not_configured → success/failed)
+- [ ] 관리자 대시보드에서 Webhook 상태 모니터링
+- [ ] 실제 Power Automate 플로우 연동 테스트

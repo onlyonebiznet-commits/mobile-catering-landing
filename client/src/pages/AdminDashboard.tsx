@@ -133,16 +133,47 @@ export default function AdminDashboard() {
       ]);
 
       if (!consultResponse.ok) {
-        const errorText = await consultResponse.text();
-        console.error('Consult response error:', errorText);
-        setError('상담 신청 데이터를 불러올 수 없습니다');
+        const contentType = consultResponse.headers.get('content-type');
+        let errorText = '';
+        if (contentType && contentType.includes('application/json')) {
+          const errorData = await consultResponse.json();
+          errorText = errorData.error || 'Unknown error';
+        } else {
+          errorText = await consultResponse.text();
+        }
+        console.error('Consult response error:', consultResponse.status, errorText);
+        setError(`상담 신청 데이터 오류 (${consultResponse.status})`);
         return;
       }
 
       if (!statsResponse.ok) {
-        const errorText = await statsResponse.text();
-        console.error('Stats response error:', errorText);
-        setError('통계 데이터를 불러올 수 없습니다');
+        const contentType = statsResponse.headers.get('content-type');
+        let errorText = '';
+        if (contentType && contentType.includes('application/json')) {
+          const errorData = await statsResponse.json();
+          errorText = errorData.error || 'Unknown error';
+        } else {
+          errorText = await statsResponse.text();
+        }
+        console.error('Stats response error:', statsResponse.status, errorText);
+        setError(`통계 데이터 오류 (${statsResponse.status})`);
+        return;
+      }
+
+      const consultContentType = consultResponse.headers.get('content-type');
+      const statsContentType = statsResponse.headers.get('content-type');
+
+      if (!consultContentType || !consultContentType.includes('application/json')) {
+        const text = await consultResponse.text();
+        console.error('Invalid content-type for consultations:', consultContentType);
+        setError('상담 신청 응답이 JSON이 아닙니다');
+        return;
+      }
+
+      if (!statsContentType || !statsContentType.includes('application/json')) {
+        const text = await statsResponse.text();
+        console.error('Invalid content-type for stats:', statsContentType);
+        setError('통계 응답이 JSON이 아닙니다');
         return;
       }
 

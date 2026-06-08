@@ -1,19 +1,9 @@
 /**
  * API 기본 URL 설정
- * 개발 환경에서는 포트 5000 (Express 서버)로 요청
- * 배포 환경에서는 같은 도메인으로 요청
+ * 항상 상대 경로를 사용하여 Vite 프록시가 자동으로 포트 5000으로 라우팅
  */
 export const getApiBaseUrl = () => {
-  if (typeof window === 'undefined') {
-    return '';
-  }
-
-  // 개발 환경 (localhost)
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return 'http://localhost:5000';
-  }
-
-  // 배포 환경 (같은 도메인)
+  // 상대 경로 사용 - Vite 프록시가 /api 요청을 포트 5000으로 자동 라우팅
   return '';
 };
 

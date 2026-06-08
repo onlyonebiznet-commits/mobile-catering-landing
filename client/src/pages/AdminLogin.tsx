@@ -31,8 +31,10 @@ export default function AdminLogin() {
       }
 
       const data = await response.json();
-      if (data.token) {
-        localStorage.setItem('adminToken', data.token);
+      if (data.success) {
+        // 토큰을 admin:password 형식으로 base64 인코딩
+        const token = btoa(`admin:${password}`);
+        localStorage.setItem('adminToken', token);
         setLocation('/admin/dashboard');
       }
     } catch (err) {

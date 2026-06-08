@@ -20,6 +20,18 @@ async function startServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
+  // CORS 설정
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200);
+    } else {
+      next();
+    }
+  });
+
   // Initialize database
   try {
     await createTables();
@@ -557,7 +569,16 @@ async function startServer() {
   app.use(express.static(staticPath));
 
   // Handle client-side routing - serve index.html for all routes
-  app.get("*", (_req, res) => {
+  // BUT: Do NOT serve index.html for /api/* requests
+  app.get("*", (req, res) => {
+    // If it's an API request that wasn't handled above, return 404 JSON
+    if (req.path.startsWith("/api/")) {
+      return res.status(404).json({
+        success: false,
+        message: `API endpoint not found: ${req.path}`
+      });
+    }
+    // Otherwise, serve index.html for SPA routing
     res.sendFile(path.join(staticPath, "index.html"));
   });
 

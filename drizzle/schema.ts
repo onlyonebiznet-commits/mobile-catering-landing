@@ -20,7 +20,7 @@ export const consultationRequests = mysqlTable("consultation_requests", {
 // Webhook 로그 테이블
 export const webhookLogs = mysqlTable("webhook_logs", {
   id: int("id").primaryKey().autoincrement(),
-  submissionId: int("submissionId").notNull(),
+  submissionId: int("submissionId"),
   webhookStatus: varchar("webhookStatus", { length: 50 }).default("pending"), // not_configured, pending, success, failed
   webhookResponseCode: int("webhookResponseCode"),
   webhookErrorMessage: text("webhookErrorMessage"),
