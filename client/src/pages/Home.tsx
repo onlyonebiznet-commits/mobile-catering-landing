@@ -872,23 +872,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Banner Navigation - Right Bottom */}
-        <div className="absolute bottom-8 right-8 flex gap-4 z-10">
-          <button
-            onClick={() => setCurrentDietIndex((prev) => (prev - 1 + 3) % 3)}
-            className="text-white hover:text-white/80 transition duration-300 hover:scale-125 transform"
-            title="이전"
-          >
-            <ChevronLeft className="w-8 h-8" />
-          </button>
-          <button
-            onClick={() => setCurrentDietIndex((prev) => (prev + 1) % 3)}
-            className="text-white hover:text-white/80 transition duration-300 hover:scale-125 transform"
-            title="다음"
-          >
-            <ChevronRight className="w-8 h-8" />
-          </button>
-        </div>
+        {/* Banner Navigation - Removed (using indicators only) */}
       </section>
 
       {/* Floating Contact Button - Mobile Only */}
