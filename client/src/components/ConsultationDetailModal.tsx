@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
 
 interface ConsultationRequest {
   id: number;
@@ -65,7 +63,7 @@ export default function ConsultationDetailModal({ isOpen, onClose, consultation 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
           <DialogTitle>상담 신청 상세 정보</DialogTitle>
           <DialogDescription>
@@ -132,7 +130,7 @@ export default function ConsultationDetailModal({ isOpen, onClose, consultation 
           {consultation.inquiries && (
             <div className="space-y-4">
               <h3 className="font-semibold text-lg text-gray-900">문의 사항</h3>
-              <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="bg-white border border-gray-200 p-4 rounded-lg">
                 <p className="text-gray-900 whitespace-pre-wrap">{consultation.inquiries}</p>
               </div>
             </div>
