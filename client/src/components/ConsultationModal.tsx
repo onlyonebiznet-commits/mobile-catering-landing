@@ -116,8 +116,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
 
   const handleAgreementChange = (key: string, value: boolean) => {
     if (key === "allAgree") {
-      // 전체 동의 체크 시 아코디언은 닫기 (상태 분리)
-      setAccordionValue("");
+      // 전체 동의 체크 시 아코디언 상태는 변경하지 않음 (체크박스와 아코디언 상태 완전 분리)
       setAgreements({
         allAgree: value,
         personalInfoCollection: value,
@@ -140,6 +139,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
       }
     } else if (key === "adConsent") {
       // 광고성 정보 수신 동의 체크 시 하위 항목 모두 자동 체크
+      // 아코디언 상태는 변경하지 않음
       setAgreements({
         ...agreements,
         [key]: value,
@@ -158,6 +158,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         });
       }
     } else {
+      // 개별 항목 체크 시 아코디언 상태는 변경하지 않음
       const newAgreements = {
         ...agreements,
         [key]: value,
