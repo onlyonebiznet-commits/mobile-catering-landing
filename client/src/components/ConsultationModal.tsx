@@ -137,6 +137,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           kakao: false,
         });
       }
+      // 아코디언 상태 초기화 (펼침 방지)
+      setAccordionValue("");
     } else if (key === "adConsent") {
       // 광고성 정보 수신 동의 체크 시 하위 항목 모두 자동 체크
       // 아코디언 상태는 변경하지 않음
@@ -157,6 +159,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           kakao: false,
         });
       }
+      // 아코디언 상태 초기화 (펼침 방지)
+      setAccordionValue("");
     } else {
       // 개별 항목 체크 시 아코디언 상태는 변경하지 않음
       const newAgreements = {
@@ -168,6 +172,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
       const allChecked = newAgreements.personalInfoCollection && newAgreements.marketingConsent && newAgreements.adConsent;
       newAgreements.allAgree = allChecked;
       setAgreements(newAgreements);
+      // 아코디언 상태 초기화 (펼침 방지)
+      setAccordionValue("");
     }
   };
 
@@ -483,6 +489,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   id="allAgree"
                   checked={agreements.allAgree}
                   onCheckedChange={(checked) => handleAgreementChange("allAgree", checked as boolean)}
+                  onClick={(e) => e.stopPropagation()}
                 />
                 <Label htmlFor="allAgree" className="text-sm font-medium cursor-pointer">
                   전체 동의
