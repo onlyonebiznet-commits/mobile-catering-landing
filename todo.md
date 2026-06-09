@@ -407,8 +407,15 @@
 - [x] 체크박스 상태와 아코디언 상태 완전 분리
 - [x] 테스트 작성 및 검증 (6개 테스트 모두 통과)
 
-**변경 사항:**
+**변경 사항 (1차):**
 - handleAgreementChange 함수에서 모든 경우에 setAccordionValue("") 호출
 - 전체 동의, 광고성 정보 수신 동의, 개별 항목 체크 시 모두 아코디언 상태 초기화
 - 전체 동의 체크박스에 onClick={(e) => e.stopPropagation()} 추가
 - ConsultationModal.test.tsx에 6개의 새로운 테스트 추가
+
+**변경 사항 (2차 - 이벤트 버블링 완전 차단):**
+- 모든 체크박스에 onClick + onPointerDown 이벤트 핸들러 추가
+- 모든 Label에 onClick + onPointerDown 이벤트 핸들러 추가
+- e.stopPropagation()으로 이벤트 버블링 완전 차단
+- Accordion 상태 변경 완전히 방지
+- 체크박스 클릭 시 체크 상태만 변경되고 아코디언은 절대 펼쳐지지 않음

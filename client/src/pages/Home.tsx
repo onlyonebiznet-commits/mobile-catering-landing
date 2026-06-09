@@ -1394,9 +1394,9 @@ export default function Home() {
               className="grid grid-cols-1 md:grid-cols-3 gap-6"
             >
               {reviews.slice(0, 3).map((review, idx) => (
-                <div key={idx} className="flex flex-col scroll-reveal-stagger" data-reveal-item={idx}>
-                  {/* Image Card */}
-                  <div className="relative rounded-2xl overflow-hidden bg-gray-200 aspect-square group mb-4">
+                <div key={idx} className="flex flex-col md:flex-row gap-4 scroll-reveal-stagger" data-reveal-item={idx}>
+                  {/* Image Card - 1:1 Square */}
+                  <div className="relative rounded-lg overflow-hidden bg-gray-200 w-full md:w-64 md:h-64 aspect-square flex-shrink-0 group">
                     <img
                       src={operatingPhotos[currentReviewIndex + idx]?.image}
                       alt={review.company}
@@ -1405,7 +1405,7 @@ export default function Home() {
                   </div>
 
                   {/* Company Name and Review - Left Aligned */}
-                  <div className="text-left">
+                  <div className="text-left flex flex-col justify-start">
                     <h4 className="text-lg font-bold text-gray-900 mb-2">{review.company}</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">"{review.comment}"</p>
                   </div>
