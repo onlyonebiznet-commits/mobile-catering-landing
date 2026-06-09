@@ -1387,31 +1387,39 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
-          {/* Card Grid Reviews */}
-          <div>
-            {/* Grid */}
-            <div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            >
-              {reviews.slice(0, 3).map((review, idx) => (
-                <div key={idx} className="flex flex-col md:flex-row gap-4 scroll-reveal-stagger" data-reveal-item={idx}>
-                  {/* Image Card - 1:1 Square */}
-                  <div className="relative rounded-lg overflow-hidden bg-gray-200 w-full md:w-64 md:h-64 aspect-square flex-shrink-0 group">
-                    <img
-                      src={operatingPhotos[currentReviewIndex + idx]?.image}
-                      alt={review.company}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
+          {/* Card List Reviews - Compact Horizontal */}
+          <div className="space-y-4">
+            {reviews.slice(0, 3).map((review, idx) => (
+              <div key={idx} className="flex flex-row gap-4 border border-gray-200 rounded-[16px] p-4 md:p-5 bg-white hover:shadow-md transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
+                {/* Image Card - 1:1 Square - Compact */}
+                <div className="relative rounded-[12px] overflow-hidden bg-gray-200 w-24 h-24 md:w-40 md:h-40 aspect-square flex-shrink-0 group">
+                  <img
+                    src={operatingPhotos[currentReviewIndex + idx]?.image}
+                    alt={review.company}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
 
-                  {/* Company Name and Review - Left Aligned */}
-                  <div className="text-left flex flex-col justify-start">
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">{review.company}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">"{review.comment}"</p>
+                {/* Text Content - Compact */}
+                <div className="flex flex-col justify-center flex-1 min-w-0">
+                  {/* Company Name */}
+                  <h4 className="text-sm md:text-base font-bold text-gray-900 mb-1">{review.company}</h4>
+                  
+                  {/* Department */}
+                  <p className="text-xs md:text-sm text-gray-700 font-medium mb-1 line-clamp-1">{review.department}</p>
+                  
+                  {/* Comment */}
+                  <p className="text-xs md:text-sm text-gray-600 leading-snug mb-2 line-clamp-2">"{review.comment}"</p>
+                  
+                  {/* Position Badge */}
+                  <div className="flex items-center gap-2">
+                    <span className="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs font-medium rounded-full border border-green-200 whitespace-nowrap">
+                      {review.position}
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
