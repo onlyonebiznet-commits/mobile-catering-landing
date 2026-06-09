@@ -695,7 +695,7 @@ export default function Home() {
               <div>
                 {/* MO: 1,2줄 36px, PC: 1,2줄 72px */}
                 <div className="md:hidden">
-                  <h1 className="font-bold text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100 text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="font-bold text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -717,7 +717,7 @@ export default function Home() {
                       }
                     ][currentDietIndex % 3].title}
                   </h1>
-                  <h2 className="font-bold text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100 text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem'}}>
+                  <h2 className="font-bold text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -742,7 +742,7 @@ export default function Home() {
                 </div>
                 
                 <div className="hidden md:block">
-                  <h1 className="font-bold text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="font-bold text-white drop-shadow-lg hero-title-animate" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -764,7 +764,7 @@ export default function Home() {
                       }
                     ][currentDietIndex % 3].title}
                   </h1>
-                  <h2 className="font-bold text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-100" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem'}}>
+                  <h2 className="font-bold text-white drop-shadow-lg hero-title-animate" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -789,7 +789,7 @@ export default function Home() {
                 </div>
                 
                 {/* 간단한 설명 - MO: 18px, PC: 36px */}
-                <p className="md:hidden text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200 mb-8 text-center" style={{fontSize: '18px', lineHeight: '1.4'}}>
+                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: '18px', lineHeight: '1.4'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -811,7 +811,7 @@ export default function Home() {
                     }
                   ][currentDietIndex % 3].description}
                 </p>
-                <p className="hidden md:block text-white drop-shadow-lg animate-in fade-in slide-in-from-left-4 delay-200 mb-8" style={{fontSize: '18px', lineHeight: '1.4'}}>
+                <p className="hidden md:block text-white drop-shadow-lg hero-title-animate mb-8" style={{fontSize: '18px', lineHeight: '1.4'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',

@@ -374,3 +374,27 @@
       transition: none;
     }
   }
+
+  /* Hero Title Animation - Premium entrance effect */
+  @keyframes heroTitleIn {
+    from {
+      opacity: 0;
+      transform: translateX(-60px) translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) translateY(0) scale(1);
+    }
+  }
+
+  .hero-title-animate {
+    animation: heroTitleIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .hero-title-animate:nth-of-type(2) {
+    animation-delay: 0.15s;
+  }
+
+  .hero-title-animate:nth-of-type(3) {
+    animation-delay: 0.3s;
+  }
