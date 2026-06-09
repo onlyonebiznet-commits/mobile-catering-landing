@@ -137,8 +137,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           kakao: false,
         });
       }
-      // 아코디언 상태 초기화 (펼침 방지)
-      setAccordionValue("");
+      // 아코디언 상태는 변경하지 않음 (사용자의 명시적 클릭에만 반응)
     } else if (key === "adConsent") {
       // 광고성 정보 수신 동의 체크 시 하위 항목 모두 자동 체크
       // 아코디언 상태는 변경하지 않음
@@ -159,8 +158,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           kakao: false,
         });
       }
-      // 아코디언 상태 초기화 (펼침 방지)
-      setAccordionValue("");
+      // 아코디언 상태는 변경하지 않음 (사용자의 명시적 클릭에만 반응)
     } else {
       // 개별 항목 체크 시 아코디언 상태는 변경하지 않음
       const newAgreements = {
@@ -172,15 +170,14 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
       const allChecked = newAgreements.personalInfoCollection && newAgreements.marketingConsent && newAgreements.adConsent;
       newAgreements.allAgree = allChecked;
       setAgreements(newAgreements);
-      // 아코디언 상태 초기화 (펼침 방지)
-      setAccordionValue("");
+      // 아코디언 상태는 변경하지 않음 (사용자의 명시적 클릭에만 반응)
     }
   };
 
   const handleAccordionValueChange = (value: string) => {
-    // 아코디언 상태와 동의 상태를 완전히 분리
-    // 아코디언은 사용자의 명시적 클릭에만 반응
-    setAccordionValue(value === accordionValue ? "" : value);
+    // 아코디언은 사용자의 명시적 클릭(화살표)에만 반응
+    // 체크박스 클릭 시에는 아코디언이 펼쳐지지 않음
+    setAccordionValue(value);
   };
 
   const handleCheckboxClick = (e: React.MouseEvent) => {
