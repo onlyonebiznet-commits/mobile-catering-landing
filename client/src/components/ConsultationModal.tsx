@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { X } from "lucide-react";
+import { X, ChevronDown as ChevronDownIcon } from "lucide-react";
 import { toast } from "sonner";
 import { useLocation } from "wouter";
 import { useGTMTracking } from "@/hooks/useGTM";
@@ -500,7 +500,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
 
               <Accordion type="single" collapsible className="w-full space-y-2" value={accordionValue} onValueChange={handleAccordionValueChange}>
                 <AccordionItem value="personal-info" className="border border-gray-200 rounded-lg px-3">
-                  <AccordionTrigger className="hover:no-underline py-3">
+                  <div className="flex items-center justify-between py-3">
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="personalInfoCollection"
@@ -519,7 +519,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
                       </Label>
                     </div>
-                  </AccordionTrigger>
+                    <button
+                      type="button"
+                      onClick={() => setAccordionValue(accordionValue === "personal-info" ? "" : "personal-info")}
+                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
+                      aria-label="Toggle personal info section"
+                    >
+                      <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                        accordionValue === "personal-info" ? "rotate-180" : ""
+                      }`} />
+                    </button>
+                  </div>
                   <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
@@ -550,7 +560,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 </AccordionItem>
 
                 <AccordionItem value="marketing" className="border border-gray-200 rounded-lg px-3">
-                  <AccordionTrigger className="hover:no-underline py-3">
+                  <div className="flex items-center justify-between py-3">
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="marketingConsent"
@@ -569,7 +579,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         마케팅 정보 수신 동의 (선택)
                       </Label>
                     </div>
-                  </AccordionTrigger>
+                    <button
+                      type="button"
+                      onClick={() => setAccordionValue(accordionValue === "marketing" ? "" : "marketing")}
+                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
+                      aria-label="Toggle marketing section"
+                    >
+                      <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                        accordionValue === "marketing" ? "rotate-180" : ""
+                      }`} />
+                    </button>
+                  </div>
                   <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
@@ -593,7 +613,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 </AccordionItem>
 
                 <AccordionItem value="ad" className="border border-gray-200 rounded-lg px-3">
-                  <AccordionTrigger className="hover:no-underline py-3">
+                  <div className="flex items-center justify-between py-3">
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="adConsent"
@@ -614,7 +634,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         광고성 정보 수신 동의 (선택)
                       </Label>
                     </div>
-                  </AccordionTrigger>
+                    <button
+                      type="button"
+                      onClick={() => setAccordionValue(accordionValue === "ad" ? "" : "ad")}
+                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
+                      aria-label="Toggle advertising section"
+                    >
+                      <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                        accordionValue === "ad" ? "rotate-180" : ""
+                      }`} />
+                    </button>
+                  </div>
                   <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
