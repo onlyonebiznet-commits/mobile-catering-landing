@@ -1392,12 +1392,12 @@ export default function Home() {
             ))}
           </div>
 
-          {/* PC: 2 Column Grid */}
+          {/* PC: 2 Column Grid - Horizontal Cards */}
           <div className="hidden md:grid md:grid-cols-2 gap-6">
             {reviews.map((review, idx) => (
-              <div key={`pc-${idx}`} className="border border-gray-200 rounded-[20px] p-6 bg-white hover:shadow-lg transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
-                {/* Image - 1:1 Square */}
-                <div className="relative rounded-[16px] overflow-hidden bg-gray-200 w-full aspect-square flex-shrink-0 group mb-4">
+              <div key={`pc-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[20px] p-4 bg-white hover:shadow-lg transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
+                {/* Image - 1:1 Square - Left */}
+                <div className="relative rounded-[16px] overflow-hidden bg-gray-200 w-40 h-40 aspect-square flex-shrink-0 group">
                   <img
                     src={review.image}
                     alt={review.companyType}
@@ -1405,16 +1405,16 @@ export default function Home() {
                   />
                 </div>
 
-                {/* Text Content */}
-                <div className="flex flex-col">
+                {/* Text Content - Right */}
+                <div className="flex flex-col justify-center flex-1 min-w-0">
                   {/* Company Type */}
-                  <p className="text-xs text-gray-500 font-medium mb-2">{review.companyType}</p>
+                  <p className="text-xs text-gray-500 font-medium mb-1">{review.companyType}</p>
                   
                   {/* Summary - Bold & Large */}
-                  <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2">{review.summary}</h4>
+                  <h4 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{review.summary}</h4>
                   
                   {/* Comment */}
-                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">"{review.comment}"</p>
+                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">"{review.comment}"</p>
                 </div>
               </div>
             ))}
