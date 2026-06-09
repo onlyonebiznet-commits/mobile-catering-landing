@@ -35,8 +35,7 @@ export default function Admin() {
   const [consultationServiceFilter, setConsultationServiceFilter] = useState("all");
   const [consultationSortOrder, setConsultationSortOrder] = useState<"newest" | "oldest">("newest");
   
-  // Phase 4: 삭제 기능
-  const [deleteConfirm, setDeleteConfirm] = useState<{ id: number; type: 'consultation' } | null>(null);
+
 
   // Phase 5: 상세보기 모달
   const [selectedConsultation, setSelectedConsultation] = useState<ConsultationRequest | null>(null);
@@ -523,18 +522,12 @@ export default function Admin() {
                             <option value="dropped">DROP</option>
                           </select>
                         </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-center space-x-2">
+                        <td className="px-4 py-3 whitespace-nowrap text-center">
                           <button
                             onClick={() => handleOpenDetail(request)}
                             className="text-blue-600 hover:text-blue-800 text-xs font-semibold"
                           >
                             상세보기
-                          </button>
-                          <button
-                            onClick={() => setDeleteConfirm({ id: request.id, type: 'consultation' })}
-                            className="text-red-600 hover:text-red-800 text-xs font-semibold"
-                          >
-                            삭제
                           </button>
                         </td>
                       </tr>
