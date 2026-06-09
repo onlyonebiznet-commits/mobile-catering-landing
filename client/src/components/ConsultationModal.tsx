@@ -488,7 +488,12 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   onCheckedChange={(checked) => handleAgreementChange("allAgree", checked as boolean)}
                   onClick={(e) => e.stopPropagation()}
                 />
-                <Label htmlFor="allAgree" className="text-sm font-medium cursor-pointer">
+                <Label
+                  htmlFor="allAgree"
+                  className="text-sm font-medium cursor-pointer"
+                  onClick={(e) => e.stopPropagation()}
+                  onPointerDown={(e) => e.stopPropagation()}
+                >
                   전체 동의
                 </Label>
               </div>
@@ -501,10 +506,16 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         id="personalInfoCollection"
                         checked={agreements.personalInfoCollection}
                         onCheckedChange={(checked) => handleAgreementChange("personalInfoCollection", checked as boolean)}
-                        onClick={handleCheckboxClick}
+                        onClick={(e) => e.stopPropagation()}
+                        onPointerDown={(e) => e.stopPropagation()}
                         className="flex-shrink-0"
                       />
-                      <Label htmlFor="personalInfoCollection" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
+                      <Label
+                        htmlFor="personalInfoCollection"
+                        className="text-xs text-gray-600 cursor-pointer whitespace-nowrap"
+                        onClick={(e) => e.stopPropagation()}
+                        onPointerDown={(e) => e.stopPropagation()}
+                      >
                         개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
                       </Label>
                     </div>
@@ -545,10 +556,16 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         id="marketingConsent"
                         checked={agreements.marketingConsent}
                         onCheckedChange={(checked) => handleAgreementChange("marketingConsent", checked as boolean)}
-                        onClick={handleCheckboxClick}
+                        onClick={(e) => e.stopPropagation()}
+                        onPointerDown={(e) => e.stopPropagation()}
                         className="flex-shrink-0"
                       />
-                      <Label htmlFor="marketingConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
+                      <Label
+                        htmlFor="marketingConsent"
+                        className="text-xs text-gray-600 cursor-pointer whitespace-nowrap"
+                        onClick={(e) => e.stopPropagation()}
+                        onPointerDown={(e) => e.stopPropagation()}
+                      >
                         마케팅 정보 수신 동의 (선택)
                       </Label>
                     </div>
@@ -585,9 +602,15 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                           handleAgreementChange("adConsent", checked as boolean);
                         }}
                         onClick={(e) => e.stopPropagation()}
+                        onPointerDown={(e) => e.stopPropagation()}
                         className="flex-shrink-0"
                       />
-                      <Label htmlFor="adConsent" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
+                      <Label
+                        htmlFor="adConsent"
+                        className="text-xs text-gray-600 cursor-pointer whitespace-nowrap"
+                        onClick={(e) => e.stopPropagation()}
+                        onPointerDown={(e) => e.stopPropagation()}
+                      >
                         광고성 정보 수신 동의 (선택)
                       </Label>
                     </div>
@@ -601,46 +624,64 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         <p className="font-semibold text-xs mb-2">수신 매체 선택:</p>
                         <div className="space-y-2">
                           <div className="flex items-center space-x-2">
-                            <Checkbox 
-                              id="sms-consent" 
+                            <Checkbox
+                              id="sms-consent"
                               checked={adMediaConsents.sms}
                               onCheckedChange={(checked) => {
                                 const newState = {...adMediaConsents, sms: checked as boolean};
                                 setAdMediaConsents(newState);
                               }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                              }}
+                              onClick={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
                             />
-                            <Label htmlFor="sms-consent" className="text-xs cursor-pointer">SMS(문자)</Label>
+                            <Label
+                              htmlFor="sms-consent"
+                              className="text-xs cursor-pointer"
+                              onClick={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
+                            >
+                              SMS(문자)
+                            </Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <Checkbox 
-                              id="email-consent" 
+                            <Checkbox
+                              id="email-consent"
                               checked={adMediaConsents.email}
                               onCheckedChange={(checked) => {
                                 const newState = {...adMediaConsents, email: checked as boolean};
                                 setAdMediaConsents(newState);
                               }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                              }}
+                              onClick={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
                             />
-                            <Label htmlFor="email-consent" className="text-xs cursor-pointer">이메일</Label>
+                            <Label
+                              htmlFor="email-consent"
+                              className="text-xs cursor-pointer"
+                              onClick={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
+                            >
+                              이메일
+                            </Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <Checkbox 
-                              id="kakao-consent" 
+                            <Checkbox
+                              id="kakao-consent"
                               checked={adMediaConsents.kakao}
                               onCheckedChange={(checked) => {
                                 const newState = {...adMediaConsents, kakao: checked as boolean};
                                 setAdMediaConsents(newState);
                               }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                              }}
+                              onClick={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
                             />
-                            <Label htmlFor="kakao-consent" className="text-xs cursor-pointer">카카오톡</Label>
+                            <Label
+                              htmlFor="kakao-consent"
+                              className="text-xs cursor-pointer"
+                              onClick={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
+                            >
+                              카카오톡
+                            </Label>
                           </div>
                         </div>
                       </div>
