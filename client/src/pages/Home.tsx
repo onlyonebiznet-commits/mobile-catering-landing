@@ -1411,7 +1411,7 @@ export default function Home() {
                   <p className="text-xs text-gray-500 font-medium mb-1">{review.companyType}</p>
                   
                   {/* Summary - Bold & Large */}
-                  <h4 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{review.summary}</h4>
+                  <h4 className="text-base font-bold text-gray-900 mb-2 line-clamp-2" style={{fontSize: '21px'}}>{review.summary}</h4>
                   
                   {/* Comment */}
                   <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">"{review.comment}"</p>
