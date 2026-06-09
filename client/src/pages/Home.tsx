@@ -463,63 +463,39 @@ export default function Home() {
 
   const reviews = [
     {
-      company: "삼성전자",
-      department: "HR팀",
-      name: "김민준",
-      position: "팀장",
-      rating: 5,
+      companyType: "IT 반도체 기업",
+      summary: "직원 만족도가 크게 향상되었습니다",
       comment: "프레시밀온 덕분에 직원들의 점심시간이 훨씬 편해졌습니다. 신선하고 맛있는 식사로 만족도가 높습니다.",
-      emoji: "😊",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=kim",
     },
     {
-      company: "LG전자",
-      department: "개발팀",
-      name: "이지은",
-      position: "대리",
-      rating: 5,
+      companyType: "글로벌 제조기업",
+      summary: "다양한 메뉴로 직원 만족도 향상",
       comment: "다양한 메뉴와 건강한 식단으로 직원들이 정말 좋아합니다. 강력 추천합니다!",
-      emoji: "👍",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=lee",
     },
     {
-      company: "SK하이닉스",
-      department: "생산팀",
-      name: "박준호",
-      position: "과장",
-      rating: 5,
+      companyType: "물류센터",
+      summary: "신선한 식사 제공으로 복지 개선",
       comment: "매일 신선한 식사를 제공해주셔서 감사합니다. 직원 복지가 한 단계 업그레이드 되었습니다.",
-      emoji: "⭐",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=park",
     },
     {
-      company: "현대자동차",
-      department: "인사팀",
-      name: "이수현",
-      position: "부장",
-      rating: 5,
+      companyType: "금융기업",
+      summary: "이동형 솔루션으로 다양한 사업장 지원",
       comment: "프레시밀온의 이동형 솔루션으로 다양한 사업장에서 직원 식사를 제공할 수 있게 되었습니다.",
-      emoji: "🚗",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=hyun",
     },
     {
-      company: "삼성화재",
-      department: "영업팀",
-      name: "최지훈",
-      position: "과장",
-      rating: 5,
+      companyType: "연구개발센터",
+      summary: "정성스러운 식사로 만족도 향상",
       comment: "신선한 재료와 정성스러운 조리로 만든 식사가 정말 맛있습니다. 직원들의 만족도가 매우 높습니다.",
-      emoji: "😋",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=choi",
     },
     {
-      company: "네이버",
-      department: "개발팀",
-      name: "정혜린",
-      position: "팀장",
-      rating: 5,
+      companyType: "대형 오피스",
+      summary: "편리한 신선 식사 서비스 제공",
       comment: "프레시밀온 덕분에 사무실에서도 편하게 신선한 식사를 즐길 수 있습니다. 정말 추천합니다!",
-      emoji: "🌟",
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=jung",
     },
   ];
@@ -1387,36 +1363,58 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
-          {/* Card List Reviews - Compact Horizontal */}
-          <div className="space-y-4">
+          {/* PC: 2 Column Grid | Mobile: Horizontal List */}
+          {/* Mobile: Horizontal List */}
+          <div className="md:hidden space-y-4">
             {reviews.slice(0, 3).map((review, idx) => (
-              <div key={idx} className="flex flex-row gap-4 border border-gray-200 rounded-[16px] p-4 md:p-5 bg-white hover:shadow-md transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
-                {/* Image Card - 1:1 Square - Compact */}
-                <div className="relative rounded-[12px] overflow-hidden bg-gray-200 w-24 h-24 md:w-40 md:h-40 aspect-square flex-shrink-0 group">
+              <div key={`mobile-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[16px] p-4 bg-white hover:shadow-md transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
+                {/* Image - Compact */}
+                <div className="relative rounded-[12px] overflow-hidden bg-gray-200 w-24 h-24 aspect-square flex-shrink-0 group">
                   <img
-                    src={operatingPhotos[currentReviewIndex + idx]?.image}
-                    alt={review.company}
+                    src={review.image}
+                    alt={review.companyType}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
 
-                {/* Text Content - Compact */}
+                {/* Text Content */}
                 <div className="flex flex-col justify-center flex-1 min-w-0">
-                  {/* Company Name */}
-                  <h4 className="text-sm md:text-base font-bold text-gray-900 mb-1">{review.company}</h4>
+                  {/* Company Type */}
+                  <p className="text-xs text-gray-500 font-medium mb-1">{review.companyType}</p>
                   
-                  {/* Department */}
-                  <p className="text-xs md:text-sm text-gray-700 font-medium mb-1 line-clamp-1">{review.department}</p>
+                  {/* Summary - Bold & Large */}
+                  <h4 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">{review.summary}</h4>
                   
                   {/* Comment */}
-                  <p className="text-xs md:text-sm text-gray-600 leading-snug mb-2 line-clamp-2">"{review.comment}"</p>
+                  <p className="text-xs text-gray-600 leading-snug line-clamp-2">"{review.comment}"</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* PC: 2 Column Grid */}
+          <div className="hidden md:grid md:grid-cols-2 gap-6">
+            {reviews.map((review, idx) => (
+              <div key={`pc-${idx}`} className="border border-gray-200 rounded-[20px] p-6 bg-white hover:shadow-lg transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
+                {/* Image - 1:1 Square */}
+                <div className="relative rounded-[16px] overflow-hidden bg-gray-200 w-full aspect-square flex-shrink-0 group mb-4">
+                  <img
+                    src={review.image}
+                    alt={review.companyType}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+
+                {/* Text Content */}
+                <div className="flex flex-col">
+                  {/* Company Type */}
+                  <p className="text-xs text-gray-500 font-medium mb-2">{review.companyType}</p>
                   
-                  {/* Position Badge */}
-                  <div className="flex items-center gap-2">
-                    <span className="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs font-medium rounded-full border border-green-200 whitespace-nowrap">
-                      {review.position}
-                    </span>
-                  </div>
+                  {/* Summary - Bold & Large */}
+                  <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2">{review.summary}</h4>
+                  
+                  {/* Comment */}
+                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">"{review.comment}"</p>
                 </div>
               </div>
             ))}
