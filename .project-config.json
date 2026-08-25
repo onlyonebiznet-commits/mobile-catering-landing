@@ -10,13 +10,16 @@
     "DATABASE_URL": "mysql://2RpxjNqTJBAJwcG.root:WI4464SI7AA1TFSlAXVy@gateway06.us-east-1.prod.aws.tidbcloud.com:4000/BNzd6XnofgDBbo2EVE2Tz4?ssl={\"rejectUnauthorized\":true}",
     "DRIZZLE_DATABASE_URL": "mysql://2RpxjNqTJBAJwcG.root:WI4464SI7AA1TFSlAXVy@gateway06.us-east-1.prod.aws.tidbcloud.com:4000/BNzd6XnofgDBbo2EVE2Tz4?ssl={\"rejectUnauthorized\":true}"
   },
-  "experiments": null,
+  "experiments": [
+    "no_db_push"
+  ],
   "git_remote": {
     "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663473728877/BNzd6XnofgDBbo2EVE2Tz4",
-    "access_key_id": "ASIAZV3A2ECZESTY2S6V",
-    "secret_access_key": "X7ah0FTFcG6z+wgM1bUggeNuMFLRRX1UsFVoh+wF",
-    "session_token": "IQoJb3JpZ2luX2VjEKL//////////wEaCXVzLWVhc3QtMSJIMEYCIQC8venV/cgeaQC6zyNIhmKUpoOZItuFNBVZJj1auWK6HQIhAMByyNacr3LpkS0liw10kseuMYuFYJaAktRCr0amVURGKvYDCGoQBBoMNjY1Mzg2MDk4ODY2IgxhRmQZF/JOUV9BMbMq0wPKYzIXEHid5mI8aPI7G0y3812+3ifC1lDiO/t64/V55JLsY9KvC4eqPhUizxEkRGOU1LcJ0rNpNdwdqCDdXUw6cBKaud/Ys1gsM6GMb0dm7NEFw8XcIYpeeJQK34V8dS9y1fiWThK6n9K0mhjiW+xS7lYta8O/oOHCzH5JE859bommxisJ2oYy+2GyCxFN0cSIMxjeq9yG2YTwD08u1pj0jDkLYFwbxhx85CweRewiUb3qvR+My4zjWTDk1RH1FNeqJhq+QcfdCRQVg72LqLC+XyPEW68pMlkMAb4EuOGvQT+LHr2ZR7Apm+6H6Dx7u2Ucm1dRSfBfumAA3NWGN7f/l/M9f0CKO8m0Po7ynhRcayLolq6G6QGLveMG2UWHFHT3vUMtq1J1O4J6ehtF04I1IpHVd1IQ3TtrU7sGqdaUc6B4v47deVUfQrai6qyma/mmFJI377ZJgHK/ZFaMFUeGGmmTVfzKlNxTpwYZd/t9FEM+6BrMQmRl3/znpQEZnjwPW6yfWfCDRbqGLo68srocLJ5JknPagzdmQXkB8pfB4eEf9V5JtYITcYMd+oxkJx82J+M+9s5TZgDHLIbBVQgCjSrPOKjbaQgnS0GaJ3s2dpgOCzCoporRBjqcAUmE06TR0W4SLUHAbqN6IWEl5f6Bd6xrdXb7JFiMxGvFFgbdZsiCt0scZ6fOs5hBqKxXjaoEsYDsSm85H0dZBMOFqrzP4ctREPL10nm85l0mTr5s+ZprBNDzUfrX137LKi3Bl8YUt0GIcuzBnTRrOCY91y05ftjumdTl6tKE889XF3Kk6X9TF17BiQBgiH0/HwBc44Yn+3/U7jrq1w==",
-    "expiration": "2026-06-05T21:13:12.000Z"
+    "access_key_id": "ASIAZV3A2ECZM2ZKJUC3",
+    "secret_access_key": "AsoSWmbV0EA6TiXSteDtmDmT3FxnQvsUD3CWrHHi",
+    "session_token": "IQoJb3JpZ2luX2VjEDIaCXVzLWVhc3QtMSJHMEUCIQDWahYo9U6jNlC+yQ2WywfYIZvpvZj1rNvywYRGIdT4QwIgDuA5rvZTL9AZsqlD1RYOTVTb+j86mv5XGALdSXaiQKAq/wMI+v//////////ARAEGgw2NjUzODYwOTg4NjYiDIdBFrmBvfk+rMRjHSrTA8HIvYGkQCEv1rfX25cqKpx7Oo4kCeJiOgkrvbzdjbr5RjtZ21Ug9s3O8mt9OBm2ZZhVBxfJ7H2cKKdnGnCUZVBW/2UnQY1fhHwuPxrGAcvFrTYENQZb+cifrYL+/3/25KW6n44KcmznPG2w1UJcwBOJMs3KnpS6BJgf/iodi0gA24Ps+DeSRUhpr/euwN6v9cYOueGKE1Vq79isNjUg85/tCJqHC5v4n+4RwDS34bH9bzG1QmOnxn07ySaF/UMLvmfgwwPy8ux0zgtYgrCO7QEjswilHF+PcDGFyX9XcWY4pMjMFTXxSr7Xh7iIXRdwos3jeMxfC19gcJ+U/C+PbrtT2p2zE1KgdaxggsaIg+8XlwROaBllNMsovRC3WQRoH3I79xmbF1XJKzW/wPcHy4pTKjb6yRtPD57JIs5EU3eV+Z8kA177qruyBhSq7LjnKI5TRQHOVxHE/f7I8zHynUjyULBICafIILdfOYFTuIJdtLFtmELcKJTU3bcl8XHZNyiCp00oxtubJ2Wh/lfxQ+RVeMyoZbZpRVjq8qdVTvgp/WuRgCW3KWbx2AF70M+f2XsxSHNIBRr8gj6SLENV04+U5CNo16QQB2Db81zA8/PDtgGjMJPWs9QGOp0BvEIHIXs7AQ0RXJVxZsIwItBNXlvuRA8jJrDJji+7o5LuWzjoNKRtHYUXxrhLYV5XZhPLmwnUCXUqFrDgFryEPB4uFf7UzuUQ9AvaBl47W5TmzfTRyqgp0qbhcmXWbQaoYY9n3zPEbSxKlOBItGUioCW0ermGOByoTqr3I0HPYZc3sY6mvOk/afZ6W0dAvz4wocK2SnumjaurfvKvEw==",
+    "expiration": "2026-08-25T13:08:35.000Z",
+    "backend": "GIT_BACKEND_S3"
   },
   "name": "mobile-catering-landing",
   "path": "/home/ubuntu/mobile-catering-landing",
