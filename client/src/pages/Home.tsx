@@ -358,9 +358,9 @@ export default function Home() {
       name: '라면',
       products: [
         { name: '라면1', image: '/manus-storage/snackpick-ramen-reference_d9f27046.jpg' },
-        { name: '라면2', image: '/manus-storage/snackpick-ramen-2_2eb5188b.jpg' },
-        { name: '라면3', image: '/manus-storage/snackpick-ramen-3_5e84fca7.jpg' },
-        { name: '라면4', image: '/manus-storage/snackpick-ramen-4_41c5e225.jpg' },
+        { name: '라면2', image: '/manus-storage/snackpick-ramen-reference_d9f27046.jpg' },
+        { name: '라면3', image: '/manus-storage/snackpick-ramen-reference_d9f27046.jpg' },
+        { name: '라면4', image: '/manus-storage/snackpick-ramen-reference_d9f27046.jpg' },
       ],
     },
     {
@@ -368,29 +368,29 @@ export default function Home() {
       name: '음료',
       products: [
         { name: '음료1', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
-        { name: '음료2', image: '/manus-storage/snackpick-beverage-2_b3784104.jpg' },
-        { name: '음료3', image: '/manus-storage/snackpick-beverage-3_934e0f53.jpg' },
-        { name: '음료4', image: '/manus-storage/snackpick-beverage_670a507f.jpg' },
+        { name: '음료2', image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg' },
+        { name: '음료3', image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg' },
+        { name: '음료4', image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg' },
       ],
     },
     {
       id: 'yogurt',
       name: '요거트',
       products: [
-        { name: '요거트1', image: '/manus-storage/snackpick-yogurt_c1e9f720.jpg' },
-        { name: '요거트2', image: '/manus-storage/snackpick-yogurt-2_331124b7.jpg' },
-        { name: '요거트3', image: '/manus-storage/snackpick-yogurt-3_090fa50e.jpg' },
-        { name: '요거트4', image: '/manus-storage/snackpick-yogurt-4_b6639571.jpg' },
+        { name: '요거트1', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
+        { name: '요거트2', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
+        { name: '요거트3', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
+        { name: '요거트4', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
       ],
     },
     {
       id: 'energybar',
       name: '에너지바',
       products: [
-        { name: '에너지바1', image: '/manus-storage/snackpick-energybar_19ee1163.jpg' },
-        { name: '에너지바2', image: '/manus-storage/snackpick-energybar-2_2937f4d9.jpg' },
-        { name: '에너지바3', image: '/manus-storage/snackpick-energybar-3_e885b123.jpg' },
-        { name: '에너지바4', image: '/manus-storage/snackpick-energybar-4_4d987614.jpg' },
+        { name: '에너지바1', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
+        { name: '에너지바2', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
+        { name: '에너지바3', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
+        { name: '에너지바4', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
       ],
     },
   ];
