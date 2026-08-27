@@ -11,6 +11,7 @@ import StickyTabNavigation from "@/components/StickyTabNavigation";
 import PCNavigation from "@/components/PCNavigation";
 import SectionNavigation from "@/components/SectionNavigation";
 import { useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
 
 interface StatisticItemProps {
   end: number;
@@ -811,13 +812,15 @@ export default function Home() {
                 </p>
                 
                 <div className="flex justify-center md:justify-start animate-in fade-in slide-in-from-left-4 delay-500">
-                  <button
+                  <Button
+                    type="button"
+                    variant="primary"
+                    size="large"
                     onClick={() => setConsultationOpen(true)}
                     data-event="consultation_click"
-                    className="px-8 py-3 bg-[#007651] text-white rounded-lg hover:bg-[#008F69] hover:text-white border-2 border-[#007651] hover:border-[#008F69] transition duration-300 font-semibold"
                   >
                     지금 상담받기
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -894,13 +897,16 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  <button
+                  <Button
+                    type="button"
+                    variant="primary"
+                    size="medium"
+                    className="w-full"
                     onClick={() => setConsultationOpen(true)}
                     data-event="consultation_click"
-                    className="w-full px-4 py-2 bg-[#007651] text-white rounded-lg hover:bg-[#008F69] hover:text-white border-2 border-[#007651] hover:border-[#008F69] transition duration-300 font-semibold"
                   >
                     견적 문의
-                  </button>
+                  </Button>
                 </div>
               </div>
             ))}
@@ -1062,10 +1068,10 @@ export default function Home() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`py-4 px-5 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                  className={`min-h-14 px-6 rounded-full font-semibold transition-all duration-200 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 active:scale-[0.98] ${
                     selectedSnackCategory === category.id
                       ? 'bg-[#007651] text-white shadow-md hover:bg-[#008F69]'
-                      : 'bg-white text-gray-700 border-2 border-[#C6C6C6] hover:bg-gray-50'
+                      : 'bg-white text-[#333333] border border-[#B3B3B3] hover:bg-[#D7F9EF] hover:border-[#008F69] hover:text-[#007651]'
                   }`}
                 >
                   <span className="text-sm font-semibold">{category.name}</span>
@@ -1079,10 +1085,10 @@ export default function Home() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`py-3 px-2 rounded-[16px] transition-all duration-300 shadow-sm ${
+                  className={`min-h-12 px-3 rounded-full transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 active:scale-[0.98] ${
                     selectedSnackCategory === category.id
                       ? 'bg-[#007651] text-white shadow-md hover:bg-[#008F69]'
-                      : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                      : 'bg-white text-[#333333] border border-[#B3B3B3] hover:bg-[#D7F9EF] hover:border-[#008F69] hover:text-[#007651]'
                   }`}
                 >
                   <span className="text-xs font-semibold text-center leading-tight block">{category.name}</span>

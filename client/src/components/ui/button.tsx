@@ -9,16 +9,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover disabled:bg-gray-300 disabled:text-white",
+        primary: "bg-primary text-primary-foreground hover:bg-primary-hover disabled:bg-gray-300 disabled:text-white",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
-          "border border-primary bg-white text-primary shadow-xs hover:bg-primary-hover hover:border-primary-hover hover:text-primary-foreground dark:bg-transparent dark:border-primary dark:hover:bg-primary-hover",
+          "border border-primary bg-white text-primary shadow-xs hover:bg-primary-hover hover:border-primary-hover hover:text-primary-foreground disabled:bg-white disabled:border-gray-300 disabled:text-gray-300 dark:bg-transparent dark:border-primary dark:hover:bg-primary-hover",
         secondary:
-          "border border-primary bg-white text-primary hover:bg-secondary-hover hover:border-secondary-hover hover:text-primary-foreground",
+          "border border-primary bg-white text-primary hover:bg-secondary-hover hover:border-secondary-hover hover:text-primary-foreground disabled:bg-white disabled:border-gray-300 disabled:text-gray-300",
         ghost:
           "hover:bg-accent dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-primary underline-offset-4 hover:underline disabled:text-gray-300",
+        "text-button": "text-primary underline-offset-4 hover:text-primary-hover hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -27,6 +29,10 @@ const buttonVariants = cva(
         icon: "size-9",
         "icon-sm": "size-8",
         "icon-lg": "size-10",
+        xlarge: "h-14 rounded-lg px-7 text-base has-[>svg]:px-5",
+        large: "h-12 rounded-lg px-6 text-base has-[>svg]:px-4",
+        medium: "h-10 rounded-md px-5 text-sm has-[>svg]:px-3",
+        small: "h-9 rounded-md px-4 text-xs has-[>svg]:px-3",
       },
     },
     defaultVariants: {

@@ -9,6 +9,22 @@ describe("button color guide variants", () => {
     expect(classes).toContain("hover:bg-primary-hover");
   });
 
+  it("exposes the explicit primary variant with disabled styling", () => {
+    const classes = buttonVariants({ variant: "primary" });
+
+    expect(classes).toContain("bg-primary");
+    expect(classes).toContain("disabled:bg-gray-300");
+    expect(classes).toContain("disabled:text-white");
+  });
+
+  it("provides the guide size scale and icon button sizes", () => {
+    expect(buttonVariants({ size: "xlarge" })).toContain("h-14");
+    expect(buttonVariants({ size: "large" })).toContain("h-12");
+    expect(buttonVariants({ size: "medium" })).toContain("h-10");
+    expect(buttonVariants({ size: "small" })).toContain("h-9");
+    expect(buttonVariants({ size: "icon" })).toContain("size-9");
+  });
+
   it("uses the same GREEN600 hover token for secondary buttons", () => {
     const classes = buttonVariants({ variant: "secondary" });
 

@@ -101,13 +101,14 @@ export default function FloatingActionButtons() {
 
             {/* Circular Icon Button - On top */}
             <button
+              type="button"
               onClick={scrollToTop}
-              className="relative w-14 h-14 rounded-full bg-[#007651] text-white shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center"
+              className="relative w-14 h-14 rounded-full bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
               style={{ zIndex: 3 }}
               aria-label="맨 위로 이동"
               title="Top"
             >
-              <ChevronUp className="w-6 h-6" />
+              <ChevronUp aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md" />
             </button>
           </div>
         </div>
@@ -138,8 +139,9 @@ export default function FloatingActionButtons() {
 
             {/* Circular Icon Button - On top */}
             <button
+              type="button"
               onClick={scrollToChatbot}
-              className="relative w-14 h-14 rounded-full bg-[#007651] text-white shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center"
+              className="relative w-14 h-14 rounded-full bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
               style={{ zIndex: 3 }}
               aria-label="맞춤 상담"
               title="맞춤 상담"
