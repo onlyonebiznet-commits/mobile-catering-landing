@@ -333,8 +333,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           <div className="px-6 py-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 300px)' }}>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Company Name */}
-            <div className="space-y-1">
-              <Label htmlFor="companyName" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="companyName" className="text-sm font-medium text-gray-700">
                 회사명 <span className="text-status-error">*</span>
               </Label>
               <Input
@@ -343,16 +343,18 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="예: 프레시 테크"
                 value={formData.companyName}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.companyName ? 'border-status-error' : ''}`}
+                aria-invalid={Boolean(errors.companyName)}
+                aria-describedby={errors.companyName ? "companyName-error" : undefined}
+                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.companyName ? 'border-status-error' : ''}`}
               />
               {errors.companyName && (
-                <p className="text-status-error text-xs mt-1">{errors.companyName}</p>
+                <p id="companyName-error" className="text-status-error text-xs leading-5">{errors.companyName}</p>
               )}
             </div>
 
             {/* Contact Person */}
-            <div className="space-y-1">
-              <Label htmlFor="contactPerson" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="contactPerson" className="text-sm font-medium text-gray-700">
                 담당자명 <span className="text-status-error">*</span>
               </Label>
               <Input
@@ -361,16 +363,18 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="담당자명을 입력해주세요"
                 value={formData.contactPerson}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.contactPerson ? 'border-status-error' : ''}`}
+                aria-invalid={Boolean(errors.contactPerson)}
+                aria-describedby={errors.contactPerson ? "contactPerson-error" : undefined}
+                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.contactPerson ? 'border-status-error' : ''}`}
               />
               {errors.contactPerson && (
-                <p className="text-status-error text-xs mt-1">{errors.contactPerson}</p>
+                <p id="contactPerson-error" className="text-status-error text-xs leading-5">{errors.contactPerson}</p>
               )}
             </div>
 
             {/* Phone Number */}
-            <div className="space-y-1">
-              <Label htmlFor="phoneNumber" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="phoneNumber" className="text-sm font-medium text-gray-700">
                 연락처 <span className="text-status-error">*</span>
               </Label>
               <Input
@@ -379,16 +383,18 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="010-0000-0000"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.phoneNumber ? 'border-status-error' : ''}`}
+                aria-invalid={Boolean(errors.phoneNumber)}
+                aria-describedby={errors.phoneNumber ? "phoneNumber-error" : undefined}
+                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.phoneNumber ? 'border-status-error' : ''}`}
               />
               {errors.phoneNumber && (
-                <p className="text-status-error text-xs mt-1">{errors.phoneNumber}</p>
+                <p id="phoneNumber-error" className="text-status-error text-xs leading-5">{errors.phoneNumber}</p>
               )}
             </div>
 
             {/* Email */}
-            <div className="space-y-1">
-              <Label htmlFor="email" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
                 이메일 <span className="text-status-error">*</span>
               </Label>
               <Input
@@ -398,20 +404,26 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="example@company.com"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.email ? 'border-status-error' : ''}`}
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? "email-error" : undefined}
+                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.email ? 'border-status-error' : ''}`}
               />
               {errors.email && (
-                <p className="text-status-error text-xs mt-1">{errors.email}</p>
+                <p id="email-error" className="text-status-error text-xs leading-5">{errors.email}</p>
               )}
             </div>
 
             {/* Service Type */}
-            <div className="space-y-1">
-              <Label htmlFor="service" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="service" className="text-sm font-medium text-gray-700">
                 관심 서비스
               </Label>
               <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
-                <SelectTrigger className={`rounded-lg border-gray-300 ${errors.service ? 'border-status-error' : ''}`}>
+                <SelectTrigger
+                  aria-invalid={Boolean(errors.service)}
+                  aria-describedby={errors.service ? "service-error" : undefined}
+                  className={`rounded-lg border-gray-300 bg-white ${errors.service ? 'border-status-error' : ''}`}
+                >
                   <SelectValue placeholder="서비스를 선택해주세요" />
                 </SelectTrigger>
                 <SelectContent>
@@ -423,13 +435,13 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 </SelectContent>
               </Select>
               {errors.service && (
-                <p className="text-status-error text-xs mt-1">{errors.service}</p>
+                <p id="service-error" className="text-status-error text-xs leading-5">{errors.service}</p>
               )}
             </div>
 
             {/* Region */}
-            <div className="space-y-1">
-              <Label htmlFor="region" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="region" className="text-sm font-medium text-gray-700">
                 지역 <span className="text-status-error">*</span>
               </Label>
               <Input
@@ -438,16 +450,18 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="서울, 경기 등"
                 value={formData.region}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.region ? 'border-status-error' : ''}`}
+                aria-invalid={Boolean(errors.region)}
+                aria-describedby={errors.region ? "region-error" : undefined}
+                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.region ? 'border-status-error' : ''}`}
               />
               {errors.region && (
-                <p className="text-status-error text-xs mt-1">{errors.region}</p>
+                <p id="region-error" className="text-status-error text-xs leading-5">{errors.region}</p>
               )}
             </div>
 
             {/* Estimated Meals */}
-            <div className="space-y-1">
-              <Label htmlFor="estimatedMeals" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="estimatedMeals" className="text-sm font-medium text-gray-700">
                 예상 인원 <span className="text-status-error">*</span>
               </Label>
               <Input
@@ -456,16 +470,18 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="예: 50명"
                 value={formData.estimatedMeals}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.estimatedMeals ? 'border-status-error' : ''}`}
+                aria-invalid={Boolean(errors.estimatedMeals)}
+                aria-describedby={errors.estimatedMeals ? "estimatedMeals-error" : undefined}
+                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.estimatedMeals ? 'border-status-error' : ''}`}
               />
               {errors.estimatedMeals && (
-                <p className="text-status-error text-xs mt-1">{errors.estimatedMeals}</p>
+                <p id="estimatedMeals-error" className="text-status-error text-xs leading-5">{errors.estimatedMeals}</p>
               )}
             </div>
 
             {/* Message */}
-            <div className="space-y-1">
-              <Label htmlFor="message" className="text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="message" className="text-sm font-medium text-gray-700">
                 특별한 요청사항
               </Label>
               <Textarea
@@ -474,7 +490,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="특별한 요청사항이 있으시면 입력해주세요"
                 value={formData.message}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300 resize-none"
+                className="rounded-lg border-gray-300 bg-white placeholder:text-gray-400 resize-none"
                 rows={3}
               />
             </div>

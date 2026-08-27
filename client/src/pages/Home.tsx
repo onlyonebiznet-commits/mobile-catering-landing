@@ -811,7 +811,7 @@ export default function Home() {
                   ][currentDietIndex % 3].description}
                 </p>
                 
-                <div className="flex justify-center animate-in fade-in slide-in-from-left-4 delay-500">
+                <div className="flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500">
                   <Button
                     type="button"
                     variant="primary"
@@ -820,6 +820,15 @@ export default function Home() {
                     data-event="consultation_click"
                   >
                     지금 상담받기
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="on-brand-outline"
+                    size="large"
+                    onClick={() => setConsultationOpen(true)}
+                    data-event="material_download_click"
+                  >
+                    자료 다운받기
                   </Button>
                 </div>
               </div>
@@ -1463,7 +1472,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
             <h2 className="type-title-1 text-white mb-2 text-center" style={{fontSize: 'clamp(24px, 6vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
-          <div className="flex justify-center scroll-reveal-stagger" data-reveal-item="0">
+          <div className="flex flex-wrap justify-center gap-3 scroll-reveal-stagger" data-reveal-item="0">
             <Button
               type="button"
               variant="on-brand"
@@ -1472,6 +1481,15 @@ export default function Home() {
               data-event="consultation_click"
             >
               지금 상담받기
+            </Button>
+            <Button
+              type="button"
+              variant="on-brand-outline"
+              size="large"
+              onClick={() => setConsultationOpen(true)}
+              data-event="material_download_click"
+            >
+              자료 다운받기
             </Button>
           </div>
         </div>

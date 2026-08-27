@@ -35,6 +35,17 @@ describe("button color guide variants", () => {
     expect(buttonVariants({ size: "icon" })).toContain("size-9");
   });
 
+  it("provides a transparent white-border variant for banner secondary CTAs", () => {
+    const classes = buttonVariants({ variant: "on-brand-outline", size: "large" });
+
+    expect(classes).toContain("border border-white");
+    expect(classes).toContain("bg-transparent");
+    expect(classes).toContain("text-white");
+    expect(classes).toContain("hover:bg-white");
+    expect(classes).toContain("hover:text-primary");
+    expect(classes).toContain("h-12");
+  });
+
   it("uses the inverse contrast treatment for the on-brand banner button", () => {
     const classes = buttonVariants({ variant: "on-brand", size: "large" });
 
