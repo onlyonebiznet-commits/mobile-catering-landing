@@ -29,8 +29,8 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
                 onClick={() => onTabClick(tab.id)}
                 className={`flex flex-col items-center justify-center gap-2 p-4 rounded-[16px] transition-all duration-300 ${
                   activeTab === tab.id
-                    ? 'bg-[#006B4F] text-white shadow-md'
-                    : 'bg-white text-gray-700 border border-[#F1F3F5] hover:bg-[#F7FAF8]'
+                    ? 'bg-[#007651] text-white shadow-md'
+                    : 'bg-white text-gray-700 border border-[#E6E6E6] hover:bg-[#D7F9EF]'
                 }`}
                 onTouchStart={(e) => {
                   if (activeTab !== tab.id) {
@@ -41,8 +41,8 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                <Icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-white' : 'text-[#64748B]'}`} />
-                <span className={`text-xs font-semibold text-center leading-tight ${activeTab === tab.id ? 'text-white' : 'text-[#374151]'}`}>
+                <Icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-white' : 'text-[#666666]'}`} />
+                <span className={`text-xs font-semibold text-center leading-tight ${activeTab === tab.id ? 'text-white' : 'text-[#333333]'}`}>
                   {tab.label}
                 </span>
               </button>

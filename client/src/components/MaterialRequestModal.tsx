@@ -234,10 +234,10 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
         <DialogTitle className="sr-only">자료 신청</DialogTitle>
 
         {/* Header */}
-        <div className="bg-[#005B45] px-6 py-6 relative">
+        <div className="bg-[#007651] px-6 py-6 relative">
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 p-1 hover:bg-[#003326] rounded-md transition-colors"
+            className="absolute right-4 top-4 p-1 hover:bg-[#008F69] rounded-md transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5 text-white" />
@@ -425,7 +425,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#005B45] hover:bg-[#003326] text-white py-2 rounded-lg font-medium transition-colors mt-6"
+                className="w-full bg-[#007651] hover:bg-[#008F69] text-white py-2 rounded-lg font-medium transition-colors mt-6"
               >
                 {isSubmitting ? "신청 중..." : "자료 신청하기"}
               </Button>

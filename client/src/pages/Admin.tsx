@@ -299,7 +299,7 @@ export default function Admin() {
                 placeholder="비밀번호"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007651]"
               />
               {loginError && (
                 <Alert variant="destructive">
@@ -307,7 +307,7 @@ export default function Admin() {
                   <AlertDescription>{loginError}</AlertDescription>
                 </Alert>
               )}
-              <Button type="submit" className="w-full bg-[#005B45] hover:bg-[#003326]">
+              <Button type="submit" className="w-full bg-[#007651] hover:bg-[#008F69]">
                 로그인
               </Button>
             </form>
@@ -381,7 +381,7 @@ export default function Admin() {
                     placeholder="회사명, 담당자, 연락처, 이메일 검색..."
                     value={consultationSearchQuery}
                     onChange={(e) => setConsultationSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007651]"
                   />
                 </div>
               </div>
@@ -391,7 +391,7 @@ export default function Admin() {
                 <select
                   value={consultationServiceFilter}
                   onChange={(e) => setConsultationServiceFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007651]"
                 >
                   <option value="all">전체 서비스</option>
                   <option value="cafeteria">구내식당</option>
@@ -408,7 +408,7 @@ export default function Admin() {
                 <select
                   value={consultationStatusFilter}
                   onChange={(e) => setConsultationStatusFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007651]"
                 >
                   <option value="all">전체 상태</option>
                   <option value="pending">대기중</option>
@@ -428,7 +428,7 @@ export default function Admin() {
               <select
                 value={consultationSortOrder}
                 onChange={(e) => setConsultationSortOrder(e.target.value as "newest" | "oldest")}
-                className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#005B45]"
+                className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#007651]"
               >
                 <option value="newest">최신순</option>
                 <option value="oldest">오래된순</option>
@@ -479,7 +479,7 @@ export default function Admin() {
                             value={request.serviceType || ""}
                             onChange={(e) => handleServiceTypeChange(request.id, e.target.value)}
                             disabled={updatingServiceId === request.id}
-                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B45] cursor-pointer ${
+                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#007651] cursor-pointer ${
                               request.serviceType === 'cafeteria' ? 'bg-status-info/10 text-status-info' :
                               request.serviceType === 'catering' ? 'bg-status-success/10 text-status-success' :
                               request.serviceType === 'snack' ? 'bg-status-warning/10 text-status-warning' :
@@ -504,7 +504,7 @@ export default function Admin() {
                           <select
                             value={request.status}
                             onChange={(e) => handleStatusChange(request.id, e.target.value)}
-                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B45] cursor-pointer w-full ${
+                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#007651] cursor-pointer w-full ${
                               request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
                               request.status === 'in_progress' ? 'bg-status-info/10 text-status-info' :
                               request.status === 'target' ? 'bg-status-warning/10 text-status-warning' :

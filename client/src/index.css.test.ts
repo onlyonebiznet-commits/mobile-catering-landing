@@ -20,6 +20,12 @@ describe("Freshmeal-on color guide tokens", () => {
     expect(css).toContain("--status-success: #22AC38");
   });
 
+  it("maps primary and secondary button states to GREEN700 and GREEN600", () => {
+    expect(css).toContain("--primary: var(--brand-700)");
+    expect(css).toContain("--primary-hover: var(--brand-600)");
+    expect(css).toContain("--secondary-hover: var(--brand-600)");
+  });
+
   it("maps surfaces, borders, and typography colors to the grayscale scale", () => {
     expect(css).toContain("--background: #FFFFFF");
     expect(css).toContain("--foreground: var(--gray-800)");

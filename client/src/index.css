@@ -70,6 +70,8 @@
   --color-green-100: var(--brand-100);
   --color-green-600: var(--brand-600);
   --color-green-800: var(--brand-800);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary-hover: var(--secondary-hover);
 }
 
 :root {
@@ -103,9 +105,11 @@
   --gray-800: #333333;
   --gray-900: #1A1A1A;
 
-  --primary: var(--brand-800);
+  --primary: var(--brand-700);
+  --primary-hover: var(--brand-600);
+  --secondary-hover: var(--brand-600);
   --primary-foreground: #FFFFFF;
-  --sidebar-primary: var(--brand-800);
+  --sidebar-primary: var(--brand-700);
   --sidebar-primary-foreground: #FFFFFF;
 
   /* Chart colors - brand progression */
