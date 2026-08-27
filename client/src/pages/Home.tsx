@@ -1003,7 +1003,7 @@ export default function Home() {
           <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
             {meals.map((meal, idx) => (
               <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative h-64 overflow-hidden group">
                     <img
                       src={meal.image}
@@ -1035,8 +1035,8 @@ export default function Home() {
             <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
               {meals.map((meal, idx) => (
                 <div key={idx} className="flex-shrink-0 w-80 snap-center">
-                  <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="relative h-48 overflow-hidden group bg-gray-100 flex items-center justify-center">
+                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="relative h-48 overflow-hidden group bg-white flex items-center justify-center">
                       <img
                         src={meal.image}
                         loading="lazy"
@@ -1186,7 +1186,7 @@ export default function Home() {
           <div className="hidden md:grid grid-cols-3 gap-8">
             {cafeItems.map((cafe, idx) => (
               <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative h-64 overflow-hidden group">
                     <img
                       src={cafe.image}
@@ -1218,8 +1218,8 @@ export default function Home() {
             <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
               {cafeItems.map((cafe, idx) => (
                 <div key={idx} className="flex-shrink-0 w-80 snap-center">
-                  <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="relative h-48 overflow-hidden group bg-gray-100 flex items-center justify-center">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="relative h-48 overflow-hidden group bg-white flex items-center justify-center">
                       <img
                         src={cafe.image}
                         loading="lazy"
