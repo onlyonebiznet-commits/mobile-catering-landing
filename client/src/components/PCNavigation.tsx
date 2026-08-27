@@ -1,4 +1,4 @@
-import { Building2, Utensils, Package, Candy, Coffee, Workflow, MessageSquare } from 'lucide-react';
+import { Building2, Utensils, Package, Candy, Coffee, MessageSquare } from 'lucide-react';
 
 interface PCNavigationProps {
   activeTab: string;
@@ -12,14 +12,13 @@ export default function PCNavigation({ activeTab, onTabClick }: PCNavigationProp
     { id: 'snack', label: '수제간편식', icon: Package },
     { id: 'snacks', label: '스낵픽', icon: Candy },
     { id: 'cafe', label: '사내카페', icon: Coffee },
-    { id: 'process', label: '프로세스', icon: Workflow },
     { id: 'reviews', label: '고객후기', icon: MessageSquare },
   ];
 
   return (
     <div className="sticky top-0 z-40 bg-white">
       <div className="w-full max-w-[1200px] mx-auto px-6 py-8">
-        <div className="grid grid-cols-7 gap-6 w-full">
+        <div className="grid grid-cols-6 gap-6 w-full">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (

@@ -1,4 +1,4 @@
-import { Building2, Utensils, Package, Candy, Coffee, Workflow, MessageSquare } from 'lucide-react';
+import { Building2, Utensils, Package, Candy, Coffee, MessageSquare } from 'lucide-react';
 
 interface StickyTabNavigationProps {
   activeTab: string;
@@ -12,7 +12,6 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
     { id: 'snack', label: '수제간편식', icon: Package },
     { id: 'snacks', label: '스낵픽', icon: Candy },
     { id: 'cafe', label: '사내카페', icon: Coffee },
-    { id: 'process', label: '프로세스', icon: Workflow },
     { id: 'reviews', label: '고객후기', icon: MessageSquare },
   ];
 
