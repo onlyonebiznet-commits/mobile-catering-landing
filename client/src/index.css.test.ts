@@ -26,6 +26,16 @@ describe("Freshmeal-on color guide tokens", () => {
     expect(css).toContain("--secondary-hover: var(--brand-600)");
   });
 
+  it("registers CJ ONLYONE and the Noto Sans KR typography system", () => {
+    expect(css).toContain('font-family: "CJ ONLYONE"');
+    expect(css).toContain("CJ_ONLYONE_700_f1fa4aab.ttf");
+    expect(css).toContain('--font-title: "CJ ONLYONE", "Noto Sans KR", sans-serif;');
+    expect(css).toContain('--font-body: "Noto Sans KR", sans-serif;');
+    expect(css).toContain(".type-title-1");
+    expect(css).toContain(".type-headline-1");
+    expect(css).toContain(".type-body-1");
+  });
+
   it("maps surfaces, borders, and typography colors to the grayscale scale", () => {
     expect(css).toContain("--background: #FFFFFF");
     expect(css).toContain("--foreground: var(--gray-800)");

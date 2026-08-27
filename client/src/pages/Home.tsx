@@ -671,7 +671,7 @@ export default function Home() {
               <div>
                 {/* MO: 1,2줄 36px, PC: 1,2줄 72px */}
                 <div className="md:hidden">
-                  <h1 className="font-bold text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -693,7 +693,7 @@ export default function Home() {
                       }
                     ][currentDietIndex % 3].title}
                   </h1>
-                  <h2 className="font-bold text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -718,7 +718,7 @@ export default function Home() {
                 </div>
                 
                 <div className="hidden md:block">
-                  <h1 className="font-bold text-white drop-shadow-lg hero-title-animate" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -740,7 +740,7 @@ export default function Home() {
                       }
                     ][currentDietIndex % 3].title}
                   </h1>
-                  <h2 className="font-bold text-white drop-shadow-lg hero-title-animate" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -869,7 +869,7 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>키친리스 밀솔루션</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>키친리스 밀솔루션</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
           </div>
 
@@ -912,7 +912,7 @@ export default function Home() {
       <section id="diet" className="py-20 bg-gray-50">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>고객 특성에 맞춘 식단</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>고객 특성에 맞춘 식단</h2>
             <p className="text-[15px] md:text-[25px] text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
@@ -975,7 +975,7 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>실제 운영중인 식단</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>실제 운영중인 식단</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 재료로 만든 다양한 메뉴</p>
           </div>
 
@@ -1050,7 +1050,7 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 큐레이션 스낵픽</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 큐레이션 스낵픽</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
           </div>
 
@@ -1150,7 +1150,7 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 사내카페</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>맞춤형 사내카페</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>고객의 니즈를 녹이고 고객사의 색깔을 듬뿍 담은 서비스를 제공합니다.</p>
           </div>
 
@@ -1224,7 +1224,7 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>신선함을 보장하는 프로세스</h2>
+            <h2 className="type-title-1 text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>신선함을 보장하는 프로세스</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
@@ -1246,7 +1246,7 @@ export default function Home() {
       <section className="py-16 bg-gray-50 overflow-hidden">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>함께하는 고객사</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>함께하는 고객사</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
           </div>
           <style>{`
@@ -1335,7 +1335,7 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>고객 후기</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>고객 후기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
@@ -1356,13 +1356,13 @@ export default function Home() {
                 {/* Text Content */}
                 <div className="flex flex-col justify-center flex-1 min-w-0">
                   {/* Company Type */}
-                  <p className="text-xs text-gray-500 font-medium mb-1">{review.companyType}</p>
+                  <p className="type-body-3 text-gray-500 mb-1">{review.companyType}</p>
                   
                   {/* Summary - Bold & Large */}
-                  <h4 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">{review.summary}</h4>
+                  <h4 className="type-headline-2 text-gray-900 mb-1 line-clamp-1">{review.summary}</h4>
                   
                   {/* Comment */}
-                  <p className="text-xs text-gray-600 leading-snug line-clamp-2">"{review.comment}"</p>
+                  <p className="type-body-3 text-gray-600 leading-snug line-clamp-2">"{review.comment}"</p>
                 </div>
               </div>
             ))}
@@ -1384,13 +1384,13 @@ export default function Home() {
                 {/* Text Content - Right */}
                 <div className="flex flex-col justify-center flex-1 min-w-0">
                   {/* Company Type */}
-                  <p className="text-xs text-gray-500 font-medium mb-1">{review.companyType}</p>
+                  <p className="type-body-3 text-gray-500 mb-1">{review.companyType}</p>
                   
                   {/* Summary - Bold & Large */}
-                  <h4 className="text-base font-bold text-gray-900 mb-2 line-clamp-2" style={{fontSize: '21px'}}>{review.summary}</h4>
+                  <h4 className="type-headline-1 text-gray-900 mb-2 line-clamp-2">{review.summary}</h4>
                   
                   {/* Comment */}
-                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">"{review.comment}"</p>
+                  <p className="type-body-2 text-gray-600 leading-relaxed line-clamp-2">"{review.comment}"</p>
                 </div>
               </div>
             ))}
@@ -1402,7 +1402,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>우리의 이야기</h2>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>우리의 이야기</h2>
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온과 함께 만들어가는 성공 사례들</p>
           </div>
 
@@ -1455,7 +1455,7 @@ export default function Home() {
       {/* Final CTA Section */}
       <section className="py-20 bg-[#007651]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
+            <h2 className="type-title-1 text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
           <div className="flex justify-center scroll-reveal-stagger" data-reveal-item="0">
             <button

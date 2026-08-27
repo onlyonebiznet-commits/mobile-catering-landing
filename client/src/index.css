@@ -1,8 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* CJ ONLYONE typography assets uploaded to project storage */
+@font-face {
+  font-family: "CJ ONLYONE";
+  src: url("/manus-storage/CJ_ONLYONE_300_d2076bcf.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CJ ONLYONE";
+  src: url("/manus-storage/CJ_ONLYONE_400_2a0ebec7.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CJ ONLYONE";
+  src: url("/manus-storage/CJ_ONLYONE_500_4d40c146.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CJ ONLYONE";
+  src: url("/manus-storage/CJ_ONLYONE_600_cd43c180.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CJ ONLYONE";
+  src: url("/manus-storage/CJ_ONLYONE_700_f1fa4aab.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CJ ONLYONE";
+  src: url("/manus-storage/CJ_ONLYONE_800_8bbb4ab2.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-title: "CJ ONLYONE", "Noto Sans KR", sans-serif;
+  --font-body: "Noto Sans KR", sans-serif;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -198,7 +251,7 @@
   }
   
   html {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-body);
     scrollbar-width: none;
     overflow-y: scroll;
   }
@@ -220,8 +273,22 @@
     @apply bg-background text-foreground;
   }
   
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3 {
     @apply font-bold;
+    font-family: var(--font-title);
+  }
+
+  h4, h5, h6 {
+    @apply font-bold;
+    font-family: var(--font-body);
+  }
+
+  body,
+  button,
+  input,
+  textarea,
+  select {
+    font-family: var(--font-body);
   }
   
   h1 {
@@ -237,13 +304,10 @@
   }
   
   p {
-    @apply text-base md:text-base text-left;
-  }
-  
-  @media (max-width: 768px) {
-    p {
-      @apply text-[15px];
-    }
+    @apply text-base text-left;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -278,6 +342,83 @@
 }
 
 @layer components {
+  /* Typography scale from the CJ-onlyone guide */
+  .type-title-1 {
+    font-family: var(--font-title);
+    font-size: clamp(20px, 5vw, 60px);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .type-title-1 {
+      font-size: clamp(20px, 8vw, 36px);
+    }
+  }
+
+  .type-title-2 {
+    font-family: var(--font-title);
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+
+  .type-title-3 {
+    font-family: var(--font-title);
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+
+  .type-headline-1 {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  .type-headline-2 {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .type-headline-3 {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .type-body-1 {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .type-body-2 {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .type-body-3 {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .type-body-4 {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
   /**
    * Custom container utility that centers content and adds responsive padding.
    *
