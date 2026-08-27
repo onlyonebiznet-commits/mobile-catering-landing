@@ -35,7 +35,7 @@ function StatisticItem({ end, suffix, label, index = 0 }: StatisticItemProps) {
 
   return (
     <div ref={elementRef} className="text-center scroll-reveal-stagger">
-      <div className="text-3xl md:text-6xl font-bold text-[#007651] mb-2 whitespace-nowrap text-center">
+      <div className="text-3xl md:text-6xl font-bold text-brand-700 mb-2 whitespace-nowrap text-center">
         {formatNumber(count)}
         <span className="ml-1">{suffix}</span>
       </div>
@@ -357,10 +357,10 @@ export default function Home() {
       id: 'ramen',
       name: '라면',
       products: [
-        { name: '라면1', image: 'https://via.placeholder.com/400x300?text=Ramen+1' },
-        { name: '라면2', image: 'https://via.placeholder.com/400x300?text=Ramen+2' },
-        { name: '라면3', image: 'https://via.placeholder.com/400x300?text=Ramen+3' },
-        { name: '라면4', image: 'https://via.placeholder.com/400x300?text=Ramen+4' },
+        { name: '라면1', image: '/manus-storage/snackpick-ramen-reference_d9f27046.jpg' },
+        { name: '라면2', image: '/manus-storage/snackpick-ramen-2_2eb5188b.jpg' },
+        { name: '라면3', image: '/manus-storage/snackpick-ramen-3_5e84fca7.jpg' },
+        { name: '라면4', image: '/manus-storage/snackpick-ramen-4_41c5e225.jpg' },
       ],
     },
     {
@@ -368,29 +368,29 @@ export default function Home() {
       name: '음료',
       products: [
         { name: '음료1', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
-        { name: '음료2', image: 'https://via.placeholder.com/400x300?text=Beverage+2' },
-        { name: '음료3', image: 'https://via.placeholder.com/400x300?text=Beverage+3' },
-        { name: '음료4', image: 'https://via.placeholder.com/400x300?text=Beverage+4' },
+        { name: '음료2', image: '/manus-storage/snackpick-beverage-2_b3784104.jpg' },
+        { name: '음료3', image: '/manus-storage/snackpick-beverage-3_934e0f53.jpg' },
+        { name: '음료4', image: '/manus-storage/snackpick-beverage_670a507f.jpg' },
       ],
     },
     {
       id: 'yogurt',
       name: '요거트',
       products: [
-        { name: '요거트1', image: 'https://via.placeholder.com/400x300?text=Yogurt+1' },
-        { name: '요거트2', image: 'https://via.placeholder.com/400x300?text=Yogurt+2' },
-        { name: '요거트3', image: 'https://via.placeholder.com/400x300?text=Yogurt+3' },
-        { name: '요거트4', image: 'https://via.placeholder.com/400x300?text=Yogurt+4' },
+        { name: '요거트1', image: '/manus-storage/snackpick-yogurt_c1e9f720.jpg' },
+        { name: '요거트2', image: '/manus-storage/snackpick-yogurt-2_331124b7.jpg' },
+        { name: '요거트3', image: '/manus-storage/snackpick-yogurt-3_090fa50e.jpg' },
+        { name: '요거트4', image: '/manus-storage/snackpick-yogurt-4_b6639571.jpg' },
       ],
     },
     {
       id: 'energybar',
       name: '에너지바',
       products: [
-        { name: '에너지바1', image: 'https://via.placeholder.com/400x300?text=Energy+Bar+1' },
-        { name: '에너지바2', image: 'https://via.placeholder.com/400x300?text=Energy+Bar+2' },
-        { name: '에너지바3', image: 'https://via.placeholder.com/400x300?text=Energy+Bar+3' },
-        { name: '에너지바4', image: 'https://via.placeholder.com/400x300?text=Energy+Bar+4' },
+        { name: '에너지바1', image: '/manus-storage/snackpick-energybar_19ee1163.jpg' },
+        { name: '에너지바2', image: '/manus-storage/snackpick-energybar-2_2937f4d9.jpg' },
+        { name: '에너지바3', image: '/manus-storage/snackpick-energybar-3_e885b123.jpg' },
+        { name: '에너지바4', image: '/manus-storage/snackpick-energybar-4_4d987614.jpg' },
       ],
     },
   ];
@@ -891,17 +891,19 @@ export default function Home() {
                 <div className="relative h-64 overflow-hidden group">
                   <img
                     src={solution.image}
+                    loading="lazy"
+                    decoding="async"
                     alt={solution.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{solution.name}</h3>
-                  <p className="text-[#007651] font-semibold mb-3">{solution.shortDesc}</p>
+                  <p className="text-brand-700 font-semibold mb-3">{solution.shortDesc}</p>
                   <p className="text-gray-600 mb-4">{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-[#007651]/10 text-[#007651] rounded-full text-sm">
+                      <span key={i} className="px-3 py-1 bg-brand-700/10 text-brand-700 rounded-full text-sm">
                         {tag}
                       </span>
                     ))}
@@ -953,6 +955,8 @@ export default function Home() {
                 <div className="relative h-96 md:h-auto overflow-hidden group cursor-grab active:cursor-grabbing">
                   <img
                     src={diets[currentDietIndex].image}
+                    loading="lazy"
+                    decoding="async"
                     alt={diets[currentDietIndex].title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -968,7 +972,7 @@ export default function Home() {
                           key={idx}
                           onClick={() => setCurrentDietIndex(idx)}
                           className={`w-3 h-3 rounded-full transition-all ${
-                            idx === currentDietIndex ? "bg-[#007651] w-8" : "bg-gray-300 hover:bg-gray-400"
+                            idx === currentDietIndex ? "bg-brand-700 w-8" : "bg-gray-300 hover:bg-gray-400"
                           }`}
                         />
                       ))}
@@ -1002,17 +1006,19 @@ export default function Home() {
                   <div className="relative h-64 overflow-hidden group">
                     <img
                       src={meal.image}
+                      loading="lazy"
+                      decoding="async"
                       alt={meal.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                    <p className="text-[#007651] font-semibold text-sm mb-3">{meal.summary}</p>
+                    <p className="text-brand-700 font-semibold text-sm mb-3">{meal.summary}</p>
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {meal.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-1 bg-[#007651]/10 text-[#007651] rounded-full text-xs font-medium">
+                        <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
                           {tag}
                         </span>
                       ))}
@@ -1032,17 +1038,19 @@ export default function Home() {
                     <div className="relative h-48 overflow-hidden group bg-gray-100 flex items-center justify-center">
                       <img
                         src={meal.image}
+                        loading="lazy"
+                        decoding="async"
                         alt={meal.name}
                         className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                      <p className="text-[#007651] font-semibold text-sm mb-3">{meal.summary}</p>
+                      <p className="text-brand-700 font-semibold text-sm mb-3">{meal.summary}</p>
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {meal.tags.map((tag, i) => (
-                          <span key={i} className="px-2 py-1 bg-[#007651]/10 text-[#007651] rounded-full text-xs font-medium">
+                          <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
                             {tag}
                           </span>
                         ))}
@@ -1077,10 +1085,10 @@ export default function Home() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`min-h-14 px-6 rounded-full font-semibold transition-all duration-200 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 active:scale-[0.98] ${
+                  className={`min-h-14 px-6 rounded-full font-semibold transition-all duration-200 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.98] ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#007651] text-white shadow-md hover:bg-[#008F69]'
-                      : 'bg-white text-[#333333] border border-[#B3B3B3] hover:bg-[#D7F9EF] hover:border-[#008F69] hover:text-[#007651]'
+                      ? 'bg-brand-700 text-white shadow-md hover:bg-brand-600'
+                      : 'bg-white text-gray-800 border border-gray-300 hover:bg-brand-50 hover:border-brand-600 hover:text-brand-700'
                   }`}
                 >
                   <span className="text-sm font-semibold">{category.name}</span>
@@ -1094,10 +1102,10 @@ export default function Home() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`min-h-12 px-3 rounded-full transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 active:scale-[0.98] ${
+                  className={`min-h-12 px-3 rounded-full transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.98] ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#007651] text-white shadow-md hover:bg-[#008F69]'
-                      : 'bg-white text-[#333333] border border-[#B3B3B3] hover:bg-[#D7F9EF] hover:border-[#008F69] hover:text-[#007651]'
+                      ? 'bg-brand-700 text-white shadow-md hover:bg-brand-600'
+                      : 'bg-white text-gray-800 border border-gray-300 hover:bg-brand-50 hover:border-brand-600 hover:text-brand-700'
                   }`}
                 >
                   <span className="text-xs font-semibold text-center leading-tight block">{category.name}</span>
@@ -1119,6 +1127,8 @@ export default function Home() {
                         <div className="relative w-full aspect-square overflow-hidden group bg-white">
                           <img
                             src={product.image}
+                            loading="lazy"
+                            decoding="async"
                             alt={product.name}
                             className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           />
@@ -1141,6 +1151,8 @@ export default function Home() {
                         <div className="relative h-32 overflow-hidden group bg-white">
                           <img
                             src={product.image}
+                            loading="lazy"
+                            decoding="async"
                             alt={product.name}
                             className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           />
@@ -1177,17 +1189,19 @@ export default function Home() {
                   <div className="relative h-64 overflow-hidden group">
                     <img
                       src={cafe.image}
+                      loading="lazy"
+                      decoding="async"
                       alt={cafe.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">{cafe.name}</h3>
-                    <p className="text-[#007651] font-semibold text-sm mb-3">{cafe.summary}</p>
+                    <p className="text-brand-700 font-semibold text-sm mb-3">{cafe.summary}</p>
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {cafe.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-1 bg-[#007651]/10 text-[#007651] rounded-full text-xs font-medium">
+                        <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
                           {tag}
                         </span>
                       ))}
@@ -1207,17 +1221,19 @@ export default function Home() {
                     <div className="relative h-48 overflow-hidden group bg-gray-100 flex items-center justify-center">
                       <img
                         src={cafe.image}
+                        loading="lazy"
+                        decoding="async"
                         alt={cafe.name}
                         className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">{cafe.name}</h3>
-                      <p className="text-[#007651] font-semibold text-sm mb-3">{cafe.summary}</p>
+                      <p className="text-brand-700 font-semibold text-sm mb-3">{cafe.summary}</p>
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {cafe.tags.map((tag, i) => (
-                          <span key={i} className="px-2 py-1 bg-[#007651]/10 text-[#007651] rounded-full text-xs font-medium">
+                          <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
                             {tag}
                           </span>
                         ))}
@@ -1235,7 +1251,7 @@ export default function Home() {
       <section
         ref={(el) => { if (el) sectionRefs.current.process = el; }}
         id="process"
-        className="py-20 bg-gradient-to-r from-[#007651] to-[#008F69]"
+        className="py-20 bg-gradient-to-r from-brand-700 to-brand-600"
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
@@ -1311,6 +1327,8 @@ export default function Home() {
                       <div key={`logo-row1-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] md:w-[180px] md:h-[80px] sm:w-[140px] sm:h-[60px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
+                          loading="lazy"
+                          decoding="async"
                           alt={company.name}
                           className="max-h-[56px] md:max-h-[56px] sm:max-h-[40px] max-w-[160px] md:max-w-[160px] sm:max-w-[120px] w-auto h-auto object-contain"
                         />
@@ -1329,6 +1347,8 @@ export default function Home() {
                       <div key={`logo-row2-${iteration}-${idx}`} className="flex-shrink-0 w-[180px] h-[80px] md:w-[180px] md:h-[80px] sm:w-[140px] sm:h-[60px] flex items-center justify-center hover:scale-110 transition-transform duration-300">
                         <img
                           src={company.logo}
+                          loading="lazy"
+                          decoding="async"
                           alt={company.name}
                           className="max-h-[56px] md:max-h-[56px] sm:max-h-[40px] max-w-[160px] md:max-w-[160px] sm:max-w-[120px] w-auto h-auto object-contain"
                         />
@@ -1363,6 +1383,8 @@ export default function Home() {
                 <div className="relative rounded-[12px] overflow-hidden bg-gray-200 w-24 h-24 aspect-square flex-shrink-0 group">
                   <img
                     src={review.image}
+                    loading="lazy"
+                    decoding="async"
                     alt={review.companyType}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -1391,6 +1413,8 @@ export default function Home() {
                 <div className="relative rounded-[16px] overflow-hidden bg-gray-200 w-40 h-40 aspect-square flex-shrink-0 group">
                   <img
                     src={review.image}
+                    loading="lazy"
+                    decoding="async"
                     alt={review.companyType}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -1452,6 +1476,8 @@ export default function Home() {
                 <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[3/4]">
                   <img
                     src={story.image}
+                    loading="lazy"
+                    decoding="async"
                     alt={story.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
@@ -1468,7 +1494,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-[#007651]">
+      <section className="py-20 bg-brand-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
             <h2 className="type-title-1 text-white mb-2 text-center" style={{fontSize: 'clamp(24px, 6vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
@@ -1562,7 +1588,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowPrivacyModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-[#007651] text-white rounded-lg hover:bg-[#008F69] transition"
+                className="mt-6 w-full px-4 py-2 bg-brand-700 text-white rounded-lg hover:bg-brand-600 transition"
               >
                 닫기
               </button>
@@ -1584,7 +1610,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowTermsModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-[#007651] text-white rounded-lg hover:bg-[#008F69] transition"
+                className="mt-6 w-full px-4 py-2 bg-brand-700 text-white rounded-lg hover:bg-brand-600 transition"
               >
                 닫기
               </button>

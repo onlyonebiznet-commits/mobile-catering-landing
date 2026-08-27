@@ -6,6 +6,7 @@ import { AlertCircle, Download, RefreshCw, LogOut, Search, Filter } from "lucide
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { maskName, maskPhone, maskEmail, maskCompanyName } from "@/lib/maskingUtils";
 import ConsultationDetailModal from "@/components/ConsultationDetailModal";
+import { isWithinDateRange } from "@/lib/dateRange";
 
 interface ConsultationRequest {
   id: number;
@@ -34,6 +35,8 @@ export default function Admin() {
   const [consultationStatusFilter, setConsultationStatusFilter] = useState("all");
   const [consultationServiceFilter, setConsultationServiceFilter] = useState("all");
   const [consultationSortOrder, setConsultationSortOrder] = useState<"newest" | "oldest">("newest");
+  const [consultationStartDate, setConsultationStartDate] = useState("");
+  const [consultationEndDate, setConsultationEndDate] = useState("");
   
 
 
@@ -201,8 +204,21 @@ export default function Admin() {
   };
 
   // Phase 2: 검색 및 필터링 함수
-  const filterAndSortData = (data: ConsultationRequest[], searchQuery: string, statusFilter: string, serviceFilter: string, sortOrder: "newest" | "oldest") => {
-    let filtered = data;
+  const filterAndSortData = (
+    data: ConsultationRequest[],
+    searchQuery: string,
+    statusFilter: string,
+    serviceFilter: string,
+    sortOrder: "newest" | "oldest",
+    startDate: string,
+    endDate: string,
+  ) => {
+    let filtered = [...data];
+
+    // 접수일 기간 필터: 시작일과 종료일을 모두 포함
+    if (startDate || endDate) {
+      filtered = filtered.filter(item => isWithinDateRange(item.createdAt, startDate, endDate));
+    }
 
     // 검색 필터
     if (searchQuery) {
@@ -240,7 +256,9 @@ export default function Admin() {
     consultationSearchQuery,
     consultationStatusFilter,
     consultationServiceFilter,
-    consultationSortOrder
+    consultationSortOrder,
+    consultationStartDate,
+    consultationEndDate,
   );
 
   // Phase 2: CSV 다운로드 함수 (개선된 컬럼 순서)
@@ -422,18 +440,43 @@ export default function Admin() {
               </div>
             </div>
 
-            {/* 두 번째 줄: 총 n건 (왼쪽) | 정렬 드롭다운 (오른쪽) */}
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">총 {filteredConsultations.length}건</span>
-              <select
+            {/* 두 번째 줄: 접수일 기간 필터 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end">
+              <label className="space-y-1">
+                <span className="block text-xs font-medium text-gray-600">접수 시작일</span>
+                <input
+                  type="date"
+                  value={consultationStartDate}
+                  max={consultationEndDate || undefined}
+                  onChange={(e) => setConsultationStartDate(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                />
+              </label>
+              <label className="space-y-1">
+                <span className="block text-xs font-medium text-gray-600">접수 종료일</span>
+                <input
+                  type="date"
+                  value={consultationEndDate}
+                  min={consultationStartDate || undefined}
+                  onChange={(e) => setConsultationEndDate(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                />
+              </label>
+              <div className="sm:col-span-2 md:col-span-2 flex items-center justify-between gap-3">
+                <span className="text-sm text-gray-600">총 {filteredConsultations.length}건</span>
+                <select
                 value={consultationSortOrder}
                 onChange={(e) => setConsultationSortOrder(e.target.value as "newest" | "oldest")}
                 className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#007651]"
               >
                 <option value="newest">최신순</option>
                 <option value="oldest">오래된순</option>
-              </select>
+                </select>
+              </div>
             </div>
+            {consultationStartDate && consultationEndDate && consultationStartDate > consultationEndDate && (
+              <p className="text-sm text-status-error" role="alert">시작일은 종료일보다 늦을 수 없습니다.</p>
+            )}
           </div>
 
           {/* 테이블 */}

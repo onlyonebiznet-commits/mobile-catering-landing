@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { getApiBaseUrl } from '@/lib/api';
+import { isWithinDateRange } from '@/lib/dateRange';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -100,6 +101,8 @@ export default function AdminDashboard() {
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [updatingId, setUpdatingId] = useState<number | null>(null);
 
   const getToken = () => localStorage.getItem('adminToken');
@@ -257,13 +260,16 @@ export default function AdminDashboard() {
   };
 
   const filteredConsultations = consultations.filter(c => {
-    const matchesSearch = 
+    const matchesSearch =
       c.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       c.manager.toLowerCase().includes(searchTerm.toLowerCase()) ||
       c.phone.includes(searchTerm);
     const matchesStatus = !statusFilter || c.status === statusFilter;
-    return matchesSearch && matchesStatus;
+    const matchesDate = isWithinDateRange(c.createdAt, startDate, endDate);
+    return matchesSearch && matchesStatus && matchesDate;
   });
+
+  const isDateRangeInvalid = Boolean(startDate && endDate && startDate > endDate);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -307,7 +313,27 @@ export default function AdminDashboard() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full"
           />
-          <div className="flex gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+            <label className="space-y-1">
+              <span className="block text-xs font-medium text-slate-600">접수 시작일</span>
+              <input
+                type="date"
+                value={startDate}
+                max={endDate || undefined}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm"
+              />
+            </label>
+            <label className="space-y-1">
+              <span className="block text-xs font-medium text-slate-600">접수 종료일</span>
+              <input
+                type="date"
+                value={endDate}
+                min={startDate || undefined}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm"
+              />
+            </label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
@@ -318,6 +344,9 @@ export default function AdminDashboard() {
               <option value="processing">처리중</option>
               <option value="completed">완료</option>
             </select>
+            <div className="text-sm text-slate-600 lg:text-right">
+              {isDateRangeInvalid ? "시작일은 종료일보다 늦을 수 없습니다." : `필터 결과 ${filteredConsultations.length}건`}
+            </div>
           </div>
         </div>
 
