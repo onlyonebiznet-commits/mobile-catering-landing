@@ -51,7 +51,7 @@ const statusBadgeVariants = cva(
 );
 
 const promoBadgeVariants = cva(
-  "inline-flex items-center justify-center rounded-full whitespace-nowrap shrink-0 font-medium",
+  "inline-flex items-center justify-center whitespace-nowrap shrink-0 font-medium",
   {
     variants: {
       color: {
@@ -62,8 +62,8 @@ const promoBadgeVariants = cva(
         yellow: "bg-status-warning text-gray-900",
       },
       appearance: {
-        filled: "border border-transparent",
-        outlined: "border bg-white",
+        filled: "rounded-full border border-transparent",
+        outlined: "rounded-md border bg-white",
       },
       size: badgeSizeVariants,
     },
@@ -72,7 +72,7 @@ const promoBadgeVariants = cva(
       { color: "black", appearance: "outlined", className: "border-gray-700 bg-gray-50 text-gray-900" },
       { color: "red", appearance: "outlined", className: "border-status-error bg-status-error/10 text-status-error" },
       { color: "blue", appearance: "outlined", className: "border-status-info bg-status-info/10 text-status-info" },
-      { color: "yellow", appearance: "outlined", className: "border-status-warning bg-status-warning/10 text-gray-900" },
+      { color: "yellow", appearance: "outlined", className: "border-status-warning bg-white text-gray-800" },
     ],
     defaultVariants: {
       color: "green",

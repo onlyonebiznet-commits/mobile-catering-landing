@@ -53,3 +53,6 @@ Text input 가이드 토큰 반영 이후 FO 데스크톱(1280px)과 모바일(3
 
 ## Badge 가이드 적용 후 FO 반응형 검증
 Badge 컴포넌트에 StatusBadge의 중립·긍정·주의·경고 상태와 PromoBadge의 filled/outlined 색상 프리셋, large/medium/small 크기를 추가했습니다. FO 카드의 기존 인라인 태그는 PromoBadge green outlined small로 교체했습니다. 데스크톱과 모바일 루트 화면에서 hero·CTA·네비게이션 레이아웃이 유지되는 것을 확인했으며, Badge·폼 관련 회귀 테스트와 TypeScript·프로덕션 빌드를 통과했습니다.
+
+## PromoBadge 예시 스타일 적용 검증
+PromoBadge outlined를 첨부 예시처럼 둥근 사각형(`rounded-md`)·화이트 배경·옐로 상태 테두리·짙은 텍스트 조합으로 변경하고, FO 카드 태그의 색상을 yellow outlined small로 적용했습니다. PC와 모바일 전체 페이지 캡처에서 스낵픽·식단·사내카페 태그가 동일한 외형으로 표시되고 카드 레이아웃이 유지되는 것을 확인했습니다.

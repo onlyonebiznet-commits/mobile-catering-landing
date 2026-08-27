@@ -811,3 +811,12 @@
 - [x] Badge 회귀 테스트·TypeScript·프로덕션 빌드 검증
 - [x] FO PC·모바일 뱃지 화면 검증
 - [x] Badge 가이드 변경 체크포인트 저장
+
+## PromoBadge 예시 디자인 재적용 (신규 요청)
+- [x] PromoBadge outlined를 화이트 배경·옐로 아웃라인으로 변경
+- [x] 뱃지 모서리를 둥근 사각형으로 조정하고 pill 형태 해제
+- [x] 예시처럼 짙은 텍스트와 얇은 테두리 대비 적용
+- [x] FO 카드 태그 뱃지에 동일 스타일 유지
+- [x] Badge 회귀 테스트·TypeScript·프로덕션 빌드 검증
+- [x] FO PC·모바일 뱃지 화면 검증
+- [x] PromoBadge 예시 디자인 변경 체크포인트 저장
