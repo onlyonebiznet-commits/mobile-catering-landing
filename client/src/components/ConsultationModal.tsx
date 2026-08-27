@@ -518,10 +518,11 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   checked={agreements.allAgree}
                   onCheckedChange={(checked) => handleAgreementChange("allAgree", checked as boolean)}
                   onClick={(e) => e.stopPropagation()}
+                  onPointerDown={(e) => e.stopPropagation()}
                 />
                 <Label
                   htmlFor="allAgree"
-                  className="text-sm font-medium cursor-pointer"
+                  className="form-checkbox-label font-medium cursor-pointer"
                   onClick={(e) => e.stopPropagation()}
                   onPointerDown={(e) => e.stopPropagation()}
                 >
@@ -543,7 +544,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       />
                       <Label
                         htmlFor="personalInfoCollection"
-                        className="text-xs text-gray-600 cursor-pointer whitespace-nowrap"
+                        className="form-checkbox-label text-gray-600 cursor-pointer whitespace-nowrap"
                         onClick={(e) => e.stopPropagation()}
                         onPointerDown={(e) => e.stopPropagation()}
                       >
@@ -603,7 +604,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       />
                       <Label
                         htmlFor="marketingConsent"
-                        className="text-xs text-gray-600 cursor-pointer whitespace-nowrap"
+                        className="form-checkbox-label text-gray-600 cursor-pointer whitespace-nowrap"
                         onClick={(e) => e.stopPropagation()}
                         onPointerDown={(e) => e.stopPropagation()}
                       >
@@ -658,7 +659,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       />
                       <Label
                         htmlFor="adConsent"
-                        className="text-xs text-gray-600 cursor-pointer whitespace-nowrap"
+                        className="form-checkbox-label text-gray-600 cursor-pointer whitespace-nowrap"
                         onClick={(e) => e.stopPropagation()}
                         onPointerDown={(e) => e.stopPropagation()}
                       >
@@ -697,7 +698,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                             />
                             <Label
                               htmlFor="sms-consent"
-                              className="text-xs cursor-pointer"
+                              className="form-checkbox-label cursor-pointer"
                               onClick={(e) => e.stopPropagation()}
                               onPointerDown={(e) => e.stopPropagation()}
                             >
@@ -717,7 +718,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                             />
                             <Label
                               htmlFor="email-consent"
-                              className="text-xs cursor-pointer"
+                              className="form-checkbox-label cursor-pointer"
                               onClick={(e) => e.stopPropagation()}
                               onPointerDown={(e) => e.stopPropagation()}
                             >
@@ -737,7 +738,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                             />
                             <Label
                               htmlFor="kakao-consent"
-                              className="text-xs cursor-pointer"
+                              className="form-checkbox-label cursor-pointer"
                               onClick={(e) => e.stopPropagation()}
                               onPointerDown={(e) => e.stopPropagation()}
                             >

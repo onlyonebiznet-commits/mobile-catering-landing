@@ -458,6 +458,84 @@
     }
   }
 
+  /* Checkbox states and sizing from the attached Checkbox guide */
+  .form-checkbox-control {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: 0 0 auto;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.25rem;
+    background: #ffffff;
+    color: #ffffff;
+    box-shadow: none;
+    outline: none;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
+  }
+
+  .form-checkbox-control[data-state="checked"] {
+    border-color: var(--brand-700);
+    background: var(--brand-700);
+    color: #ffffff;
+  }
+
+  .form-checkbox-control[data-state="indeterminate"] {
+    border-color: var(--brand-700);
+    background: var(--brand-700);
+    color: #ffffff;
+  }
+
+  .form-checkbox-control:focus-visible {
+    border-color: var(--brand-700);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-700) 20%, transparent);
+  }
+
+  .form-checkbox-control[aria-invalid="true"] {
+    border-color: var(--status-error);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-error) 16%, transparent);
+  }
+
+  .form-checkbox-control:disabled {
+    cursor: not-allowed;
+    border-color: var(--gray-300);
+    background: var(--gray-50);
+    color: var(--gray-400);
+    opacity: 1;
+  }
+
+  .form-checkbox-control[data-state="checked"]:disabled,
+  .form-checkbox-control[data-state="indeterminate"]:disabled {
+    border-color: var(--gray-300);
+    background: var(--gray-300);
+    color: #ffffff;
+  }
+
+  .form-checkbox-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .form-checkbox-label {
+    color: var(--gray-800);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+  }
+
+  @media (min-width: 768px) {
+    .form-checkbox-control {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .form-checkbox-label {
+      font-size: 0.8125rem;
+      line-height: 1.125rem;
+    }
+  }
+
   /* Typography scale from the CJ-onlyone guide */
   .type-title-1 {
     font-family: var(--font-title);

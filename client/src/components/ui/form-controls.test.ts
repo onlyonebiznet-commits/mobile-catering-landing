@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 const input = readFileSync(resolve(process.cwd(), "client/src/components/ui/input.tsx"), "utf8");
 const textarea = readFileSync(resolve(process.cwd(), "client/src/components/ui/textarea.tsx"), "utf8");
 const select = readFileSync(resolve(process.cwd(), "client/src/components/ui/select.tsx"), "utf8");
+const checkbox = readFileSync(resolve(process.cwd(), "client/src/components/ui/checkbox.tsx"), "utf8");
 const styles = readFileSync(resolve(process.cwd(), "client/src/index.css"), "utf8");
 
 describe("Text input guide controls", () => {
@@ -31,6 +32,16 @@ describe("Text input guide controls", () => {
     expect(styles).toContain("height: 3rem");
     expect(select).toContain("data-[validation-state=success]");
     expect(select).toContain("aria-invalid:border-status-error");
+  });
+
+  it("uses the checkbox guide control, indicator, and state tokens", () => {
+    expect(checkbox).toContain("form-checkbox-control");
+    expect(checkbox).toContain("form-checkbox-indicator");
+    expect(styles).toContain(".form-checkbox-control[data-state=\"checked\"]");
+    expect(styles).toContain(".form-checkbox-control:focus-visible");
+    expect(styles).toContain(".form-checkbox-control:disabled");
+    expect(styles).toContain("width: 1.25rem");
+    expect(styles).toContain("width: 1rem");
   });
 });
 
