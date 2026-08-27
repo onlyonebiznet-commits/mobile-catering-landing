@@ -50,3 +50,6 @@
 
 ## Text input 변경 후 FO 반응형 회귀
 Text input 가이드 토큰 반영 이후 FO 데스크톱(1280px)과 모바일(375px) 루트 화면을 확인했습니다. 메인 배너 텍스트·CTA 정렬, 모바일 3열 네비게이션의 상단 노출, 기존 hero 레이아웃이 깨지지 않았습니다. 상담 폼 자체의 입력 상태는 관련 컴포넌트 테스트·타입 검사·프로덕션 빌드로 검증했습니다.
+
+## Badge 가이드 적용 후 FO 반응형 검증
+Badge 컴포넌트에 StatusBadge의 중립·긍정·주의·경고 상태와 PromoBadge의 filled/outlined 색상 프리셋, large/medium/small 크기를 추가했습니다. FO 카드의 기존 인라인 태그는 PromoBadge green outlined small로 교체했습니다. 데스크톱과 모바일 루트 화면에서 hero·CTA·네비게이션 레이아웃이 유지되는 것을 확인했으며, Badge·폼 관련 회귀 테스트와 TypeScript·프로덕션 빌드를 통과했습니다.

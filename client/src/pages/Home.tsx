@@ -12,6 +12,7 @@ import PCNavigation from "@/components/PCNavigation";
 import SectionNavigation from "@/components/SectionNavigation";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import { PromoBadge } from "@/components/ui/badge";
 
 interface StatisticItemProps {
   end: number;
@@ -903,9 +904,9 @@ export default function Home() {
                   <p className="text-gray-600 mb-4">{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-brand-700/10 text-brand-700 rounded-full text-sm">
+                      <PromoBadge key={i} color="green" appearance="outlined" size="small">
                         {tag}
-                      </span>
+                      </PromoBadge>
                     ))}
                   </div>
                   <Button
@@ -1018,9 +1019,9 @@ export default function Home() {
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {meal.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
+                        <PromoBadge key={i} color="green" appearance="outlined" size="small">
                           {tag}
-                        </span>
+                        </PromoBadge>
                       ))}
                     </div>
                   </div>
@@ -1050,9 +1051,9 @@ export default function Home() {
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {meal.tags.map((tag, i) => (
-                          <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
+                          <PromoBadge key={i} color="green" appearance="outlined" size="small">
                             {tag}
-                          </span>
+                          </PromoBadge>
                         ))}
                       </div>
                     </div>
@@ -1201,9 +1202,9 @@ export default function Home() {
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {cafe.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
+                        <PromoBadge key={i} color="green" appearance="outlined" size="small">
                           {tag}
-                        </span>
+                        </PromoBadge>
                       ))}
                     </div>
                   </div>
@@ -1233,9 +1234,9 @@ export default function Home() {
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {cafe.tags.map((tag, i) => (
-                          <span key={i} className="px-2 py-1 bg-brand-700/10 text-brand-700 rounded-full text-xs font-medium">
+                          <PromoBadge key={i} color="green" appearance="outlined" size="small">
                             {tag}
-                          </span>
+                          </PromoBadge>
                         ))}
                       </div>
                     </div>
