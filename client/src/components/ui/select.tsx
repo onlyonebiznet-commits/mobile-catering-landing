@@ -35,7 +35,7 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "form-field-control flex items-center justify-between gap-2 whitespace-nowrap focus-visible:border-primary focus-visible:ring-primary/20 focus-visible:ring-[3px] aria-invalid:border-status-error aria-invalid:ring-status-error/20 disabled:cursor-not-allowed data-[size=default]:h-12 data-[size=sm]:h-10 data-[validation-state=success]:border-status-success data-[validation-state=success]:ring-status-success/20 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "form-field-control flex items-center justify-between gap-2 whitespace-nowrap focus-visible:border-primary focus-visible:ring-primary/20 focus-visible:ring-[3px] aria-invalid:border-status-error aria-invalid:ring-status-error/20 disabled:cursor-not-allowed data-[size=sm]:h-10 data-[validation-state=success]:border-status-success data-[validation-state=success]:ring-status-success/20 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

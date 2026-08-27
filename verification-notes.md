@@ -47,3 +47,6 @@
 
 ## FO 상담·자료 신청 폼 Text input 가이드 검증
 상담받기와 자료 다운받기 CTA가 공통으로 여는 `ConsultationModal`의 입력 요소를 동일한 Text input 토큰으로 정리했습니다. 라벨·필수 표시·helper·오류 메시지의 계층과 `aria-describedby` 연결을 적용했고, Input·Textarea·SelectTrigger에 모바일/데스크톱 크기, 기본·focus·disabled·success·error 상태 토큰을 반영했습니다. 활성 FO 폼의 이전 인라인 입력 스타일 잔여 여부를 정적 검색으로 확인했으며, FO 테스트와 프로덕션 빌드를 통과했습니다.
+
+## Text input 변경 후 FO 반응형 회귀
+Text input 가이드 토큰 반영 이후 FO 데스크톱(1280px)과 모바일(375px) 루트 화면을 확인했습니다. 메인 배너 텍스트·CTA 정렬, 모바일 3열 네비게이션의 상단 노출, 기존 hero 레이아웃이 깨지지 않았습니다. 상담 폼 자체의 입력 상태는 관련 컴포넌트 테스트·타입 검사·프로덕션 빌드로 검증했습니다.

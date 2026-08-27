@@ -27,7 +27,8 @@ describe("Text input guide controls", () => {
 
   it("uses the guide select trigger dimensions and error state", () => {
     expect(select).toContain("form-field-control");
-    expect(select).toContain("data-[size=default]:h-12");
+    expect(select).toContain("data-[size=sm]:h-10");
+    expect(styles).toContain("height: 3rem");
     expect(select).toContain("data-[validation-state=success]");
     expect(select).toContain("aria-invalid:border-status-error");
   });
