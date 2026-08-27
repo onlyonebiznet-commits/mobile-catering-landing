@@ -766,7 +766,7 @@ export default function Home() {
                 </div>
                 
                 {/* 간단한 설명 - MO: 18px, PC: 36px */}
-                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: '18px', lineHeight: '1.4'}}>
+                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -1462,7 +1462,7 @@ export default function Home() {
       <section className="py-20 bg-[#007651]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
             <h2 className="type-title-1 text-white mb-2 text-center" style={{fontSize: 'clamp(24px, 6vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
-            <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
+            <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
           <div className="flex justify-center scroll-reveal-stagger" data-reveal-item="0">
             <Button
               type="button"
