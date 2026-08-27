@@ -220,6 +220,22 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+
+          const packagePath = id.split("node_modules/").pop() ?? id;
+          const packageParts = packagePath.split("/");
+          const packageName = packageParts[0].startsWith("@")
+            ? `${packageParts[0]}-${packageParts[1] ?? "package"}`
+            : packageParts[0];
+          const safePackageName = packageName.replace(/[^a-zA-Z0-9_-]/g, "-");
+
+          return `vendor-${safePackageName}`;
+        },
+      },
+    },
   },
   server: {
     port: 3000,
