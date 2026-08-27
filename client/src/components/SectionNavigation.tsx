@@ -61,7 +61,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
       {/* Mobile Version */}
       <section className="md:hidden w-full bg-white flex items-center justify-center min-h-[300px]">
         <div className="container">
-          <div className="grid grid-cols-4 gap-3 w-full">
+          <div className="grid grid-cols-3 gap-3 w-full">
             {sections.map((section) => {
               const Icon = section.icon;
               const isActive = activeSection === section.id;

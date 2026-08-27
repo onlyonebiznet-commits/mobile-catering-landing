@@ -26,6 +26,15 @@ describe("navigation menu configuration", () => {
     }
   });
 
+  it("uses a three-column grid for the mobile navigation", () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/SectionNavigation.tsx"),
+      "utf8"
+    );
+    expect(source).toContain('className="grid grid-cols-3 gap-3 w-full"');
+    expect(source).not.toContain('className="grid grid-cols-4 gap-3 w-full"');
+  });
+
   it("keeps the process content section available as a page destination", () => {
     const source = readFileSync(
       resolve(process.cwd(), "client/src/pages/Home.tsx"),
