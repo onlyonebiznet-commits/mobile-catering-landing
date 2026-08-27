@@ -820,3 +820,12 @@
 - [x] Badge 회귀 테스트·TypeScript·프로덕션 빌드 검증
 - [x] FO PC·모바일 뱃지 화면 검증
 - [x] PromoBadge 예시 디자인 변경 체크포인트 저장
+
+## FO PromoBadge filled pill 재적용 (신규 요청)
+- [x] FO 카드 태그 뱃지를 옐로·오렌지 filled pill로 변경
+- [x] 화이트 텍스트가 아닌 예시의 짙은 텍스트 대비 적용
+- [x] 테두리 없는 단색 배경과 pill radius 적용
+- [x] PC·모바일 태그 뱃지 사용처에 동일 스타일 적용
+- [x] Badge 회귀 테스트·TypeScript·프로덕션 빌드 검증
+- [x] FO PC·모바일 뱃지 화면 검증
+- [x] filled pill 변경 체크포인트 저장

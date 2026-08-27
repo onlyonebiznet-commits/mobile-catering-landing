@@ -56,3 +56,6 @@ Badge 컴포넌트에 StatusBadge의 중립·긍정·주의·경고 상태와 Pr
 
 ## PromoBadge 예시 스타일 적용 검증
 PromoBadge outlined를 첨부 예시처럼 둥근 사각형(`rounded-md`)·화이트 배경·옐로 상태 테두리·짙은 텍스트 조합으로 변경하고, FO 카드 태그의 색상을 yellow outlined small로 적용했습니다. PC와 모바일 전체 페이지 캡처에서 스낵픽·식단·사내카페 태그가 동일한 외형으로 표시되고 카드 레이아웃이 유지되는 것을 확인했습니다.
+
+## FO PromoBadge filled pill 재적용 검증
+첨부 예시 기반으로 FO 카드 태그를 `yellow`·`filled`·`small` PromoBadge로 전환했습니다. `#FF9700` 경고색 단색 배경, 짙은 텍스트, 테두리 없는 `rounded-full` pill 형태가 적용됩니다. PC·모바일 전체 화면에서 식단·사내카페·키친리스 카드 태그의 외형과 카드 레이아웃을 확인했으며, Badge·폼 회귀 테스트 13개, TypeScript와 프로덕션 빌드를 통과했습니다.
