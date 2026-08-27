@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Utensils, Package, Candy, Coffee, Workflow, MessageSquare, HelpCircle } from 'lucide-react';
+import { Building2, Utensils, Package, Candy, Coffee, Workflow, MessageSquare } from 'lucide-react';
 
 interface SectionNavigationProps {
   activeSection: string;
@@ -14,7 +14,6 @@ const sections = [
   { id: 'cafe', label: '사내카페', icon: Coffee },
   { id: 'process', label: '프로세스', icon: Workflow },
   { id: 'reviews', label: '고객후기', icon: MessageSquare },
-  { id: 'faq', label: 'FAQ', icon: HelpCircle },
 ];
 
 export default function SectionNavigation({ activeSection, onSectionClick }: SectionNavigationProps) {
@@ -23,7 +22,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
       {/* PC Version */}
       <section className="hidden md:block w-full bg-white">
         <div className="container py-16">
-          <div className="grid grid-cols-8 gap-6 w-full">
+          <div className="grid grid-cols-7 gap-6 w-full">
             {sections.map((section) => {
               const Icon = section.icon;
               const isActive = activeSection === section.id;

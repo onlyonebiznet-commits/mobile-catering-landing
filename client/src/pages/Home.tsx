@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ChevronDown, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
@@ -52,7 +52,6 @@ export default function Home() {
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
@@ -70,7 +69,6 @@ export default function Home() {
     cafe: null,
     process: null,
     reviews: null,
-    faq: null,
   });
 
   useEffect(() => {
@@ -550,28 +548,6 @@ export default function Home() {
     }
   };
 
-  const faqs = [
-    {
-      question: "프레시밀온 서비스는 어떻게 신청하나요?",
-      answer: "위의 '지금 상담받기' 버튼을 클릭하여 간단한 정보를 입력하시면, 담당자가 연락드려 자세한 상담을 진행합니다.",
-    },
-    {
-      question: "최소 주문 식수는 얼마인가요?",
-      answer: "회사 규모와 필요에 따라 유연하게 조정 가능합니다. 상담 시 최적의 플랜을 제안해드립니다.",
-    },
-    {
-      question: "식단 변경이 가능한가요?",
-      answer: "네, 월 1회 이상 식단 변경이 가능하며, 직원들의 선호도를 반영하여 맞춤형 메뉴를 제공합니다.",
-    },
-    {
-      question: "배송 지역에 제한이 있나요?",
-      answer: "전국 대부분 지역에 배송 가능합니다. 구체적인 지역은 상담 시 확인해주시기 바랍니다.",
-    },
-    {
-      question: "식품 위생 기준은 어떻게 되나요?",
-      answer: "HACCP 인증을 받았으며, 매일 엄격한 위생 관리와 검사를 통해 안전한 식사를 보장합니다.",
-    },
-  ];
 
     const companies = [
     { name: "아시아나항공", logo: "/manus-storage/asia-na-hwang-gong_9a54cda7.png" },
@@ -1472,59 +1448,6 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section with Accordion */}
-      <section
-        ref={(el) => { if (el) sectionRefs.current.faq = el; }}
-        id="faq"
-        className="py-20 bg-gray-50"
-      >
-        <div className="container">
-          <div className="text-center mb-16 scroll-reveal">
-            <h2 className="text-[30px] md:text-[40px] font-bold text-gray-900 mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>자주 묻는 질문</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온 서비스에 대한 자주 묻는 질문들입니다</p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-sm hover:shadow-md transition scroll-reveal-stagger" data-reveal-item={idx}>
-                <button
-                  onClick={() => setExpandedFAQ(expandedFAQ === idx ? null : idx)}
-                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition"
-                >
-                  <span className="font-semibold text-gray-900 text-left">{faq.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#007651] transition-transform duration-300 ${
-                      expandedFAQ === idx ? "transform rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {expandedFAQ === idx && (
-                  <div className="px-6 py-4 border-t bg-gray-50 animate-in fade-in slide-in-from-top-2 duration-300">
-                    <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Video in FAQ Section */}
-          <div className="mt-16 bg-black rounded-lg overflow-hidden aspect-video w-full scroll-reveal">
-            <video
-              width="100%"
-              height="100%"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="/manus-storage/freshmelon-video_d7ab0bca.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </section>
