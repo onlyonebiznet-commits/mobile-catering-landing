@@ -59,3 +59,6 @@ PromoBadge outlined를 첨부 예시처럼 둥근 사각형(`rounded-md`)·화�
 
 ## FO PromoBadge filled pill 재적용 검증
 첨부 예시 기반으로 FO 카드 태그를 `yellow`·`filled`·`small` PromoBadge로 전환했습니다. `#FF9700` 경고색 단색 배경, 짙은 텍스트, 테두리 없는 `rounded-full` pill 형태가 적용됩니다. PC·모바일 전체 화면에서 식단·사내카페·키친리스 카드 태그의 외형과 카드 레이아웃을 확인했으며, Badge·폼 회귀 테스트 13개, TypeScript와 프로덕션 빌드를 통과했습니다.
+
+## FO PromoBadge 최신 아웃라인 복원 검증
+최신 첨부 예시에 맞춰 FO 카드 태그를 yellow outlined small로 복원했습니다. 화이트 배경, `#FF9700` 얇은 테두리, 짙은 텍스트, `rounded-md` 둥근 사각형을 유지합니다. PC·모바일 전체 화면에서 식단·사내카페·키친리스 카드의 태그 표시와 기존 카드 레이아웃을 확인했으며, Badge·폼 회귀 테스트 13개, TypeScript·프로덕션 빌드를 통과했습니다.

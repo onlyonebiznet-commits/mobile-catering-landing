@@ -829,3 +829,12 @@
 - [x] Badge 회귀 테스트·TypeScript·프로덕션 빌드 검증
 - [x] FO PC·모바일 뱃지 화면 검증
 - [x] filled pill 변경 체크포인트 저장
+
+## FO PromoBadge 최신 아웃라인 복원 (신규 요청)
+- [x] FO 카드 태그 뱃지를 filled에서 outlined로 복원
+- [x] 화이트 배경·얇은 옐로/오렌지 테두리·짙은 텍스트 적용
+- [x] pill보다 짧은 둥근 사각형 radius로 조정
+- [x] PC·모바일 태그 뱃지 사용처에 동일 스타일 적용
+- [x] Badge 회귀 테스트·TypeScript·프로덕션 빌드 검증
+- [x] FO PC·모바일 뱃지 화면 검증
+- [x] 최신 아웃라인 변경 체크포인트 저장
