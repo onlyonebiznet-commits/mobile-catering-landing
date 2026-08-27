@@ -25,6 +25,16 @@ describe("button color guide variants", () => {
     expect(buttonVariants({ size: "icon" })).toContain("size-9");
   });
 
+  it("uses the inverse contrast treatment for the on-brand banner button", () => {
+    const classes = buttonVariants({ variant: "on-brand", size: "large" });
+
+    expect(classes).toContain("bg-white");
+    expect(classes).toContain("text-primary");
+    expect(classes).toContain("hover:bg-primary-hover");
+    expect(classes).toContain("hover:text-white");
+    expect(classes).toContain("h-12");
+  });
+
   it("uses the same GREEN600 hover token for secondary buttons", () => {
     const classes = buttonVariants({ variant: "secondary" });
 

@@ -1464,12 +1464,15 @@ export default function Home() {
             <h2 className="type-title-1 text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
           <div className="flex justify-center scroll-reveal-stagger" data-reveal-item="0">
-            <button
+            <Button
+              type="button"
+              variant="on-brand"
+              size="large"
               onClick={() => setConsultationOpen(true)}
-              className="px-8 py-3 bg-white text-[#007651] rounded-lg hover:bg-[#008F69] hover:text-white border-2 border-white transition duration-300 font-semibold"
+              data-event="consultation_click"
             >
               지금 상담받기
-            </button>
+            </Button>
           </div>
         </div>
       </section>
