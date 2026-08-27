@@ -333,9 +333,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           <div className="px-6 py-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 300px)' }}>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Company Name */}
-            <div className="space-y-2">
-              <Label htmlFor="companyName" className="text-sm font-medium text-gray-700">
-                회사명 <span className="text-status-error">*</span>
+            <div className="space-y-1.5">
+              <Label htmlFor="companyName" className="form-field-label">
+                회사명 <span className="text-status-error" aria-hidden="true">*</span>
               </Label>
               <Input
                 id="companyName"
@@ -343,19 +343,21 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="예: 프레시 테크"
                 value={formData.companyName}
                 onChange={handleInputChange}
+                aria-required="true"
                 aria-invalid={Boolean(errors.companyName)}
-                aria-describedby={errors.companyName ? "companyName-error" : undefined}
-                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.companyName ? 'border-status-error' : ''}`}
+                aria-describedby={errors.companyName ? "companyName-helper companyName-error" : "companyName-helper"}
+                data-validation-state={errors.companyName ? "error" : undefined}
               />
+              <p id="companyName-helper" className="form-field-helper">상담을 진행할 기업명을 입력해주세요.</p>
               {errors.companyName && (
-                <p id="companyName-error" className="text-status-error text-xs leading-5">{errors.companyName}</p>
+                <p id="companyName-error" role="alert" className="form-field-error">{errors.companyName}</p>
               )}
             </div>
 
             {/* Contact Person */}
-            <div className="space-y-2">
-              <Label htmlFor="contactPerson" className="text-sm font-medium text-gray-700">
-                담당자명 <span className="text-status-error">*</span>
+            <div className="space-y-1.5">
+              <Label htmlFor="contactPerson" className="form-field-label">
+                담당자명 <span className="text-status-error" aria-hidden="true">*</span>
               </Label>
               <Input
                 id="contactPerson"
@@ -363,19 +365,21 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="담당자명을 입력해주세요"
                 value={formData.contactPerson}
                 onChange={handleInputChange}
+                aria-required="true"
                 aria-invalid={Boolean(errors.contactPerson)}
-                aria-describedby={errors.contactPerson ? "contactPerson-error" : undefined}
-                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.contactPerson ? 'border-status-error' : ''}`}
+                aria-describedby={errors.contactPerson ? "contactPerson-helper contactPerson-error" : "contactPerson-helper"}
+                data-validation-state={errors.contactPerson ? "error" : undefined}
               />
+              <p id="contactPerson-helper" className="form-field-helper">연락 가능한 담당자명을 입력해주세요.</p>
               {errors.contactPerson && (
-                <p id="contactPerson-error" className="text-status-error text-xs leading-5">{errors.contactPerson}</p>
+                <p id="contactPerson-error" role="alert" className="form-field-error">{errors.contactPerson}</p>
               )}
             </div>
 
             {/* Phone Number */}
-            <div className="space-y-2">
-              <Label htmlFor="phoneNumber" className="text-sm font-medium text-gray-700">
-                연락처 <span className="text-status-error">*</span>
+            <div className="space-y-1.5">
+              <Label htmlFor="phoneNumber" className="form-field-label">
+                연락처 <span className="text-status-error" aria-hidden="true">*</span>
               </Label>
               <Input
                 id="phoneNumber"
@@ -383,19 +387,21 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="010-0000-0000"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
+                aria-required="true"
                 aria-invalid={Boolean(errors.phoneNumber)}
-                aria-describedby={errors.phoneNumber ? "phoneNumber-error" : undefined}
-                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.phoneNumber ? 'border-status-error' : ''}`}
+                aria-describedby={errors.phoneNumber ? "phoneNumber-helper phoneNumber-error" : "phoneNumber-helper"}
+                data-validation-state={errors.phoneNumber ? "error" : undefined}
               />
+              <p id="phoneNumber-helper" className="form-field-helper">휴대전화 번호를 입력해주세요.</p>
               {errors.phoneNumber && (
-                <p id="phoneNumber-error" className="text-status-error text-xs leading-5">{errors.phoneNumber}</p>
+                <p id="phoneNumber-error" role="alert" className="form-field-error">{errors.phoneNumber}</p>
               )}
             </div>
 
             {/* Email */}
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                이메일 <span className="text-status-error">*</span>
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="form-field-label">
+                이메일 <span className="text-status-error" aria-hidden="true">*</span>
               </Label>
               <Input
                 id="email"
@@ -404,25 +410,27 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="example@company.com"
                 value={formData.email}
                 onChange={handleInputChange}
+                aria-required="true"
                 aria-invalid={Boolean(errors.email)}
-                aria-describedby={errors.email ? "email-error" : undefined}
-                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.email ? 'border-status-error' : ''}`}
+                aria-describedby={errors.email ? "email-helper email-error" : "email-helper"}
+                data-validation-state={errors.email ? "error" : undefined}
               />
+              <p id="email-helper" className="form-field-helper">결과 안내를 받을 이메일을 입력해주세요.</p>
               {errors.email && (
-                <p id="email-error" className="text-status-error text-xs leading-5">{errors.email}</p>
+                <p id="email-error" role="alert" className="form-field-error">{errors.email}</p>
               )}
             </div>
 
             {/* Service Type */}
-            <div className="space-y-2">
-              <Label htmlFor="service" className="text-sm font-medium text-gray-700">
+            <div className="space-y-1.5">
+              <Label htmlFor="service" className="form-field-label">
                 관심 서비스
               </Label>
               <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
                 <SelectTrigger
                   aria-invalid={Boolean(errors.service)}
-                  aria-describedby={errors.service ? "service-error" : undefined}
-                  className={`rounded-lg border-gray-300 bg-white ${errors.service ? 'border-status-error' : ''}`}
+                  aria-describedby={errors.service ? "service-helper service-error" : "service-helper"}
+                  data-validation-state={errors.service ? "error" : undefined}
                 >
                   <SelectValue placeholder="서비스를 선택해주세요" />
                 </SelectTrigger>
@@ -434,15 +442,16 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   <SelectItem value="catering">케이터링</SelectItem>
                 </SelectContent>
               </Select>
+              <p id="service-helper" className="form-field-helper">관심 있는 서비스를 선택해주세요.</p>
               {errors.service && (
-                <p id="service-error" className="text-status-error text-xs leading-5">{errors.service}</p>
+                <p id="service-error" role="alert" className="form-field-error">{errors.service}</p>
               )}
             </div>
 
             {/* Region */}
-            <div className="space-y-2">
-              <Label htmlFor="region" className="text-sm font-medium text-gray-700">
-                지역 <span className="text-status-error">*</span>
+            <div className="space-y-1.5">
+              <Label htmlFor="region" className="form-field-label">
+                지역 <span className="text-status-error" aria-hidden="true">*</span>
               </Label>
               <Input
                 id="region"
@@ -450,19 +459,21 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="서울, 경기 등"
                 value={formData.region}
                 onChange={handleInputChange}
+                aria-required="true"
                 aria-invalid={Boolean(errors.region)}
-                aria-describedby={errors.region ? "region-error" : undefined}
-                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.region ? 'border-status-error' : ''}`}
+                aria-describedby={errors.region ? "region-helper region-error" : "region-helper"}
+                data-validation-state={errors.region ? "error" : undefined}
               />
+              <p id="region-helper" className="form-field-helper">서비스를 이용할 지역을 입력해주세요.</p>
               {errors.region && (
-                <p id="region-error" className="text-status-error text-xs leading-5">{errors.region}</p>
+                <p id="region-error" role="alert" className="form-field-error">{errors.region}</p>
               )}
             </div>
 
             {/* Estimated Meals */}
-            <div className="space-y-2">
-              <Label htmlFor="estimatedMeals" className="text-sm font-medium text-gray-700">
-                예상 인원 <span className="text-status-error">*</span>
+            <div className="space-y-1.5">
+              <Label htmlFor="estimatedMeals" className="form-field-label">
+                예상 인원 <span className="text-status-error" aria-hidden="true">*</span>
               </Label>
               <Input
                 id="estimatedMeals"
@@ -470,18 +481,20 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="예: 50명"
                 value={formData.estimatedMeals}
                 onChange={handleInputChange}
+                aria-required="true"
                 aria-invalid={Boolean(errors.estimatedMeals)}
-                aria-describedby={errors.estimatedMeals ? "estimatedMeals-error" : undefined}
-                className={`rounded-lg border-gray-300 bg-white placeholder:text-gray-400 ${errors.estimatedMeals ? 'border-status-error' : ''}`}
+                aria-describedby={errors.estimatedMeals ? "estimatedMeals-helper estimatedMeals-error" : "estimatedMeals-helper"}
+                data-validation-state={errors.estimatedMeals ? "error" : undefined}
               />
+              <p id="estimatedMeals-helper" className="form-field-helper">예상 이용 인원을 입력해주세요.</p>
               {errors.estimatedMeals && (
-                <p id="estimatedMeals-error" className="text-status-error text-xs leading-5">{errors.estimatedMeals}</p>
+                <p id="estimatedMeals-error" role="alert" className="form-field-error">{errors.estimatedMeals}</p>
               )}
             </div>
 
             {/* Message */}
-            <div className="space-y-2">
-              <Label htmlFor="message" className="text-sm font-medium text-gray-700">
+            <div className="space-y-1.5">
+              <Label htmlFor="message" className="form-field-label">
                 특별한 요청사항
               </Label>
               <Textarea
@@ -490,9 +503,11 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="특별한 요청사항이 있으시면 입력해주세요"
                 value={formData.message}
                 onChange={handleInputChange}
-                className="rounded-lg border-gray-300 bg-white placeholder:text-gray-400 resize-none"
+                aria-describedby="message-helper"
+                className="form-field-control--textarea"
                 rows={3}
               />
+              <p id="message-helper" className="form-field-helper">서비스 제안에 참고할 내용을 남겨주세요.</p>
             </div>
 
             {/* Agreements Section */}

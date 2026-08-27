@@ -44,3 +44,6 @@
 
 ## 모바일 네비게이션 3열 검증
 모바일 FO 네비게이션을 `grid-cols-3`으로 변경해 6개 메뉴가 첫 행 3개·둘째 행 3개로 정렬되는 것을 확인했습니다. 기존 4개·2개 불균형 배치가 제거되었고 타일의 아이콘·텍스트·활성 상태는 유지됩니다. 데스크톱에서는 기존 `grid-cols-6` 구조와 CTA·Hero 레이아웃이 그대로 유지됩니다.
+
+## FO 상담·자료 신청 폼 Text input 가이드 검증
+상담받기와 자료 다운받기 CTA가 공통으로 여는 `ConsultationModal`의 입력 요소를 동일한 Text input 토큰으로 정리했습니다. 라벨·필수 표시·helper·오류 메시지의 계층과 `aria-describedby` 연결을 적용했고, Input·Textarea·SelectTrigger에 모바일/데스크톱 크기, 기본·focus·disabled·success·error 상태 토큰을 반영했습니다. 활성 FO 폼의 이전 인라인 입력 스타일 잔여 여부를 정적 검색으로 확인했으며, FO 테스트와 프로덕션 빌드를 통과했습니다.

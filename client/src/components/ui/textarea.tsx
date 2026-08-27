@@ -53,7 +53,7 @@ function Textarea({
     <textarea
       data-slot="textarea"
       className={cn(
-        "border-input placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:border-status-error aria-invalid:ring-status-error/20 dark:bg-input/30 flex field-sizing-content min-h-24 w-full rounded-lg border bg-white px-4 py-3 text-sm shadow-none transition-[border-color,box-shadow,background-color] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        "form-field-control form-field-control--textarea flex field-sizing-content focus-visible:border-primary focus-visible:ring-primary/20 focus-visible:ring-[3px] aria-invalid:border-status-error aria-invalid:ring-status-error/20 disabled:cursor-not-allowed",
         className
       )}
       onCompositionStart={handleCompositionStart}

@@ -365,6 +365,99 @@
     height: 16px;
   }
 
+  /* Text input states and form field hierarchy from the attached guide */
+  .form-field-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--gray-800);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+  }
+
+  .form-field-control {
+    height: 3rem;
+    width: 100%;
+    border: 1px solid var(--gray-200);
+    border-radius: 0.25rem;
+    background: #ffffff;
+    color: var(--gray-800);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    outline: none;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
+  }
+
+  .form-field-control::placeholder {
+    color: var(--gray-400);
+    opacity: 1;
+  }
+
+  .form-field-control:focus-visible {
+    border-color: var(--brand-700);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-700) 20%, transparent);
+  }
+
+  .form-field-control[aria-invalid="true"],
+  .form-field-control[data-validation-state="error"] {
+    border-color: var(--status-error);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-error) 16%, transparent);
+  }
+
+  .form-field-control[data-validation-state="success"] {
+    border-color: var(--status-success);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-success) 16%, transparent);
+  }
+
+  .form-field-control:disabled {
+    cursor: not-allowed;
+    border-color: var(--gray-200);
+    background: var(--gray-50);
+    color: var(--gray-400);
+    opacity: 1;
+  }
+
+  .form-field-control:disabled::placeholder {
+    color: var(--gray-400);
+  }
+
+  .form-field-helper,
+  .form-field-error {
+    margin-top: 0.375rem;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+
+  .form-field-helper {
+    color: var(--gray-500);
+  }
+
+  .form-field-error {
+    color: var(--status-error);
+  }
+
+  .form-field-control--textarea {
+    min-height: 7.5rem;
+    height: auto;
+    resize: vertical;
+  }
+
+  @media (min-width: 768px) {
+    .form-field-control {
+      height: 2rem;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.8125rem;
+      line-height: 1.125rem;
+    }
+
+    .form-field-control--textarea {
+      min-height: 6rem;
+      padding-block: 0.625rem;
+    }
+  }
+
   /* Typography scale from the CJ-onlyone guide */
   .type-title-1 {
     font-family: var(--font-title);

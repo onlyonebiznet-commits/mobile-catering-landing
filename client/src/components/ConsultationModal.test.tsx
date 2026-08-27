@@ -1,4 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 describe("ConsultationModal Props", () => {
   it("should accept onClose prop", () => {
@@ -150,5 +152,21 @@ describe("ConsultationModal - Agreement Accordion Behavior", () => {
       email: true,
       kakao: true,
     });
+  });
+});
+
+describe("ConsultationModal - Text input guide", () => {
+  it("uses shared field hierarchy and accessible descriptions for the active FO form", async () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/ConsultationModal.tsx"),
+      "utf8"
+    );
+
+    expect(source).toContain('className="form-field-label"');
+    expect(source).toContain('className="form-field-helper"');
+    expect(source).toContain('className="form-field-error"');
+    expect(source).toContain('aria-describedby={errors.companyName ? "companyName-helper companyName-error" : "companyName-helper"}');
+    expect(source).toContain('data-validation-state={errors.companyName ? "error" : undefined}');
+    expect(source).toContain('aria-describedby="message-helper"');
   });
 });
