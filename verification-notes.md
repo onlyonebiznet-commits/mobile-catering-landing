@@ -32,3 +32,6 @@
 
 ## 검색 접근성 기본 파일 검증
 `client/public/robots.txt`를 추가해 공개 랜딩 경로는 허용하고 `/admin`, `/api` 경로는 검색 크롤링에서 제외했습니다. 정적 파일 존재 여부, 관리자 경로 차단 지시문, SEO 테스트, TypeScript 검사, 프로덕션 빌드를 확인했습니다.
+
+## 최신 런타임 점검
+최근 브라우저 콘솔에서 error·uncaught·failed 항목이 발견되지 않았고, 네트워크 로그에도 4xx·5xx 실패 요청이 없었습니다. 공통 `on-brand` variant는 기본 `bg-primary`와 `text-primary-foreground`를 사용하고 hover 시 `bg-white`, `border-primary`, `text-primary`로 전환됩니다.
