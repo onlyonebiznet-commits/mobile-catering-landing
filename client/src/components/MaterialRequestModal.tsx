@@ -240,7 +240,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
             className="absolute right-4 top-4 p-1 hover:bg-[#008F69] rounded-md transition-colors"
             aria-label="Close"
           >
-            <X className="w-5 h-5 text-white" />
+            <X aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-sm text-white" />
           </button>
           <h2 className="text-xl font-bold text-white pr-8">자료 신청</h2>
           <p className="text-sm text-green-100 mt-2">서비스 소개자료와 맞춤형 운영 정보를 받아보세요.</p>

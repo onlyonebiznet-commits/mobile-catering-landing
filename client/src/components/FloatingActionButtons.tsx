@@ -144,7 +144,7 @@ export default function FloatingActionButtons() {
               aria-label="맞춤 상담"
               title="맞춤 상담"
             >
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md" />
             </button>
           </div>
         </div>

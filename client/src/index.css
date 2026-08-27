@@ -342,6 +342,29 @@
 }
 
 @layer components {
+  /* System icon scale from the attached icon guide */
+  .system-icon {
+    flex-shrink: 0;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .system-icon-md {
+    width: 24px;
+    height: 24px;
+  }
+
+  .system-icon-sm {
+    width: 20px;
+    height: 20px;
+  }
+
+  .system-icon-xs {
+    width: 16px;
+    height: 16px;
+  }
+
   /* Typography scale from the CJ-onlyone guide */
   .type-title-1 {
     font-family: var(--font-title);

@@ -18,6 +18,14 @@ describe("navigation menu configuration", () => {
     }
   });
 
+  it("uses the shared system icon treatment in the navigation components", () => {
+    for (const file of navigationFiles) {
+      const source = readFileSync(resolve(process.cwd(), file), "utf8");
+      expect(source).toContain("strokeWidth={1.5}");
+      expect(source).toContain("system-icon");
+    }
+  });
+
   it("keeps the process content section available as a page destination", () => {
     const source = readFileSync(
       resolve(process.cwd(), "client/src/pages/Home.tsx"),

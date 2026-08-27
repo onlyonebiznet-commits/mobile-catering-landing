@@ -311,7 +311,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             className="absolute right-4 top-4 p-1 hover:bg-[#008F69] rounded-md transition-colors"
             aria-label="Close"
           >
-            <X className="w-5 h-5 text-white" />
+            <X aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-sm text-white" />
           </button>
           <h2 className="text-xl font-bold text-white pr-8">상담 신청</h2>
           <p className="text-sm text-green-100 mt-2">우리 현장에 맞는 맞춤형 서비스를 제안해드립니다.</p>
@@ -525,7 +525,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
                       aria-label="Toggle personal info section"
                     >
-                      <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                      <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
                         accordionValue === "personal-info" ? "rotate-180" : ""
                       }`} />
                     </button>
@@ -585,7 +585,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
                       aria-label="Toggle marketing section"
                     >
-                      <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                      <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
                         accordionValue === "marketing" ? "rotate-180" : ""
                       }`} />
                     </button>
@@ -640,7 +640,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
                       aria-label="Toggle advertising section"
                     >
-                      <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                      <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
                         accordionValue === "ad" ? "rotate-180" : ""
                       }`} />
                     </button>

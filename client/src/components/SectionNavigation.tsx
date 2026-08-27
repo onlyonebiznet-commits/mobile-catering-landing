@@ -29,7 +29,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
                 <button
                   key={section.id}
                   onClick={() => onSectionClick(section.id)}
-                  className={`flex flex-col items-center justify-center gap-3 p-5 rounded-[20px] transition-all duration-300 ${
+                  className={`group flex flex-col items-center justify-center gap-3 p-5 rounded-[20px] transition-all duration-300 ${
                     isActive
                       ? 'bg-[#007651] text-white shadow-md'
                       : 'bg-white text-gray-700 border border-[#E6E6E6] hover:bg-[#D7F9EF] hover:shadow-sm'
@@ -43,7 +43,11 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
                     e.currentTarget.style.transform = 'translateY(0)';
                   }}
                 >
-                  <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-[#666666]'}`} />
+                  <Icon
+                    aria-hidden="true"
+                    strokeWidth={1.5}
+                    className={`system-icon system-icon-md ${isActive ? 'text-white' : 'text-[#666666] group-hover:text-[#008F69]'}`}
+                  />
                   <span className={`text-xs font-semibold text-center leading-tight ${isActive ? 'text-white' : 'text-[#333333]'}`}>
                     {section.label}
                   </span>
@@ -65,7 +69,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
                 <button
                   key={section.id}
                   onClick={() => onSectionClick(section.id)}
-                  className={`flex flex-col items-center justify-center gap-2 p-4 rounded-[16px] transition-all duration-300 ${
+                  className={`group flex flex-col items-center justify-center gap-2 p-4 rounded-[16px] transition-all duration-300 ${
                     isActive
                       ? 'bg-[#007651] text-white shadow-md'
                       : 'bg-white text-gray-700 border border-[#E6E6E6] hover:bg-[#D7F9EF]'
@@ -79,7 +83,11 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
                     e.currentTarget.style.transform = 'translateY(0)';
                   }}
                 >
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-[#666666]'}`} />
+                  <Icon
+                    aria-hidden="true"
+                    strokeWidth={1.5}
+                    className={`system-icon system-icon-sm ${isActive ? 'text-white' : 'text-[#666666] group-hover:text-[#008F69]'}`}
+                  />
                   <span className={`text-xs font-semibold text-center leading-tight ${isActive ? 'text-white' : 'text-[#333333]'}`}>
                     {section.label}
                   </span>

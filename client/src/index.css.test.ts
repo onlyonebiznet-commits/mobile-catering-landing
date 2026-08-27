@@ -36,6 +36,15 @@ describe("Freshmeal-on color guide tokens", () => {
     expect(css).toContain(".type-body-1");
   });
 
+  it("defines the system icon scale from the icon guide", () => {
+    expect(css).toContain(".system-icon {");
+    expect(css).toContain("stroke-width: 1.5;");
+    expect(css).toContain("stroke-linecap: round;");
+    expect(css).toContain(".system-icon-md");
+    expect(css).toContain(".system-icon-sm");
+    expect(css).toContain(".system-icon-xs");
+  });
+
   it("maps surfaces, borders, and typography colors to the grayscale scale", () => {
     expect(css).toContain("--background: #FFFFFF");
     expect(css).toContain("--foreground: var(--gray-800)");
