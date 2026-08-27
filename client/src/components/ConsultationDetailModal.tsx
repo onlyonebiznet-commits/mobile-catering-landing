@@ -110,7 +110,7 @@ export default function ConsultationDetailModal({ isOpen, onClose, consultation 
               <div>
                 <label className="text-sm font-medium text-gray-600">희망 서비스</label>
                 <p className="text-gray-900 mt-1">
-                  <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                  <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-status-info/10 text-status-info">
                     {getServiceTypeLabel(consultation.serviceType)}
                   </span>
                 </p>
@@ -118,7 +118,7 @@ export default function ConsultationDetailModal({ isOpen, onClose, consultation 
               <div>
                 <label className="text-sm font-medium text-gray-600">진행 현황</label>
                 <p className="text-gray-900 mt-1">
-                  <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                  <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-status-success/10 text-status-success">
                     {getStatusLabel(consultation.status)}
                   </span>
                 </p>

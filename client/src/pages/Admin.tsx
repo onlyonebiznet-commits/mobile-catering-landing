@@ -135,11 +135,11 @@ export default function Admin() {
   const getStatusBadge = (status: string) => {
     const statusMap: { [key: string]: { label: string; color: string } } = {
       'pending': { label: '대기중', color: 'bg-gray-100 text-gray-800' },
-      'in_progress': { label: '진행중', color: 'bg-blue-100 text-blue-800' },
-      'target': { label: '타겟처', color: 'bg-orange-100 text-orange-800' },
-      'prospect': { label: '가망처', color: 'bg-green-100 text-green-800' },
-      'won': { label: '수주완료', color: 'bg-purple-100 text-purple-800' },
-      'dropped': { label: 'DROP', color: 'bg-red-100 text-red-800' },
+      'in_progress': { label: '진행중', color: 'bg-status-info/10 text-status-info' },
+      'target': { label: '타겟처', color: 'bg-status-warning/10 text-status-warning' },
+      'prospect': { label: '가망처', color: 'bg-status-success/10 text-status-success' },
+      'won': { label: '수주완료', color: 'bg-brand-100 text-brand-800' },
+      'dropped': { label: 'DROP', color: 'bg-status-error/10 text-status-error' },
       'new': { label: '신규', color: 'bg-gray-100 text-gray-800' }
     };
     
@@ -299,7 +299,7 @@ export default function Admin() {
                 placeholder="비밀번호"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
               />
               {loginError && (
                 <Alert variant="destructive">
@@ -307,7 +307,7 @@ export default function Admin() {
                   <AlertDescription>{loginError}</AlertDescription>
                 </Alert>
               )}
-              <Button type="submit" className="w-full bg-[#005B44] hover:bg-[#004a37]">
+              <Button type="submit" className="w-full bg-[#005B45] hover:bg-[#003326]">
                 로그인
               </Button>
             </form>
@@ -381,7 +381,7 @@ export default function Admin() {
                     placeholder="회사명, 담당자, 연락처, 이메일 검색..."
                     value={consultationSearchQuery}
                     onChange={(e) => setConsultationSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
                   />
                 </div>
               </div>
@@ -391,7 +391,7 @@ export default function Admin() {
                 <select
                   value={consultationServiceFilter}
                   onChange={(e) => setConsultationServiceFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
                 >
                   <option value="all">전체 서비스</option>
                   <option value="cafeteria">구내식당</option>
@@ -408,7 +408,7 @@ export default function Admin() {
                 <select
                   value={consultationStatusFilter}
                   onChange={(e) => setConsultationStatusFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005B45]"
                 >
                   <option value="all">전체 상태</option>
                   <option value="pending">대기중</option>
@@ -428,7 +428,7 @@ export default function Admin() {
               <select
                 value={consultationSortOrder}
                 onChange={(e) => setConsultationSortOrder(e.target.value as "newest" | "oldest")}
-                className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#005B44]"
+                className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#005B45]"
               >
                 <option value="newest">최신순</option>
                 <option value="oldest">오래된순</option>
@@ -479,12 +479,12 @@ export default function Admin() {
                             value={request.serviceType || ""}
                             onChange={(e) => handleServiceTypeChange(request.id, e.target.value)}
                             disabled={updatingServiceId === request.id}
-                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer ${
-                              request.serviceType === 'cafeteria' ? 'bg-blue-100 text-blue-800' :
-                              request.serviceType === 'catering' ? 'bg-green-100 text-green-800' :
-                              request.serviceType === 'snack' ? 'bg-yellow-100 text-yellow-800' :
-                              request.serviceType === 'cafe' ? 'bg-purple-100 text-purple-800' :
-                              request.serviceType === 'breakfast' ? 'bg-orange-100 text-orange-800' :
+                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B45] cursor-pointer ${
+                              request.serviceType === 'cafeteria' ? 'bg-status-info/10 text-status-info' :
+                              request.serviceType === 'catering' ? 'bg-status-success/10 text-status-success' :
+                              request.serviceType === 'snack' ? 'bg-status-warning/10 text-status-warning' :
+                              request.serviceType === 'cafe' ? 'bg-brand-100 text-brand-800' :
+                              request.serviceType === 'breakfast' ? 'bg-status-warning/10 text-status-warning' :
                               'bg-gray-100 text-gray-800'
                             }`}
                           >
@@ -504,13 +504,13 @@ export default function Admin() {
                           <select
                             value={request.status}
                             onChange={(e) => handleStatusChange(request.id, e.target.value)}
-                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B44] cursor-pointer w-full ${
+                            className={`px-3 py-1 rounded-full text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#005B45] cursor-pointer w-full ${
                               request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
-                              request.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
-                              request.status === 'target' ? 'bg-orange-100 text-orange-800' :
-                              request.status === 'prospect' ? 'bg-green-100 text-green-800' :
-                              request.status === 'won' ? 'bg-purple-100 text-purple-800' :
-                              request.status === 'dropped' ? 'bg-red-100 text-red-800' :
+                              request.status === 'in_progress' ? 'bg-status-info/10 text-status-info' :
+                              request.status === 'target' ? 'bg-status-warning/10 text-status-warning' :
+                              request.status === 'prospect' ? 'bg-status-success/10 text-status-success' :
+                              request.status === 'won' ? 'bg-brand-100 text-brand-800' :
+                              request.status === 'dropped' ? 'bg-status-error/10 text-status-error' :
                               'bg-gray-100 text-gray-800'
                             }`}
                           >

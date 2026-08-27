@@ -19,13 +19,13 @@ export default function SuccessModal({
   return (
     <div className="px-6 md:px-8 py-12 md:py-20 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)', minHeight: 'auto' }}>
       <div className="mb-4 md:mb-8 flex-shrink-0">
-        <div className="w-12 md:w-16 h-12 md:h-16 bg-[#005B44] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-6">
-          <svg className="w-6 md:w-8 h-6 md:h-8 text-[#005B44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-12 md:w-16 h-12 md:h-16 bg-[#005B45] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-6">
+          <svg className="w-6 md:w-8 h-6 md:h-8 text-[#005B45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
       </div>
-      <h3 className="text-xl md:text-4xl font-bold text-[#005B44] mb-4 md:mb-8 text-center max-w-sm md:max-w-none leading-snug md:leading-tight break-words">{title}</h3>
+      <h3 className="text-xl md:text-4xl font-bold text-[#005B45] mb-4 md:mb-8 text-center max-w-sm md:max-w-none leading-snug md:leading-tight break-words">{title}</h3>
       <div className="mb-4 md:mb-8 text-center w-full flex-shrink-0">
         {messages.map((line, index) => (
           <p key={index} className="text-gray-700 text-xs md:text-base leading-relaxed text-center mb-1 md:mb-2">
@@ -35,7 +35,7 @@ export default function SuccessModal({
       </div>
       <Button
         onClick={onClose}
-        className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-3 md:py-4 rounded-lg font-medium transition-colors mb-6 md:mb-8 flex-shrink-0 text-sm md:text-base"
+        className="w-full bg-[#005B45] hover:bg-[#003326] text-white py-3 md:py-4 rounded-lg font-medium transition-colors mb-6 md:mb-8 flex-shrink-0 text-sm md:text-base"
       >
         홈으로 돌아가기
       </Button>

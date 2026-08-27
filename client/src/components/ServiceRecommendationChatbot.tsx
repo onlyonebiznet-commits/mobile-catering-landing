@@ -140,7 +140,7 @@ const ServiceRecommendationChatbot = () => {
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-24px)] bg-white rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#005B44] to-[#004a35] text-white p-6">
+          <div className="bg-gradient-to-r from-[#005B45] to-[#003326] text-white p-6">
             <h3 className="text-lg font-bold">서비스 추천 상담</h3>
             <p className="text-sm text-white/80 mt-1">우리 현장에 맞는 맞춤형 서비스를 추천해드립니다</p>
           </div>
@@ -149,8 +149,8 @@ const ServiceRecommendationChatbot = () => {
           <div className="p-6 max-h-96 overflow-y-auto">
             {submitted ? (
               <div className="text-center py-8">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-status-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-status-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -165,7 +165,7 @@ const ServiceRecommendationChatbot = () => {
                     <button
                       key={service}
                       onClick={() => handleServiceSelect(service)}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-left hover:border-[#005B44] hover:bg-[#005B44]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#005B44]"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-left hover:border-[#005B45] hover:bg-[#005B45]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#005B45]"
                     >
                       {service}
                     </button>
@@ -180,7 +180,7 @@ const ServiceRecommendationChatbot = () => {
                     <button
                       key={environment}
                       onClick={() => handleEnvironmentSelect(environment)}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-left hover:border-[#005B44] hover:bg-[#005B44]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#005B44]"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-left hover:border-[#005B45] hover:bg-[#005B45]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#005B45]"
                     >
                       {environment}
                     </button>
@@ -198,7 +198,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.name}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B45]"
                     />
                     <input
                       type="text"
@@ -207,7 +207,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.company}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B45]"
                     />
                   </div>
 
@@ -219,7 +219,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.phone}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B45]"
                     />
                     <input
                       type="email"
@@ -228,7 +228,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.email}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B45]"
                     />
                   </div>
 
@@ -239,7 +239,7 @@ const ServiceRecommendationChatbot = () => {
                       placeholder="예상 식수"
                       value={formData.people}
                       onChange={handleFormChange}
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B45]"
                     />
                     <input
                       type="text"
@@ -247,7 +247,7 @@ const ServiceRecommendationChatbot = () => {
                       placeholder="희망 지역"
                       value={formData.region}
                       onChange={handleFormChange}
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44]"
+                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B45]"
                     />
                   </div>
 
@@ -257,7 +257,7 @@ const ServiceRecommendationChatbot = () => {
                     value={formData.inquiry}
                     onChange={handleFormChange}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B44] resize-none"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#005B45] resize-none"
                   />
 
                   <div className="flex gap-2 pt-2">
@@ -272,7 +272,7 @@ const ServiceRecommendationChatbot = () => {
                       type="submit"
                       data-event="consultation_submit_click"
                       data-form="chatbot_consultation_form"
-                      className="flex-1 px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a35] transition-colors duration-200 font-medium text-sm"
+                      className="flex-1 px-4 py-2 bg-[#005B45] text-white rounded-lg hover:bg-[#003326] transition-colors duration-200 font-medium text-sm"
                       onClick={() => {
                         window.dataLayer?.push({
                           event: "consultation_submit_click",

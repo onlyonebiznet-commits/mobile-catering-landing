@@ -34,7 +34,7 @@ function StatisticItem({ end, suffix, label, index = 0 }: StatisticItemProps) {
 
   return (
     <div ref={elementRef} className="text-center scroll-reveal-stagger">
-      <div className="text-3xl md:text-6xl font-bold text-[#005B44] mb-2 whitespace-nowrap text-center">
+      <div className="text-3xl md:text-6xl font-bold text-[#005B45] mb-2 whitespace-nowrap text-center">
         {formatNumber(count)}
         <span className="ml-1">{suffix}</span>
       </div>
@@ -838,7 +838,7 @@ export default function Home() {
                   <button
                     onClick={() => setConsultationOpen(true)}
                     data-event="consultation_click"
-                    className="px-8 py-3 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
+                    className="px-8 py-3 bg-[#005B45] text-white rounded-lg hover:bg-white hover:text-[#005B45] border-2 border-[#005B45] transition duration-300 font-semibold"
                   >
                     지금 상담받기
                   </button>
@@ -909,11 +909,11 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{solution.name}</h3>
-                  <p className="text-[#005B44] font-semibold mb-3">{solution.shortDesc}</p>
+                  <p className="text-[#005B45] font-semibold mb-3">{solution.shortDesc}</p>
                   <p className="text-gray-600 mb-4">{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-sm">
+                      <span key={i} className="px-3 py-1 bg-[#005B45]/10 text-[#005B45] rounded-full text-sm">
                         {tag}
                       </span>
                     ))}
@@ -921,7 +921,7 @@ export default function Home() {
                   <button
                     onClick={() => setConsultationOpen(true)}
                     data-event="consultation_click"
-                    className="w-full px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-white hover:text-[#005B44] border-2 border-[#005B44] transition duration-300 font-semibold"
+                    className="w-full px-4 py-2 bg-[#005B45] text-white rounded-lg hover:bg-white hover:text-[#005B45] border-2 border-[#005B45] transition duration-300 font-semibold"
                   >
                     견적 문의
                   </button>
@@ -977,7 +977,7 @@ export default function Home() {
                           key={idx}
                           onClick={() => setCurrentDietIndex(idx)}
                           className={`w-3 h-3 rounded-full transition-all ${
-                            idx === currentDietIndex ? "bg-[#005B44] w-8" : "bg-gray-300 hover:bg-gray-400"
+                            idx === currentDietIndex ? "bg-[#005B45] w-8" : "bg-gray-300 hover:bg-gray-400"
                           }`}
                         />
                       ))}
@@ -1017,11 +1017,11 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                    <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                    <p className="text-[#005B45] font-semibold text-sm mb-3">{meal.summary}</p>
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {meal.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                        <span key={i} className="px-2 py-1 bg-[#005B45]/10 text-[#005B45] rounded-full text-xs font-medium">
                           {tag}
                         </span>
                       ))}
@@ -1047,11 +1047,11 @@ export default function Home() {
                     </div>
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                      <p className="text-[#005B44] font-semibold text-sm mb-3">{meal.summary}</p>
+                      <p className="text-[#005B45] font-semibold text-sm mb-3">{meal.summary}</p>
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {meal.tags.map((tag, i) => (
-                          <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                          <span key={i} className="px-2 py-1 bg-[#005B45]/10 text-[#005B45] rounded-full text-xs font-medium">
                             {tag}
                           </span>
                         ))}
@@ -1088,8 +1088,8 @@ export default function Home() {
                   onClick={() => setSelectedSnackCategory(category.id)}
                   className={`py-4 px-5 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#006B4F] text-white shadow-md'
-                      : 'bg-white text-gray-700 border-2 border-[#D8D8D8] hover:bg-gray-50'
+                      ? 'bg-[#007651] text-white shadow-md'
+                      : 'bg-white text-gray-700 border-2 border-[#C6C6C6] hover:bg-gray-50'
                   }`}
                 >
                   <span className="text-sm font-semibold">{category.name}</span>
@@ -1105,7 +1105,7 @@ export default function Home() {
                   onClick={() => setSelectedSnackCategory(category.id)}
                   className={`py-3 px-2 rounded-[16px] transition-all duration-300 shadow-sm ${
                     selectedSnackCategory === category.id
-                      ? 'bg-[#006B4F] text-white shadow-md'
+                      ? 'bg-[#007651] text-white shadow-md'
                       : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
                   }`}
                 >
@@ -1192,11 +1192,11 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">{cafe.name}</h3>
-                    <p className="text-[#005B44] font-semibold text-sm mb-3">{cafe.summary}</p>
+                    <p className="text-[#005B45] font-semibold text-sm mb-3">{cafe.summary}</p>
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {cafe.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                        <span key={i} className="px-2 py-1 bg-[#005B45]/10 text-[#005B45] rounded-full text-xs font-medium">
                           {tag}
                         </span>
                       ))}
@@ -1222,11 +1222,11 @@ export default function Home() {
                     </div>
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">{cafe.name}</h3>
-                      <p className="text-[#005B44] font-semibold text-sm mb-3">{cafe.summary}</p>
+                      <p className="text-[#005B45] font-semibold text-sm mb-3">{cafe.summary}</p>
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {cafe.tags.map((tag, i) => (
-                          <span key={i} className="px-2 py-1 bg-[#005B44]/10 text-[#005B44] rounded-full text-xs font-medium">
+                          <span key={i} className="px-2 py-1 bg-[#005B45]/10 text-[#005B45] rounded-full text-xs font-medium">
                             {tag}
                           </span>
                         ))}
@@ -1244,7 +1244,7 @@ export default function Home() {
       <section
         ref={(el) => { if (el) sectionRefs.current.process = el; }}
         id="process"
-        className="py-20 bg-gradient-to-r from-[#005B44] to-[#1a8a4d]"
+        className="py-20 bg-gradient-to-r from-[#005B45] to-[#008F69]"
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
@@ -1497,7 +1497,7 @@ export default function Home() {
                 >
                   <span className="font-semibold text-gray-900 text-left">{faq.question}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#005B44] transition-transform duration-300 ${
+                    className={`w-5 h-5 text-[#005B45] transition-transform duration-300 ${
                       expandedFAQ === idx ? "transform rotate-180" : ""
                     }`}
                   />
@@ -1530,14 +1530,14 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-[#005B44]">
+      <section className="py-20 bg-[#005B45]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
             <h2 className="text-[30px] md:text-[40px] font-bold text-white mb-2 text-center" style={{fontSize: 'clamp(30px, 5vw, 40px)'}}>직원 복지의 새로운 기준을 경험하세요</h2>
             <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>신선한 식사로 직원 만족도를 높이고 회사 이미지를 개선하세요</p>
           <div className="flex justify-center scroll-reveal-stagger" data-reveal-item="0">
             <button
               onClick={() => setConsultationOpen(true)}
-              className="px-8 py-3 bg-white text-[#005B44] rounded-lg hover:bg-[#005B44] hover:text-white border-2 border-white transition duration-300 font-semibold"
+              className="px-8 py-3 bg-white text-[#005B45] rounded-lg hover:bg-[#005B45] hover:text-white border-2 border-white transition duration-300 font-semibold"
             >
               지금 상담받기
             </button>
@@ -1612,7 +1612,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowPrivacyModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a36] transition"
+                className="mt-6 w-full px-4 py-2 bg-[#005B45] text-white rounded-lg hover:bg-[#003326] transition"
               >
                 닫기
               </button>
@@ -1634,7 +1634,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowTermsModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-[#005B44] text-white rounded-lg hover:bg-[#004a36] transition"
+                className="mt-6 w-full px-4 py-2 bg-[#005B45] text-white rounded-lg hover:bg-[#003326] transition"
               >
                 닫기
               </button>

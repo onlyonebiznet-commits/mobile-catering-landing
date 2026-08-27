@@ -305,10 +305,10 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         <DialogTitle className="sr-only">상담 신청</DialogTitle>
 
         {/* Header */}
-        <div className="bg-[#005B44] px-6 py-6 relative">
+        <div className="bg-[#005B45] px-6 py-6 relative">
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 p-1 hover:bg-[#004a37] rounded-md transition-colors"
+            className="absolute right-4 top-4 p-1 hover:bg-[#003326] rounded-md transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5 text-white" />
@@ -335,7 +335,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             {/* Company Name */}
             <div className="space-y-1">
               <Label htmlFor="companyName" className="text-sm font-medium">
-                회사명 <span className="text-red-500">*</span>
+                회사명 <span className="text-status-error">*</span>
               </Label>
               <Input
                 id="companyName"
@@ -343,17 +343,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="예: 프레시 테크"
                 value={formData.companyName}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.companyName ? 'border-red-500' : ''}`}
+                className={`rounded-lg border-gray-300 ${errors.companyName ? 'border-status-error' : ''}`}
               />
               {errors.companyName && (
-                <p className="text-red-500 text-xs mt-1">{errors.companyName}</p>
+                <p className="text-status-error text-xs mt-1">{errors.companyName}</p>
               )}
             </div>
 
             {/* Contact Person */}
             <div className="space-y-1">
               <Label htmlFor="contactPerson" className="text-sm font-medium">
-                담당자명 <span className="text-red-500">*</span>
+                담당자명 <span className="text-status-error">*</span>
               </Label>
               <Input
                 id="contactPerson"
@@ -361,17 +361,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="담당자명을 입력해주세요"
                 value={formData.contactPerson}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.contactPerson ? 'border-red-500' : ''}`}
+                className={`rounded-lg border-gray-300 ${errors.contactPerson ? 'border-status-error' : ''}`}
               />
               {errors.contactPerson && (
-                <p className="text-red-500 text-xs mt-1">{errors.contactPerson}</p>
+                <p className="text-status-error text-xs mt-1">{errors.contactPerson}</p>
               )}
             </div>
 
             {/* Phone Number */}
             <div className="space-y-1">
               <Label htmlFor="phoneNumber" className="text-sm font-medium">
-                연락처 <span className="text-red-500">*</span>
+                연락처 <span className="text-status-error">*</span>
               </Label>
               <Input
                 id="phoneNumber"
@@ -379,17 +379,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="010-0000-0000"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.phoneNumber ? 'border-red-500' : ''}`}
+                className={`rounded-lg border-gray-300 ${errors.phoneNumber ? 'border-status-error' : ''}`}
               />
               {errors.phoneNumber && (
-                <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
+                <p className="text-status-error text-xs mt-1">{errors.phoneNumber}</p>
               )}
             </div>
 
             {/* Email */}
             <div className="space-y-1">
               <Label htmlFor="email" className="text-sm font-medium">
-                이메일 <span className="text-red-500">*</span>
+                이메일 <span className="text-status-error">*</span>
               </Label>
               <Input
                 id="email"
@@ -398,10 +398,10 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="example@company.com"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.email ? 'border-red-500' : ''}`}
+                className={`rounded-lg border-gray-300 ${errors.email ? 'border-status-error' : ''}`}
               />
               {errors.email && (
-                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                <p className="text-status-error text-xs mt-1">{errors.email}</p>
               )}
             </div>
 
@@ -411,7 +411,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 관심 서비스
               </Label>
               <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
-                <SelectTrigger className={`rounded-lg border-gray-300 ${errors.service ? 'border-red-500' : ''}`}>
+                <SelectTrigger className={`rounded-lg border-gray-300 ${errors.service ? 'border-status-error' : ''}`}>
                   <SelectValue placeholder="서비스를 선택해주세요" />
                 </SelectTrigger>
                 <SelectContent>
@@ -423,14 +423,14 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 </SelectContent>
               </Select>
               {errors.service && (
-                <p className="text-red-500 text-xs mt-1">{errors.service}</p>
+                <p className="text-status-error text-xs mt-1">{errors.service}</p>
               )}
             </div>
 
             {/* Region */}
             <div className="space-y-1">
               <Label htmlFor="region" className="text-sm font-medium">
-                지역 <span className="text-red-500">*</span>
+                지역 <span className="text-status-error">*</span>
               </Label>
               <Input
                 id="region"
@@ -438,17 +438,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="서울, 경기 등"
                 value={formData.region}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.region ? 'border-red-500' : ''}`}
+                className={`rounded-lg border-gray-300 ${errors.region ? 'border-status-error' : ''}`}
               />
               {errors.region && (
-                <p className="text-red-500 text-xs mt-1">{errors.region}</p>
+                <p className="text-status-error text-xs mt-1">{errors.region}</p>
               )}
             </div>
 
             {/* Estimated Meals */}
             <div className="space-y-1">
               <Label htmlFor="estimatedMeals" className="text-sm font-medium">
-                예상 인원 <span className="text-red-500">*</span>
+                예상 인원 <span className="text-status-error">*</span>
               </Label>
               <Input
                 id="estimatedMeals"
@@ -456,10 +456,10 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="예: 50명"
                 value={formData.estimatedMeals}
                 onChange={handleInputChange}
-                className={`rounded-lg border-gray-300 ${errors.estimatedMeals ? 'border-red-500' : ''}`}
+                className={`rounded-lg border-gray-300 ${errors.estimatedMeals ? 'border-status-error' : ''}`}
               />
               {errors.estimatedMeals && (
-                <p className="text-red-500 text-xs mt-1">{errors.estimatedMeals}</p>
+                <p className="text-status-error text-xs mt-1">{errors.estimatedMeals}</p>
               )}
             </div>
 
@@ -516,7 +516,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         onClick={(e) => e.stopPropagation()}
                         onPointerDown={(e) => e.stopPropagation()}
                       >
-                        개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
+                        개인정보 수집 및 이용 동의 <span className="text-status-error">*</span>
                       </Label>
                     </div>
                     <button
@@ -729,7 +729,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#005B44] hover:bg-[#004a37] text-white font-semibold py-3 rounded-lg mt-6"
+              className="w-full bg-[#005B45] hover:bg-[#003326] text-white font-semibold py-3 rounded-lg mt-6"
             >
               {isSubmitting ? "처리 중..." : "상담 신청하기"}
             </Button>

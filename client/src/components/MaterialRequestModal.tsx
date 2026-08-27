@@ -234,10 +234,10 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
         <DialogTitle className="sr-only">자료 신청</DialogTitle>
 
         {/* Header */}
-        <div className="bg-[#005B44] px-6 py-6 relative">
+        <div className="bg-[#005B45] px-6 py-6 relative">
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 p-1 hover:bg-[#004a37] rounded-md transition-colors"
+            className="absolute right-4 top-4 p-1 hover:bg-[#003326] rounded-md transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5 text-white" />
@@ -264,7 +264,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               {/* Company Name */}
               <div className="space-y-2">
                 <Label htmlFor="companyName" className="text-sm font-medium">
-                  회사명 <span className="text-red-500">*</span>
+                  회사명 <span className="text-status-error">*</span>
                 </Label>
                 <Input
                   id="companyName"
@@ -279,7 +279,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               {/* Manager */}
               <div className="space-y-2">
                 <Label htmlFor="manager" className="text-sm font-medium">
-                  담당자명 <span className="text-red-500">*</span>
+                  담당자명 <span className="text-status-error">*</span>
                 </Label>
                 <Input
                   id="managerName"
@@ -294,7 +294,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               {/* Phone */}
               <div className="space-y-2">
                 <Label htmlFor="phone" className="text-sm font-medium">
-                  연락처 <span className="text-red-500">*</span>
+                  연락처 <span className="text-status-error">*</span>
                 </Label>
                 <Input
                   id="phone"
@@ -309,7 +309,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               {/* Email */}
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-sm font-medium">
-                  이메일 <span className="text-red-500">*</span>
+                  이메일 <span className="text-status-error">*</span>
                 </Label>
                 <Input
                   id="email"
@@ -347,7 +347,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                           className="flex-shrink-0"
                         />
                         <Label htmlFor="personalInfoCollection" className="text-xs text-gray-600 cursor-pointer whitespace-nowrap">
-                          개인정보 수집 및 이용 동의 <span className="text-red-500">*</span>
+                          개인정보 수집 및 이용 동의 <span className="text-status-error">*</span>
                         </Label>
                       </div>
                     </AccordionTrigger>
@@ -425,7 +425,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#005B44] hover:bg-[#004a37] text-white py-2 rounded-lg font-medium transition-colors mt-6"
+                className="w-full bg-[#005B45] hover:bg-[#003326] text-white py-2 rounded-lg font-medium transition-colors mt-6"
               >
                 {isSubmitting ? "신청 중..." : "자료 신청하기"}
               </Button>
