@@ -2,6 +2,15 @@ import { describe, expect, it } from "vitest";
 import { buttonVariants } from "./button";
 
 describe("button color guide variants", () => {
+  it("provides a soft click feedback animation with reduced-motion fallback", () => {
+    const classes = buttonVariants({ variant: "primary" });
+
+    expect(classes).toContain("transition-all");
+    expect(classes).toContain("duration-150");
+    expect(classes).toContain("ease-out");
+    expect(classes).toContain("active:scale-[0.97]");
+    expect(classes).toContain("motion-reduce:active:scale-100");
+  });
   it("uses GREEN700 as the primary base and GREEN600 as hover token", () => {
     const classes = buttonVariants({ variant: "default" });
 
