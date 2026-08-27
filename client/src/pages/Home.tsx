@@ -814,7 +814,7 @@ export default function Home() {
                 <div className="flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500">
                   <Button
                     type="button"
-                    variant="primary"
+                    variant="on-brand"
                     size="large"
                     onClick={() => setConsultationOpen(true)}
                     data-event="consultation_click"
@@ -823,7 +823,7 @@ export default function Home() {
                   </Button>
                   <Button
                     type="button"
-                    variant="on-brand-outline"
+                    variant="on-brand"
                     size="large"
                     onClick={() => setConsultationOpen(true)}
                     data-event="material_download_click"
@@ -1484,7 +1484,7 @@ export default function Home() {
             </Button>
             <Button
               type="button"
-              variant="on-brand-outline"
+              variant="on-brand"
               size="large"
               onClick={() => setConsultationOpen(true)}
               data-event="material_download_click"
