@@ -19,6 +19,12 @@ describe("FO card surface consistency", () => {
     expect(home).not.toContain("group bg-gray-100 flex items-center justify-center");
     expect(home).toContain("group bg-white flex items-center justify-center");
   });
+
+  it("uses a scrollbar-free peek carousel for meals and cafes on mobile", () => {
+    expect(home).toContain("snap-x snap-mandatory scroll-px-2 hide-scrollbar");
+    expect(home).toContain("w-[calc(100vw-64px)] max-w-[320px] snap-center");
+    expect(home.match(/hide-scrollbar/g)?.length).toBe(2);
+  });
 });
 
 export {};

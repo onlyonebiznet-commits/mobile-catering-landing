@@ -1032,9 +1032,9 @@ export default function Home() {
 
           {/* Mobile: Horizontal scroll */}
           <div className="md:hidden">
-            <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
+            <div className="-mx-2 flex w-[calc(100%+1rem)] gap-4 overflow-x-auto px-2 pb-1 snap-x snap-mandatory scroll-px-2 hide-scrollbar">
               {meals.map((meal, idx) => (
-                <div key={idx} className="flex-shrink-0 w-80 snap-center">
+                <div key={idx} className="flex-shrink-0 w-[calc(100vw-64px)] max-w-[320px] snap-center">
                   <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                     <div className="relative h-48 overflow-hidden group bg-white flex items-center justify-center">
                       <img
@@ -1215,9 +1215,9 @@ export default function Home() {
 
           {/* Mobile: Horizontal scroll */}
           <div className="md:hidden">
-            <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
+            <div className="-mx-2 flex w-[calc(100%+1rem)] gap-4 overflow-x-auto px-2 pb-1 snap-x snap-mandatory scroll-px-2 hide-scrollbar">
               {cafeItems.map((cafe, idx) => (
-                <div key={idx} className="flex-shrink-0 w-80 snap-center">
+                <div key={idx} className="flex-shrink-0 w-[calc(100vw-64px)] max-w-[320px] snap-center">
                   <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                     <div className="relative h-48 overflow-hidden group bg-white flex items-center justify-center">
                       <img
