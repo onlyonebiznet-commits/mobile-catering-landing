@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -19,6 +18,14 @@ interface ConsultationModalProps {
   isOpen?: boolean;
 }
 
+const SERVICE_OPTIONS = [
+  { value: "cafeteria", label: "구내식당" },
+  { value: "snack", label: "간식" },
+  { value: "breakfast", label: "조식" },
+  { value: "cafe", label: "사내카페" },
+  { value: "catering", label: "케이터링" },
+] as const;
+
 export default function ConsultationModal({ onClose, isOpen = true }: ConsultationModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const [, navigate] = useLocation();
@@ -29,7 +36,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
     contactPerson: "",
     phoneNumber: "",
     email: "",
-    service: "",
+    serviceTypes: [] as string[],
     region: "",
     estimatedMeals: "",
     message: "",
@@ -104,14 +111,14 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
     }
   };
 
-  const handleSelectChange = (name: string, value: string) => {
+  const handleServiceToggle = (service: string, checked: boolean) => {
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      serviceTypes: checked
+        ? Array.from(new Set([...prev.serviceTypes, service]))
+        : prev.serviceTypes.filter((type) => type !== service),
     }));
-    if (value.trim()) {
-      clearError(name);
-    }
+    clearError("service");
   };
 
   const handleAgreementChange = (key: string, value: boolean) => {
@@ -234,7 +241,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
           manager: formData.contactPerson,
           phone: formData.phoneNumber,
           email: formData.email,
-          serviceType: formData.service,
+          serviceType: formData.serviceTypes.join(",") || null,
           expectedMealCount: formData.estimatedMeals,
           inquiries: formData.message || null,
           region: formData.region,
@@ -256,7 +263,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
       trackFormSubmit("consultation_request", {
         company_name: formData.companyName,
         contact_person: formData.contactPerson,
-        service_type: formData.service || "not_selected",
+        service_type: formData.serviceTypes.join(",") || "not_selected",
         region: formData.region || "not_selected",
         estimated_meals: formData.estimatedMeals || "not_specified",
         form_type: "consultation",
@@ -422,31 +429,35 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             </div>
 
             {/* Service Type */}
-            <div className="space-y-1.5">
-              <Label htmlFor="service" className="form-field-label">
-                관심 서비스
-              </Label>
-              <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
-                <SelectTrigger
-                  aria-invalid={Boolean(errors.service)}
-                  aria-describedby={errors.service ? "service-helper service-error" : "service-helper"}
-                  data-validation-state={errors.service ? "error" : undefined}
-                >
-                  <SelectValue placeholder="서비스를 선택해주세요" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="cafeteria">구내식당</SelectItem>
-                  <SelectItem value="snack">간식</SelectItem>
-                  <SelectItem value="breakfast">조식</SelectItem>
-                  <SelectItem value="cafe">사내카페</SelectItem>
-                  <SelectItem value="catering">케이터링</SelectItem>
-                </SelectContent>
-              </Select>
-              <p id="service-helper" className="form-field-helper">관심 있는 서비스를 선택해주세요.</p>
+            <fieldset className="space-y-1.5">
+              <legend id="service-label" className="form-field-label">관심 서비스</legend>
+              <div
+                role="group"
+                aria-labelledby="service-label"
+                className="grid grid-cols-2 gap-2 rounded-md border border-gray-200 p-3"
+              >
+                {SERVICE_OPTIONS.map(({ value, label }) => {
+                  const checkboxId = `service-${value}`;
+                  return (
+                    <div key={value} className="flex items-center gap-2 rounded-md px-2 py-2 transition-colors hover:bg-gray-50">
+                      <Checkbox
+                        id={checkboxId}
+                        checked={formData.serviceTypes.includes(value)}
+                        onCheckedChange={(checked) => handleServiceToggle(value, checked === true)}
+                        aria-describedby="service-helper"
+                      />
+                      <Label htmlFor={checkboxId} className="form-checkbox-label cursor-pointer">
+                        {label}
+                      </Label>
+                    </div>
+                  );
+                })}
+              </div>
+              <p id="service-helper" className="form-field-helper">관심 있는 서비스를 모두 선택해주세요.</p>
               {errors.service && (
                 <p id="service-error" role="alert" className="form-field-error">{errors.service}</p>
               )}
-            </div>
+            </fieldset>
 
             {/* Region */}
             <div className="space-y-1.5">
@@ -495,17 +506,17 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             {/* Message */}
             <div className="space-y-1.5">
               <Label htmlFor="message" className="form-field-label">
-                특별한 요청사항
+                요청사항
               </Label>
               <Textarea
                 id="message"
                 name="message"
-                placeholder="특별한 요청사항이 있으시면 입력해주세요"
+                placeholder="요청사항을 입력해주세요"
                 value={formData.message}
                 onChange={handleInputChange}
                 aria-describedby="message-helper"
-                className="form-field-control--textarea"
-                rows={3}
+                className="form-field-control--textarea form-field-control--textarea-large"
+                rows={12}
               />
               <p id="message-helper" className="form-field-helper">서비스 제안에 참고할 내용을 남겨주세요.</p>
             </div>

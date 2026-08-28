@@ -68,3 +68,6 @@ PromoBadge outlined를 첨부 예시처럼 둥근 사각형(`rounded-md`)·화�
 
 ## FO 상담 신청 폼 Checkbox 가이드 검증
 공통 Checkbox에 가이드 전용 control·indicator 스타일을 적용했습니다. 모바일은 20px, PC는 16px로 반응형 크기를 제공하고, 미선택은 흰색 배경·회색 테두리, 선택은 GREEN700 배경·흰색 체크, focus-visible은 GREEN700 링, disabled는 회색 상태로 정리했습니다. 상담 폼의 전체동의·개별동의·수신 매체 라벨에 동일한 타이포그래피 토큰을 연결했고, 전체동의 체크박스의 pointerdown 전파 차단도 보완했습니다. 관련 테스트 11개, TypeScript·프로덕션 빌드 및 FO PC·모바일 화면 검증을 완료했습니다. 관리자 DB 인증 오류 로그는 기존 관리자 경로의 오류로 이번 FO 변경과 무관합니다.
+
+## FO 상담 폼 요청사항·관심 서비스 변경 검증
+관심 서비스 단일 Select를 Checkbox 기반 복수 선택 그룹으로 변경했습니다. 구내식당·간식·조식·사내카페·케이터링을 2열 그룹으로 표시하고, 선택값은 기존 API의 serviceType 문자열에 쉼표로 직렬화합니다. 요청사항 라벨을 ‘요청사항’으로 변경하고 Textarea에 mobile min-height 22.5rem, desktop min-height 18rem을 적용해 기존 기준 높이의 3배로 확장했습니다. 관련 회귀 테스트 14개, TypeScript·프로덕션 빌드와 FO PC·모바일 화면 검증을 완료했습니다. 관리자 페이지는 변경하지 않았습니다.

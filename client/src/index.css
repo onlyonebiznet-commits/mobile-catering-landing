@@ -458,6 +458,17 @@
     }
   }
 
+  /* Request textarea uses three times the guide's default control height */
+  .form-field-control--textarea-large {
+    min-height: 22.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .form-field-control--textarea-large {
+      min-height: 18rem;
+    }
+  }
+
   /* Checkbox states and sizing from the attached Checkbox guide */
   .form-checkbox-control {
     width: 1.25rem;
