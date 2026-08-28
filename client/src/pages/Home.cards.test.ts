@@ -25,6 +25,13 @@ describe("FO card surface consistency", () => {
     expect(home).toContain("w-[calc(100vw-64px)] max-w-[320px] snap-center");
     expect(home.match(/hide-scrollbar/g)?.length).toBe(2);
   });
+
+  it("keeps the shortened Korean meal description requested by the visual edit", () => {
+    expect(home).toContain(
+      'fullDescription: "한반도의 오랜 식문화를 계승한 정통 한식입니다. 계절 재료를 활용하여 영양 균형을 맞추고, 전통 양념과 조리법으로 깊은 맛을",'
+    );
+    expect(home).not.toContain("깊은 맛을 살렸습니다.");
+  });
 });
 
 export {};

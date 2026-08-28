@@ -401,7 +401,7 @@ export default function Home() {
       name: "정통 한식",
       image: "/manus-storage/02_07006eb7.png",
       description: "신선한 재료로 만든 전통 한식",
-      fullDescription: "한반도의 오랜 식문화를 계승한 정통 한식입니다. 계절 재료를 활용하여 영양 균형을 맞추고, 전통 양념과 조리법으로 깊은 맛을 살렸습니다.",
+      fullDescription: "한반도의 오랜 식문화를 계승한 정통 한식입니다. 계절 재료를 활용하여 영양 균형을 맞추고, 전통 양념과 조리법으로 깊은 맛을",
       summary: "계절 재료로 만든 영양 균형 잡힌 한끼",
       tags: ["전통식", "영양균형", "한국식"],
     },
