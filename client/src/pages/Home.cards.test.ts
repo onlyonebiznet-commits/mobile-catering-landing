@@ -32,6 +32,13 @@ describe("FO card surface consistency", () => {
     );
     expect(home).not.toContain("깊은 맛을 살렸습니다.");
   });
+
+  it("keeps the shortened cafe dessert description requested by the visual edit", () => {
+    expect(home).toContain(
+      'fullDescription: "카페만의 특별한 디저트와 건강한 스낵을 준비했습니다. 신선한 재료로 매일 만드는 베이커리 제품과 함께 커피의 맛을 ",'
+    );
+    expect(home).not.toContain("커피의 맛을 돋보이게 합니다.");
+  });
 });
 
 export {};

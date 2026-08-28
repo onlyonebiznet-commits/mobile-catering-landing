@@ -269,7 +269,7 @@ export default function Home() {
       name: "디저트 & 스낵",
       image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop",
       description: "정성스러운 디저트와 스낵",
-      fullDescription: "카페만의 특별한 디저트와 건강한 스낵을 준비했습니다. 신선한 재료로 매일 만드는 베이커리 제품과 함께 커피의 맛을 돋보이게 합니다.",
+      fullDescription: "카페만의 특별한 디저트와 건강한 스낵을 준비했습니다. 신선한 재료로 매일 만드는 베이커리 제품과 함께 커피의 맛을 ",
       summary: "정성스럽게 만든 디저트와 스낵",
       tags: ["디저트", "베이커리", "스낵"],
     },
