@@ -1546,7 +1546,7 @@ export default function Home() {
               <div className="space-y-2">
                 <button
                   onClick={() => setShowPrivacyModal(true)}
-                  className="text-gray-400 hover:text-white transition text-sm"
+                  className="text-gray-400 hover:text-white transition text-sm font-bold"
                 >
                   개인정보 처리방침
                 </button>
