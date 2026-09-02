@@ -77,12 +77,12 @@ async function startServer() {
         expectedMeals: consultationData.expectedMealCount || null,
         serviceType: consultationData.serviceType || null,
         message: consultationData.inquiries || null,
-        privacyConsent: true,
-        marketingConsent: consultationData.marketingConsent || false,
-        advertisingConsent: consultationData.adConsent || false,
-        smsConsent: consultationData.smsConsent || false,
-        emailConsent: consultationData.emailConsent || false,
-        kakaoConsent: consultationData.kakaoConsent || false,
+        privacyConsent: consultationData.privacyConsent !== false,
+        marketingConsent: consultationData.marketingConsent === true,
+        advertisingConsent: consultationData.advertisingConsent === true || consultationData.adConsent === true,
+        smsConsent: consultationData.smsConsent === true,
+        emailConsent: consultationData.emailConsent === true,
+        kakaoConsent: consultationData.kakaoConsent === true,
         source: "프레시밀온 랜딩페이지"
       };
 
@@ -149,7 +149,23 @@ async function startServer() {
   // API Routes - Consultation Request
   app.post("/api/consultation-request", async (req, res) => {
     try {
-      const { companyName, manager, phone, email, region, expectedMealCount, serviceType, inquiries } = req.body;
+      const {
+        companyName,
+        manager,
+        phone,
+        email,
+        region,
+        expectedMealCount,
+        serviceType,
+        inquiries,
+        privacyConsent,
+        marketingConsent,
+        advertisingConsent,
+        adConsent,
+        smsConsent,
+        emailConsent,
+        kakaoConsent,
+      } = req.body;
 
       // Validation
       if (!companyName || !manager || !phone) {
@@ -199,6 +215,12 @@ async function startServer() {
           expectedMealCount: mealCount,
           serviceType: serviceType || null,
           inquiries: inquiries && inquiries.trim() ? inquiries : null,
+          privacyConsent: privacyConsent !== false,
+          marketingConsent: marketingConsent === true,
+          advertisingConsent: advertisingConsent === true || adConsent === true,
+          smsConsent: smsConsent === true,
+          emailConsent: emailConsent === true,
+          kakaoConsent: kakaoConsent === true,
           createdAt: now,
         };
         

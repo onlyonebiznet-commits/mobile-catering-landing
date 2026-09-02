@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { X, MessageCircle } from 'lucide-react';
+import { X, MessageCircle, ChevronDown } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem } from '@/components/ui/accordion';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 const ServiceRecommendationChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +18,15 @@ const ServiceRecommendationChatbot = () => {
     environment: '',
     people: '',
     region: '',
-    inquiry: ''
+    inquiry: '',
   });
+  const [agreements, setAgreements] = useState({
+    allAgree: false,
+    personalInfoCollection: false,
+    marketingConsent: false,
+    adConsent: false,
+  });
+  const [accordionValue, setAccordionValue] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const services = [
@@ -53,12 +63,45 @@ const ServiceRecommendationChatbot = () => {
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleAgreementChange = (
+    key: 'allAgree' | 'personalInfoCollection' | 'marketingConsent' | 'adConsent',
+    checked: boolean,
+  ) => {
+    setAgreements((prev) => {
+      if (key === 'allAgree') {
+        return {
+          allAgree: checked,
+          personalInfoCollection: checked,
+          marketingConsent: checked,
+          adConsent: checked,
+        };
+      }
+
+      const next = { ...prev, [key]: checked };
+      next.allAgree = next.personalInfoCollection && next.marketingConsent && next.adConsent;
+      return next;
+    });
+  };
+
+  const toggleAgreementAccordion = (value: string) => {
+    setAccordionValue((current) => (current === value ? '' : value));
+  };
+
+  const stopAgreementPropagation = (e: React.SyntheticEvent) => {
+    e.stopPropagation();
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!agreements.personalInfoCollection) {
+      alert('개인정보 수집 및 이용에 동의해주세요.');
+      return;
+    }
+
     try {
       // 백엔드로 데이터 전송
       const response = await fetch('/api/consultation-request', {
@@ -68,13 +111,16 @@ const ServiceRecommendationChatbot = () => {
         },
         body: JSON.stringify({
           companyName: formData.company,
-          contactPerson: formData.name,
-          phoneNumber: formData.phone,
+          manager: formData.name,
+          phone: formData.phone,
           email: formData.email,
           serviceType: formData.service,
           region: formData.region,
           estimatedMeals: formData.people,
-          message: formData.inquiry,
+          inquiries: formData.inquiry,
+          privacyConsent: agreements.personalInfoCollection,
+          marketingConsent: agreements.marketingConsent,
+          advertisingConsent: agreements.adConsent,
         }),
       });
 
@@ -89,6 +135,13 @@ const ServiceRecommendationChatbot = () => {
         setStep(1);
         setSelectedService('');
         setSelectedEnvironment('');
+        setAgreements({
+          allAgree: false,
+          personalInfoCollection: false,
+          marketingConsent: false,
+          adConsent: false,
+        });
+        setAccordionValue('');
         setFormData({
           name: '',
           company: '',
@@ -259,6 +312,136 @@ const ServiceRecommendationChatbot = () => {
                     rows={3}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651] resize-none"
                   />
+
+                  <div className="space-y-3 border-t border-gray-200 pt-3" aria-label="개인정보 동의">
+                    <div className="flex items-center gap-2">
+                      <Checkbox
+                        id="chatbot-all-agree"
+                        checked={agreements.allAgree}
+                        onCheckedChange={(checked) => handleAgreementChange('allAgree', checked === true)}
+                        onClick={stopAgreementPropagation}
+                        onPointerDown={stopAgreementPropagation}
+                      />
+                      <Label
+                        htmlFor="chatbot-all-agree"
+                        className="form-checkbox-label font-medium cursor-pointer"
+                        onClick={stopAgreementPropagation}
+                        onPointerDown={stopAgreementPropagation}
+                      >
+                        전체 동의
+                      </Label>
+                    </div>
+
+                    <Accordion
+                      type="single"
+                      collapsible
+                      value={accordionValue}
+                      onValueChange={setAccordionValue}
+                      className="w-full space-y-2"
+                    >
+                      <AccordionItem value="personal-info" className="border border-gray-200 rounded-lg px-3">
+                        <div className="flex items-center justify-between py-2">
+                          <div className="flex items-center gap-2 min-w-0">
+                            <Checkbox
+                              id="chatbot-personal-info"
+                              checked={agreements.personalInfoCollection}
+                              onCheckedChange={(checked) => handleAgreementChange('personalInfoCollection', checked === true)}
+                              onClick={stopAgreementPropagation}
+                              onPointerDown={stopAgreementPropagation}
+                            />
+                            <Label
+                              htmlFor="chatbot-personal-info"
+                              className="form-checkbox-label text-gray-700 cursor-pointer"
+                              onClick={stopAgreementPropagation}
+                              onPointerDown={stopAgreementPropagation}
+                            >
+                              개인정보 수집 및 이용 동의 <span className="text-status-error" aria-hidden="true">*</span>
+                            </Label>
+                          </div>
+                          <button
+                            type="button"
+                            className="flex-shrink-0 rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                            onClick={() => toggleAgreementAccordion('personal-info')}
+                            aria-label="개인정보 수집 및 이용 동의 내용 열기"
+                            aria-expanded={accordionValue === 'personal-info'}
+                          >
+                            <ChevronDown className={`h-4 w-4 transition-transform ${accordionValue === 'personal-info' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                          </button>
+                        </div>
+                        <AccordionContent className="rounded bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
+                          CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 성명, 휴대폰번호, 이메일, 기업명, 주소, 예상 식수를 수집·이용합니다. 이용 목적은 이동급식 서비스 상담 및 진행이며, 보유·이용 기간은 상담 신청 후 3년입니다. 동의하지 않을 수 있으나 상담 진행이 어려울 수 있습니다.
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="marketing" className="border border-gray-200 rounded-lg px-3">
+                        <div className="flex items-center justify-between py-2">
+                          <div className="flex items-center gap-2 min-w-0">
+                            <Checkbox
+                              id="chatbot-marketing"
+                              checked={agreements.marketingConsent}
+                              onCheckedChange={(checked) => handleAgreementChange('marketingConsent', checked === true)}
+                              onClick={stopAgreementPropagation}
+                              onPointerDown={stopAgreementPropagation}
+                            />
+                            <Label
+                              htmlFor="chatbot-marketing"
+                              className="form-checkbox-label text-gray-700 cursor-pointer"
+                              onClick={stopAgreementPropagation}
+                              onPointerDown={stopAgreementPropagation}
+                            >
+                              마케팅 정보 수신 동의 (선택)
+                            </Label>
+                          </div>
+                          <button
+                            type="button"
+                            className="flex-shrink-0 rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                            onClick={() => toggleAgreementAccordion('marketing')}
+                            aria-label="마케팅 정보 수신 동의 내용 열기"
+                            aria-expanded={accordionValue === 'marketing'}
+                          >
+                            <ChevronDown className={`h-4 w-4 transition-transform ${accordionValue === 'marketing' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                          </button>
+                        </div>
+                        <AccordionContent className="rounded bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
+                          서비스 홍보 등 마케팅을 위해 성명, 휴대폰번호, 이메일, 기업명을 이용합니다. 보유·이용 기간은 동의 후 3년이며, 동의하지 않아도 상담 이용에는 지장이 없습니다.
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="advertising" className="border border-gray-200 rounded-lg px-3">
+                        <div className="flex items-center justify-between py-2">
+                          <div className="flex items-center gap-2 min-w-0">
+                            <Checkbox
+                              id="chatbot-advertising"
+                              checked={agreements.adConsent}
+                              onCheckedChange={(checked) => handleAgreementChange('adConsent', checked === true)}
+                              onClick={stopAgreementPropagation}
+                              onPointerDown={stopAgreementPropagation}
+                            />
+                            <Label
+                              htmlFor="chatbot-advertising"
+                              className="form-checkbox-label text-gray-700 cursor-pointer"
+                              onClick={stopAgreementPropagation}
+                              onPointerDown={stopAgreementPropagation}
+                            >
+                              광고성 정보 수신 동의 (선택)
+                            </Label>
+                          </div>
+                          <button
+                            type="button"
+                            className="flex-shrink-0 rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                            onClick={() => toggleAgreementAccordion('advertising')}
+                            aria-label="광고성 정보 수신 동의 내용 열기"
+                            aria-expanded={accordionValue === 'advertising'}
+                          >
+                            <ChevronDown className={`h-4 w-4 transition-transform ${accordionValue === 'advertising' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                          </button>
+                        </div>
+                        <AccordionContent className="rounded bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
+                          마케팅 목적의 개인정보 수집·이용에 동의한 고객에게 문자, 이메일 등 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다. 동의하지 않아도 상담 이용에는 지장이 없습니다.
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
 
                   <div className="flex gap-2 pt-2">
                     <button
