@@ -1375,10 +1375,10 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
-          {/* PC: 2 Column Grid | Mobile: Horizontal List */}
-          {/* Mobile: Horizontal List */}
+          {/* PC: 2 Column Grid | Mobile: Full List */}
+          {/* Mobile: Full List - show all six success stories */}
           <div className="md:hidden space-y-4">
-            {reviews.slice(0, 3).map((review, idx) => (
+            {reviews.map((review, idx) => (
               <div key={`mobile-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[16px] p-4 bg-white hover:shadow-md transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
                 {/* Image - Compact */}
                 <div className="relative rounded-[12px] overflow-hidden bg-gray-200 w-24 h-24 aspect-square flex-shrink-0 group">

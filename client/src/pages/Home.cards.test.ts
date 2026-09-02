@@ -52,6 +52,12 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('image: "/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg",');
     expect(home).toContain('image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg",');
   });
+
+  it("renders all six customer success stories on mobile", () => {
+    expect(home).toContain("{/* Mobile: Full List - show all six success stories */}");
+    expect(home).toContain("<div className=\"md:hidden space-y-4\">\n            {reviews.map((review, idx) => (");
+    expect(home).not.toContain("reviews.slice(0, 3)");
+  });
 });
 
 export {};
