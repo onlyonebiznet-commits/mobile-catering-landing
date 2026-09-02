@@ -466,37 +466,37 @@ export default function Home() {
       companyType: "IT 반도체 기업",
       summary: "직원 만족도가 크게 향상되었습니다",
       comment: "프레시밀온 덕분에 직원들의 점심시간이 훨씬 편해졌습니다. 신선하고 맛있는 식사로 만족도가 높습니다.",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=kim",
+      image: "/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg",
     },
     {
       companyType: "글로벌 제조기업",
       summary: "다양한 메뉴로 직원 만족도 향상",
       comment: "다양한 메뉴와 건강한 식단으로 직원들이 정말 좋아합니다. 강력 추천합니다!",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=lee",
+      image: "/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg",
     },
     {
       companyType: "물류센터",
       summary: "신선한 식사 제공으로 복지 개선",
       comment: "매일 신선한 식사를 제공해주셔서 감사합니다. 직원 복지가 한 단계 업그레이드 되었습니다.",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=park",
+      image: "/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg",
     },
     {
       companyType: "금융기업",
       summary: "이동형 솔루션으로 다양한 사업장 지원",
       comment: "프레시밀온의 이동형 솔루션으로 다양한 사업장에서 직원 식사를 제공할 수 있게 되었습니다.",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=hyun",
+      image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg",
     },
     {
       companyType: "연구개발센터",
       summary: "정성스러운 식사로 만족도 향상",
       comment: "신선한 재료와 정성스러운 조리로 만든 식사가 정말 맛있습니다. 직원들의 만족도가 매우 높습니다.",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=choi",
+      image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg",
     },
     {
       companyType: "대형 오피스",
       summary: "편리한 신선 식사 서비스 제공",
       comment: "프레시밀온 덕분에 사무실에서도 편하게 신선한 식사를 즐길 수 있습니다. 정말 추천합니다!",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=jung",
+      image: "/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg",
     },
   ];
 

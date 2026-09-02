@@ -46,6 +46,12 @@ describe("FO card surface consistency", () => {
     );
     expect(home).not.toContain("특별한 맛과 향을 선사합니다.");
   });
+
+  it("uses real on-site photos for customer success cards", () => {
+    expect(home).not.toContain('image: "https://api.dicebear.com/7.x/avataaars/svg?seed=');
+    expect(home).toContain('image: "/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg",');
+    expect(home).toContain('image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg",');
+  });
 });
 
 export {};
