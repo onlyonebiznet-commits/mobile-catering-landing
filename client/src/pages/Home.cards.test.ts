@@ -58,6 +58,11 @@ describe("FO card surface consistency", () => {
     expect(home).toContain("<div className=\"md:hidden space-y-4\">\n            {reviews.map((review, idx) => (");
     expect(home).not.toContain("reviews.slice(0, 3)");
   });
+
+  it("uses the refined warm delivery and hygienic pickup copy", () => {
+    expect(home).toContain('description: "따뜻하게 배송하고 위생적으로 수거합니다",');
+    expect(home).not.toContain("따뜻한 상태로 배송 후 위생적으로 수거합니다");
+  });
 });
 
 export {};

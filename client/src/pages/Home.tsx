@@ -447,7 +447,7 @@ export default function Home() {
     {
       step: "4",
       title: "배송 & 수거",
-      description: "따뜻한 상태로 배송 후 위생적으로 수거합니다",
+      description: "따뜻하게 배송하고 위생적으로 수거합니다",
       icon: "🚚",
     },
   ];
