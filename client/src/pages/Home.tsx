@@ -253,7 +253,7 @@ export default function Home() {
       name: "프리미엄 커피",
       image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=600&h=600&fit=crop",
       description: "최고급 원두로 만든 커피",
-      fullDescription: "세계 각지에서 엄선한 최고급 원두를 사용하여 만든 프리미엄 커피입니다. 바리스타의 정성으로 완성된 특별한 맛과 향을 선사합니다.",
+      fullDescription: "세계 각지에서 엄선한 최고급 원두를 사용하여 만든 프리미엄 커피입니다. 바리스타의 정성으로 완성된 특별한 맛과 향을",
       summary: "세계 최고급 원두로 만든 특별한 커피",
       tags: ["프리미엄", "커피", "바리스타"],
     },
