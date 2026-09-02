@@ -51,6 +51,12 @@ describe("Freshmeal-on color guide tokens", () => {
     expect(css).toContain("--border: var(--gray-200)");
     expect(css).toContain("--muted-foreground: var(--gray-600)");
   });
+
+  it("disables the hero title entrance animation for reduced-motion users", () => {
+    expect(css).toContain("@media (prefers-reduced-motion: reduce)");
+    expect(css).toContain(".hero-title-animate");
+    expect(css).toContain("animation: none;");
+  });
 });
 
 export {};

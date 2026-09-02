@@ -805,6 +805,13 @@
     animation-delay: 0.3s;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title-animate {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
 
 @layer utilities {
   .hide-scrollbar {
