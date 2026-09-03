@@ -52,6 +52,7 @@ export default function Home() {
 
   const [currentDietIndex, setCurrentDietIndex] = useState(0);
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+  const isSnackHero = currentHeroIndex % 3 === 1;
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -569,8 +570,8 @@ export default function Home() {
               },
               {
                 video: '/manus-storage/inbound_snack_fcff7dcf.mp4',
-                title: '직원 만족을 높이는 간식 복지',
-                highlight: '스낵픽',
+                title: '어디든지 찾아가는',
+                highlight: '간식복지\n스낵픽',
                 description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
               },
               {
@@ -638,8 +639,8 @@ export default function Home() {
               },
               {
                 video: '/manus-storage/inbound_snack_fcff7dcf.mp4',
-                title: '직원 만족을 높이는 간식 복지',
-                highlight: '스낵픽',
+                title: '어디든지 찾아가는',
+                highlight: '간식복지\n스낵픽',
                 description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
               },
               {
@@ -650,9 +651,9 @@ export default function Home() {
               }
             ][currentHeroIndex % 3] && (
               <div>
-                {/* MO: 1,2줄 36px, PC: 1,2줄 72px */}
+                {/* 스낵픽 헤더: ‘어디든지 찾아가는 / 간식복지 / 스낵픽’ 3줄 계층 */}
                 <div className="md:hidden">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: 'clamp(24px, 6vw, 30px)', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(30px, 8vw, 38px)' : 'clamp(24px, 6vw, 30px)', lineHeight: '1.15', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -662,8 +663,8 @@ export default function Home() {
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '직원 만족을 높이는 간식 복지',
-                        highlight: '스낵픽',
+                        title: '어디든지 찾아가는',
+                        highlight: '간식복지\n스낵픽',
                         description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
@@ -674,7 +675,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: 'clamp(24px, 6vw, 30px)', lineHeight: '1.2', marginBottom: '0.75rem'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(26px, 7vw, 34px)' : 'clamp(24px, 6vw, 30px)', lineHeight: '1.15', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -684,8 +685,8 @@ export default function Home() {
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '직원 만족을 높이는 간식 복지',
-                        highlight: '스낵픽',
+                        title: '어디든지 찾아가는',
+                        highlight: '간식복지\n스낵픽',
                         description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
@@ -699,7 +700,7 @@ export default function Home() {
                 </div>
                 
                 <div className="hidden md:block">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(52px, 5vw, 72px)' : '60px', lineHeight: '1.15', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -709,8 +710,8 @@ export default function Home() {
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '직원 만족을 높이는 간식 복지',
-                        highlight: '스낵픽',
+                        title: '어디든지 찾아가는',
+                        highlight: '간식복지\n스낵픽',
                         description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
@@ -721,7 +722,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(44px, 4.3vw, 60px)' : '60px', lineHeight: '1.15', marginBottom: '1rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -731,8 +732,8 @@ export default function Home() {
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '직원 만족을 높이는 간식 복지',
-                        highlight: '스낵픽',
+                        title: '어디든지 찾아가는',
+                        highlight: '간식복지\n스낵픽',
                         description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
@@ -756,8 +757,8 @@ export default function Home() {
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
-                      title: '직원 만족을 높이는 간식 복지',
-                      highlight: '스낵픽',
+                      title: '어디든지 찾아가는',
+                      highlight: '간식복지\n스낵픽',
                       description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                     },
                     {
@@ -778,8 +779,8 @@ export default function Home() {
                     },
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
-                      title: '직원 만족을 높이는 간식 복지',
-                      highlight: '스낵픽',
+                      title: '어디든지 찾아가는',
+                      highlight: '간식복지\n스낵픽',
                       description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                     },
                     {

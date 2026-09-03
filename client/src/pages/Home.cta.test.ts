@@ -24,6 +24,15 @@ describe("banner CTA button consistency", () => {
     expect(finalCta).toContain("setConsultationOpen(true)");
   });
 
+  it("uses the requested three-line snackpick headline hierarchy", () => {
+    expect(home).toContain("const isSnackHero = currentHeroIndex % 3 === 1;");
+    expect(home).toContain("title: '어디든지 찾아가는'");
+    expect(home).toContain("highlight: '간식복지\\n스낵픽'");
+    expect(home.match(/whiteSpace: 'pre-line'/g)).toHaveLength(2);
+    expect(home).toContain("fontSize: isSnackHero ? 'clamp(30px, 8vw, 38px)'");
+    expect(home).toContain("fontSize: isSnackHero ? 'clamp(52px, 5vw, 72px)'");
+  });
+
   it("keeps the final green-banner consultation CTA in inverse treatment", () => {
     expect(finalCta).toContain('variant="on-brand-inverse"');
     expect(finalCta).toContain('size="large"');
