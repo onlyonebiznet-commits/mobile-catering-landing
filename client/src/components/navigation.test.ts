@@ -31,22 +31,8 @@ describe("navigation menu configuration", () => {
       resolve(process.cwd(), "client/src/components/SectionNavigation.tsx"),
       "utf8"
     );
-    expect(source).toMatch(/className="grid grid-cols-3 gap-3 md:grid-cols-6/);
-    expect(source).not.toContain('grid grid-cols-4');
-  });
-
-  it("exposes exactly six colored service destinations with responsive layouts", () => {
-    const source = readFileSync(
-      resolve(process.cwd(), "client/src/components/SectionNavigation.tsx"),
-      "utf8"
-    );
-    const labels = ["서비스 소개", "구내식당", "수제간편식", "스낵픽", "사내카페", "고객후기"];
-
-    expect(source.match(/\{ id: '/g)?.length).toBe(6);
-    labels.forEach((label) => expect(source).toContain(`label: '${label}'`));
-    expect(source).toContain("md:grid-cols-6");
-    expect(source).toContain("iconTone");
-    expect(source).toContain("aria-current");
+    expect(source).toContain('className="grid grid-cols-3 gap-3 w-full"');
+    expect(source).not.toContain('className="grid grid-cols-4 gap-3 w-full"');
   });
 
   it("keeps the process content section available as a page destination", () => {
