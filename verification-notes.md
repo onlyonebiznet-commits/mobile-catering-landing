@@ -162,3 +162,6 @@ PC 이미지 래퍼와 텍스트 래퍼에서 `md:aspect-auto` 및 `md:min-h-96`
 
 ## 상담신청 폼 FW Radio button 가이드 적용 검증
 첨부된 FW UIUX Design System의 원형 라디오 버튼 시각을 상담신청 폼 선택 컨트롤에 적용했다. 공통 Checkbox에 `appearance="radio"` 변형을 추가해 기존 checkbox 의미와 다중 선택 동작은 유지하면서, 흰색 바탕·회색 테두리·CJ 그린 선택 링과 중앙 선택점·focus 링·disabled 상태를 제공한다. 관심 서비스 5개, 전체 동의, 개별 동의 3개, 광고 수신 매체 3개에 적용했으며 동의 아코디언과 전체 동의 이벤트 분리도 유지했다. 상담 폼·CSS 회귀 테스트, TypeScript, 프로덕션 빌드를 통과했다.
+
+## 상담신청 폼 helper 문구 제거 검증
+상담신청 폼의 회사명·담당자명·연락처·이메일·관심 서비스·지역·예상 인원·요청사항 아래에 있던 평상시 helper 문구를 제거했다. 오류 상태에서만 `form-field-error`가 표시되도록 aria-describedby를 오류 메시지 ID에 조건부 연결했고, 입력 placeholder·필수 검증·동의 영역은 유지했다. FO 모바일·PC 전체 화면 회귀와 관련 테스트·TypeScript·프로덕션 빌드를 확인했다.

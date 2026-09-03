@@ -183,10 +183,18 @@ describe("ConsultationModal - Text input guide", () => {
     );
 
     expect(source).toContain('className="form-field-label"');
-    expect(source).toContain('className="form-field-helper"');
+    expect(source).not.toContain('className="form-field-helper"');
     expect(source).toContain('className="form-field-error"');
-    expect(source).toContain('aria-describedby={errors.companyName ? "companyName-helper companyName-error" : "companyName-helper"}');
+    expect(source).toContain('aria-describedby={errors.companyName ? "companyName-error" : undefined}');
     expect(source).toContain('data-validation-state={errors.companyName ? "error" : undefined}');
-    expect(source).toContain('aria-describedby="message-helper"');
+    expect(source).toContain('aria-describedby={undefined}');
+    expect(source).not.toContain('companyName-helper');
+    expect(source).not.toContain('contactPerson-helper');
+    expect(source).not.toContain('phoneNumber-helper');
+    expect(source).not.toContain('email-helper');
+    expect(source).not.toContain('service-helper');
+    expect(source).not.toContain('region-helper');
+    expect(source).not.toContain('estimatedMeals-helper');
+    expect(source).not.toContain('message-helper');
   });
 });

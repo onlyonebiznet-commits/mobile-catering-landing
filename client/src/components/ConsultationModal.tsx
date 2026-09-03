@@ -352,10 +352,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 onChange={handleInputChange}
                 aria-required="true"
                 aria-invalid={Boolean(errors.companyName)}
-                aria-describedby={errors.companyName ? "companyName-helper companyName-error" : "companyName-helper"}
+                aria-describedby={errors.companyName ? "companyName-error" : undefined}
                 data-validation-state={errors.companyName ? "error" : undefined}
               />
-              <p id="companyName-helper" className="form-field-helper">상담을 진행할 기업명을 입력해주세요.</p>
               {errors.companyName && (
                 <p id="companyName-error" role="alert" className="form-field-error">{errors.companyName}</p>
               )}
@@ -374,10 +373,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 onChange={handleInputChange}
                 aria-required="true"
                 aria-invalid={Boolean(errors.contactPerson)}
-                aria-describedby={errors.contactPerson ? "contactPerson-helper contactPerson-error" : "contactPerson-helper"}
+                aria-describedby={errors.contactPerson ? "contactPerson-error" : undefined}
                 data-validation-state={errors.contactPerson ? "error" : undefined}
               />
-              <p id="contactPerson-helper" className="form-field-helper">연락 가능한 담당자명을 입력해주세요.</p>
               {errors.contactPerson && (
                 <p id="contactPerson-error" role="alert" className="form-field-error">{errors.contactPerson}</p>
               )}
@@ -396,10 +394,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 onChange={handleInputChange}
                 aria-required="true"
                 aria-invalid={Boolean(errors.phoneNumber)}
-                aria-describedby={errors.phoneNumber ? "phoneNumber-helper phoneNumber-error" : "phoneNumber-helper"}
+                aria-describedby={errors.phoneNumber ? "phoneNumber-error" : undefined}
                 data-validation-state={errors.phoneNumber ? "error" : undefined}
               />
-              <p id="phoneNumber-helper" className="form-field-helper">휴대전화 번호를 입력해주세요.</p>
               {errors.phoneNumber && (
                 <p id="phoneNumber-error" role="alert" className="form-field-error">{errors.phoneNumber}</p>
               )}
@@ -419,10 +416,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 onChange={handleInputChange}
                 aria-required="true"
                 aria-invalid={Boolean(errors.email)}
-                aria-describedby={errors.email ? "email-helper email-error" : "email-helper"}
+                aria-describedby={errors.email ? "email-error" : undefined}
                 data-validation-state={errors.email ? "error" : undefined}
               />
-              <p id="email-helper" className="form-field-helper">결과 안내를 받을 이메일을 입력해주세요.</p>
               {errors.email && (
                 <p id="email-error" role="alert" className="form-field-error">{errors.email}</p>
               )}
@@ -445,7 +441,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         appearance="radio"
                         checked={formData.serviceTypes.includes(value)}
                         onCheckedChange={(checked) => handleServiceToggle(value, checked === true)}
-                        aria-describedby="service-helper"
+                        aria-describedby={errors.service ? "service-error" : undefined}
                       />
                       <Label htmlFor={checkboxId} className="form-checkbox-label cursor-pointer">
                         {label}
@@ -454,7 +450,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   );
                 })}
               </div>
-              <p id="service-helper" className="form-field-helper">관심 있는 서비스를 모두 선택해주세요.</p>
               {errors.service && (
                 <p id="service-error" role="alert" className="form-field-error">{errors.service}</p>
               )}
@@ -473,10 +468,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 onChange={handleInputChange}
                 aria-required="true"
                 aria-invalid={Boolean(errors.region)}
-                aria-describedby={errors.region ? "region-helper region-error" : "region-helper"}
+                aria-describedby={errors.region ? "region-error" : undefined}
                 data-validation-state={errors.region ? "error" : undefined}
               />
-              <p id="region-helper" className="form-field-helper">서비스를 이용할 지역을 입력해주세요.</p>
               {errors.region && (
                 <p id="region-error" role="alert" className="form-field-error">{errors.region}</p>
               )}
@@ -495,10 +489,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 onChange={handleInputChange}
                 aria-required="true"
                 aria-invalid={Boolean(errors.estimatedMeals)}
-                aria-describedby={errors.estimatedMeals ? "estimatedMeals-helper estimatedMeals-error" : "estimatedMeals-helper"}
+                aria-describedby={errors.estimatedMeals ? "estimatedMeals-error" : undefined}
                 data-validation-state={errors.estimatedMeals ? "error" : undefined}
               />
-              <p id="estimatedMeals-helper" className="form-field-helper">예상 이용 인원을 입력해주세요.</p>
               {errors.estimatedMeals && (
                 <p id="estimatedMeals-error" role="alert" className="form-field-error">{errors.estimatedMeals}</p>
               )}
@@ -515,11 +508,10 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 placeholder="요청사항을 입력해주세요"
                 value={formData.message}
                 onChange={handleInputChange}
-                aria-describedby="message-helper"
+                aria-describedby={undefined}
                 className="form-field-control--textarea form-field-control--textarea-large"
                 rows={12}
               />
-              <p id="message-helper" className="form-field-helper">서비스 제안에 참고할 내용을 남겨주세요.</p>
             </div>
 
             {/* Agreements Section */}
