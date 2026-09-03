@@ -63,6 +63,27 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('description: "따뜻하게 배송하고 위생적으로 수거합니다",');
     expect(home).not.toContain("따뜻한 상태로 배송 후 위생적으로 수거합니다");
   });
+
+  it("uses a 4:3 image ratio for the mobile customer diet card", () => {
+    expect(home).toContain('data-diet-carousel');
+    expect(home).toContain('aspect-[4/3] md:aspect-auto');
+    expect(home).toContain('className="absolute inset-0 w-full h-full object-cover');
+  });
+
+  it("provides swipe navigation and accessible mobile diet arrows", () => {
+    expect(home).toContain('onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}');
+    expect(home).toContain('onTouchCancel={() => setTouchStart(0)}');
+    expect(home).toContain('aria-label="이전 식단 카드"');
+    expect(home).toContain('aria-label="다음 식단 카드"');
+    expect(home).toContain('className="md:hidden absolute left-3');
+    expect(home).toContain('className="md:hidden absolute right-3');
+  });
+
+  it("keeps hero autoplay state separate from the customer diet card state", () => {
+    expect(home).toContain('const [currentHeroIndex, setCurrentHeroIndex] = useState(0);');
+    expect(home).toContain('setCurrentHeroIndex((prev) => (prev + 1) % 3);');
+    expect(home).toContain('src={diets[currentDietIndex].image}');
+  });
 });
 
 export {};

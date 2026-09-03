@@ -51,6 +51,7 @@ export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
 
   const [currentDietIndex, setCurrentDietIndex] = useState(0);
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -140,7 +141,7 @@ export default function Home() {
   // Auto-play banner carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentDietIndex((prev) => (prev + 1) % 3);
+      setCurrentHeroIndex((prev) => (prev + 1) % 3);
     }, 5000); // Change banner every 5 seconds
     return () => clearInterval(interval);
   }, []);
@@ -156,26 +157,26 @@ export default function Home() {
     });
 
     // 현재 비디오만 재생
-    const currentVideo = videoRefs.current[currentDietIndex];
+    const currentVideo = videoRefs.current[currentHeroIndex];
     if (currentVideo) {
       // 비디오가 로드되었는지 확인
       if (currentVideo.readyState >= 2) {
         // HAVE_CURRENT_DATA 이상이면 즉시 재생
         currentVideo.play().catch((err) => {
-          console.warn(`Video ${currentDietIndex} autoplay failed:`, err);
+          console.warn(`Video ${currentHeroIndex} autoplay failed:`, err);
         });
       } else {
         // 로드 대기 후 재생
         const handleCanPlay = () => {
           currentVideo.play().catch((err) => {
-            console.warn(`Video ${currentDietIndex} autoplay failed:`, err);
+            console.warn(`Video ${currentHeroIndex} autoplay failed:`, err);
           });
           currentVideo.removeEventListener('canplay', handleCanPlay);
         };
         currentVideo.addEventListener('canplay', handleCanPlay);
       }
     }
-  }, [currentDietIndex]);
+  }, [currentHeroIndex]);
 
   // Scroll Reveal Animation
   useEffect(() => {
@@ -500,14 +501,6 @@ export default function Home() {
     },
   ];
 
-  // Auto-rotate hero banner every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDietIndex((prev) => (prev + 1) % 3);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   // Auto-slide for reviews
   useEffect(() => {
     const interval = setInterval(() => {
@@ -605,7 +598,7 @@ export default function Home() {
                 key={idx}
                 className="absolute inset-0 transition-opacity duration-700 ease-in-out"
                 style={{
-                  opacity: currentDietIndex === idx ? 1 : 0
+                  opacity: currentHeroIndex === idx ? 1 : 0
                 }}
               >
                 <video
@@ -632,9 +625,9 @@ export default function Home() {
               {[0, 1, 2].map((idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentDietIndex(idx)}
+                  onClick={() => setCurrentHeroIndex(idx)}
                   className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentDietIndex === idx 
+                    currentHeroIndex === idx 
                       ? 'w-8 bg-white' 
                       : 'w-2 bg-white/50 hover:bg-white/75'
                   }`}
@@ -669,7 +662,7 @@ export default function Home() {
                 highlight: '카페프레시',
                 description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
               }
-            ][currentDietIndex % 3] && (
+            ][currentHeroIndex % 3] && (
               <div>
                 {/* MO: 1,2줄 36px, PC: 1,2줄 72px */}
                 <div className="md:hidden">
@@ -693,7 +686,7 @@ export default function Home() {
                         highlight: '카페프레시',
                         description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
-                    ][currentDietIndex % 3].title}
+                    ][currentHeroIndex % 3].title}
                   </h1>
                   <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: 'clamp(24px, 6vw, 30px)', lineHeight: '1.2', marginBottom: '0.75rem'}}>
                     {[
@@ -715,7 +708,7 @@ export default function Home() {
                         highlight: '카페프레시',
                         description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
-                    ][currentDietIndex % 3].highlight}
+                    ][currentHeroIndex % 3].highlight}
                   </h2>
                 </div>
                 
@@ -740,7 +733,7 @@ export default function Home() {
                         highlight: '카페프레시',
                         description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
-                    ][currentDietIndex % 3].title}
+                    ][currentHeroIndex % 3].title}
                   </h1>
                   <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem'}}>
                     {[
@@ -762,7 +755,7 @@ export default function Home() {
                         highlight: '카페프레시',
                         description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
-                    ][currentDietIndex % 3].highlight}
+                    ][currentHeroIndex % 3].highlight}
                   </h2>
                 </div>
                 
@@ -787,7 +780,7 @@ export default function Home() {
                       highlight: '카페프레시',
                       description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                     }
-                  ][currentDietIndex % 3].description}
+                  ][currentHeroIndex % 3].description}
                 </p>
                 <p className="hidden md:block text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: '18px', lineHeight: '1.4'}}>
                   {[
@@ -809,7 +802,7 @@ export default function Home() {
                       highlight: '카페프레시',
                       description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                     }
-                  ][currentDietIndex % 3].description}
+                  ][currentHeroIndex % 3].description}
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500">
@@ -934,33 +927,54 @@ export default function Home() {
             <p className="text-[15px] md:text-[25px] text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
-          <div 
-            className="relative"
+          <div
+            data-diet-carousel
+            role="region"
+            aria-label="고객 특성에 맞춘 식단 카드"
+            className="relative touch-pan-y"
             onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
             onTouchEnd={(e) => {
-              if (!touchStart) return;
-              const touchEnd = e.changedTouches[0].clientX;
-              const diff = touchStart - touchEnd;
-              if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                  setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1));
-                } else {
-                  setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1));
+              if (touchStart) {
+                const touchEnd = e.changedTouches[0].clientX;
+                const diff = touchStart - touchEnd;
+                if (Math.abs(diff) > 50) {
+                  if (diff > 0) {
+                    setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1));
+                  } else {
+                    setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1));
+                  }
                 }
               }
               setTouchStart(0);
             }}
+            onTouchCancel={() => setTouchStart(0)}
           >
             <div className="bg-white rounded-lg overflow-hidden shadow-lg scroll-reveal">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96">
-                <div className="relative h-96 md:h-auto overflow-hidden group cursor-grab active:cursor-grabbing">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:min-h-96">
+                <div className="relative aspect-[4/3] md:aspect-auto md:min-h-96 overflow-hidden group cursor-grab active:cursor-grabbing select-none">
                   <img
                     src={diets[currentDietIndex].image}
                     loading="lazy"
                     decoding="async"
                     alt={diets[currentDietIndex].title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
+                    className="md:hidden absolute left-3 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                    aria-label="이전 식단 카드"
+                  >
+                    <ChevronLeft aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
+                    className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                    aria-label="다음 식단 카드"
+                  >
+                    <ChevronRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
+                  </button>
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">{diets[currentDietIndex].title}</h3>
@@ -971,7 +985,10 @@ export default function Home() {
                       {diets.map((_, idx) => (
                         <button
                           key={idx}
+                          type="button"
                           onClick={() => setCurrentDietIndex(idx)}
+                          aria-label={`${diets[idx].title} 식단 보기`}
+                          aria-pressed={idx === currentDietIndex}
                           className={`w-3 h-3 rounded-full transition-all ${
                             idx === currentDietIndex ? "bg-brand-700 w-8" : "bg-gray-300 hover:bg-gray-400"
                           }`}
@@ -982,7 +999,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* Navigation arrows removed - using indicators only */}
+            <p className="mt-4 text-center text-xs text-gray-500 md:hidden" aria-live="polite">
+              좌우로 밀어보거나 화살표로 다른 식단을 확인해보세요
+            </p>
           </div>
         </div>
       </section>
