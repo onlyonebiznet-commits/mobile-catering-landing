@@ -949,7 +949,7 @@ export default function Home() {
             }}
             onTouchCancel={() => setTouchStart(0)}
           >
-            <div className="bg-white rounded-lg overflow-hidden shadow-lg scroll-reveal">
+            <div className="relative bg-white rounded-lg overflow-hidden shadow-lg scroll-reveal">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:min-h-96">
                 <div className="relative aspect-[4/3] md:aspect-auto md:min-h-96 overflow-hidden group cursor-grab active:cursor-grabbing select-none">
                   <img
@@ -959,24 +959,8 @@ export default function Home() {
                     alt={diets[currentDietIndex].title}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <button
-                    type="button"
-                    onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
-                    className="md:hidden absolute left-3 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-                    aria-label="이전 식단 카드"
-                  >
-                    <ChevronLeft aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
-                    className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-                    aria-label="다음 식단 카드"
-                  >
-                    <ChevronRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
-                  </button>
                 </div>
-                <div className="p-8 md:p-12 flex flex-col justify-center">
+                <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center aspect-[4/3] md:aspect-auto md:min-h-96">
                   <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">{diets[currentDietIndex].title}</h3>
                   <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
 
@@ -997,6 +981,24 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="pointer-events-none absolute inset-y-0 inset-x-0 md:hidden">
+                <button
+                  type="button"
+                  onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
+                  className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                  aria-label="이전 식단 카드"
+                >
+                  <ChevronLeft aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
+                  className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                  aria-label="다음 식단 카드"
+                >
+                  <ChevronRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
+                </button>
               </div>
             </div>
             <p className="mt-4 text-center text-xs text-gray-500 md:hidden" aria-live="polite">

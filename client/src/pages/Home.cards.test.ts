@@ -75,8 +75,9 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('onTouchCancel={() => setTouchStart(0)}');
     expect(home).toContain('aria-label="이전 식단 카드"');
     expect(home).toContain('aria-label="다음 식단 카드"');
-    expect(home).toContain('className="md:hidden absolute left-3');
-    expect(home).toContain('className="md:hidden absolute right-3');
+    expect(home).toContain('className="pointer-events-auto absolute left-3');
+    expect(home).toContain('className="pointer-events-auto absolute right-3');
+    expect(home.match(/aspect-\[4\/3\] md:aspect-auto/g)?.length).toBe(2);
   });
 
   it("keeps hero autoplay state separate from the customer diet card state", () => {
