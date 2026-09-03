@@ -52,6 +52,17 @@ describe("Freshmeal-on color guide tokens", () => {
     expect(css).toContain("--muted-foreground: var(--gray-600)");
   });
 
+  it("defines the FW circular radio appearance and its interaction states", () => {
+    expect(css).toContain(".form-radio-control {");
+    expect(css).toContain("border-radius: 9999px;");
+    expect(css).toContain('.form-radio-control[data-state="checked"]');
+    expect(css).toContain(".form-radio-dot {");
+    expect(css).toContain(".form-radio-control:focus-visible");
+    expect(css).toContain(".form-radio-control:disabled");
+    expect(css).toContain("width: 0.375rem;");
+    expect(css).toContain("height: 0.375rem;");
+  });
+
   it("disables the hero title entrance animation for reduced-motion users", () => {
     expect(css).toContain("@media (prefers-reduced-motion: reduce)");
     expect(css).toContain(".hero-title-animate");

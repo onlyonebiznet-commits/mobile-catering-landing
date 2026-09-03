@@ -442,6 +442,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <div key={value} className="flex items-center gap-2 rounded-md px-2 py-2 transition-colors hover:bg-gray-50">
                       <Checkbox
                         id={checkboxId}
+                        appearance="radio"
                         checked={formData.serviceTypes.includes(value)}
                         onCheckedChange={(checked) => handleServiceToggle(value, checked === true)}
                         aria-describedby="service-helper"
@@ -526,6 +527,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="allAgree"
+                  appearance="radio"
                   checked={agreements.allAgree}
                   onCheckedChange={(checked) => handleAgreementChange("allAgree", checked as boolean)}
                   onClick={(e) => e.stopPropagation()}
@@ -547,6 +549,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="personalInfoCollection"
+                        appearance="radio"
                         checked={agreements.personalInfoCollection}
                         onCheckedChange={(checked) => handleAgreementChange("personalInfoCollection", checked as boolean)}
                         onClick={(e) => e.stopPropagation()}
@@ -607,6 +610,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="marketingConsent"
+                        appearance="radio"
                         checked={agreements.marketingConsent}
                         onCheckedChange={(checked) => handleAgreementChange("marketingConsent", checked as boolean)}
                         onClick={(e) => e.stopPropagation()}
@@ -660,6 +664,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
                         id="adConsent"
+                        appearance="radio"
                         checked={agreements.adConsent}
                         onCheckedChange={(checked) => {
                           handleAgreementChange("adConsent", checked as boolean);
@@ -698,8 +703,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                         <div className="space-y-2">
                           <div className="flex items-center space-x-2">
                             <Checkbox
-                              id="sms-consent"
-                              checked={adMediaConsents.sms}
+                            id="sms-consent"
+                            appearance="radio"
+                            checked={adMediaConsents.sms}
                               onCheckedChange={(checked) => {
                                 const newState = {...adMediaConsents, sms: checked as boolean};
                                 setAdMediaConsents(newState);
@@ -718,8 +724,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                           </div>
                           <div className="flex items-center space-x-2">
                             <Checkbox
-                              id="email-consent"
-                              checked={adMediaConsents.email}
+                            id="email-consent"
+                            appearance="radio"
+                            checked={adMediaConsents.email}
                               onCheckedChange={(checked) => {
                                 const newState = {...adMediaConsents, email: checked as boolean};
                                 setAdMediaConsents(newState);
@@ -738,8 +745,9 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                           </div>
                           <div className="flex items-center space-x-2">
                             <Checkbox
-                              id="kakao-consent"
-                              checked={adMediaConsents.kakao}
+                            id="kakao-consent"
+                            appearance="radio"
+                            checked={adMediaConsents.kakao}
                               onCheckedChange={(checked) => {
                                 const newState = {...adMediaConsents, kakao: checked as boolean};
                                 setAdMediaConsents(newState);

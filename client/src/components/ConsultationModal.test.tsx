@@ -155,6 +155,26 @@ describe("ConsultationModal - Agreement Accordion Behavior", () => {
   });
 });
 
+describe("ConsultationModal - FW Radio button appearance", () => {
+  it("uses the circular selection appearance without changing checkbox semantics", () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/ConsultationModal.tsx"),
+      "utf8"
+    );
+
+    expect(source).toContain('appearance="radio"');
+    expect(source.match(/appearance="radio"/g)?.length).toBe(8);
+    expect(source).toContain('onCheckedChange={(checked) => handleServiceToggle(value, checked === true)}');
+    expect(source).toContain('id="allAgree"');
+    expect(source).toContain('id="personalInfoCollection"');
+    expect(source).toContain('id="marketingConsent"');
+    expect(source).toContain('id="adConsent"');
+    expect(source).toContain('id="sms-consent"');
+    expect(source).toContain('id="email-consent"');
+    expect(source).toContain('id="kakao-consent"');
+  });
+});
+
 describe("ConsultationModal - Text input guide", () => {
   it("uses shared field hierarchy and accessible descriptions for the active FO form", async () => {
     const source = readFileSync(

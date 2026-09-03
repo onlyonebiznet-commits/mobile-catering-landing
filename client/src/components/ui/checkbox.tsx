@@ -4,27 +4,41 @@ import { CheckIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-function Checkbox({
-  className,
-  ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+type CheckboxProps = React.ComponentProps<typeof CheckboxPrimitive.Root> & {
+  /** Keeps checkbox semantics while allowing the FW circular selection visual. */
+  appearance?: "checkbox" | "radio";
+};
+
+function Checkbox({ className, appearance = "checkbox", ...props }: CheckboxProps) {
+  const isRadioAppearance = appearance === "radio";
+
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer form-checkbox-control border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary dark:data-[state=checked]:border-primary aria-invalid:border-destructive disabled:cursor-not-allowed disabled:opacity-50",
+        "peer",
+        isRadioAppearance
+          ? "form-radio-control"
+          : "form-checkbox-control border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary dark:data-[state=checked]:border-primary aria-invalid:border-destructive disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="form-checkbox-indicator text-current transition-none"
+        className={cn(
+          isRadioAppearance ? "form-radio-indicator" : "form-checkbox-indicator text-current transition-none"
+        )}
       >
-        <CheckIcon className="size-3.5" strokeWidth={2} />
+        {isRadioAppearance ? (
+          <span aria-hidden="true" className="form-radio-dot" />
+        ) : (
+          <CheckIcon className="size-3.5" strokeWidth={2} />
+        )}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
 }
 
 export { Checkbox };
+
