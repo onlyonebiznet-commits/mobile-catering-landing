@@ -84,8 +84,11 @@ describe("FO card surface consistency", () => {
   it("uses six colored snackpick categories with responsive grids", () => {
     expect(home).toContain("const snackCategoryIcons");
     expect(home).toContain("const snackCategoryTones");
-    expect(home).toContain("Category Cards - PC: 1x6, Mobile: 3-column grid");
-    expect(home).toContain('className="grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4"');
+    expect(home).toContain("Slim Filter Chips - PC: 1x6, Mobile: 3-column grid");
+    expect(home).toContain('className="grid grid-cols-3 gap-2.5 md:grid-cols-6 md:gap-3"');
+    expect(home).toContain("rounded-full");
+    expect(home).toContain("md:min-h-14");
+    expect(home).toContain("gap-1.5");
     ["베이커리", "샐러드", "샌드위치", "밥", "라면", "음료"].forEach((label) => {
       expect(home).toContain(`name: '${label}'`);
     });

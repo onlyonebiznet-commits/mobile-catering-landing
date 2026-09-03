@@ -312,12 +312,12 @@ export default function Home() {
   };
 
   const snackCategoryTones: Record<string, string> = {
-    bakery: 'bg-[#FFF0E5] text-[#D86B2D]',
-    salad: 'bg-brand-50 text-brand-700',
-    sandwich: 'bg-[#EAF3FF] text-[#006ECD]',
-    rice: 'bg-[#FFF1D9] text-[#C77700]',
-    ramen: 'bg-[#F5EEE8] text-[#8A5A3C]',
-    beverage: 'bg-[#F2ECFF] text-[#7352C7]',
+    bakery: 'text-[#D86B2D]',
+    salad: 'text-brand-700',
+    sandwich: 'text-[#006ECD]',
+    rice: 'text-[#C77700]',
+    ramen: 'text-[#8A5A3C]',
+    beverage: 'text-[#7352C7]',
   };
 
   const snackCategories = [
@@ -1085,9 +1085,9 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
           </div>
 
-          {/* Category Cards - PC: 1x6, Mobile: 3-column grid */}
-          <div className="mb-12">
-            <div className="grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4">
+          {/* Slim Filter Chips - PC: 1x6, Mobile: 3-column grid */}
+          <div className="mb-10">
+            <div className="grid grid-cols-3 gap-2.5 md:grid-cols-6 md:gap-3">
               {snackCategories.map((category) => {
                 const Icon = snackCategoryIcons[category.id];
                 const isSelected = selectedSnackCategory === category.id;
@@ -1097,20 +1097,18 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedSnackCategory(category.id)}
                     aria-pressed={isSelected}
-                    className={`group flex min-h-[104px] flex-col items-center justify-center gap-2 rounded-[18px] border p-3 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-[124px] md:gap-3 md:rounded-[20px] md:p-4 motion-reduce:transition-none motion-reduce:active:scale-100 ${
+                    className={`group flex min-h-12 items-center justify-center gap-1.5 rounded-full border px-2.5 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-14 md:gap-2 md:px-4 motion-reduce:transition-none motion-reduce:active:scale-100 ${
                       isSelected
-                        ? 'border-brand-700 bg-brand-700 text-white shadow-md'
-                        : 'border-gray-100 bg-white text-gray-800 shadow-sm hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:shadow-md'
+                        ? 'border-brand-700 bg-brand-700 text-white shadow-sm'
+                        : 'border-gray-200 bg-white text-gray-800 shadow-sm hover:border-brand-300 hover:bg-brand-50 hover:shadow-md'
                     }`}
                   >
-                    <span
-                      className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors md:h-14 md:w-14 ${
-                        isSelected ? 'bg-white/15 text-white' : `${snackCategoryTones[category.id]} group-hover:bg-white`
-                      }`}
-                    >
-                      <Icon aria-hidden="true" className="h-5 w-5 md:h-7 md:w-7" strokeWidth={1.5} />
-                    </span>
-                    <span className={`text-[11px] font-semibold leading-tight md:text-sm ${isSelected ? 'text-white' : 'text-gray-800'}`}>
+                    <Icon
+                      aria-hidden="true"
+                      className={`h-4 w-4 shrink-0 md:h-5 md:w-5 ${isSelected ? 'text-white' : snackCategoryTones[category.id]}`}
+                      strokeWidth={1.75}
+                    />
+                    <span className="text-[11px] font-semibold leading-none md:text-sm">
                       {category.name}
                     </span>
                   </button>
