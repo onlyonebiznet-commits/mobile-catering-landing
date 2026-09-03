@@ -35,6 +35,17 @@ describe("navigation menu configuration", () => {
     expect(source).not.toContain('className="grid grid-cols-4 gap-3 w-full"');
   });
 
+  it("keeps mobile service tiles square while preserving the desktop layout", () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/SectionNavigation.tsx"),
+      "utf8"
+    );
+    expect(source).toContain("md:hidden w-full bg-white flex items-center justify-center min-h-[300px]");
+    expect(source).toContain("flex aspect-square w-full flex-col");
+    expect(source).toContain("hidden md:block w-full bg-white");
+    expect(source).toContain("grid grid-cols-6 gap-6 w-full");
+  });
+
   it("keeps the process content section available as a page destination", () => {
     const source = readFileSync(
       resolve(process.cwd(), "client/src/pages/Home.tsx"),

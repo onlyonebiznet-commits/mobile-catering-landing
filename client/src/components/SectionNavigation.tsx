@@ -69,7 +69,7 @@ export default function SectionNavigation({ activeSection, onSectionClick }: Sec
                 <button
                   key={section.id}
                   onClick={() => onSectionClick(section.id)}
-                  className={`group flex flex-col items-center justify-center gap-2 p-4 rounded-[16px] transition-all duration-300 ${
+                  className={`group flex aspect-square w-full flex-col items-center justify-center gap-2 p-4 rounded-[16px] transition-all duration-300 ${
                     isActive
                       ? 'bg-[#007651] text-white shadow-md'
                       : 'bg-white text-gray-700 border border-[#E6E6E6] hover:bg-[#D7F9EF]'
