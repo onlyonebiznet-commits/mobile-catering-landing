@@ -1085,9 +1085,9 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
           </div>
 
-          {/* Slim Filter Chips - PC: 1x6, Mobile: 3-column grid */}
+          {/* Reference-style category tiles - PC and mobile: 3 columns x 2 rows */}
           <div className="mb-10">
-            <div className="grid grid-cols-3 gap-2.5 md:grid-cols-6 md:gap-3">
+            <div className="grid grid-cols-3 gap-3 md:gap-6">
               {snackCategories.map((category) => {
                 const Icon = snackCategoryIcons[category.id];
                 const isSelected = selectedSnackCategory === category.id;
@@ -1097,18 +1097,18 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedSnackCategory(category.id)}
                     aria-pressed={isSelected}
-                    className={`group flex min-h-12 items-center justify-center gap-1.5 rounded-full border px-2.5 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-14 md:gap-2 md:px-4 motion-reduce:transition-none motion-reduce:active:scale-100 ${
+                    className={`group flex min-h-[72px] items-center justify-center gap-2 rounded-[16px] border px-2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-[96px] md:gap-4 md:rounded-[22px] md:px-6 motion-reduce:transition-none motion-reduce:active:scale-100 ${
                       isSelected
-                        ? 'border-brand-700 bg-brand-700 text-white shadow-sm'
+                        ? 'border-brand-700 bg-brand-700 text-white shadow-md'
                         : 'border-gray-200 bg-white text-gray-800 shadow-sm hover:border-brand-300 hover:bg-brand-50 hover:shadow-md'
                     }`}
                   >
                     <Icon
                       aria-hidden="true"
-                      className={`h-4 w-4 shrink-0 md:h-5 md:w-5 ${isSelected ? 'text-white' : snackCategoryTones[category.id]}`}
-                      strokeWidth={1.75}
+                      className={`h-7 w-7 shrink-0 md:h-12 md:w-12 ${isSelected ? 'text-white' : snackCategoryTones[category.id]}`}
+                      strokeWidth={1.5}
                     />
-                    <span className="text-[11px] font-semibold leading-none md:text-sm">
+                    <span className="text-xs font-semibold leading-tight md:text-lg">
                       {category.name}
                     </span>
                   </button>
