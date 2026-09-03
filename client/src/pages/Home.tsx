@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle, CakeSlice, Salad, Sandwich, Soup, CupSoda } from "lucide-react";
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
@@ -301,18 +301,24 @@ export default function Home() {
   ];
 
   const [selectedSnackCategory, setSelectedSnackCategory] = useState('bakery');
-  // 카테고리 아이콘 매핑
-  const categoryIcons: { [key: string]: string } = {
-    bakery: '🥐',
-    salad: '🥗',
-    sandwich: '🥪',
-    rice: '🍱',
-    ramen: '🍜',
-    beverage: '🥤',
-    yogurt: '🥛',
-    energybar: '⚡',
+
+  const snackCategoryIcons: Record<string, typeof CakeSlice> = {
+    bakery: CakeSlice,
+    salad: Salad,
+    sandwich: Sandwich,
+    rice: Soup,
+    ramen: Soup,
+    beverage: CupSoda,
   };
 
+  const snackCategoryTones: Record<string, string> = {
+    bakery: 'bg-[#FFF0E5] text-[#D86B2D]',
+    salad: 'bg-brand-50 text-brand-700',
+    sandwich: 'bg-[#EAF3FF] text-[#006ECD]',
+    rice: 'bg-[#FFF1D9] text-[#C77700]',
+    ramen: 'bg-[#F5EEE8] text-[#8A5A3C]',
+    beverage: 'bg-[#F2ECFF] text-[#7352C7]',
+  };
 
   const snackCategories = [
     {
@@ -373,26 +379,6 @@ export default function Home() {
         { name: '음료2', image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg' },
         { name: '음료3', image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg' },
         { name: '음료4', image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg' },
-      ],
-    },
-    {
-      id: 'yogurt',
-      name: '요거트',
-      products: [
-        { name: '요거트1', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
-        { name: '요거트2', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
-        { name: '요거트3', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
-        { name: '요거트4', image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg' },
-      ],
-    },
-    {
-      id: 'energybar',
-      name: '에너지바',
-      products: [
-        { name: '에너지바1', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
-        { name: '에너지바2', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
-        { name: '에너지바3', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
-        { name: '에너지바4', image: '/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png' },
       ],
     },
   ];
@@ -1099,40 +1085,37 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: 'clamp(15px, 3vw, 20px)'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
           </div>
 
-          {/* Category Buttons - PC: Rounded Rectangle, Mobile: Circle */}
+          {/* Category Cards - PC: 1x6, Mobile: 3-column grid */}
           <div className="mb-12">
-            {/* PC: Rounded Rectangle Buttons (Starbucks Kiosk Style) */}
-            <div className="hidden md:grid grid-cols-4 gap-4">
-              {snackCategories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`min-h-14 px-6 rounded-full font-semibold transition-all duration-200 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.98] ${
-                    selectedSnackCategory === category.id
-                      ? 'bg-brand-700 text-white shadow-md hover:bg-brand-600'
-                      : 'bg-white text-gray-800 border border-gray-300 hover:bg-brand-50 hover:border-brand-600 hover:text-brand-700'
-                  }`}
-                >
-                  <span className="text-sm font-semibold">{category.name}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile: 4x2 Grid - Rounded Rectangle Tiles (Text Only) */}
-            <div className="md:hidden grid grid-cols-4 gap-2">
-              {snackCategories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedSnackCategory(category.id)}
-                  className={`min-h-12 px-3 rounded-full transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.98] ${
-                    selectedSnackCategory === category.id
-                      ? 'bg-brand-700 text-white shadow-md hover:bg-brand-600'
-                      : 'bg-white text-gray-800 border border-gray-300 hover:bg-brand-50 hover:border-brand-600 hover:text-brand-700'
-                  }`}
-                >
-                  <span className="text-xs font-semibold text-center leading-tight block">{category.name}</span>
-                </button>
-              ))}
+            <div className="grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4">
+              {snackCategories.map((category) => {
+                const Icon = snackCategoryIcons[category.id];
+                const isSelected = selectedSnackCategory === category.id;
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    onClick={() => setSelectedSnackCategory(category.id)}
+                    aria-pressed={isSelected}
+                    className={`group flex min-h-[104px] flex-col items-center justify-center gap-2 rounded-[18px] border p-3 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-[124px] md:gap-3 md:rounded-[20px] md:p-4 motion-reduce:transition-none motion-reduce:active:scale-100 ${
+                      isSelected
+                        ? 'border-brand-700 bg-brand-700 text-white shadow-md'
+                        : 'border-gray-100 bg-white text-gray-800 shadow-sm hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:shadow-md'
+                    }`}
+                  >
+                    <span
+                      className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors md:h-14 md:w-14 ${
+                        isSelected ? 'bg-white/15 text-white' : `${snackCategoryTones[category.id]} group-hover:bg-white`
+                      }`}
+                    >
+                      <Icon aria-hidden="true" className="h-5 w-5 md:h-7 md:w-7" strokeWidth={1.5} />
+                    </span>
+                    <span className={`text-[11px] font-semibold leading-tight md:text-sm ${isSelected ? 'text-white' : 'text-gray-800'}`}>
+                      {category.name}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 

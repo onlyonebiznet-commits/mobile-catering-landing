@@ -81,6 +81,18 @@ describe("FO card surface consistency", () => {
     expect(home.match(/aspect-\[4\/3\]/g)?.length).toBe(2);
   });
 
+  it("uses six colored snackpick categories with responsive grids", () => {
+    expect(home).toContain("const snackCategoryIcons");
+    expect(home).toContain("const snackCategoryTones");
+    expect(home).toContain("Category Cards - PC: 1x6, Mobile: 3-column grid");
+    expect(home).toContain('className="grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4"');
+    ["베이커리", "샐러드", "샌드위치", "밥", "라면", "음료"].forEach((label) => {
+      expect(home).toContain(`name: '${label}'`);
+    });
+    expect(home).not.toContain("id: 'yogurt'");
+    expect(home).not.toContain("id: 'energybar'");
+  });
+
   it("keeps hero autoplay state separate from the customer diet card state", () => {
     expect(home).toContain('const [currentHeroIndex, setCurrentHeroIndex] = useState(0);');
     expect(home).toContain('setCurrentHeroIndex((prev) => (prev + 1) % 3);');
