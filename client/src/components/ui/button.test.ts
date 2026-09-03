@@ -58,6 +58,18 @@ describe("button color guide variants", () => {
     expect(classes).toContain("h-12");
   });
 
+  it("provides a white inverse treatment for consultation buttons on green banners", () => {
+    const classes = buttonVariants({ variant: "on-brand-inverse", size: "large" });
+
+    expect(classes).toContain("border border-white");
+    expect(classes).toContain("bg-white");
+    expect(classes).toContain("text-primary");
+    expect(classes).toContain("hover:bg-primary-hover");
+    expect(classes).toContain("hover:text-white");
+    expect(classes).toContain("disabled:bg-gray-300");
+    expect(classes).toContain("h-12");
+  });
+
   it("uses the same GREEN600 hover token for secondary buttons", () => {
     const classes = buttonVariants({ variant: "secondary" });
 

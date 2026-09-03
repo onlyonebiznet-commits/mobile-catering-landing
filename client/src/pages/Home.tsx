@@ -1504,21 +1504,12 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-3 scroll-reveal-stagger" data-reveal-item="0">
             <Button
               type="button"
-              variant="on-brand"
+              variant="on-brand-inverse"
               size="large"
               onClick={() => setConsultationOpen(true)}
               data-event="consultation_click"
             >
               지금 상담받기
-            </Button>
-            <Button
-              type="button"
-              variant="on-brand"
-              size="large"
-              onClick={() => setConsultationOpen(true)}
-              data-event="material_download_click"
-            >
-              자료 다운받기
             </Button>
           </div>
         </div>
