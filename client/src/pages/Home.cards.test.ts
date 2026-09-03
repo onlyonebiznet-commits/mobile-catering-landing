@@ -66,7 +66,8 @@ describe("FO card surface consistency", () => {
 
   it("uses a 4:3 image ratio for the mobile customer diet card", () => {
     expect(home).toContain('data-diet-carousel');
-    expect(home).toContain('aspect-[4/3] md:aspect-auto');
+    expect(home).toContain('className="relative aspect-[4/3] overflow-hidden');
+    expect(home).toContain('className="p-6 sm:p-8 md:p-12 flex flex-col justify-center aspect-[4/3]"');
     expect(home).toContain('className="absolute inset-0 w-full h-full object-cover');
   });
 
@@ -77,7 +78,7 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('aria-label="다음 식단 카드"');
     expect(home).toContain('className="pointer-events-auto absolute left-3');
     expect(home).toContain('className="pointer-events-auto absolute right-3');
-    expect(home.match(/aspect-\[4\/3\] md:aspect-auto/g)?.length).toBe(2);
+    expect(home.match(/aspect-\[4\/3\]/g)?.length).toBe(2);
   });
 
   it("keeps hero autoplay state separate from the customer diet card state", () => {

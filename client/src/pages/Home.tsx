@@ -950,8 +950,8 @@ export default function Home() {
             onTouchCancel={() => setTouchStart(0)}
           >
             <div className="relative bg-white rounded-lg overflow-hidden shadow-lg scroll-reveal">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:min-h-96">
-                <div className="relative aspect-[4/3] md:aspect-auto md:min-h-96 overflow-hidden group cursor-grab active:cursor-grabbing select-none">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none">
                   <img
                     src={diets[currentDietIndex].image}
                     loading="lazy"
@@ -960,7 +960,7 @@ export default function Home() {
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center aspect-[4/3] md:aspect-auto md:min-h-96">
+                <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center aspect-[4/3]">
                   <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2">{diets[currentDietIndex].title}</h3>
                   <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
 
