@@ -1062,3 +1062,12 @@
 - [x] aria-describedby 등 접근성 오류 연결은 오류 상태 기준으로 유지
 - [x] 상담 폼 간격·레이아웃·동의 영역 회귀 검증
 - [x] 테스트·TypeScript·프로덕션 빌드 및 체크포인트 완료
+
+## 상담신청 폼 관심 서비스 FW Checkbox 가이드 적용 (신규 요청)
+- [x] 관심 서비스 복수 선택 컨트롤의 현재 appearance와 동작 확인
+- [x] 관심 서비스에 사각형 Checkbox appearance 적용
+- [x] 미선택·선택·disabled·focus 상태를 FW Checkbox 규격으로 유지
+- [x] 5개 관심 서비스 복수 선택과 라벨 연결 동작 유지
+- [x] 전체·개별 동의의 기존 원형 Radio appearance와 아코디언 동작 회귀 유지
+- [x] 상담 폼 모바일·PC 시각 검증 및 테스트·빌드 완료
+- [x] 검증 문서와 체크포인트 저장

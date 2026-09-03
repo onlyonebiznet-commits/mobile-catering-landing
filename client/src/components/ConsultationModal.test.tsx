@@ -163,8 +163,10 @@ describe("ConsultationModal - FW Radio button appearance", () => {
     );
 
     expect(source).toContain('appearance="radio"');
-    expect(source.match(/appearance="radio"/g)?.length).toBe(8);
+    expect(source.match(/appearance="radio"/g)?.length).toBe(7);
     expect(source).toContain('onCheckedChange={(checked) => handleServiceToggle(value, checked === true)}');
+    expect(source).toContain('id={checkboxId}\n                        checked={formData.serviceTypes.includes(value)}');
+    expect(source).not.toContain('id={checkboxId}\n                        appearance="radio"');
     expect(source).toContain('id="allAgree"');
     expect(source).toContain('id="personalInfoCollection"');
     expect(source).toContain('id="marketingConsent"');

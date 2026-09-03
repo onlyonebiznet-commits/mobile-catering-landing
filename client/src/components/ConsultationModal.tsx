@@ -438,7 +438,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <div key={value} className="flex items-center gap-2 rounded-md px-2 py-2 transition-colors hover:bg-gray-50">
                       <Checkbox
                         id={checkboxId}
-                        appearance="radio"
                         checked={formData.serviceTypes.includes(value)}
                         onCheckedChange={(checked) => handleServiceToggle(value, checked === true)}
                         aria-describedby={errors.service ? "service-error" : undefined}
