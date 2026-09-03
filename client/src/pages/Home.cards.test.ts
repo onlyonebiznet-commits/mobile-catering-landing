@@ -87,8 +87,9 @@ describe("FO card surface consistency", () => {
     expect(home).toContain("Reference-style category tiles - PC and mobile: 3 columns x 2 rows");
     expect(home).toContain('className="grid grid-cols-3 gap-3 md:gap-6"');
     expect(home).toContain("rounded-[16px]");
-    expect(home).toContain("md:min-h-[96px]");
-    expect(home).toContain("md:gap-4");
+    expect(home).toContain("min-h-10");
+    expect(home).toContain("md:min-h-12");
+    expect(home).toContain("md:h-7 md:w-7");
     ["베이커리", "샐러드", "샌드위치", "밥", "라면", "음료"].forEach((label) => {
       expect(home).toContain(`name: '${label}'`);
     });

@@ -1097,7 +1097,7 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedSnackCategory(category.id)}
                     aria-pressed={isSelected}
-                    className={`group flex min-h-[72px] items-center justify-center gap-2 rounded-[16px] border px-2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-[96px] md:gap-4 md:rounded-[22px] md:px-6 motion-reduce:transition-none motion-reduce:active:scale-100 ${
+                    className={`group flex min-h-10 items-center justify-center gap-1 rounded-[14px] border px-2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-12 md:gap-2 md:rounded-[18px] md:px-5 motion-reduce:transition-none motion-reduce:active:scale-100 ${
                       isSelected
                         ? 'border-brand-700 bg-brand-700 text-white shadow-md'
                         : 'border-gray-200 bg-white text-gray-800 shadow-sm hover:border-brand-300 hover:bg-brand-50 hover:shadow-md'
@@ -1105,10 +1105,10 @@ export default function Home() {
                   >
                     <Icon
                       aria-hidden="true"
-                      className={`h-7 w-7 shrink-0 md:h-12 md:w-12 ${isSelected ? 'text-white' : snackCategoryTones[category.id]}`}
+                      className={`h-5 w-5 shrink-0 md:h-7 md:w-7 ${isSelected ? 'text-white' : snackCategoryTones[category.id]}`}
                       strokeWidth={1.5}
                     />
-                    <span className="text-xs font-semibold leading-tight md:text-lg">
+                    <span className="text-[10px] font-semibold leading-tight md:text-sm">
                       {category.name}
                     </span>
                   </button>
