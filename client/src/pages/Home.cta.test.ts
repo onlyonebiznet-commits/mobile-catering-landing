@@ -24,6 +24,12 @@ describe("banner CTA button consistency", () => {
     expect(finalCta).toContain("setConsultationOpen(true)");
   });
 
+  it("keeps the hero banner at 500px on desktop and mobile", () => {
+    expect(home).toContain('className="relative h-[500px] md:h-[500px] lg:h-[500px] min-h-[500px] overflow-hidden"');
+    expect(home).not.toContain('h-[620px]');
+    expect(home).not.toContain("minHeight: window.innerWidth < 768 ? '20vh' : 'auto'");
+  });
+
   it("uses the requested three-line snackpick headline hierarchy", () => {
     expect(home).toContain("const isSnackHero = currentHeroIndex % 3 === 1;");
     expect(home).toContain("title: '어디든지 찾아가는\\n사내복지'");
