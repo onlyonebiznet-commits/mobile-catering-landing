@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
-const heroCta = home.match(/<div className="flex flex-wrap justify-center gap-3 animate-in[\s\S]*?<\/div>/)?.[0] ?? "";
+const heroCta = home.match(/<div className="flex flex-wrap justify-start md:justify-center gap-3 animate-in[\s\S]*?<\/div>/)?.[0] ?? "";
 const finalCta = home.match(/\/\* Final CTA Section \*\/[\s\S]*?<\/section>/)?.[0] ?? "";
 
 describe("banner CTA button consistency", () => {
@@ -26,9 +26,11 @@ describe("banner CTA button consistency", () => {
 
   it("uses the requested three-line snackpick headline hierarchy", () => {
     expect(home).toContain("const isSnackHero = currentHeroIndex % 3 === 1;");
-    expect(home).toContain("title: '어디든지 찾아가는'");
+    expect(home).toContain("title: '어디든지 찾아가는\\n사내복지'");
+    expect(home).toContain("title: '직원 취향 저격하는\\n맞춤 큐레이션'");
+    expect(home).toContain("title: '기업 문화를 만드는\\n사내카페'");
     expect(home).toContain("highlight: '간식복지\\n스낵픽'");
-    expect(home.match(/whiteSpace: 'pre-line'/g)).toHaveLength(1);
+    expect(home.match(/whiteSpace: 'pre-line'/g)).toHaveLength(2);
     expect(home.match(/fontSize: '30px'/g)).toHaveLength(2);
     expect(home.match(/fontSize: '60px'/g)).toHaveLength(2);
     expect(home).toContain("whiteSpace: isSnackHero ? 'normal' : 'pre-line'");
@@ -38,9 +40,9 @@ describe("banner CTA button consistency", () => {
     expect(finalCta).toContain('variant="on-brand-inverse"');
     expect(finalCta).toContain('size="large"');
     expect(finalCta).toContain('data-event="consultation_click"');
-    expect(home).toContain("hero-title-animate text-center");
-    expect(home).toContain("hero-title-animate mb-8 text-center");
-    expect(home).toContain("flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500");
+    expect(home).toContain("hero-title-animate text-left");
+    expect(home).toContain("hero-title-animate mb-8 text-left");
+    expect(home).toContain("flex flex-wrap justify-start md:justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500");
   });
 });
 

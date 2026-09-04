@@ -653,45 +653,45 @@ export default function Home() {
               <div>
                 {/* 메인 타이틀: PC 60px·2줄, 모바일 30px·3줄 계층 */}
                 <div className="md:hidden">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '어디든지 찾아가는 사내 복지',
+                        title: '어디든지 찾아가는\n사내복지',
                         highlight: '프레시밀온',
                         description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '어디든지 찾아가는',
-                        highlight: '간식복지\n스낵픽',
+                        title: '직원 취향 저격하는\n맞춤 큐레이션',
+                        highlight: '스낵픽',
                         description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '기업 문화를 만드는 사내 카페',
+                        title: '기업 문화를 만드는\n사내카페',
                         highlight: '카페프레시',
                         description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '어디든지 찾아가는 사내 복지',
+                        title: '어디든지 찾아가는\n사내복지',
                         highlight: '프레시밀온',
                         description: '오피스부터 산업체까지, 원하는 장소에서 즐기는 맛있고 따뜻한 식사 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '어디든지 찾아가는',
-                        highlight: '간식복지\n스낵픽',
+                        title: '직원 취향 저격하는\n맞춤 큐레이션',
+                        highlight: '스낵픽',
                         description: '우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.'
                       },
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
-                        title: '기업 문화를 만드는 사내 카페',
+                        title: '기업 문화를 만드는\n사내카페',
                         highlight: '카페프레시',
                         description: '직원들의 소통과 휴식을 지원하며 조직 문화를 만들어가는 카페 서비스를 제공합니다.'
                       }
@@ -747,7 +747,7 @@ export default function Home() {
                 </div>
                 
                 {/* 간단한 설명 - MO: 18px, PC: 36px */}
-                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>
+                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-left" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -792,7 +792,7 @@ export default function Home() {
                   ][currentHeroIndex % 3].description}
                 </p>
                 
-                <div className="flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500">
+                <div className="flex flex-wrap justify-start md:justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500">
                   <Button
                     type="button"
                     variant="on-brand"
