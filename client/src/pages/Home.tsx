@@ -653,7 +653,7 @@ export default function Home() {
               <div>
                 {/* 메인 타이틀: PC 60px·2줄, 모바일 30px·3줄 계층 */}
                 <div className="md:hidden">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -675,7 +675,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -747,7 +747,7 @@ export default function Home() {
                 </div>
                 
                 {/* 간단한 설명 - MO: 18px, PC: 36px */}
-                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-left" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>
+                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -792,7 +792,7 @@ export default function Home() {
                   ][currentHeroIndex % 3].description}
                 </p>
                 
-                <div className="flex flex-wrap justify-start md:justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500">
+                <div className="flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500">
                   <Button
                     type="button"
                     variant="on-brand"
