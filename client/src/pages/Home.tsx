@@ -653,7 +653,7 @@ export default function Home() {
               <div>
                 {/* 스낵픽 헤더: ‘어디든지 찾아가는 / 간식복지 / 스낵픽’ 3줄 계층 */}
                 <div className="md:hidden">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(30px, 8vw, 38px)' : 'clamp(24px, 6vw, 30px)', lineHeight: '1.15', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: isSnackHero ? 'clamp(30px, 8vw, 38px)' : 'clamp(24px, 6vw, 30px)', lineHeight: '1.15', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -675,7 +675,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(26px, 7vw, 34px)' : 'clamp(24px, 6vw, 30px)', lineHeight: '1.15', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: isSnackHero ? 'clamp(26px, 7vw, 34px)' : 'clamp(24px, 6vw, 30px)', lineHeight: '1.15', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -700,7 +700,7 @@ export default function Home() {
                 </div>
                 
                 <div className="hidden md:block">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(52px, 5vw, 72px)' : '60px', lineHeight: '1.15', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: isSnackHero ? 'clamp(52px, 5vw, 72px)' : '60px', lineHeight: '1.15', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -722,7 +722,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-left" style={{fontSize: isSnackHero ? 'clamp(44px, 4.3vw, 60px)' : '60px', lineHeight: '1.15', marginBottom: '1rem', whiteSpace: 'pre-line'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: isSnackHero ? 'clamp(44px, 4.3vw, 60px)' : '60px', lineHeight: '1.15', marginBottom: '1rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',

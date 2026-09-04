@@ -37,7 +37,7 @@ describe("banner CTA button consistency", () => {
     expect(finalCta).toContain('variant="on-brand-inverse"');
     expect(finalCta).toContain('size="large"');
     expect(finalCta).toContain('data-event="consultation_click"');
-    expect(home).toContain("hero-title-animate text-left");
+    expect(home).toContain("hero-title-animate text-center");
     expect(home).toContain("hero-title-animate mb-8 text-left");
   });
 });
