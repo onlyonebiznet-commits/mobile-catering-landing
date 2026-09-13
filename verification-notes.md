@@ -198,3 +198,6 @@ PC 이미지 래퍼와 텍스트 래퍼에서 `md:aspect-auto` 및 `md:min-h-96`
 
 ## 메인 비주얼 배너 500px 높이 검증
 메인 비주얼 섹션의 PC·모바일 높이를 모두 `500px`로 고정했다. 390px 모바일과 1280px PC 화면에서 배너가 500px로 끝나고 다음 서비스 네비게이션이 자연스럽게 이어지는 것을 확인했다. 타이틀·서브 설명·상담 버튼의 중앙 정렬, 배경 영상·인디케이터·상담 연결도 유지했다.
+
+## 상담신청 폼 UX/UI 검토 반영
+첨부된 FW 폼 구성 기준에 맞춰 요청사항 textarea를 공통 textarea 스타일로 정리하고 `rows={3}`으로 최소 3줄이 보이도록 조정했습니다. 기존의 과도한 `form-field-control--textarea-large` 최소 높이 규칙을 제거해 PC·모바일에서 필드가 불필요하게 길어지지 않도록 했습니다. 회사명 등 필드는 기존 Label·required 표시·Field·placeholder·오류 메시지·aria-describedby 구조를 유지했고, 평상시 helper 문구는 기존 요구대로 표시하지 않았습니다. 관심 서비스 Checkbox, 동의 Radio, 동의 아코디언 분리 동작은 변경하지 않았습니다. 관련 Vitest, TypeScript 검사, 프로덕션 빌드가 통과했습니다.

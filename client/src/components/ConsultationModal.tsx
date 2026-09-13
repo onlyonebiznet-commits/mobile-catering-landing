@@ -508,8 +508,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                 value={formData.message}
                 onChange={handleInputChange}
                 aria-describedby={undefined}
-                className="form-field-control--textarea form-field-control--textarea-large"
-                rows={12}
+                className="form-field-control--textarea"
+                rows={3}
               />
             </div>
 

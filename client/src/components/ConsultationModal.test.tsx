@@ -198,5 +198,8 @@ describe("ConsultationModal - Text input guide", () => {
     expect(source).not.toContain('region-helper');
     expect(source).not.toContain('estimatedMeals-helper');
     expect(source).not.toContain('message-helper');
+    expect(source).toContain('className="form-field-control--textarea"');
+    expect(source).toContain('rows={3}');
+    expect(source).not.toContain('form-field-control--textarea-large');
   });
 });
