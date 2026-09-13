@@ -1185,3 +1185,10 @@
 - [x] 기존 관심 서비스 Checkbox와 동의 Radio·아코디언 동작 유지
 - [x] 상담 폼 PC·모바일 시각 검증 및 테스트·TypeScript·프로덕션 빌드 완료
 - [x] 검증 문서와 체크포인트 저장
+
+## 상담신청 폼 Text Input 외형 정리 (신규 요청)
+- [x] 요청사항 textarea가 최소 3줄 표시 레이아웃을 유지하는지 점검
+- [x] Text Input·Textarea·Select 입력 영역에서 1px stroke 외 불필요한 그림자·외곽·배경 스타일 제거
+- [x] 기존 focus·error·disabled·접근성 상태와 상담 폼 동작 유지
+- [x] 관련 Vitest·TypeScript·프로덕션 빌드 및 PC·모바일 시각 검증
+- [x] 검증 문서 갱신 및 체크포인트 저장

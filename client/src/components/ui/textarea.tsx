@@ -53,7 +53,7 @@ function Textarea({
     <textarea
       data-slot="textarea"
       className={cn(
-        "form-field-control form-field-control--textarea flex field-sizing-content focus-visible:border-primary focus-visible:ring-primary/20 focus-visible:ring-[3px] aria-invalid:border-status-error aria-invalid:ring-status-error/20 disabled:cursor-not-allowed",
+        "form-field-control form-field-control--textarea flex field-sizing-content focus-visible:border-primary aria-invalid:border-status-error disabled:cursor-not-allowed",
         className
       )}
       onCompositionStart={handleCompositionStart}

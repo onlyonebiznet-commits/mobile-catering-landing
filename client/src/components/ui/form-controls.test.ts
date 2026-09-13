@@ -9,13 +9,16 @@ const checkbox = readFileSync(resolve(process.cwd(), "client/src/components/ui/c
 const styles = readFileSync(resolve(process.cwd(), "client/src/index.css"), "utf8");
 
 describe("Text input guide controls", () => {
-  it("uses the guide input dimensions, surface, and focus states", () => {
+  it("uses a 1px stroke input surface without decorative shadow or fill", () => {
     expect(input).toContain("form-field-control");
     expect(styles).toContain("height: 3rem");
+    expect(styles).toContain("border: 1px solid var(--gray-200)");
     expect(styles).toContain("border-radius: 0.25rem");
-    expect(styles).toContain("background: #ffffff");
+    expect(styles).toContain("background: transparent");
+    expect(styles).toContain("box-shadow: none");
     expect(styles).toContain("padding: 0.75rem 1rem");
     expect(input).toContain("focus-visible:border-primary");
+    expect(input).not.toContain("focus-visible:ring-[3px]");
     expect(input).toContain("aria-invalid:border-status-error");
   });
 
@@ -24,6 +27,7 @@ describe("Text input guide controls", () => {
     expect(styles).toContain("min-height: 7.5rem");
     expect(styles).toContain("resize: vertical");
     expect(textarea).toContain("aria-invalid:border-status-error");
+    expect(textarea).not.toContain("focus-visible:ring-[3px]");
   });
 
   it("uses the guide select trigger dimensions and error state", () => {
@@ -32,6 +36,7 @@ describe("Text input guide controls", () => {
     expect(styles).toContain("height: 3rem");
     expect(select).toContain("data-[validation-state=success]");
     expect(select).toContain("aria-invalid:border-status-error");
+    expect(select).not.toContain("focus-visible:ring-[3px]");
   });
 
   it("uses the checkbox guide control, indicator, and state tokens", () => {

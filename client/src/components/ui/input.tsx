@@ -54,8 +54,8 @@ function Input({
       type={type}
       data-slot="input"
       className={cn(
-        "form-field-control file:text-foreground selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-primary focus-visible:ring-primary/20 focus-visible:ring-[3px] aria-invalid:border-status-error aria-invalid:ring-status-error/20 disabled:pointer-events-none disabled:cursor-not-allowed",
-        "data-[validation-state=success]:border-status-success data-[validation-state=success]:ring-status-success/20",
+        "form-field-control file:text-foreground selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-primary aria-invalid:border-status-error disabled:pointer-events-none disabled:cursor-not-allowed",
+        "data-[validation-state=success]:border-status-success",
         className
       )}
       onCompositionStart={handleCompositionStart}

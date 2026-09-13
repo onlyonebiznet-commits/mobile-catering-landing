@@ -201,3 +201,6 @@ PC 이미지 래퍼와 텍스트 래퍼에서 `md:aspect-auto` 및 `md:min-h-96`
 
 ## 상담신청 폼 UX/UI 검토 반영
 첨부된 FW 폼 구성 기준에 맞춰 요청사항 textarea를 공통 textarea 스타일로 정리하고 `rows={3}`으로 최소 3줄이 보이도록 조정했습니다. 기존의 과도한 `form-field-control--textarea-large` 최소 높이 규칙을 제거해 PC·모바일에서 필드가 불필요하게 길어지지 않도록 했습니다. 회사명 등 필드는 기존 Label·required 표시·Field·placeholder·오류 메시지·aria-describedby 구조를 유지했고, 평상시 helper 문구는 기존 요구대로 표시하지 않았습니다. 관심 서비스 Checkbox, 동의 Radio, 동의 아코디언 분리 동작은 변경하지 않았습니다. 관련 Vitest, TypeScript 검사, 프로덕션 빌드가 통과했습니다.
+
+## 상담신청 폼 Text Input 외형 정리 검증
+요청사항 textarea는 `rows={3}`와 공통 textarea 토큰을 유지해 최소 3줄 입력 영역을 제공합니다. Input·Textarea·SelectTrigger는 1px 테두리와 투명 배경만 사용하도록 정리했으며, 기본·focus·error·success 상태의 장식용 box-shadow와 3px ring 유틸리티를 제거했습니다. disabled 상태도 불필요한 회색 배경 대신 투명 배경을 유지합니다. 관련 회귀 테스트 12개와 TypeScript 검사, 프로덕션 빌드가 통과했습니다.
