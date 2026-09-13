@@ -27,6 +27,7 @@ describe("Text input guide controls", () => {
     expect(styles).toContain("min-height: 7.5rem");
     expect(styles).toContain("resize: vertical");
     expect(textarea).toContain("aria-invalid:border-status-error");
+    expect(textarea).not.toContain("field-sizing-content");
     expect(textarea).not.toContain("focus-visible:ring-[3px]");
   });
 

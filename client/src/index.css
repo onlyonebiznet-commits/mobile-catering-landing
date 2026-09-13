@@ -459,6 +459,13 @@
     }
   }
 
+  /* Keep three visible text rows above the shared .flex min-height and input height tokens. */
+  .form-field-control.form-field-control--textarea {
+    height: auto;
+    min-height: 5rem;
+    box-sizing: border-box;
+  }
+
   /* Checkbox states and sizing from the attached Checkbox guide */
   .form-checkbox-control {
     width: 1.25rem;
