@@ -1023,7 +1023,7 @@ export default function Home() {
                   </dl>
 
                 </div>
-                <div className="flex flex-col justify-center">
+                <div className="hidden md:flex flex-col justify-center">
                   <div className="mb-4 flex items-center justify-between gap-3 md:mb-5">
                     <h4 className="text-[17px] font-semibold text-gray-900 md:text-[18px]">주 메뉴</h4>
                     <span className="text-right text-[12px] text-gray-500 md:text-[13px]">고객 특성에 맞춰 구성됩니다</span>
@@ -1040,7 +1040,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute inset-x-0 top-0 aspect-[4/3] md:aspect-auto md:h-[420px]">
+              <div className="pointer-events-none absolute inset-0">
                 <button
                   type="button"
                   onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}

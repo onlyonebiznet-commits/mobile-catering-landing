@@ -69,6 +69,7 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none md:aspect-auto md:h-[420px]"');
     expect(home).toContain('grid grid-cols-1 gap-8 px-5 py-7 sm:px-7 md:grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] md:gap-12 md:px-10 md:py-9');
     expect(home).toContain('고객 특성에 맞춰 구성됩니다');
+    expect(home).toContain('className="hidden md:flex flex-col justify-center"');
     expect(home).not.toContain('맞춤 운영 사례');
     expect(home).toContain('eventTitle: "오피스 임직원 맞춤 식사"');
   });
@@ -95,7 +96,8 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('aria-label="다음 식단 카드"');
     expect(home).toContain('className="pointer-events-auto absolute left-4');
     expect(home).toContain('className="pointer-events-auto absolute right-4');
-    expect(home.match(/aspect-\[4\/3\]/g)?.length).toBe(2);
+    expect(home).toContain('className="pointer-events-none absolute inset-0"');
+    expect(home.match(/aspect-\[4\/3\]/g)?.length).toBe(1);
   });
 
   it("uses six colored snackpick categories with responsive grids", () => {
