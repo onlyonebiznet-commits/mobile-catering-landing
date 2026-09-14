@@ -373,10 +373,10 @@
     align-items: center;
     gap: 0.125rem;
     overflow-wrap: anywhere;
-    border: 1px solid var(--gray-300);
-    border-radius: 10px;
-    background: #ffffff;
-    color: var(--gray-700);
+    border: 1px solid var(--gray-300) !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    color: var(--gray-700) !important;
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
     font-weight: 400;

@@ -64,6 +64,7 @@ const promoBadgeVariants = cva(
       appearance: {
         filled: "rounded-[10px] border border-transparent",
         outlined: "rounded-[10px] border bg-white",
+        hashtag: "hashtag-badge",
       },
       size: badgeSizeVariants,
     },

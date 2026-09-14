@@ -241,3 +241,6 @@ Checkbox 공통 클래스의 Tailwind `border-input` 충돌도 제거해 실제 
 
 ## 사이트 전체 Hashtag 표준 UX/UI 검증
 식단·키친리스 밀솔루션·사내카페 카드의 모든 태그 그룹에 `hashtag-badge` 공통 클래스를 적용했습니다. 태그는 `#` 접두어가 시각적으로 표시되는 작은 칩 형태이며, 1px 회색 테두리·흰색 배경·회색 텍스트·10px radius·12px 기본 텍스트를 사용합니다. 모바일에서는 11px 텍스트와 축소된 패딩으로 조정되고, 긴 텍스트는 칩 내부에서 안전하게 줄바꿈되며 그룹은 flex-wrap으로 다음 줄에 배치됩니다. 관련 Badge 테스트 4개, 전체 테스트·TypeScript·프로덕션 빌드 및 1280px PC·390px 모바일 전체 페이지 시각 검증을 완료했습니다.
+
+## 해시태그 실제 렌더링 재검증
+초기 적용에서 PromoBadge의 `color="yellow"`와 `appearance="outlined"` variant 스타일이 `hashtag-badge`보다 우선되어 노란색 테두리가 남는 문제가 확인되었습니다. 공통 PromoBadge에 `hashtag` appearance를 추가하고 카드 태그 사용처를 해당 appearance로 변경했으며, 해시태그 CSS의 테두리·배경·텍스트·radius에 우선순위를 부여했습니다. HMR 이후 실제 1280px PC 및 390px 모바일 전체 페이지에서 흰색 배경·회색 테두리·# 접두어 칩으로 재확인했으며, 관련 테스트·타입·빌드를 통과했습니다.
