@@ -263,8 +263,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
 
       // API 성공 후에만 GTM 이벤트 추적
       trackFormSubmit("consultation_request", {
-        company_name: formData.companyName,
-        contact_person: formData.contactPerson,
         service_type: formData.serviceTypes.join(",") || "not_selected",
         region: formData.region || "not_selected",
         estimated_meals: formData.estimatedMeals || "not_specified",

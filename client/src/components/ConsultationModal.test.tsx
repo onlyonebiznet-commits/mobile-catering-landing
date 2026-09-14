@@ -253,6 +253,11 @@ describe("ConsultationModal - submission contract", () => {
     expect(source).toContain('companyName: formData.companyName');
     expect(source).toContain('manager: formData.contactPerson');
     expect(source).toContain('phone: formData.phoneNumber');
+    expect(source).toContain('trackFormSubmit("consultation_request", {');
+    expect(source).toContain('service_type: formData.serviceTypes.join(",") || "not_selected"');
+    expect(source).toContain('region: formData.region || "not_selected"');
+    expect(source).not.toContain('company_name: formData.companyName');
+    expect(source).not.toContain('contact_person: formData.contactPerson');
     expect(source).toContain('expectedMealCount: formData.estimatedMeals');
     expect(source).toContain('inquiries: formData.message || null');
     expect(source).toContain('trackConsultationSubmit(true)');
