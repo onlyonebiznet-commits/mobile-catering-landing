@@ -34,6 +34,8 @@ describe("banner CTA button consistency", () => {
     expect(home).toContain("const isSnackHero = currentHeroIndex % 3 === 1;");
     expect(home).toContain("title: '어디든지 찾아가는\\n사내복지'");
     expect(home).toContain("title: '직원 취향 저격하는\\n맞춤 큐레이션'");
+    expect(home.match(/title: '직원 취향 저격하는\\n맞춤 큐레이션'/g)).toHaveLength(2);
+    expect(home.match(/title: '직원 취향 저격하는 맞춤 큐레이션'/g)).toHaveLength(2);
     expect(home).toContain("title: '기업 문화를 만드는\\n사내카페'");
     expect(home).toContain("highlight: '간식복지\\n스낵픽'");
     expect(home.match(/whiteSpace: 'pre-line'/g)).toHaveLength(2);
