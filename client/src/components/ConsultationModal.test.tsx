@@ -210,6 +210,31 @@ describe("ConsultationModal - confirmed personal information notice", () => {
   });
 });
 
+describe("ConsultationModal - confirmed marketing information notice", () => {
+  it("renders the approved marketing collection, use, retention, and withdrawal notice", () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/ConsultationModal.tsx"),
+      "utf8"
+    );
+    const noticeSource = readFileSync(
+      resolve(process.cwd(), "client/src/components/MarketingConsentDetails.tsx"),
+      "utf8"
+    );
+
+    expect(source).toContain("MarketingConsentDetails");
+    expect(noticeSource).toContain("CJ프레시웨이㈜는 서비스 홍보 및 판매 권유 등 마케팅 목적으로 아래와 같이 개인정보를 수집·이용합니다.");
+    expect(noticeSource).toContain("서비스 홍보, 이벤트·혜택 안내 등 마케팅 및 판매 권유");
+    expect(noticeSource).toContain("성명, 기업명, 연락처, 이메일주소");
+    expect(noticeSource).toContain("상담일로부터 1개월");
+    expect(noticeSource).toContain("프레시밀온 소식 및 혜택 안내");
+    expect(noticeSource).toContain("동의 이후에도 언제든지 철회하실 수 있습니다.");
+    expect(noticeSource).toContain("cjfwsecurity@cj.net");
+    expect(noticeSource).toContain("1588-8161/1588-6967");
+    expect(noticeSource).toContain("grid grid-cols-3 border border-gray-300 bg-white text-left");
+    expect(source).toContain('aria-controls="marketing-consent-content"');
+  });
+});
+
 describe("ConsultationModal - submission contract", () => {
   it("keeps required validation, consent gating, payload mapping, and responsive container", () => {
     const source = readFileSync(

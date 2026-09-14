@@ -13,6 +13,7 @@ import { useGTMTracking } from "@/hooks/useGTM";
 import { trackConsultationFormView, trackConsultationSubmit } from "@/utils/ga4-events";
 import SuccessModal from "./SuccessModal";
 import { PersonalInfoConsentDetails } from "./PersonalInfoConsentDetails";
+import { MarketingConsentDetails } from "./MarketingConsentDetails";
 
 interface ConsultationModalProps {
   onClose: () => void;
@@ -607,25 +608,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent id="marketing-consent-content" className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-64 overflow-y-auto">
-                    <div className="space-y-3">
-                      <div>
-                        <p className="font-semibold text-xs mb-1">◼ 수집·이용 항목</p>
-                        <p className="text-xs">성명, 휴대폰번호, 이메일, 기업명</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-1">◼ 목적</p>
-                        <p className="text-xs">서비스 홍보 등 마케팅</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-1">◼ 보유·이용 기간</p>
-                        <p className="text-xs">수집·이용 동의 후 3년</p>
-                      </div>
-                      <div className="border-t pt-2">
-                        <p className="text-xs mb-2">개인정보 수집 및 이용 동의를 거부할 수 있습니다.</p>
-                        <p className="text-xs">동의 거부 시 마케팅 서비스 이용이 어렵으나, 상담에는 지장이 없습니다.</p>
-                      </div>
-                    </div>
+                  <AccordionContent id="marketing-consent-content" className="bg-gray-50 p-3 rounded-[10px] max-h-[32rem] overflow-y-auto">
+                    <MarketingConsentDetails />
                   </AccordionContent>
                 </AccordionItem>
 

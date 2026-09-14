@@ -86,6 +86,17 @@ describe('ServiceRecommendationChatbot', () => {
     expect(screen.getByText(/필수항목에 대한 동의를 거부하실 경우 서비스 상담 신청이 제한됩니다/)).toBeInTheDocument();
   });
 
+  it('shows the confirmed marketing information notice in the privacy accordion', async () => {
+    await reachForm();
+    fireEvent.click(screen.getByRole('button', { name: '마케팅 정보 수신 동의 (선택) 내용 열기' }));
+    expect(await screen.findByText(/서비스 홍보 및 판매 권유 등 마케팅 목적으로/)).toBeInTheDocument();
+    expect(screen.getByText(/서비스 홍보, 이벤트·혜택 안내 등 마케팅 및 판매 권유/)).toBeInTheDocument();
+    expect(screen.getByText(/성명, 기업명, 연락처, 이메일주소/)).toBeInTheDocument();
+    expect(screen.getByText(/상담일로부터 1개월/)).toBeInTheDocument();
+    expect(screen.getByText(/프레시밀온 소식 및 혜택 안내/)).toBeInTheDocument();
+    expect(screen.getByText(/동의 이후에도 언제든지 철회하실 수 있습니다/)).toBeInTheDocument();
+  });
+
   it('keeps agreement checkbox clicks separate from accordion expansion', async () => {
     await reachForm();
     const allAgree = screen.getByRole('checkbox', { name: '전체 동의' });
