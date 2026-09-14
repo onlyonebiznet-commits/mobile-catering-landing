@@ -244,3 +244,6 @@ Checkbox 공통 클래스의 Tailwind `border-input` 충돌도 제거해 실제 
 
 ## 해시태그 실제 렌더링 재검증
 초기 적용에서 PromoBadge의 `color="yellow"`와 `appearance="outlined"` variant 스타일이 `hashtag-badge`보다 우선되어 노란색 테두리가 남는 문제가 확인되었습니다. 공통 PromoBadge에 `hashtag` appearance를 추가하고 카드 태그 사용처를 해당 appearance로 변경했으며, 해시태그 CSS의 테두리·배경·텍스트·radius에 우선순위를 부여했습니다. HMR 이후 실제 1280px PC 및 390px 모바일 전체 페이지에서 흰색 배경·회색 테두리·# 접두어 칩으로 재확인했으며, 관련 테스트·타입·빌드를 통과했습니다.
+
+## Hashtag 칩 모양·연회색 배경 재조정 검증
+첨부 Final 가이드에 맞춰 해시태그 칩을 기존 둥근 형태에서 radius 4px의 각진 사각형으로 조정했습니다. PC는 최소 높이 32px·14px 텍스트·12px 좌우 패딩, 모바일은 최소 높이 28px·12px 텍스트·10px 좌우 패딩을 사용합니다. 배경은 #F1F3F2 연회색, 테두리는 #C3CBC8 1px, 텍스트는 #3F4844로 변경했고 # 접두어는 유지했습니다. 1280px PC와 390px 모바일에서 태그 간격·줄바꿈·가독성을 실제 화면으로 확인했습니다.

@@ -45,8 +45,9 @@ describe("Badge guide primitives", () => {
   it("defines the standard hashtag chip geometry and responsive scale", () => {
     const styles = readFileSync(resolve(process.cwd(), "client/src/index.css"), "utf8");
     expect(styles).toContain(".hashtag-badge {");
-    expect(styles).toContain("min-height: 1.5rem;");
-    expect(styles).toContain("border-radius: 10px;");
+    expect(styles).toContain("min-height: 2rem;");
+    expect(styles).toContain("border-radius: 4px !important;");
+    expect(styles).toContain("background: #f1f3f2 !important;");
     expect(styles).toContain('content: "#";');
     expect(styles).toContain("@media (max-width: 767px)");
   });
