@@ -192,8 +192,6 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
 
       // API 성공 후에만 GTM 이벤트 추적
       trackFormSubmit("material_request", {
-        company_name: formData.companyName,
-        manager: formData.managerName,
         form_type: "material_request",
       });
 
