@@ -26,6 +26,17 @@ describe("navigation menu configuration", () => {
     }
   });
 
+  it("uses the two-color active and neutral inactive icon treatment", () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/SectionNavigation.tsx"),
+      "utf8"
+    );
+    expect(source).toContain("bg-[#007651] text-white");
+    expect(source).toContain("text-[#666666]");
+    expect(source).not.toContain("group-hover:text-[#008F69]");
+    expect(source).not.toContain("hover:bg-[#D7F9EF]");
+  });
+
   it("uses a three-column grid for the mobile navigation", () => {
     const source = readFileSync(
       resolve(process.cwd(), "client/src/components/SectionNavigation.tsx"),
