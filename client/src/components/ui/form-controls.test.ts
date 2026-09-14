@@ -46,8 +46,10 @@ describe("Text input guide controls", () => {
     expect(styles).toContain(".form-checkbox-control[data-state=\"checked\"]");
     expect(styles).toContain(".form-checkbox-control:focus-visible");
     expect(styles).toContain(".form-checkbox-control:disabled");
-    expect(styles).toContain("width: 1.25rem");
     expect(styles).toContain("width: 1rem");
+    expect(styles).toContain("border-radius: 0;");
+    expect(styles).toContain("background: #ffffff;");
+    expect(styles).toContain("border-color: var(--brand-700);");
   });
 });
 

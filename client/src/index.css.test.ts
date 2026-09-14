@@ -52,9 +52,9 @@ describe("Freshmeal-on color guide tokens", () => {
     expect(css).toContain("--muted-foreground: var(--gray-600)");
   });
 
-  it("defines the FW circular radio appearance and its interaction states", () => {
+  it("defines the Final square checkbox appearance and its interaction states", () => {
     expect(css).toContain(".form-radio-control {");
-    expect(css).toContain("border-radius: 10px;");
+    expect(css).toContain("border-radius: 0;");
     expect(css).toContain('.form-radio-control[data-state="checked"]');
     expect(css).toContain(".form-radio-dot {");
     expect(css).toContain(".form-radio-control:focus-visible");
