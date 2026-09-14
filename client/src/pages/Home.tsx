@@ -995,6 +995,7 @@ export default function Home() {
             onTouchCancel={() => setTouchStart(0)}
           >
             <div className="relative overflow-hidden rounded-[10px] bg-white shadow-lg scroll-reveal">
+              <div key={currentDietIndex} className="diet-card-transition relative">
               <div className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none md:aspect-auto md:h-[420px]">
                 <img
                   src={diets[currentDietIndex].image}
@@ -1057,6 +1058,7 @@ export default function Home() {
                 >
                   <ChevronRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
                 </button>
+              </div>
               </div>
             </div>
 

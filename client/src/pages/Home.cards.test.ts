@@ -66,6 +66,7 @@ describe("FO card surface consistency", () => {
 
   it("uses the reference-style diet presentation responsively on PC and mobile", () => {
     expect(home).toContain('className="relative overflow-hidden rounded-[10px] bg-white shadow-lg scroll-reveal"');
+    expect(home).toContain('<div key={currentDietIndex} className="diet-card-transition relative">');
     expect(home).toContain('className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none md:aspect-auto md:h-[420px]"');
     expect(home).toContain('grid grid-cols-1 gap-8 px-5 py-7 sm:px-7 md:grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] md:gap-12 md:px-10 md:py-9');
     expect(home).toContain('고객 특성에 맞춰 구성됩니다');

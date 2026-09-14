@@ -63,6 +63,13 @@ describe("Freshmeal-on color guide tokens", () => {
     expect(css).toContain("height: 0.375rem;");
   });
 
+  it("defines the shared diet carousel transition and reduced-motion fallback", () => {
+    expect(css).toContain("@keyframes dietCardEnter");
+    expect(css).toContain(".diet-card-transition {");
+    expect(css).toContain("animation: dietCardEnter 360ms");
+    expect(css).toContain(".diet-card-transition {\n    animation: none;");
+  });
+
   it("disables the hero title entrance animation for reduced-motion users", () => {
     expect(css).toContain("@media (prefers-reduced-motion: reduce)");
     expect(css).toContain(".hero-title-animate");
