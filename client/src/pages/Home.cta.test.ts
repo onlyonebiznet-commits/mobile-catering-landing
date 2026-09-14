@@ -38,7 +38,7 @@ describe("banner CTA button consistency", () => {
     expect(home).toContain("highlight: '간식복지\\n스낵픽'");
     expect(home.match(/whiteSpace: 'pre-line'/g)).toHaveLength(2);
     expect(home.match(/fontSize: '30px'/g)).toHaveLength(2);
-    expect(home.match(/fontSize: '60px'/g)).toHaveLength(2);
+    expect(home.match(/text-\[48px\] md:text-\[60px\]/g)).toHaveLength(2);
     expect(home).toContain("whiteSpace: isSnackHero ? 'normal' : 'pre-line'");
   });
 

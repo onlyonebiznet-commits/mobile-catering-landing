@@ -698,7 +698,7 @@ export default function Home() {
                 </div>
                 
                 <div className="hidden md:block">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '0'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center text-[48px] md:text-[60px]" style={{lineHeight: '1.2', marginBottom: '0'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -720,7 +720,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '60px', lineHeight: '1.2', marginBottom: '1rem', whiteSpace: isSnackHero ? 'normal' : 'pre-line'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center text-[48px] md:text-[60px]" style={{lineHeight: '1.2', marginBottom: '1rem', whiteSpace: isSnackHero ? 'normal' : 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -745,7 +745,7 @@ export default function Home() {
                 </div>
                 
                 {/* 간단한 설명 - MO: 18px, PC: 36px */}
-                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: 'clamp(15px, 4vw, 18px)', lineHeight: '1.45'}}>
+                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center text-[14px]" style={{lineHeight: '1.45'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -767,7 +767,7 @@ export default function Home() {
                     }
                   ][currentHeroIndex % 3].description}
                 </p>
-                <p className="hidden md:block text-white drop-shadow-lg hero-title-animate mb-8 text-center" style={{fontSize: '18px', lineHeight: '1.4'}}>
+                <p className="hidden md:block text-white drop-shadow-lg hero-title-animate mb-8 text-center text-[18px]" style={{lineHeight: '1.4'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -796,7 +796,7 @@ export default function Home() {
                     variant="on-brand"
                     size="large"
                     onClick={() => setConsultationOpen(true)}
-                    data-event="consultation_click" style={{fontSize: '18px'}}
+                    className="text-[14px] md:text-[18px]" data-event="consultation_click"
                   >
                     지금 상담받기
                   </Button>
@@ -851,8 +851,8 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>키친리스 밀솔루션</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: '18px'}}>공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">키친리스 밀솔루션</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">공간 제약 없이 신선한 식사를 제공하는 프레시밀온의 3가지 솔루션</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -868,9 +868,9 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2" style={{fontSize: '36px'}}>{solution.name}</h3>
-                  <p className="text-brand-700 font-semibold mb-3" style={{fontSize: '18px'}}>{solution.shortDesc}</p>
-                  <p className="text-gray-600 mb-4" style={{color: '#000000', fontSize: '16px'}}>{solution.details}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{solution.name}</h3>
+                  <p className="text-brand-700 font-semibold mb-3 text-[14px] md:text-[18px]">{solution.shortDesc}</p>
+                  <p className="text-gray-600 mb-4 text-[12px] md:text-[16px]" style={{color: '#000000'}}>{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, i) => (
                       <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -882,9 +882,9 @@ export default function Home() {
                     type="button"
                     variant="primary"
                     size="medium"
-                    className="w-full"
+                    className="w-full text-[14px] md:text-[18px]"
                     onClick={() => setConsultationOpen(true)}
-                    data-event="consultation_click" style={{fontSize: '18px'}}
+                    data-event="consultation_click"
                   >
                     견적 문의
                   </Button>
@@ -899,8 +899,8 @@ export default function Home() {
       <section id="diet" className="py-20 bg-gray-50">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>고객 특성에 맞춘 식단</h2>
-            <p className="text-[15px] md:text-[25px] text-gray-600 text-center" style={{fontSize: '18px'}}>각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">고객 특성에 맞춘 식단</h2>
+            <p className="text-[14px] md:text-[18px] text-gray-600 text-center">각 산업의 특성에 맞춘 맞춤형 식단으로 직원 만족도를 높입니다</p>
           </div>
 
           <div
@@ -937,7 +937,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center aspect-[4/3]">
-                  <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2" style={{fontSize: '36px'}}>{diets[currentDietIndex].title}</h3>
+                  <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{diets[currentDietIndex].title}</h3>
                   <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
 
                   <div className="flex items-center gap-4">
@@ -992,8 +992,8 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>실제 운영중인 식단</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: '18px'}}>신선한 재료로 만든 다양한 메뉴</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">실제 운영중인 식단</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">신선한 재료로 만든 다양한 메뉴</p>
           </div>
 
           {/* PC: 3 columns, Mobile: Horizontal scroll */}
@@ -1011,9 +1011,9 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2" style={{fontSize: '36px'}}>{meal.name}</h3>
-                    <p className="text-brand-700 font-semibold text-sm mb-3" style={{fontSize: '18px'}}>{meal.summary}</p>
-                    <p className="text-gray-600 text-sm mb-4 leading-relaxed" style={{color: '#000000', fontSize: '16px'}}>{meal.fullDescription}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{meal.name}</h3>
+                    <p className="text-brand-700 font-semibold text-[14px] md:text-[18px] mb-3">{meal.summary}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px] md:text-[16px]" style={{color: '#000000'}}>{meal.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {meal.tags.map((tag, i) => (
                         <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1043,9 +1043,9 @@ export default function Home() {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{meal.name}</h3>
-                      <p className="text-brand-700 font-semibold text-sm mb-3">{meal.summary}</p>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px]">{meal.name}</h3>
+                      <p className="text-brand-700 font-semibold text-[14px] mb-3">{meal.summary}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px]">{meal.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {meal.tags.map((tag, i) => (
                           <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1071,8 +1071,8 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>맞춤형 큐레이션 스낵픽</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: '18px'}}>CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">맞춤형 큐레이션 스낵픽</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">CJ만의 상품 구매 역량을 통한 맞춤 큐레이션</p>
           </div>
 
           {/* Reference-style category tiles - PC and mobile: 3 columns x 2 rows */}
@@ -1170,8 +1170,8 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>맞춤형 사내카페</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: '18px'}}>고객의 니즈를 녹이고 고객사의 색깔을 듬뿍 담은 서비스를 제공합니다.</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">맞춤형 사내카페</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">고객의 니즈를 녹이고 고객사의 색깔을 듬뿍 담은 서비스를 제공합니다.</p>
           </div>
 
           {/* PC: 3 Column Grid */}
@@ -1189,9 +1189,9 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2" style={{fontSize: '36px'}}>{cafe.name}</h3>
-                    <p className="text-brand-700 font-semibold text-sm mb-3" style={{fontSize: '18px'}}>{cafe.summary}</p>
-                    <p className="text-gray-600 text-sm mb-4 leading-relaxed" style={{color: '#000000', fontSize: '16px'}}>{cafe.fullDescription}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{cafe.name}</h3>
+                    <p className="text-brand-700 font-semibold text-[14px] md:text-[18px] mb-3">{cafe.summary}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px] md:text-[16px]" style={{color: '#000000'}}>{cafe.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {cafe.tags.map((tag, i) => (
                         <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1221,9 +1221,9 @@ export default function Home() {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{cafe.name}</h3>
-                      <p className="text-brand-700 font-semibold text-sm mb-3">{cafe.summary}</p>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px]">{cafe.name}</h3>
+                      <p className="text-brand-700 font-semibold text-[14px] mb-3">{cafe.summary}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px]">{cafe.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {cafe.tags.map((tag, i) => (
                           <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1257,8 +1257,8 @@ export default function Home() {
               <div key={idx} className="relative scroll-reveal-stagger" data-reveal-item={idx}>
                 <div className="bg-white/10 backdrop-blur-sm rounded-[10px] p-6 md:p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
                   <div className="text-4xl md:text-5xl mb-3 md:mb-4">{process.icon}</div>
-                  <h3 className="text-base md:text-xl font-bold text-white mb-2" style={{fontSize: '24px'}}>{process.title}</h3>
-                  <p className="text-white/80 text-xs md:text-sm">{process.description}</p>
+                  <h3 className="text-base md:text-xl font-bold text-white mb-2 text-[24px] md:text-[24px]">{process.title}</h3>
+                  <p className="text-white/80 text-[10px] md:text-[12px]">{process.description}</p>
                 </div>
               </div>
             ))}
@@ -1270,8 +1270,8 @@ export default function Home() {
       <section className="py-16 bg-gray-50 overflow-hidden">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>함께하는 고객사</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: '18px'}}>100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">함께하는 고객사</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">100개 이상의 기업이 프레시밀온을 신뢰하고 있습니다</p>
           </div>
           <style>{`
             @keyframes scroll-infinite-ltr {
@@ -1363,8 +1363,8 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>고객 후기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: '18px'}}>프레시밀온과 함께하는 고객들의 성공 스토리</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">고객 후기</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">프레시밀온과 함께하는 고객들의 성공 스토리</p>
           </div>
 
           {/* PC: 2 Column Grid | Mobile: Full List */}
@@ -1434,8 +1434,8 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center" style={{fontSize: '48px'}}>우리의 이야기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center" style={{fontSize: '18px'}}>프레시밀온과 함께 만들어가는 성공 사례들</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">우리의 이야기</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">프레시밀온과 함께 만들어가는 성공 사례들</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
@@ -1497,7 +1497,7 @@ export default function Home() {
               variant="on-brand-inverse"
               size="large"
               onClick={() => setConsultationOpen(true)}
-              data-event="consultation_click" style={{fontSize: '18px'}}
+              className="text-[14px] md:text-[18px]" data-event="consultation_click"
             >
               지금 상담받기
             </Button>
