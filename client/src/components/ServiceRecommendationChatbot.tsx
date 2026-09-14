@@ -191,7 +191,7 @@ const ServiceRecommendationChatbot = () => {
 
       {/* Chatbot Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-24px)] bg-white rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-24px)] bg-white rounded-[5px] shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
           <div className="bg-gradient-to-r from-[#007651] to-[#008F69] text-white p-6">
             <h3 className="text-lg font-bold">서비스 추천 상담</h3>
@@ -202,7 +202,7 @@ const ServiceRecommendationChatbot = () => {
           <div className="p-6 max-h-96 overflow-y-auto">
             {submitted ? (
               <div className="text-center py-8">
-                <div className="w-12 h-12 bg-status-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-status-success/10 rounded-[5px] flex items-center justify-center mx-auto mb-4">
                   <svg className="w-6 h-6 text-status-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -218,7 +218,7 @@ const ServiceRecommendationChatbot = () => {
                     <button
                       key={service}
                       onClick={() => handleServiceSelect(service)}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-left hover:border-[#007651] hover:bg-[#007651]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#007651]"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-[5px] text-left hover:border-[#007651] hover:bg-[#007651]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#007651]"
                     >
                       {service}
                     </button>
@@ -233,7 +233,7 @@ const ServiceRecommendationChatbot = () => {
                     <button
                       key={environment}
                       onClick={() => handleEnvironmentSelect(environment)}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-left hover:border-[#007651] hover:bg-[#007651]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#007651]"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-[5px] text-left hover:border-[#007651] hover:bg-[#007651]/5 transition-all duration-200 font-medium text-gray-700 hover:text-[#007651]"
                     >
                       {environment}
                     </button>
@@ -251,7 +251,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.name}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651]"
+                      className="px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:border-[#007651]"
                     />
                     <input
                       type="text"
@@ -260,7 +260,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.company}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651]"
+                      className="px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:border-[#007651]"
                     />
                   </div>
 
@@ -272,7 +272,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.phone}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651]"
+                      className="px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:border-[#007651]"
                     />
                     <input
                       type="email"
@@ -281,7 +281,7 @@ const ServiceRecommendationChatbot = () => {
                       value={formData.email}
                       onChange={handleFormChange}
                       required
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651]"
+                      className="px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:border-[#007651]"
                     />
                   </div>
 
@@ -292,7 +292,7 @@ const ServiceRecommendationChatbot = () => {
                       placeholder="예상 식수"
                       value={formData.people}
                       onChange={handleFormChange}
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651]"
+                      className="px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:border-[#007651]"
                     />
                     <input
                       type="text"
@@ -300,7 +300,7 @@ const ServiceRecommendationChatbot = () => {
                       placeholder="희망 지역"
                       value={formData.region}
                       onChange={handleFormChange}
-                      className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651]"
+                      className="px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:border-[#007651]"
                     />
                   </div>
 
@@ -310,7 +310,7 @@ const ServiceRecommendationChatbot = () => {
                     value={formData.inquiry}
                     onChange={handleFormChange}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#007651] resize-none"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:border-[#007651] resize-none"
                   />
 
                   <div className="space-y-3 border-t border-gray-200 pt-3" aria-label="개인정보 동의">
@@ -339,7 +339,7 @@ const ServiceRecommendationChatbot = () => {
                       onValueChange={setAccordionValue}
                       className="w-full space-y-2"
                     >
-                      <AccordionItem value="personal-info" className="border border-gray-200 rounded-lg px-3">
+                      <AccordionItem value="personal-info" className="border border-gray-200 rounded-[5px] px-3">
                         <div className="flex items-center justify-between py-2">
                           <div className="flex items-center gap-2 min-w-0">
                             <Checkbox
@@ -360,7 +360,7 @@ const ServiceRecommendationChatbot = () => {
                           </div>
                           <button
                             type="button"
-                            className="flex-shrink-0 rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                            className="flex-shrink-0 rounded-[5px] p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                             onClick={() => toggleAgreementAccordion('personal-info')}
                             aria-label="개인정보 수집 및 이용 동의 내용 열기"
                             aria-expanded={accordionValue === 'personal-info'}
@@ -368,12 +368,12 @@ const ServiceRecommendationChatbot = () => {
                             <ChevronDown className={`h-4 w-4 transition-transform ${accordionValue === 'personal-info' ? 'rotate-180' : ''}`} aria-hidden="true" />
                           </button>
                         </div>
-                        <AccordionContent className="rounded bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
+                        <AccordionContent className="rounded-[5px] bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
                           CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 성명, 휴대폰번호, 이메일, 기업명, 주소, 예상 식수를 수집·이용합니다. 이용 목적은 이동급식 서비스 상담 및 진행이며, 보유·이용 기간은 상담 신청 후 3년입니다. 동의하지 않을 수 있으나 상담 진행이 어려울 수 있습니다.
                         </AccordionContent>
                       </AccordionItem>
 
-                      <AccordionItem value="marketing" className="border border-gray-200 rounded-lg px-3">
+                      <AccordionItem value="marketing" className="border border-gray-200 rounded-[5px] px-3">
                         <div className="flex items-center justify-between py-2">
                           <div className="flex items-center gap-2 min-w-0">
                             <Checkbox
@@ -394,7 +394,7 @@ const ServiceRecommendationChatbot = () => {
                           </div>
                           <button
                             type="button"
-                            className="flex-shrink-0 rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                            className="flex-shrink-0 rounded-[5px] p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                             onClick={() => toggleAgreementAccordion('marketing')}
                             aria-label="마케팅 정보 수신 동의 내용 열기"
                             aria-expanded={accordionValue === 'marketing'}
@@ -402,12 +402,12 @@ const ServiceRecommendationChatbot = () => {
                             <ChevronDown className={`h-4 w-4 transition-transform ${accordionValue === 'marketing' ? 'rotate-180' : ''}`} aria-hidden="true" />
                           </button>
                         </div>
-                        <AccordionContent className="rounded bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
+                        <AccordionContent className="rounded-[5px] bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
                           서비스 홍보 등 마케팅을 위해 성명, 휴대폰번호, 이메일, 기업명을 이용합니다. 보유·이용 기간은 동의 후 3년이며, 동의하지 않아도 상담 이용에는 지장이 없습니다.
                         </AccordionContent>
                       </AccordionItem>
 
-                      <AccordionItem value="advertising" className="border border-gray-200 rounded-lg px-3">
+                      <AccordionItem value="advertising" className="border border-gray-200 rounded-[5px] px-3">
                         <div className="flex items-center justify-between py-2">
                           <div className="flex items-center gap-2 min-w-0">
                             <Checkbox
@@ -428,7 +428,7 @@ const ServiceRecommendationChatbot = () => {
                           </div>
                           <button
                             type="button"
-                            className="flex-shrink-0 rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                            className="flex-shrink-0 rounded-[5px] p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                             onClick={() => toggleAgreementAccordion('advertising')}
                             aria-label="광고성 정보 수신 동의 내용 열기"
                             aria-expanded={accordionValue === 'advertising'}
@@ -436,7 +436,7 @@ const ServiceRecommendationChatbot = () => {
                             <ChevronDown className={`h-4 w-4 transition-transform ${accordionValue === 'advertising' ? 'rotate-180' : ''}`} aria-hidden="true" />
                           </button>
                         </div>
-                        <AccordionContent className="rounded bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
+                        <AccordionContent className="rounded-[5px] bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
                           마케팅 목적의 개인정보 수집·이용에 동의한 고객에게 문자, 이메일 등 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다. 동의하지 않아도 상담 이용에는 지장이 없습니다.
                         </AccordionContent>
                       </AccordionItem>
@@ -447,7 +447,7 @@ const ServiceRecommendationChatbot = () => {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium text-sm"
+                      className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-[5px] hover:bg-gray-50 transition-colors duration-200 font-medium text-sm"
                     >
                       뒤로가기
                     </button>
@@ -455,7 +455,7 @@ const ServiceRecommendationChatbot = () => {
                       type="submit"
                       data-event="consultation_submit_click"
                       data-form="chatbot_consultation_form"
-                      className="flex-1 px-4 py-2 bg-[#007651] text-white rounded-lg hover:bg-[#008F69] transition-colors duration-200 font-medium text-sm"
+                      className="flex-1 px-4 py-2 bg-[#007651] text-white rounded-[5px] hover:bg-[#008F69] transition-colors duration-200 font-medium text-sm"
                       onClick={() => {
                         window.dataLayer?.push({
                           event: "consultation_submit_click",

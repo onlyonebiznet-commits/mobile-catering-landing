@@ -286,7 +286,7 @@ export default function AdminDashboard() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[5px] mb-6">
             {error}
           </div>
         )}
@@ -321,7 +321,7 @@ export default function AdminDashboard() {
                 value={startDate}
                 max={endDate || undefined}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm"
+                className="w-full px-4 py-2 border border-slate-300 rounded-[5px] text-sm"
               />
             </label>
             <label className="space-y-1">
@@ -331,13 +331,13 @@ export default function AdminDashboard() {
                 value={endDate}
                 min={startDate || undefined}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm"
+                className="w-full px-4 py-2 border border-slate-300 rounded-[5px] text-sm"
               />
             </label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-4 py-2 border border-slate-300 rounded-lg text-sm"
+              className="px-4 py-2 border border-slate-300 rounded-[5px] text-sm"
             >
               <option value="">모든 상태</option>
               <option value="pending">신규</option>
@@ -393,7 +393,7 @@ export default function AdminDashboard() {
                         <td className="py-3 px-4">{item.expectedMealCount ? `${item.expectedMealCount}명` : '-'}</td>
                         <td className="py-3 px-4">{item.serviceType || '-'}</td>
                         <td className="py-3 px-4">
-                          <span className={`px-2 py-1 rounded-full border text-xs font-medium ${getWebhookStatusColor(item.webhookStatus)}`}>
+                          <span className={`px-2 py-1 rounded-[5px] border text-xs font-medium ${getWebhookStatusColor(item.webhookStatus)}`}>
                             {getWebhookStatusLabel(item.webhookStatus)}
                           </span>
                         </td>
@@ -402,7 +402,7 @@ export default function AdminDashboard() {
                             <DropdownMenuTrigger asChild>
                               <button
                                 disabled={updatingId === item.id}
-                                className={`px-3 py-1 rounded-full border font-medium text-xs cursor-pointer transition-colors hover:opacity-80 ${getStatusColor(item.status || 'pending')}`}
+                                className={`px-3 py-1 rounded-[5px] border font-medium text-xs cursor-pointer transition-colors hover:opacity-80 ${getStatusColor(item.status || 'pending')}`}
                               >
                                 {getStatusLabel(item.status || 'pending')}
                               </button>

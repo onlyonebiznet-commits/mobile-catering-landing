@@ -38,7 +38,7 @@ describe("Badge guide primitives", () => {
     expect(home).toContain('import { PromoBadge } from "@/components/ui/badge";');
     expect(home.match(/<PromoBadge/g)).toHaveLength(5);
     expect(home).toContain('color="yellow" appearance="outlined" size="small"');
-    expect(home).not.toContain("bg-brand-700/10 text-brand-700 rounded-full");
+    expect(home).not.toContain("bg-brand-700/10 text-brand-700 rounded-[5px]");
   });
 });
 

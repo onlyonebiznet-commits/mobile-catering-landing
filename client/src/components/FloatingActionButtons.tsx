@@ -89,7 +89,7 @@ export default function FloatingActionButtons() {
           <div className="relative inline-block">
             {/* Text Label Pill - Behind the icon */}
             <div
-              className={`absolute right-0 top-0 h-14 bg-[#007651] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
+              className={`absolute right-0 top-0 h-14 bg-[#007651] rounded-[5px] shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
                 isExpanded("top") ? "w-40 opacity-100 visible" : "w-0 opacity-0 invisible"
               }`}
               style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
@@ -103,7 +103,7 @@ export default function FloatingActionButtons() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="relative w-14 h-14 rounded-full bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
+              className="relative w-14 h-14 rounded-[5px] bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
               style={{ zIndex: 3 }}
               aria-label="맨 위로 이동"
               title="Top"
@@ -127,7 +127,7 @@ export default function FloatingActionButtons() {
           <div className="relative inline-block">
             {/* Text Label Pill - Behind the icon */}
             <div
-              className={`absolute right-0 top-0 h-14 bg-[#007651] rounded-full shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
+              className={`absolute right-0 top-0 h-14 bg-[#007651] rounded-[5px] shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
                 isExpanded("consultation") ? "w-40 opacity-100 visible" : "w-0 opacity-0 invisible"
               }`}
               style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
@@ -141,7 +141,7 @@ export default function FloatingActionButtons() {
             <button
               type="button"
               onClick={scrollToChatbot}
-              className="relative w-14 h-14 rounded-full bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
+              className="relative w-14 h-14 rounded-[5px] bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
               style={{ zIndex: 3 }}
               aria-label="맞춤 상담"
               title="맞춤 상담"

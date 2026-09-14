@@ -13,7 +13,7 @@ describe("Text input guide controls", () => {
     expect(input).toContain("form-field-control");
     expect(styles).toContain("height: 3rem");
     expect(styles).toContain("border: 1px solid var(--gray-200)");
-    expect(styles).toContain("border-radius: 0.25rem");
+    expect(styles).toContain("border-radius: 5px");
     expect(styles).toContain("background: transparent");
     expect(styles).toContain("box-shadow: none");
     expect(styles).toContain("padding: 0.75rem 1rem");

@@ -19,7 +19,7 @@ export default function SuccessModal({
   return (
     <div className="px-6 md:px-8 py-12 md:py-20 flex flex-col items-center justify-center text-center overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)', minHeight: 'auto' }}>
       <div className="mb-4 md:mb-8 flex-shrink-0">
-        <div className="w-12 md:w-16 h-12 md:h-16 bg-[#007651] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-6">
+        <div className="w-12 md:w-16 h-12 md:h-16 bg-[#007651] bg-opacity-10 rounded-[5px] flex items-center justify-center mx-auto mb-3 md:mb-6">
           <svg className="w-6 md:w-8 h-6 md:h-8 text-[#007651]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
@@ -35,7 +35,7 @@ export default function SuccessModal({
       </div>
       <Button
         onClick={onClose}
-        className="w-full bg-[#007651] hover:bg-[#008F69] text-white py-3 md:py-4 rounded-lg font-medium transition-colors mb-6 md:mb-8 flex-shrink-0 text-sm md:text-base"
+        className="w-full bg-[#007651] hover:bg-[#008F69] text-white py-3 md:py-4 rounded-[5px] font-medium transition-colors mb-6 md:mb-8 flex-shrink-0 text-sm md:text-base"
       >
         홈으로 돌아가기
       </Button>

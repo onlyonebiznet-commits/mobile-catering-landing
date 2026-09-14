@@ -21,7 +21,7 @@ export default function ThankYou() {
       <div className="max-w-md w-full space-y-8 text-center">
         {/* Success Icon */}
         <div className="flex justify-center">
-          <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center animate-bounce">
+          <div className="w-20 h-20 bg-primary rounded-[5px] flex items-center justify-center animate-bounce">
             <CheckCircle2 className="w-12 h-12 text-white" />
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function ThankYou() {
         </div>
 
         {/* Details */}
-        <div className="bg-white rounded-xl p-8 border border-border space-y-4">
+        <div className="bg-white rounded-[5px] p-8 border border-border space-y-4">
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">
               입력하신 연락처로 프레시밀온 담당자가 연락을 드릴 예정입니다.

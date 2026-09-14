@@ -294,7 +294,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
     }}>
       <DialogContent 
         ref={contentRef}
-        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-lg overflow-hidden bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-[5px] overflow-hidden bg-white fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         style={{
           maxHeight: 'calc(100vh - 100px)',
           width: 'calc(100vw - 32px)',
@@ -315,7 +315,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         <div className="bg-[#007651] px-6 py-6 relative">
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 p-1 hover:bg-[#008F69] rounded-md transition-colors"
+            className="absolute right-4 top-4 p-1 hover:bg-[#008F69] rounded-[5px] transition-colors"
             aria-label="Close"
           >
             <X aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-sm text-white" />
@@ -430,12 +430,12 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
               <div
                 role="group"
                 aria-labelledby="service-label"
-                className="grid grid-cols-2 gap-2 rounded-md border border-gray-200 p-3"
+                className="grid grid-cols-2 gap-2 rounded-[5px] border border-gray-200 p-3"
               >
                 {SERVICE_OPTIONS.map(({ value, label }) => {
                   const checkboxId = `service-${value}`;
                   return (
-                    <div key={value} className="flex items-center gap-2 rounded-md px-2 py-2 transition-colors hover:bg-gray-50">
+                    <div key={value} className="flex items-center gap-2 rounded-[5px] px-2 py-2 transition-colors hover:bg-gray-50">
                       <Checkbox
                         id={checkboxId}
                         checked={formData.serviceTypes.includes(value)}
@@ -535,7 +535,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
               </div>
 
               <Accordion type="single" collapsible className="w-full space-y-2" value={accordionValue} onValueChange={handleAccordionValueChange}>
-                <AccordionItem value="personal-info" className="border border-gray-200 rounded-lg px-3">
+                <AccordionItem value="personal-info" className="border border-gray-200 rounded-[5px] px-3">
                   <div className="flex items-center justify-between py-3">
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
@@ -558,7 +558,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <button
                       type="button"
                       onClick={() => setAccordionValue(accordionValue === "personal-info" ? "" : "personal-info")}
-                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
+                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded-[5px] transition-colors"
                       aria-label="Toggle personal info section"
                     >
                       <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
@@ -566,7 +566,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[5px] max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
                         <p className="text-xs mb-2">CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다.</p>
@@ -595,7 +595,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="marketing" className="border border-gray-200 rounded-lg px-3">
+                <AccordionItem value="marketing" className="border border-gray-200 rounded-[5px] px-3">
                   <div className="flex items-center justify-between py-3">
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
@@ -618,7 +618,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <button
                       type="button"
                       onClick={() => setAccordionValue(accordionValue === "marketing" ? "" : "marketing")}
-                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
+                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded-[5px] transition-colors"
                       aria-label="Toggle marketing section"
                     >
                       <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
@@ -626,7 +626,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[5px] max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
                         <p className="font-semibold text-xs mb-1">◼ 수집·이용 항목</p>
@@ -648,7 +648,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="ad" className="border border-gray-200 rounded-lg px-3">
+                <AccordionItem value="ad" className="border border-gray-200 rounded-[5px] px-3">
                   <div className="flex items-center justify-between py-3">
                     <div className="flex items-center space-x-2 text-left flex-nowrap">
                       <Checkbox
@@ -673,7 +673,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                     <button
                       type="button"
                       onClick={() => setAccordionValue(accordionValue === "ad" ? "" : "ad")}
-                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded transition-colors"
+                      className="flex-shrink-0 hover:bg-gray-100 p-1 rounded-[5px] transition-colors"
                       aria-label="Toggle advertising section"
                     >
                       <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
@@ -681,7 +681,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded max-h-64 overflow-y-auto">
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[5px] max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
                         <p className="text-xs mb-3">CJ프레시웨이㈜는 마케팅 목적의 개인정보 수집 및 이용에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다.</p>
@@ -765,7 +765,7 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#007651] hover:bg-[#008F69] text-white font-semibold py-3 rounded-lg mt-6"
+              className="w-full bg-[#007651] hover:bg-[#008F69] text-white font-semibold py-3 rounded-[5px] mt-6"
             >
               {isSubmitting ? "처리 중..." : "상담 신청하기"}
             </Button>

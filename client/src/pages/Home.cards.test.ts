@@ -9,10 +9,10 @@ const home = readFileSync(
 
 describe("FO card surface consistency", () => {
   it("uses white surfaces for meal and cafe cards on desktop and mobile", () => {
-    expect(home).not.toContain('className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
-    expect(home).not.toContain('className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
-    expect(home).toContain('className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
-    expect(home).toContain('className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
+    expect(home).not.toContain('className="bg-gray-50 rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
+    expect(home).not.toContain('className="bg-gray-50 rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
+    expect(home).toContain('className="bg-white rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
+    expect(home).toContain('className="bg-white rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow"');
   });
 
   it("uses a white image surface for mobile meal and cafe cards", () => {
@@ -86,7 +86,7 @@ describe("FO card surface consistency", () => {
     expect(home).toContain("const snackCategoryTones");
     expect(home).toContain("Reference-style category tiles - PC and mobile: 3 columns x 2 rows");
     expect(home).toContain('className="grid grid-cols-3 gap-3 md:gap-6"');
-    expect(home).toContain("rounded-[16px]");
+    expect(home).toContain("rounded-[5px]");
     expect(home).toContain("min-h-10");
     expect(home).toContain("md:min-h-12");
     expect(home).toContain("md:h-7 md:w-7");
