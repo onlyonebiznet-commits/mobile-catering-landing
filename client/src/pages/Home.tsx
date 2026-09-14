@@ -649,9 +649,9 @@ export default function Home() {
               }
             ][currentHeroIndex % 3] && (
               <div>
-                {/* 메인 타이틀: PC 60px·2줄, 모바일 48px·3줄 계층 */}
+                {/* 메인 타이틀: PC 60px·2줄, 모바일 36px·의미 단위 3줄 계층 */}
                 <div className="md:hidden">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '48px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '36px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -673,7 +673,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '48px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '36px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
