@@ -210,6 +210,32 @@ describe("ConsultationModal - confirmed personal information notice", () => {
   });
 });
 
+describe("ConsultationModal - submission contract", () => {
+  it("keeps required validation, consent gating, payload mapping, and responsive container", () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/ConsultationModal.tsx"),
+      "utf8"
+    );
+
+    expect(source).toContain('if (!formData.companyName.trim())');
+    expect(source).toContain('if (!formData.contactPerson.trim())');
+    expect(source).toContain('if (!formData.phoneNumber.trim())');
+    expect(source).toContain('if (!formData.email.trim())');
+    expect(source).toContain('if (!formData.region.trim())');
+    expect(source).toContain('if (!formData.estimatedMeals.trim())');
+    expect(source).toContain('if (!agreements.personalInfoCollection)');
+    expect(source).toContain('fetch("/api/consultation-request"');
+    expect(source).toContain('companyName: formData.companyName');
+    expect(source).toContain('manager: formData.contactPerson');
+    expect(source).toContain('phone: formData.phoneNumber');
+    expect(source).toContain('expectedMealCount: formData.estimatedMeals');
+    expect(source).toContain('inquiries: formData.message || null');
+    expect(source).toContain('trackConsultationSubmit(true)');
+    expect(source).toContain('trackConsultationSubmit(false)');
+    expect(source).toContain('w-[calc(100vw-32px)] md:w-auto md:max-w-[600px]');
+  });
+});
+
 describe("ConsultationModal - Text input guide", () => {
   it("uses shared field hierarchy and accessible descriptions for the active FO form", async () => {
     const source = readFileSync(
