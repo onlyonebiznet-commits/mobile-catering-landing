@@ -649,9 +649,9 @@ export default function Home() {
               }
             ][currentHeroIndex % 3] && (
               <div>
-                {/* 메인 타이틀: PC 60px·2줄, 모바일 30px·3줄 계층 */}
+                {/* 메인 타이틀: PC 60px·2줄, 모바일 48px·3줄 계층 */}
                 <div className="md:hidden">
-                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}>
+                  <h1 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '48px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -673,7 +673,7 @@ export default function Home() {
                       }
                     ][currentHeroIndex % 3].title}
                   </h1>
-                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '30px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
+                  <h2 className="type-title-1 text-white drop-shadow-lg hero-title-animate text-center" style={{fontSize: '48px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}>
                     {[
                       {
                         image: '/manus-storage/hero-office-meal_08208dd3.png',
@@ -1248,8 +1248,8 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-white mb-2 text-center" style={{fontSize: '48px'}}>신선함을 보장하는 프로세스</h2>
-            <p className="text-sm sm:text-base md:text-xl text-white/90 text-center" style={{fontSize: '18px'}}>엄격한 품질 관리로 신선한 식사를 보장합니다</p>
+            <h2 className="type-title-1 text-white mb-2 text-center text-[36px] md:text-[48px]">신선함을 보장하는 프로세스</h2>
+            <p className="text-[14px] md:text-[18px] text-white/90 text-center">엄격한 품질 관리로 신선한 식사를 보장합니다</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
