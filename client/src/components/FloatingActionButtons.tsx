@@ -85,28 +85,16 @@ export default function FloatingActionButtons() {
           onTouchStart={() => handleTouchStart("top")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Floating item container */}
-          <div className="relative inline-block">
-            {/* Text Label Pill - Behind the icon */}
-            <div
-              className={`absolute right-0 top-0 h-14 bg-[#007651] rounded-[10px] shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-                isExpanded("top") ? "w-40 opacity-100 visible" : "w-0 opacity-0 invisible"
-              }`}
-              style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
-            >
-              <div className="whitespace-nowrap text-white font-medium text-sm">
-                위로 이동
-              </div>
+          {/* Floating item container: label and button occupy separate layout space */}
+          <div className="flex items-center justify-end gap-2">
+            <div className={`flex h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] px-4 shadow-lg transition-all duration-200 ${isExpanded("top") ? "max-w-40 opacity-100" : "max-w-0 px-0 opacity-0"}`} aria-hidden={!isExpanded("top")}>
+              <span className="whitespace-nowrap text-sm font-medium text-white">위로 이동</span>
             </div>
-
-            {/* Circular Icon Button - On top */}
             <button
               type="button"
               onClick={scrollToTop}
-              className="relative w-14 h-14 rounded-[10px] bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
-              style={{ zIndex: 3 }}
+              className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-[#007651] text-white shadow-md transition-all duration-200 hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2"
               aria-label="맨 위로 이동"
-              title="Top"
             >
               <ChevronUp aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md" />
             </button>
@@ -123,28 +111,16 @@ export default function FloatingActionButtons() {
           onTouchStart={() => handleTouchStart("consultation")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Floating item container */}
-          <div className="relative inline-block">
-            {/* Text Label Pill - Behind the icon */}
-            <div
-              className={`absolute right-0 top-0 h-14 bg-[#007651] rounded-[10px] shadow-lg transition-all duration-300 flex items-center overflow-hidden ${
-                isExpanded("consultation") ? "w-40 opacity-100 visible" : "w-0 opacity-0 invisible"
-              }`}
-              style={{ zIndex: 1, paddingLeft: "28px", paddingRight: "80px" }}
-            >
-              <div className="whitespace-nowrap text-white font-medium text-sm">
-                맞춤 상담하기
-              </div>
+          {/* Floating item container: label and button occupy separate layout space */}
+          <div className="flex items-center justify-end gap-2">
+            <div className={`flex h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] px-4 shadow-lg transition-all duration-200 ${isExpanded("consultation") ? "max-w-40 opacity-100" : "max-w-0 px-0 opacity-0"}`} aria-hidden={!isExpanded("consultation")}>
+              <span className="whitespace-nowrap text-sm font-medium text-white">맞춤 상담하기</span>
             </div>
-
-            {/* Circular Icon Button - On top */}
             <button
               type="button"
               onClick={scrollToChatbot}
-              className="relative w-14 h-14 rounded-[10px] bg-[#007651] text-white shadow-md hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center"
-              style={{ zIndex: 3 }}
+              className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-[#007651] text-white shadow-md transition-all duration-200 hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2"
               aria-label="맞춤 상담"
-              title="맞춤 상담"
             >
               <MessageCircle aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md" />
             </button>
