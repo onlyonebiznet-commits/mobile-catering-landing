@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle, CakeSlice, Salad, Sandwich, Soup, CupSoda } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Users, Utensils, Clock, CheckCircle2, MessageCircle } from "lucide-react";
 import { useScrollReveal, useScrollRevealGroup } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import ConsultationModal from "@/components/ConsultationModal";
@@ -302,24 +302,6 @@ export default function Home() {
   ];
 
   const [selectedSnackCategory, setSelectedSnackCategory] = useState('bakery');
-
-  const snackCategoryIcons: Record<string, typeof CakeSlice> = {
-    bakery: CakeSlice,
-    salad: Salad,
-    sandwich: Sandwich,
-    rice: Soup,
-    ramen: Soup,
-    beverage: CupSoda,
-  };
-
-  const snackCategoryTones: Record<string, string> = {
-    bakery: 'text-[#D86B2D]',
-    salad: 'text-brand-700',
-    sandwich: 'text-[#006ECD]',
-    rice: 'text-[#C77700]',
-    ramen: 'text-[#8A5A3C]',
-    beverage: 'text-[#7352C7]',
-  };
 
   const snackCategories = [
     {
@@ -1161,7 +1143,6 @@ export default function Home() {
           <div className="mb-10">
             <div className="grid grid-cols-3 gap-3 md:gap-6">
               {snackCategories.map((category) => {
-                const Icon = snackCategoryIcons[category.id];
                 const isSelected = selectedSnackCategory === category.id;
                 return (
                   <button
@@ -1169,17 +1150,12 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedSnackCategory(category.id)}
                     aria-pressed={isSelected}
-                    className={`group flex min-h-10 items-center justify-center gap-1 rounded-[10px] border px-2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-12 md:gap-2 md:rounded-[10px] md:px-5 motion-reduce:transition-none motion-reduce:active:scale-100 ${
+                    className={`group flex min-h-10 items-center justify-center rounded-[10px] border px-2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-12 md:rounded-[10px] md:px-5 motion-reduce:transition-none motion-reduce:active:scale-100 ${
                       isSelected
                         ? 'border-brand-700 bg-brand-700 text-white shadow-md'
                         : 'border-gray-200 bg-white text-gray-800 shadow-sm hover:border-brand-300 hover:bg-brand-50 hover:shadow-md'
                     }`}
                   >
-                    <Icon
-                      aria-hidden="true"
-                      className={`h-5 w-5 shrink-0 md:h-7 md:w-7 ${isSelected ? 'text-white' : snackCategoryTones[category.id]}`}
-                      strokeWidth={1.5}
-                    />
                     <span className="text-[10px] font-semibold leading-tight md:text-sm">
                       {category.name}
                     </span>

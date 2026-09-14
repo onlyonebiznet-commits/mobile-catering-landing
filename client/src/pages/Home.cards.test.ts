@@ -102,15 +102,17 @@ describe("FO card surface consistency", () => {
     expect(home.match(/aspect-\[4\/3\]/g)?.length).toBe(1);
   });
 
-  it("uses six colored snackpick categories with responsive grids", () => {
-    expect(home).toContain("const snackCategoryIcons");
-    expect(home).toContain("const snackCategoryTones");
+  it("uses text-only snackpick categories with centered labels and responsive grids", () => {
+    expect(home).not.toContain("const snackCategoryIcons");
+    expect(home).not.toContain("const snackCategoryTones");
+    expect(home).not.toContain("<Icon");
     expect(home).toContain("Reference-style category tiles - PC and mobile: 3 columns x 2 rows");
     expect(home).toContain('className="grid grid-cols-3 gap-3 md:gap-6"');
     expect(home).toContain("rounded-[10px]");
     expect(home).toContain("min-h-10");
     expect(home).toContain("md:min-h-12");
-    expect(home).toContain("md:h-7 md:w-7");
+    expect(home).toContain("items-center justify-center rounded-[10px]");
+    expect(home).toContain('className="text-[10px] font-semibold leading-tight md:text-sm"');
     ["베이커리", "샐러드", "샌드위치", "밥", "라면", "음료"].forEach((label) => {
       expect(home).toContain(`name: '${label}'`);
     });
