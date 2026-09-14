@@ -1062,9 +1062,6 @@ export default function Home() {
               </div>
             </div>
 
-            <p className="mt-4 text-center text-xs text-gray-500 md:hidden" aria-live="polite">
-              좌우로 밀어보거나 화살표로 다른 식단을 확인해보세요
-            </p>
           </div>
         </div>
       </section>

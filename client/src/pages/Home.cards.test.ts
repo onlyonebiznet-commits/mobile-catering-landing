@@ -81,6 +81,7 @@ describe("FO card surface consistency", () => {
     expect(home.match(/aria-label="이전 식단 카드"/g)?.length).toBe(1);
     expect(home.match(/aria-label="다음 식단 카드"/g)?.length).toBe(1);
     expect(home).not.toContain('className="mt-7 flex items-center gap-2" aria-label="식단 선택"');
+    expect(home).not.toContain("좌우로 밀어보거나 화살표로 다른 식단을 확인해보세요");
   });
 
   it("uses a 4:3 image ratio for the mobile customer diet card", () => {
