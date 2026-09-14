@@ -499,12 +499,12 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
             {/* Message */}
             <div className="space-y-1.5">
               <Label htmlFor="message" className="form-field-label">
-                요청사항
+                요청 사항
               </Label>
               <Textarea
                 id="message"
                 name="message"
-                placeholder="요청사항을 입력해주세요"
+                placeholder="요청 사항을 입력해주세요"
                 value={formData.message}
                 onChange={handleInputChange}
                 aria-describedby={undefined}

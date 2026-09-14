@@ -209,3 +209,6 @@ PC 이미지 래퍼와 텍스트 래퍼에서 `md:aspect-auto` 및 `md:min-h-96`
 첨부 화면에서 요청사항 textarea가 1줄로 보인 원인은 공통 `.form-field-control`의 반응형 `height: 2rem` 규칙이 textarea의 `min-height`를 실제 렌더링에서 덮고 있었기 때문입니다. 또한 `field-sizing-content`가 있던 이전 상태를 제거했습니다. `.form-field-control.form-field-control--textarea` 전용 규칙에 `height: auto`, `min-height: 5rem`, `box-sizing: border-box`를 추가한 뒤 브라우저 computed style에서 `rows="3"`, `height: 80px`, `min-height: 80px`, `line-height: 18px`를 확인했습니다.
 
 실제 HMR 화면에서도 요청사항 입력칸이 이전 1줄 높이에서 3줄 높이로 확장되어 표시되는 것을 확인했습니다. 첨부 이미지와 동일한 상담 모달 위치에서 입력 영역 하단에 충분한 여백이 생겼고, 동의 영역은 그 아래로 자연스럽게 배치되었습니다.
+
+## 상담신청 폼 요청 사항 띄어쓰기 수정
+상담신청 폼의 Label을 `요청사항`에서 `요청 사항`으로 변경하고 placeholder도 `요청 사항을 입력해주세요`로 통일했습니다. 관련 상담 폼 테스트, TypeScript 검사, 프로덕션 빌드를 통과했습니다.
