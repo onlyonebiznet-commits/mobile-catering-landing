@@ -870,7 +870,7 @@ export default function Home() {
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{solution.name}</h3>
                   <p className="text-brand-700 font-semibold mb-3 text-[14px] md:text-[18px]">{solution.shortDesc}</p>
-                  <p className="text-gray-600 mb-4 text-[12px] md:text-[16px]" style={{color: '#000000'}}>{solution.details}</p>
+                  <p className="text-gray-600 mb-4 text-[14px] md:text-[16px]" style={{color: '#000000'}}>{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, i) => (
                       <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1013,7 +1013,7 @@ export default function Home() {
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{meal.name}</h3>
                     <p className="text-brand-700 font-semibold text-[14px] md:text-[18px] mb-3">{meal.summary}</p>
-                    <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px] md:text-[16px]" style={{color: '#000000'}}>{meal.fullDescription}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[14px] md:text-[16px]" style={{color: '#000000'}}>{meal.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {meal.tags.map((tag, i) => (
                         <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1045,7 +1045,7 @@ export default function Home() {
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px]">{meal.name}</h3>
                       <p className="text-brand-700 font-semibold text-[14px] mb-3">{meal.summary}</p>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px]">{meal.fullDescription}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[14px]">{meal.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {meal.tags.map((tag, i) => (
                           <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1191,7 +1191,7 @@ export default function Home() {
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{cafe.name}</h3>
                     <p className="text-brand-700 font-semibold text-[14px] md:text-[18px] mb-3">{cafe.summary}</p>
-                    <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px] md:text-[16px]" style={{color: '#000000'}}>{cafe.fullDescription}</p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[14px] md:text-[16px]" style={{color: '#000000'}}>{cafe.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {cafe.tags.map((tag, i) => (
                         <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
@@ -1223,7 +1223,7 @@ export default function Home() {
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-gray-900 mb-2 text-[24px]">{cafe.name}</h3>
                       <p className="text-brand-700 font-semibold text-[14px] mb-3">{cafe.summary}</p>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[12px]">{cafe.fullDescription}</p>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed text-[14px]">{cafe.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {cafe.tags.map((tag, i) => (
                           <PromoBadge key={i} color="yellow" appearance="hashtag" size="small" className="hashtag-badge">
