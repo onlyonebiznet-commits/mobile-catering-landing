@@ -17,7 +17,7 @@ export function PersonalInfoConsentDetails({ className = "", ...props }: Persona
       </p>
 
       <section className="space-y-2" aria-labelledby="required-personal-info-title">
-        <h3 id="required-personal-info-title" className="text-[20px] font-semibold text-gray-900 md:text-[24px]">
+        <h3 id="required-personal-info-title" className="text-[18px] font-semibold text-gray-900 md:text-[24px]">
           <span className="text-status-error">(필수)</span> 개인정보 수집 및 이용
         </h3>
         <div className="grid grid-cols-3 border border-gray-300 bg-white text-left">
@@ -31,7 +31,7 @@ export function PersonalInfoConsentDetails({ className = "", ...props }: Persona
       </section>
 
       <section className="space-y-2" aria-labelledby="optional-consultation-info-title">
-        <h3 id="optional-consultation-info-title" className="font-semibold text-gray-900">
+        <h3 id="optional-consultation-info-title" className="text-[18px] font-semibold text-gray-900 md:text-[24px]">
           <span className="text-status-error">(선택)</span> 상담 내용 관련 정보
         </h3>
         <div className="grid grid-cols-3 border border-gray-300 bg-white text-left">

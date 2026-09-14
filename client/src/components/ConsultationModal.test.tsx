@@ -199,6 +199,8 @@ describe("ConsultationModal - confirmed personal information notice", () => {
     expect(noticeSource).toContain("필수항목에 대한 동의를 거부하실 경우 서비스 상담 신청이 제한됩니다.");
     expect(noticeSource).toContain("선택항목은 입력하지 않으셔도 서비스 상담 이용에 제한이 없습니다.");
     expect(noticeSource).not.toContain("서비스 상담 신청 후 3년");
+    expect(noticeSource).toContain('className="text-[18px] font-semibold text-gray-900 md:text-[24px]"');
+    expect((noticeSource.match(/className="text-\[18px\] font-semibold text-gray-900 md:text-\[24px\]"/g) ?? [])).toHaveLength(2);
   });
 });
 
