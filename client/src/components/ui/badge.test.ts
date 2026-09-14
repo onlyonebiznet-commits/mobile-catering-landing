@@ -37,8 +37,18 @@ describe("Badge guide primitives", () => {
   it("uses PromoBadge for all FO card tag groups", () => {
     expect(home).toContain('import { PromoBadge } from "@/components/ui/badge";');
     expect(home.match(/<PromoBadge/g)).toHaveLength(5);
-    expect(home).toContain('color="yellow" appearance="outlined" size="small"');
+    expect(home).toContain('color="yellow" appearance="outlined" size="small" className="hashtag-badge"');
+    expect(home).toContain("className=\"hashtag-badge\"");
     expect(home).not.toContain("bg-brand-700/10 text-brand-700 rounded-[10px]");
+  });
+
+  it("defines the standard hashtag chip geometry and responsive scale", () => {
+    const styles = readFileSync(resolve(process.cwd(), "client/src/index.css"), "utf8");
+    expect(styles).toContain(".hashtag-badge {");
+    expect(styles).toContain("min-height: 1.5rem;");
+    expect(styles).toContain("border-radius: 10px;");
+    expect(styles).toContain('content: "#";');
+    expect(styles).toContain("@media (max-width: 767px)");
   });
 });
 

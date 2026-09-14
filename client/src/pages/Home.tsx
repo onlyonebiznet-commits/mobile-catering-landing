@@ -873,7 +873,7 @@ export default function Home() {
                   <p className="text-gray-600 mb-4">{solution.details}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {solution.tags.map((tag, i) => (
-                      <PromoBadge key={i} color="yellow" appearance="outlined" size="small">
+                      <PromoBadge key={i} color="yellow" appearance="outlined" size="small" className="hashtag-badge">
                         {tag}
                       </PromoBadge>
                     ))}
@@ -1016,7 +1016,7 @@ export default function Home() {
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {meal.tags.map((tag, i) => (
-                        <PromoBadge key={i} color="yellow" appearance="outlined" size="small">
+                        <PromoBadge key={i} color="yellow" appearance="outlined" size="small" className="hashtag-badge">
                           {tag}
                         </PromoBadge>
                       ))}
@@ -1048,7 +1048,7 @@ export default function Home() {
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{meal.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {meal.tags.map((tag, i) => (
-                          <PromoBadge key={i} color="yellow" appearance="outlined" size="small">
+                          <PromoBadge key={i} color="yellow" appearance="outlined" size="small" className="hashtag-badge">
                             {tag}
                           </PromoBadge>
                         ))}
@@ -1194,7 +1194,7 @@ export default function Home() {
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                     <div className="flex flex-wrap gap-2">
                       {cafe.tags.map((tag, i) => (
-                        <PromoBadge key={i} color="yellow" appearance="outlined" size="small">
+                        <PromoBadge key={i} color="yellow" appearance="outlined" size="small" className="hashtag-badge">
                           {tag}
                         </PromoBadge>
                       ))}
@@ -1226,7 +1226,7 @@ export default function Home() {
                       <p className="text-gray-600 text-sm mb-4 leading-relaxed">{cafe.fullDescription}</p>
                       <div className="flex flex-wrap gap-2">
                         {cafe.tags.map((tag, i) => (
-                          <PromoBadge key={i} color="yellow" appearance="outlined" size="small">
+                          <PromoBadge key={i} color="yellow" appearance="outlined" size="small" className="hashtag-badge">
                             {tag}
                           </PromoBadge>
                         ))}
