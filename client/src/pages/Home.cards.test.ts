@@ -53,8 +53,19 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg",');
   });
 
-  it("renders all six customer success stories on mobile", () => {
-    expect(home).toContain("{/* Mobile: Full List - show all six success stories */}");
+  it("keeps operating examples anonymous and non-testimonial", () => {
+    expect(home).toContain("운영 적용 예시");
+    expect(home).toContain("사업장 유형별 맞춤 식사 서비스 운영 예시");
+    ["삼성전자", "LG전자", "SK하이닉스", "현대중공업", "포스코", "서울대병원", "삼성의료원", "김민준", "이지은", "이수진"].forEach((name) => {
+      expect(home).not.toContain(name);
+    });
+    expect(home).not.toContain('>{"{review.comment}"}</p>');
+    expect(home).not.toContain('>"{review.comment}"</p>');
+    expect(home).toContain("사업장 규모와 운영 환경을 고려한 식사 운영 적용 예시입니다.");
+  });
+
+  it("renders all six operating examples on mobile", () => {
+    expect(home).toContain("{/* Mobile: Full List - show all six operating examples */}");
     expect(home).toContain("<div className=\"md:hidden space-y-4\">\n            {reviews.map((review, idx) => (");
     expect(home).not.toContain("reviews.slice(0, 3)");
   });

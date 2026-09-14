@@ -492,49 +492,49 @@ export default function Home() {
   ];
 
   const operatingPhotos = [
-    { image: '/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: '삼성전자', department: 'HR팀', name: '김민준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
-    { image: '/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg', comment: '직원들이 만족하는 다양한 메뉴 구성', company: 'LG전자', department: '개발팀', name: '이지은', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
-    { image: '/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '현대중공업', department: '생산팀', name: '이영준', position: '팀장', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
-    { image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '포스코', department: '운영팀', name: '김석호', position: '대리', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
-    { image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '서울대병원', department: '영양팀', name: '이수진', position: '영양사', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
-    { image: '/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg', comment: '위생 기준을 철저히 준수한 조리', company: '삼성의료원', department: '급식팀', name: '김지현', position: '팀장', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
+    { image: '/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg', comment: '매일 신선한 재료로 정성스럽게 준비된 식사', company: 'IT 반도체 기업', department: '운영 담당', name: '담당자', position: '담당자', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim' },
+    { image: '/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg', comment: '직원들이 만족하는 다양한 메뉴 구성', company: '글로벌 전자기업', department: '운영 담당', name: '담당자', position: '담당자', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee' },
+    { image: '/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg', comment: '산업체 특성에 맞춘 영양 균형 식단', company: '제조업 사업장', department: '운영 담당', name: '담당자', position: '담당자', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee2' },
+    { image: '/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg', comment: '직원 체력 관리를 위한 고단백 메뉴', company: '물류센터', department: '운영 담당', name: '담당자', position: '담당자', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim2' },
+    { image: '/manus-storage/cropped_fingerfood_04_6f773ed6.jpg', comment: '환자 맞춤형 저염식 및 특수식 제공', company: '병원', department: '운영 담당', name: '담당자', position: '담당자', emoji: '😊', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lee3' },
+    { image: '/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg', comment: '위생 기준을 철저히 준수한 조리', company: '연구개발센터', department: '운영 담당', name: '담당자', position: '담당자', emoji: '👍', customerImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=kim3' },
   ];
 
   const reviews = [
     {
       companyType: "IT 반도체 기업",
-      summary: "직원 만족도가 크게 향상되었습니다",
-      comment: "프레시밀온 덕분에 직원들의 점심시간이 훨씬 편해졌습니다. 신선하고 맛있는 식사로 만족도가 높습니다.",
+      summary: "직원 식사 운영 지원 예시",
+      comment: "사업장 규모와 운영 환경을 고려한 식사 운영 적용 예시입니다.",
       image: "/manus-storage/cropped_pasted_file_vNMOOM_KakaoTalk_20250219_170906076_11_1c1f5f37.jpg",
     },
     {
       companyType: "글로벌 제조기업",
-      summary: "다양한 메뉴로 직원 만족도 향상",
-      comment: "다양한 메뉴와 건강한 식단으로 직원들이 정말 좋아합니다. 강력 추천합니다!",
+      summary: "다양한 메뉴 운영 예시",
+      comment: "메뉴 구성과 운영 환경을 고려한 식사 서비스 적용 예시입니다.",
       image: "/manus-storage/cropped_pasted_file_wJ2TV0_KakaoTalk_20250219_170952476_15_82ba9f37.jpg",
     },
     {
       companyType: "물류센터",
-      summary: "신선한 식사 제공으로 복지 개선",
-      comment: "매일 신선한 식사를 제공해주셔서 감사합니다. 직원 복지가 한 단계 업그레이드 되었습니다.",
+      summary: "신선한 식사 운영 예시",
+      comment: "현장 운영 특성에 맞춘 신선한 식사 서비스 적용 예시입니다.",
       image: "/manus-storage/cropped_pasted_file_K9GApj_IMG_6678_17ac1b51.jpg",
     },
     {
       companyType: "금융기업",
-      summary: "이동형 솔루션으로 다양한 사업장 지원",
-      comment: "프레시밀온의 이동형 솔루션으로 다양한 사업장에서 직원 식사를 제공할 수 있게 되었습니다.",
+      summary: "이동형 식사 운영 예시",
+      comment: "이동형 솔루션을 활용한 사업장 식사 운영 적용 예시입니다.",
       image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg",
     },
     {
       companyType: "연구개발센터",
-      summary: "정성스러운 식사로 만족도 향상",
-      comment: "신선한 재료와 정성스러운 조리로 만든 식사가 정말 맛있습니다. 직원들의 만족도가 매우 높습니다.",
+      summary: "맞춤 식사 운영 예시",
+      comment: "식단 특성과 운영 환경을 고려한 맞춤 식사 적용 예시입니다.",
       image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg",
     },
     {
       companyType: "대형 오피스",
-      summary: "편리한 신선 식사 서비스 제공",
-      comment: "프레시밀온 덕분에 사무실에서도 편하게 신선한 식사를 즐길 수 있습니다. 정말 추천합니다!",
+      summary: "오피스 식사 운영 예시",
+      comment: "오피스 환경에 맞춘 편리한 식사 서비스 적용 예시입니다.",
       image: "/manus-storage/cropped_pasted_file_jzHyNk_Gemini_Generated_Image_8dorez8dorez8dor_56141727.jpg",
     },
   ];
@@ -1421,12 +1421,12 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-16 scroll-reveal">
-            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">고객 후기</h2>
-            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">프레시밀온과 함께하는 고객들의 성공 스토리</p>
+            <h2 className="type-title-1 text-gray-900 mb-2 text-center text-[36px] md:text-[48px]">운영 적용 예시</h2>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 text-center text-[14px] md:text-[18px]">사업장 유형별 맞춤 식사 서비스 운영 예시</p>
           </div>
 
           {/* PC: 2 Column Grid | Mobile: Full List */}
-          {/* Mobile: Full List - show all six success stories */}
+          {/* Mobile: Full List - show all six operating examples */}
           <div className="md:hidden space-y-4">
             {reviews.map((review, idx) => (
               <div key={`mobile-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[10px] p-4 bg-white hover:shadow-md transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
@@ -1450,7 +1450,7 @@ export default function Home() {
                   <h4 className="type-headline-2 text-gray-900 mb-1 line-clamp-1">{review.summary}</h4>
                   
                   {/* Comment */}
-                  <p className="type-body-3 text-gray-600 leading-snug line-clamp-2">"{review.comment}"</p>
+                  <p className="type-body-3 text-gray-600 leading-snug line-clamp-2">{review.comment}</p>
                 </div>
               </div>
             ))}
@@ -1480,7 +1480,7 @@ export default function Home() {
                   <h4 className="type-headline-1 text-gray-900 mb-2 line-clamp-2">{review.summary}</h4>
                   
                   {/* Comment */}
-                  <p className="type-body-2 text-gray-600 leading-relaxed line-clamp-2">"{review.comment}"</p>
+                  <p className="type-body-2 text-gray-600 leading-relaxed line-clamp-2">{review.comment}</p>
                 </div>
               </div>
             ))}
