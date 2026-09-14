@@ -221,7 +221,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent 
         ref={contentRef}
-        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-[5px] overflow-hidden bg-white"
+        className="w-[calc(100vw-32px)] md:w-auto md:max-w-[600px] p-0 gap-0 rounded-[10px] overflow-hidden bg-white"
         style={{
           maxHeight: 'min(75vh, calc(100vh - 120px))',
           width: 'calc(100vw - 32px)',
@@ -237,7 +237,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
         <div className="bg-[#007651] px-6 py-6 relative">
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 p-1 hover:bg-[#008F69] rounded-[5px] transition-colors"
+            className="absolute right-4 top-4 p-1 hover:bg-[#008F69] rounded-[10px] transition-colors"
             aria-label="Close"
           >
             <X aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-sm text-white" />
@@ -272,7 +272,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                   placeholder="회사명을 입력해주세요"
                   value={formData.companyName}
                   onChange={handleChange}
-                  className="rounded-[5px] border-gray-300"
+                  className="rounded-[10px] border-gray-300"
                 />
               </div>
 
@@ -287,7 +287,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                   placeholder="담당자명을 입력해주세요"
                   value={formData.managerName}
                   onChange={handleChange}
-                  className="rounded-[5px] border-gray-300"
+                  className="rounded-[10px] border-gray-300"
                 />
               </div>
 
@@ -302,7 +302,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                   placeholder="010-0000-0000"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="rounded-[5px] border-gray-300"
+                  className="rounded-[10px] border-gray-300"
                 />
               </div>
 
@@ -318,7 +318,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                   placeholder="example@company.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="rounded-[5px] border-gray-300"
+                  className="rounded-[10px] border-gray-300"
                 />
               </div>
 
@@ -336,7 +336,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                 </div>
 
                 <Accordion type="single" collapsible className="w-full space-y-2">
-                  <AccordionItem value="personal-info" className="border border-gray-200 rounded-[5px] px-3">
+                  <AccordionItem value="personal-info" className="border border-gray-200 rounded-[10px] px-3">
                     <AccordionTrigger className="hover:no-underline py-3">
                       <div className="flex items-center space-x-2 text-left flex-nowrap">
                         <Checkbox
@@ -365,7 +365,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="marketing" className="border border-gray-200 rounded-[5px] px-3">
+                  <AccordionItem value="marketing" className="border border-gray-200 rounded-[10px] px-3">
                     <AccordionTrigger className="hover:no-underline py-3">
                       <div className="flex items-center space-x-2 text-left flex-nowrap">
                         <Checkbox
@@ -392,7 +392,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="ad" className="border border-gray-200 rounded-[5px] px-3">
+                  <AccordionItem value="ad" className="border border-gray-200 rounded-[10px] px-3">
                     <AccordionTrigger className="hover:no-underline py-3">
                       <div className="flex items-center space-x-2 text-left flex-nowrap">
                         <Checkbox
@@ -425,7 +425,7 @@ export default function MaterialRequestModal({ onClose }: MaterialRequestModalPr
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#007651] hover:bg-[#008F69] text-white py-2 rounded-[5px] font-medium transition-colors mt-6"
+                className="w-full bg-[#007651] hover:bg-[#008F69] text-white py-2 rounded-[10px] font-medium transition-colors mt-6"
               >
                 {isSubmitting ? "신청 중..." : "자료 신청하기"}
               </Button>

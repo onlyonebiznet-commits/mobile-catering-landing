@@ -25,7 +25,7 @@ export default function StickyTabNavigation({ activeTab, onTabClick }: StickyTab
               <button
                 key={tab.id}
                 onClick={() => onTabClick(tab.id)}
-                className={`group flex flex-col items-center justify-center gap-2 p-4 rounded-[5px] transition-all duration-300 ${
+                className={`group flex flex-col items-center justify-center gap-2 p-4 rounded-[10px] transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-[#007651] text-white shadow-md'
                     : 'bg-white text-gray-700 border border-[#E6E6E6] hover:bg-[#D7F9EF]'

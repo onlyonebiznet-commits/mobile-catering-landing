@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-[5px] border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,background-color,border-color,box-shadow] overflow-hidden",
+  "inline-flex items-center justify-center rounded-[10px] border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,background-color,border-color,box-shadow] overflow-hidden",
   {
     variants: {
       variant: {
@@ -32,7 +32,7 @@ const badgeSizeVariants = {
 } as const;
 
 const statusBadgeVariants = cva(
-  "inline-flex items-center justify-center rounded-[5px] whitespace-nowrap shrink-0 font-medium",
+  "inline-flex items-center justify-center rounded-[10px] whitespace-nowrap shrink-0 font-medium",
   {
     variants: {
       status: {
@@ -62,8 +62,8 @@ const promoBadgeVariants = cva(
         yellow: "bg-status-warning text-gray-900",
       },
       appearance: {
-        filled: "rounded-[5px] border border-transparent",
-        outlined: "rounded-[5px] border bg-white",
+        filled: "rounded-[10px] border border-transparent",
+        outlined: "rounded-[10px] border bg-white",
       },
       size: badgeSizeVariants,
     },

@@ -16,7 +16,7 @@ export default function NotFound() {
         <CardContent className="pt-8 pb-8 text-center">
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="absolute inset-0 bg-red-100 rounded-[5px] animate-pulse" />
+              <div className="absolute inset-0 bg-red-100 rounded-[10px] animate-pulse" />
               <AlertCircle className="relative h-16 w-16 text-red-500" />
             </div>
           </div>
@@ -36,7 +36,7 @@ export default function NotFound() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
               onClick={handleGoHome}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-[5px] transition-all duration-200 shadow-md hover:shadow-lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-[10px] transition-all duration-200 shadow-md hover:shadow-lg"
             >
               <Home className="w-4 h-4 mr-2" />
               Go Home

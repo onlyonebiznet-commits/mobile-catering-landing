@@ -611,7 +611,7 @@ export default function Home() {
                 <button
                   key={idx}
                   onClick={() => setCurrentHeroIndex(idx)}
-                  className={`h-2 rounded-[5px] transition-all duration-300 cursor-pointer ${
+                  className={`h-2 rounded-[10px] transition-all duration-300 cursor-pointer ${
                     currentHeroIndex === idx 
                       ? 'w-8 bg-white' 
                       : 'w-2 bg-white/50 hover:bg-white/75'
@@ -857,7 +857,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {kitchenlessSolutions.map((solution, idx) => (
-              <div key={idx} className="bg-white rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow scroll-reveal-stagger" data-reveal-item={idx}>
+              <div key={idx} className="bg-white rounded-[10px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow scroll-reveal-stagger" data-reveal-item={idx}>
                 <div className="relative h-64 overflow-hidden group">
                   <img
                     src={solution.image}
@@ -925,7 +925,7 @@ export default function Home() {
             }}
             onTouchCancel={() => setTouchStart(0)}
           >
-            <div className="relative bg-white rounded-[5px] overflow-hidden shadow-lg scroll-reveal">
+            <div className="relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 <div className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none">
                   <img
@@ -949,7 +949,7 @@ export default function Home() {
                           onClick={() => setCurrentDietIndex(idx)}
                           aria-label={`${diets[idx].title} 식단 보기`}
                           aria-pressed={idx === currentDietIndex}
-                          className={`w-3 h-3 rounded-[5px] transition-all ${
+                          className={`w-3 h-3 rounded-[10px] transition-all ${
                             idx === currentDietIndex ? "bg-brand-700 w-8" : "bg-gray-300 hover:bg-gray-400"
                           }`}
                         />
@@ -962,7 +962,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
-                  className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-[5px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                  className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-[10px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
                   aria-label="이전 식단 카드"
                 >
                   <ChevronLeft aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
@@ -970,7 +970,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
-                  className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-[5px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                  className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-[10px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
                   aria-label="다음 식단 카드"
                 >
                   <ChevronRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
@@ -1000,7 +1000,7 @@ export default function Home() {
           <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
             {meals.map((meal, idx) => (
               <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                <div className="bg-white rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="bg-white rounded-[10px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative h-64 overflow-hidden group">
                     <img
                       src={meal.image}
@@ -1032,7 +1032,7 @@ export default function Home() {
             <div className="-mx-2 flex w-[calc(100%+1rem)] gap-4 overflow-x-auto px-2 pb-1 snap-x snap-mandatory scroll-px-2 hide-scrollbar">
               {meals.map((meal, idx) => (
                 <div key={idx} className="flex-shrink-0 w-[calc(100vw-64px)] max-w-[320px] snap-center">
-                  <div className="bg-white rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="bg-white rounded-[10px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                     <div className="relative h-48 overflow-hidden group bg-white flex items-center justify-center">
                       <img
                         src={meal.image}
@@ -1087,7 +1087,7 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedSnackCategory(category.id)}
                     aria-pressed={isSelected}
-                    className={`group flex min-h-10 items-center justify-center gap-1 rounded-[5px] border px-2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-12 md:gap-2 md:rounded-[5px] md:px-5 motion-reduce:transition-none motion-reduce:active:scale-100 ${
+                    className={`group flex min-h-10 items-center justify-center gap-1 rounded-[10px] border px-2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 active:scale-[0.97] md:min-h-12 md:gap-2 md:rounded-[10px] md:px-5 motion-reduce:transition-none motion-reduce:active:scale-100 ${
                       isSelected
                         ? 'border-brand-700 bg-brand-700 text-white shadow-md'
                         : 'border-gray-200 bg-white text-gray-800 shadow-sm hover:border-brand-300 hover:bg-brand-50 hover:shadow-md'
@@ -1116,7 +1116,7 @@ export default function Home() {
                   .find((cat) => cat.id === selectedSnackCategory)
                   ?.products.map((product, idx) => (
                     <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                      <div className="overflow-hidden rounded-[5px] shadow-md hover:shadow-lg transition-shadow">
+                      <div className="overflow-hidden rounded-[10px] shadow-md hover:shadow-lg transition-shadow">
                         <div className="relative w-full aspect-square overflow-hidden group bg-white">
                           <img
                             src={product.image}
@@ -1140,7 +1140,7 @@ export default function Home() {
                   .find((cat) => cat.id === selectedSnackCategory)
                   ?.products.map((product, idx) => (
                     <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                      <div className="overflow-hidden rounded-[5px] shadow-md hover:shadow-lg transition-shadow">
+                      <div className="overflow-hidden rounded-[10px] shadow-md hover:shadow-lg transition-shadow">
                         <div className="relative h-32 overflow-hidden group bg-white">
                           <img
                             src={product.image}
@@ -1178,7 +1178,7 @@ export default function Home() {
           <div className="hidden md:grid grid-cols-3 gap-8">
             {cafeItems.map((cafe, idx) => (
               <div key={idx} className="scroll-reveal-stagger" data-reveal-item={idx}>
-                <div className="bg-white rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="bg-white rounded-[10px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative h-64 overflow-hidden group">
                     <img
                       src={cafe.image}
@@ -1210,7 +1210,7 @@ export default function Home() {
             <div className="-mx-2 flex w-[calc(100%+1rem)] gap-4 overflow-x-auto px-2 pb-1 snap-x snap-mandatory scroll-px-2 hide-scrollbar">
               {cafeItems.map((cafe, idx) => (
                 <div key={idx} className="flex-shrink-0 w-[calc(100vw-64px)] max-w-[320px] snap-center">
-                  <div className="bg-white rounded-[5px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="bg-white rounded-[10px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                     <div className="relative h-48 overflow-hidden group bg-white flex items-center justify-center">
                       <img
                         src={cafe.image}
@@ -1255,7 +1255,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {processes.map((process, idx) => (
               <div key={idx} className="relative scroll-reveal-stagger" data-reveal-item={idx}>
-                <div className="bg-white/10 backdrop-blur-sm rounded-[5px] p-6 md:p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
+                <div className="bg-white/10 backdrop-blur-sm rounded-[10px] p-6 md:p-8 text-center border border-white/20 hover:bg-white/30 hover:border-white/40 transition-all duration-300 cursor-pointer">
                   <div className="text-4xl md:text-5xl mb-3 md:mb-4">{process.icon}</div>
                   <h3 className="text-base md:text-xl font-bold text-white mb-2">{process.title}</h3>
                   <p className="text-white/80 text-xs md:text-sm">{process.description}</p>
@@ -1371,9 +1371,9 @@ export default function Home() {
           {/* Mobile: Full List - show all six success stories */}
           <div className="md:hidden space-y-4">
             {reviews.map((review, idx) => (
-              <div key={`mobile-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[5px] p-4 bg-white hover:shadow-md transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
+              <div key={`mobile-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[10px] p-4 bg-white hover:shadow-md transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
                 {/* Image - Compact */}
-                <div className="relative rounded-[5px] overflow-hidden bg-gray-200 w-24 h-24 aspect-square flex-shrink-0 group">
+                <div className="relative rounded-[10px] overflow-hidden bg-gray-200 w-24 h-24 aspect-square flex-shrink-0 group">
                   <img
                     src={review.image}
                     loading="lazy"
@@ -1401,9 +1401,9 @@ export default function Home() {
           {/* PC: 2 Column Grid - Horizontal Cards */}
           <div className="hidden md:grid md:grid-cols-2 gap-6">
             {reviews.map((review, idx) => (
-              <div key={`pc-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[5px] p-4 bg-white hover:shadow-lg transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
+              <div key={`pc-${idx}`} className="flex flex-row gap-4 border border-gray-200 rounded-[10px] p-4 bg-white hover:shadow-lg transition-shadow duration-300 scroll-reveal-stagger" data-reveal-item={idx}>
                 {/* Image - 1:1 Square - Left */}
-                <div className="relative rounded-[5px] overflow-hidden bg-gray-200 w-40 h-40 aspect-square flex-shrink-0 group">
+                <div className="relative rounded-[10px] overflow-hidden bg-gray-200 w-40 h-40 aspect-square flex-shrink-0 group">
                   <img
                     src={review.image}
                     loading="lazy"
@@ -1466,7 +1466,7 @@ export default function Home() {
               }
             ].map((story, idx) => (
               <div key={idx} className="group cursor-pointer scroll-reveal-stagger" data-reveal-item={idx}>
-                <div className="relative overflow-hidden rounded-[5px] mb-4 aspect-[3/4]">
+                <div className="relative overflow-hidden rounded-[10px] mb-4 aspect-[3/4]">
                   <img
                     src={story.image}
                     loading="lazy"
@@ -1551,7 +1551,7 @@ export default function Home() {
       {/* Privacy Modal */}
       {showPrivacyModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-[5px] max-w-2xl w-full max-h-96 overflow-y-auto">
+          <div className="bg-white rounded-[10px] max-w-2xl w-full max-h-96 overflow-y-auto">
             <div className="p-6">
               <h2 className="text-2xl font-bold mb-4">개인정보 처리방침</h2>
               <div className="space-y-4 text-gray-700 text-sm">
@@ -1572,7 +1572,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowPrivacyModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-brand-700 text-white rounded-[5px] hover:bg-brand-600 transition"
+                className="mt-6 w-full px-4 py-2 bg-brand-700 text-white rounded-[10px] hover:bg-brand-600 transition"
               >
                 닫기
               </button>
@@ -1584,7 +1584,7 @@ export default function Home() {
       {/* Terms Modal */}
       {showTermsModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-[5px] max-w-2xl w-full max-h-96 overflow-y-auto">
+          <div className="bg-white rounded-[10px] max-w-2xl w-full max-h-96 overflow-y-auto">
             <div className="p-6">
               <h2 className="text-2xl font-bold mb-4">이용약관</h2>
               <div className="space-y-4 text-gray-700 text-sm">
@@ -1594,7 +1594,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowTermsModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-brand-700 text-white rounded-[5px] hover:bg-brand-600 transition"
+                className="mt-6 w-full px-4 py-2 bg-brand-700 text-white rounded-[10px] hover:bg-brand-600 transition"
               >
                 닫기
               </button>

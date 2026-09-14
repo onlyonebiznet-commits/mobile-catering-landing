@@ -220,3 +220,6 @@ Checkbox 공통 클래스의 Tailwind `border-input` 충돌도 제거해 실제 
 
 ## 사이트 전체 Radius 5px 통일 검증
 상담 신청 폼뿐 아니라 client/src 전체의 Tailwind `rounded-*` 표현과 CSS `border-radius` 값을 검색해 5px 기준으로 통일했습니다. 버튼, 카드, 입력 컨트롤, 모달, 배지, 네비게이션 타일, 이미지 컨테이너, 캐러셀 컨트롤, 관리자 UI와 완료 화면까지 `rounded-[5px]` 또는 `border-radius: 5px`를 적용했습니다. 기존 원형·pill radius도 요청 범위에 따라 5px로 조정했으며, 전체 Vitest 119개·TypeScript·프로덕션 빌드를 통과했습니다. 1280px PC와 390px 모바일 랜딩페이지에서 히어로·서비스 네비게이션의 모서리와 레이아웃을 시각 확인했습니다.
+
+## 사이트 전체 Radius 10px 재적용 검증
+기존 `rounded-[5px]`와 `border-radius: 5px`를 client/src 전체에서 `rounded-[10px]` 및 `border-radius: 10px`로 교체했습니다. 상담 폼, 버튼, 카드, 모달, 배지, 네비게이션, 이미지 컨테이너, 캐러셀 컨트롤과 관리자 UI를 동일 기준으로 유지했습니다. 전체 Vitest·TypeScript·프로덕션 빌드를 다시 통과했고, 1280px PC와 390px 모바일 랜딩페이지에서 히어로 CTA 및 서비스 네비게이션 타일의 10px 모서리를 시각 확인했습니다.

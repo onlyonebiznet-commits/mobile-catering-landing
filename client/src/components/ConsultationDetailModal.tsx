@@ -110,7 +110,7 @@ export default function ConsultationDetailModal({ isOpen, onClose, consultation 
               <div>
                 <label className="text-sm font-medium text-gray-600">희망 서비스</label>
                 <p className="text-gray-900 mt-1">
-                  <span className="inline-block px-3 py-1 rounded-[5px] text-sm font-medium bg-status-info/10 text-status-info">
+                  <span className="inline-block px-3 py-1 rounded-[10px] text-sm font-medium bg-status-info/10 text-status-info">
                     {getServiceTypeLabel(consultation.serviceType)}
                   </span>
                 </p>
@@ -118,7 +118,7 @@ export default function ConsultationDetailModal({ isOpen, onClose, consultation 
               <div>
                 <label className="text-sm font-medium text-gray-600">진행 현황</label>
                 <p className="text-gray-900 mt-1">
-                  <span className="inline-block px-3 py-1 rounded-[5px] text-sm font-medium bg-status-success/10 text-status-success">
+                  <span className="inline-block px-3 py-1 rounded-[10px] text-sm font-medium bg-status-success/10 text-status-success">
                     {getStatusLabel(consultation.status)}
                   </span>
                 </p>
@@ -130,7 +130,7 @@ export default function ConsultationDetailModal({ isOpen, onClose, consultation 
           {consultation.inquiries && (
             <div className="space-y-4">
               <h3 className="font-semibold text-lg text-gray-900">문의 사항</h3>
-              <div className="bg-white border border-gray-200 p-4 rounded-[5px]">
+              <div className="bg-white border border-gray-200 p-4 rounded-[10px]">
                 <p className="text-gray-900 whitespace-pre-wrap">{consultation.inquiries}</p>
               </div>
             </div>

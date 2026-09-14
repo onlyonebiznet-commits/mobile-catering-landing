@@ -147,7 +147,7 @@ export default function Admin() {
     };
     
     const statusInfo = statusMap[status] || { label: status, color: 'bg-gray-100 text-gray-800' };
-    return <span className={`inline-block px-3 py-1 rounded-[5px] text-xs font-semibold ${statusInfo.color}`}>{statusInfo.label}</span>;
+    return <span className={`inline-block px-3 py-1 rounded-[10px] text-xs font-semibold ${statusInfo.color}`}>{statusInfo.label}</span>;
   };
 
   // Phase 3: 상태 업데이트 함수
@@ -317,7 +317,7 @@ export default function Admin() {
                 placeholder="비밀번호"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-[5px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
               />
               {loginError && (
                 <Alert variant="destructive">
@@ -387,7 +387,7 @@ export default function Admin() {
           </div>
 
           {/* Phase 2: 검색 및 필터 UI */}
-          <div className="bg-white rounded-[5px] border border-gray-200 p-4 space-y-4">
+          <div className="bg-white rounded-[10px] border border-gray-200 p-4 space-y-4">
             {/* 첫 번째 줄: 검색창, 희망 서비스, 진행 현황 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* 검색 */}
@@ -399,7 +399,7 @@ export default function Admin() {
                     placeholder="회사명, 담당자, 연락처, 이메일 검색..."
                     value={consultationSearchQuery}
                     onChange={(e) => setConsultationSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-[5px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
                   />
                 </div>
               </div>
@@ -409,7 +409,7 @@ export default function Admin() {
                 <select
                   value={consultationServiceFilter}
                   onChange={(e) => setConsultationServiceFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-[5px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
                 >
                   <option value="all">전체 서비스</option>
                   <option value="cafeteria">구내식당</option>
@@ -426,7 +426,7 @@ export default function Admin() {
                 <select
                   value={consultationStatusFilter}
                   onChange={(e) => setConsultationStatusFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-[5px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
                 >
                   <option value="all">전체 상태</option>
                   <option value="pending">대기중</option>
@@ -449,7 +449,7 @@ export default function Admin() {
                   value={consultationStartDate}
                   max={consultationEndDate || undefined}
                   onChange={(e) => setConsultationStartDate(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-[5px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
                 />
               </label>
               <label className="space-y-1">
@@ -459,7 +459,7 @@ export default function Admin() {
                   value={consultationEndDate}
                   min={consultationStartDate || undefined}
                   onChange={(e) => setConsultationEndDate(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-[5px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#007651]"
                 />
               </label>
               <div className="sm:col-span-2 md:col-span-2 flex items-center justify-between gap-3">
@@ -467,7 +467,7 @@ export default function Admin() {
                 <select
                 value={consultationSortOrder}
                 onChange={(e) => setConsultationSortOrder(e.target.value as "newest" | "oldest")}
-                className="px-3 py-2 border border-gray-300 rounded-[5px] text-sm focus:outline-none focus:ring-2 focus:ring-[#007651]"
+                className="px-3 py-2 border border-gray-300 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-[#007651]"
               >
                 <option value="newest">최신순</option>
                 <option value="oldest">오래된순</option>
@@ -480,7 +480,7 @@ export default function Admin() {
           </div>
 
           {/* 테이블 */}
-          <div className="bg-white rounded-[5px] border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-[10px] border border-gray-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -522,7 +522,7 @@ export default function Admin() {
                             value={request.serviceType || ""}
                             onChange={(e) => handleServiceTypeChange(request.id, e.target.value)}
                             disabled={updatingServiceId === request.id}
-                            className={`px-3 py-1 rounded-[5px] text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#007651] cursor-pointer ${
+                            className={`px-3 py-1 rounded-[10px] text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#007651] cursor-pointer ${
                               request.serviceType === 'cafeteria' ? 'bg-status-info/10 text-status-info' :
                               request.serviceType === 'catering' ? 'bg-status-success/10 text-status-success' :
                               request.serviceType === 'snack' ? 'bg-status-warning/10 text-status-warning' :
@@ -547,7 +547,7 @@ export default function Admin() {
                           <select
                             value={request.status}
                             onChange={(e) => handleStatusChange(request.id, e.target.value)}
-                            className={`px-3 py-1 rounded-[5px] text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#007651] cursor-pointer w-full ${
+                            className={`px-3 py-1 rounded-[10px] text-xs font-semibold border-0 focus:outline-none focus:ring-2 focus:ring-[#007651] cursor-pointer w-full ${
                               request.status === 'pending' ? 'bg-gray-100 text-gray-800' :
                               request.status === 'in_progress' ? 'bg-status-info/10 text-status-info' :
                               request.status === 'target' ? 'bg-status-warning/10 text-status-warning' :
