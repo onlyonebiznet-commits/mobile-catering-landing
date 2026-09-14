@@ -73,6 +73,14 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('eventTitle: "오피스 임직원 맞춤 식사"');
   });
 
+  it("uses three menu previews and arrow navigation without dot pagination", () => {
+    expect(home).toContain('className="grid grid-cols-3 gap-4"');
+    expect(home).not.toContain('aria-label="식단 선택"');
+    expect(home.match(/aria-label="이전 식단 카드"/g)?.length).toBe(2);
+    expect(home.match(/aria-label="다음 식단 카드"/g)?.length).toBe(2);
+    expect(home).not.toContain('className="mt-7 flex items-center gap-2" aria-label="식단 선택"');
+  });
+
   it("uses a 4:3 image ratio for the mobile customer diet card", () => {
     expect(home).toContain('data-diet-carousel');
     expect(home).toContain('className="relative aspect-[4/3] overflow-hidden');

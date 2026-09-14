@@ -394,7 +394,6 @@ export default function Home() {
         { name: "핑거푸드", image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg" },
         { name: "메인 요리", image: "/manus-storage/02_07006eb7.png" },
         { name: "디저트", image: "/manus-storage/04_024062b0.png" },
-        { name: "드링크", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
       ],
     },
     {
@@ -406,7 +405,6 @@ export default function Home() {
         { name: "든든한 밥상", image: "/manus-storage/02_07006eb7.png" },
         { name: "고단백 메인", image: "/manus-storage/03_f0cbcda5.png" },
         { name: "제철 반찬", image: "/manus-storage/04_024062b0.png" },
-        { name: "건강 음료", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
       ],
     },
     {
@@ -418,7 +416,6 @@ export default function Home() {
         { name: "균형식", image: "/manus-storage/02_07006eb7.png" },
         { name: "특별식", image: "/manus-storage/03_f0cbcda5.png" },
         { name: "부드러운 디저트", image: "/manus-storage/04_024062b0.png" },
-        { name: "웰니스 드링크", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
       ],
     },
     {
@@ -430,7 +427,6 @@ export default function Home() {
         { name: "프리미엄 커피", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
         { name: "시그니처 음료", image: "/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png" },
         { name: "베이커리", image: "/manus-storage/04_024062b0.png" },
-        { name: "시즌 디저트", image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg" },
       ],
     },
     {
@@ -442,7 +438,6 @@ export default function Home() {
         { name: "핑거푸드", image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg" },
         { name: "메인 플래터", image: "/manus-storage/03_f0cbcda5.png" },
         { name: "디저트", image: "/manus-storage/04_024062b0.png" },
-        { name: "드링크", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
       ],
     },
     {
@@ -454,7 +449,6 @@ export default function Home() {
         { name: "오늘의 한식", image: "/manus-storage/02_07006eb7.png" },
         { name: "간편 메인", image: "/manus-storage/03_f0cbcda5.png" },
         { name: "스낵 디저트", image: "/manus-storage/04_024062b0.png" },
-        { name: "음료", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
       ],
     },
   ];
@@ -1031,25 +1025,14 @@ export default function Home() {
                     <dt className="font-semibold text-gray-500">운영</dt>
                     <dd className="text-gray-900">{dietPresentation[currentDietIndex].service}</dd>
                   </dl>
-                  <div className="mt-7 flex items-center gap-2" aria-label="식단 선택">
-                    {diets.map((diet, idx) => (
-                      <button
-                        key={diet.title}
-                        type="button"
-                        onClick={() => setCurrentDietIndex(idx)}
-                        aria-label={`${diet.title} 식단 보기`}
-                        aria-pressed={idx === currentDietIndex}
-                        className={`h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 ${idx === currentDietIndex ? "w-8 bg-brand-700" : "w-2 bg-gray-300 hover:bg-gray-500"}`}
-                      />
-                    ))}
-                  </div>
+
                 </div>
                 <div className="flex flex-col justify-center">
                   <div className="mb-5 flex items-center justify-between">
                     <h4 className="text-[18px] font-semibold text-gray-900">주 메뉴</h4>
                     <span className="text-[13px] text-gray-500">고객 특성에 맞춰 구성됩니다</span>
                   </div>
-                  <div className="grid grid-cols-4 gap-4">
+                  <div className="grid grid-cols-3 gap-4">
                     {dietPresentation[currentDietIndex].menus.map((menu) => (
                       <div key={menu.name} className="rounded-[10px] bg-gray-50 p-3 text-center transition-colors hover:bg-gray-100">
                         <div className="mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-[10px] bg-white">
@@ -1060,6 +1043,24 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
+              </div>
+              <div className="pointer-events-none absolute inset-y-0 inset-x-0">
+                <button
+                  type="button"
+                  onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
+                  className="pointer-events-auto absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-[10px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                  aria-label="이전 식단 카드"
+                >
+                  <ChevronLeft aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
+                  className="pointer-events-auto absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-[10px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+                  aria-label="다음 식단 카드"
+                >
+                  <ChevronRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
+                </button>
               </div>
             </div>
 
@@ -1078,22 +1079,6 @@ export default function Home() {
                   <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{diets[currentDietIndex].title}</h3>
                   <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
 
-                  <div className="flex items-center gap-4">
-                    <div className="flex gap-2">
-                      {diets.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => setCurrentDietIndex(idx)}
-                          aria-label={`${diets[idx].title} 식단 보기`}
-                          aria-pressed={idx === currentDietIndex}
-                          className={`w-3 h-3 rounded-[10px] transition-all ${
-                            idx === currentDietIndex ? "bg-brand-700 w-8" : "bg-gray-300 hover:bg-gray-400"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
               <div className="pointer-events-none absolute inset-y-0 inset-x-0 md:hidden">
