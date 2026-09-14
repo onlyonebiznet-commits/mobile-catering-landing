@@ -566,31 +566,43 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-64 overflow-y-auto">
-                    <div className="space-y-3">
-                      <div>
-                        <p className="text-xs mb-2">CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다.</p>
-                        <p className="text-xs mb-2">수집한 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 고객님께 안내하고 동의를 받을 예정입니다.</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-1">◼ 수집·이용 항목</p>
-                        <p className="text-xs">성명, 휴대폰번호, 이메일주소, 기업명, 주소, 예상 식수</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-1">◼ 목적</p>
-                        <p className="text-xs">이동급식 서비스 상담 및 진행</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-1">◼ 보유·이용 기간</p>
-                        <p className="text-xs">서비스 상담 신청 후 3년</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-1">◼ 근거</p>
-                        <p className="text-xs">개인정보 보호법 제15조 제1항 제4호에 따른 서비스 이행</p>
-                      </div>
-                      <div className="border-t pt-2">
-                        <p className="text-xs">개인정보를 기입하지 않으실 수 있으나, 기재하지 않으실 경우 이동급식 서비스 상담 진행이 어렵습니다.</p>
-                      </div>
+                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-96 overflow-y-auto">
+                    <div className="space-y-4 leading-relaxed">
+                      <p>
+                        CJ프레시웨이㈜는 서비스 상담 제공을 위해 아래와 같이 개인정보를 수집·이용합니다. 수집한 개인정보는 목적 이외의 용도로 처리하지 않으며, 처리 목적을 변경할 경우 별도로 안내하고 동의를 받겠습니다. 내용을 자세히 읽으신 후 동의 여부를 결정하여 주시기 바랍니다.
+                      </p>
+
+                      <section className="space-y-2" aria-labelledby="required-personal-info-title">
+                        <h3 id="required-personal-info-title" className="font-semibold text-gray-900">
+                          <span className="text-status-error">(필수)</span> 개인정보 수집 및 이용
+                        </h3>
+                        <div className="grid grid-cols-3 border border-gray-300 bg-white text-center">
+                          <div className="border-r border-gray-300 bg-gray-100 px-2 py-2 font-semibold text-gray-900">수집·이용 목적</div>
+                          <div className="border-r border-gray-300 bg-gray-100 px-2 py-2 font-semibold text-gray-900">수집 항목</div>
+                          <div className="bg-gray-100 px-2 py-2 font-semibold text-gray-900">보유·이용 기간</div>
+                          <div className="border-r border-t border-gray-300 px-2 py-3 text-left">서비스 상담 신청 접수, 상담 진행</div>
+                          <div className="border-r border-t border-gray-300 px-2 py-3 text-left">성명, 기업명, 연락처, 이메일주소, 지역, 예상 식수</div>
+                          <div className="border-t border-gray-300 px-2 py-3 text-left">상담일로부터 1개월</div>
+                        </div>
+                      </section>
+
+                      <section className="space-y-2" aria-labelledby="optional-consultation-info-title">
+                        <h3 id="optional-consultation-info-title" className="font-semibold text-gray-900">
+                          <span className="text-status-error">(선택)</span> 상담 내용 관련 정보
+                        </h3>
+                        <div className="grid grid-cols-3 border border-gray-300 bg-white text-center">
+                          <div className="border-r border-gray-300 bg-gray-100 px-2 py-2 font-semibold text-gray-900">수집·이용 목적</div>
+                          <div className="border-r border-gray-300 bg-gray-100 px-2 py-2 font-semibold text-gray-900">수집 항목</div>
+                          <div className="bg-gray-100 px-2 py-2 font-semibold text-gray-900">보유·이용 기간</div>
+                          <div className="border-r border-t border-gray-300 px-2 py-3 text-left">상담 내용 파악 및 맞춤 서비스 제안</div>
+                          <div className="border-r border-t border-gray-300 px-2 py-3 text-left">관심 서비스, 이용 환경, 요청사항(문의 내용)</div>
+                          <div className="border-t border-gray-300 px-2 py-3 text-left">상담일로부터 1개월</div>
+                        </div>
+                      </section>
+
+                      <p className="border-t border-gray-300 pt-3">
+                        * 귀하는 개인정보 수집 및 이용에 대한 동의를 거부하실 권리가 있습니다. 다만 필수항목에 대한 동의를 거부하실 경우 서비스 상담 신청이 제한됩니다. 선택항목은 입력하지 않으셔도 서비스 상담 이용에 제한이 없습니다.
+                      </p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>

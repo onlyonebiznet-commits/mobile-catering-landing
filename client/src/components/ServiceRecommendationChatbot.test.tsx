@@ -76,6 +76,16 @@ describe('ServiceRecommendationChatbot', () => {
     expect(screen.getByRole('button', { name: '문의하기' })).toBeInTheDocument();
   });
 
+  it('shows the confirmed personal information notice in the privacy accordion', async () => {
+    await reachForm();
+    fireEvent.click(screen.getByRole('button', { name: '개인정보 수집 및 이용 동의 내용 열기' }));
+    expect(await screen.findByText(/서비스 상담 제공을 위해 아래와 같이 개인정보를 수집·이용합니다/)).toBeInTheDocument();
+    expect(screen.getByText(/서비스 상담 신청 접수, 상담 진행/)).toBeInTheDocument();
+    expect(screen.getByText(/성명, 기업명, 연락처, 이메일주소, 지역, 예상 식수/)).toBeInTheDocument();
+    expect(screen.getByText(/상담일로부터 1개월/)).toBeInTheDocument();
+    expect(screen.getByText(/필수항목에 대한 동의를 거부하실 경우 서비스 상담 신청이 제한됩니다/)).toBeInTheDocument();
+  });
+
   it('keeps agreement checkbox clicks separate from accordion expansion', async () => {
     await reachForm();
     const allAgree = screen.getByRole('checkbox', { name: '전체 동의' });

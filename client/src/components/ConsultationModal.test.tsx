@@ -176,6 +176,27 @@ describe("ConsultationModal - checkbox guide appearance", () => {
   });
 });
 
+describe("ConsultationModal - confirmed personal information notice", () => {
+  it("renders the approved collection, use, retention, and refusal notice", () => {
+    const source = readFileSync(
+      resolve(process.cwd(), "client/src/components/ConsultationModal.tsx"),
+      "utf8"
+    );
+
+    expect(source).toContain("CJ프레시웨이㈜는 서비스 상담 제공을 위해 아래와 같이 개인정보를 수집·이용합니다.");
+    expect(source).toContain("(필수)</span> 개인정보 수집 및 이용");
+    expect(source).toContain("서비스 상담 신청 접수, 상담 진행");
+    expect(source).toContain("성명, 기업명, 연락처, 이메일주소, 지역, 예상 식수");
+    expect(source).toContain("상담일로부터 1개월");
+    expect(source).toContain("(선택)</span> 상담 내용 관련 정보");
+    expect(source).toContain("상담 내용 파악 및 맞춤 서비스 제안");
+    expect(source).toContain("관심 서비스, 이용 환경, 요청사항(문의 내용)");
+    expect(source).toContain("필수항목에 대한 동의를 거부하실 경우 서비스 상담 신청이 제한됩니다.");
+    expect(source).toContain("선택항목은 입력하지 않으셔도 서비스 상담 이용에 제한이 없습니다.");
+    expect(source).not.toContain("서비스 상담 신청 후 3년");
+  });
+});
+
 describe("ConsultationModal - Text input guide", () => {
   it("uses shared field hierarchy and accessible descriptions for the active FO form", async () => {
     const source = readFileSync(
