@@ -56,9 +56,9 @@ describe("banner CTA button consistency", () => {
     expect(finalCta).toContain('variant="on-brand-inverse"');
     expect(finalCta).toContain('size="large"');
     expect(finalCta).toContain('data-event="consultation_click"');
-    expect(home).toContain('text-left text-[48px] md:text-[60px]');
-    expect(home).toContain('hidden md:block text-white drop-shadow-lg hero-title-animate mb-8 text-left text-[18px]');
-    expect(home).toContain('flex flex-wrap justify-center md:justify-start gap-3 animate-in fade-in slide-in-from-left-4 delay-500');
+    expect(home).toContain('text-center text-[48px] md:text-[60px]');
+    expect(home).toContain('hidden md:block text-white drop-shadow-lg hero-title-animate mb-8 text-center text-[18px]');
+    expect(home).toContain('flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-left-4 delay-500');
   });
 });
 
