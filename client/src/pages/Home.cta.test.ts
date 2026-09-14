@@ -37,8 +37,8 @@ describe("banner CTA button consistency", () => {
     expect(home).toContain("title: '기업 문화를 만드는\\n사내카페'");
     expect(home).toContain("highlight: '간식복지\\n스낵픽'");
     expect(home.match(/whiteSpace: 'pre-line'/g)).toHaveLength(2);
-    expect(home.match(/fontSize: '36px'/g)).toHaveLength(1);
-    expect(home.match(/fontSize: '48px'/g)).toHaveLength(1);
+    expect(home).toContain("style={{fontSize: '24px', lineHeight: '1.2', marginBottom: '0', whiteSpace: 'pre-line'}}");
+    expect(home).toContain("style={{fontSize: '36px', lineHeight: '1.2', marginBottom: '0.75rem', whiteSpace: 'pre-line'}}");
     expect(home.match(/text-\[48px\] md:text-\[60px\]/g)).toHaveLength(2);
     expect(home).toContain("whiteSpace: isSnackHero ? 'normal' : 'pre-line'");
   });
