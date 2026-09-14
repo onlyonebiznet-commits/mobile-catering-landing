@@ -85,15 +85,15 @@ export default function FloatingActionButtons() {
           onTouchStart={() => handleTouchStart("top")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Floating item container: label and button occupy separate layout space */}
-          <div className="flex items-center justify-end gap-2">
-            <div className={`flex h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] px-4 shadow-lg transition-all duration-200 ${isExpanded("top") ? "max-w-40 opacity-100" : "max-w-0 px-0 opacity-0"}`} aria-hidden={!isExpanded("top")}>
+          {/* Connected shape: the label expands from the same green container as the button */}
+          <div className="flex h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200">
+            <div className={`flex h-14 items-center overflow-hidden transition-all duration-200 ${isExpanded("top") ? "max-w-44 px-4 opacity-100" : "max-w-0 px-0 opacity-0"}`} aria-hidden={!isExpanded("top")}>
               <span className="whitespace-nowrap text-sm font-medium text-white">위로 이동</span>
             </div>
             <button
               type="button"
               onClick={scrollToTop}
-              className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-[#007651] text-white shadow-md transition-all duration-200 hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2"
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-transparent text-white transition-colors duration-200 hover:bg-[#008F69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-95"
               aria-label="맨 위로 이동"
             >
               <ChevronUp aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md" />
@@ -111,15 +111,15 @@ export default function FloatingActionButtons() {
           onTouchStart={() => handleTouchStart("consultation")}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Floating item container: label and button occupy separate layout space */}
-          <div className="flex items-center justify-end gap-2">
-            <div className={`flex h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] px-4 shadow-lg transition-all duration-200 ${isExpanded("consultation") ? "max-w-40 opacity-100" : "max-w-0 px-0 opacity-0"}`} aria-hidden={!isExpanded("consultation")}>
+          {/* Connected shape: the label expands from the same green container as the button */}
+          <div className="flex h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200">
+            <div className={`flex h-14 items-center overflow-hidden transition-all duration-200 ${isExpanded("consultation") ? "max-w-44 px-4 opacity-100" : "max-w-0 px-0 opacity-0"}`} aria-hidden={!isExpanded("consultation")}>
               <span className="whitespace-nowrap text-sm font-medium text-white">맞춤 상담하기</span>
             </div>
             <button
               type="button"
               onClick={scrollToChatbot}
-              className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-[#007651] text-white shadow-md transition-all duration-200 hover:bg-[#008F69] hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-offset-2"
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-transparent text-white transition-colors duration-200 hover:bg-[#008F69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-95"
               aria-label="맞춤 상담"
             >
               <MessageCircle aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md" />
