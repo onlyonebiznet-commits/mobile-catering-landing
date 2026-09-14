@@ -43,10 +43,11 @@ describe("banner CTA button consistency", () => {
     expect(home).toContain("whiteSpace: isSnackHero ? 'normal' : 'pre-line'");
   });
 
-  it("uses the mobile copy surface for word-preserving Korean line wrapping", () => {
-    expect(home).toContain('mobile-copy-surface');
-    expect(home).toContain('mobile-readable-copy');
-    expect(home).toContain('description: \'우리 회사에 꼭 맞는 간식 큐레이션으로 직원들의 만족도를 높이는 간식 서비스를 제공합니다.\'');
+  it("keeps the original mobile copy wrapping outside the main header", () => {
+    expect(home).not.toContain('mobile-copy-surface');
+    expect(home).not.toContain('mobile-readable-copy');
+    expect(home).toContain('className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center text-[14px]"');
+    expect(home).toContain("whiteSpace: 'pre-line'");
   });
 
   it("keeps the final green-banner consultation CTA in inverse treatment", () => {

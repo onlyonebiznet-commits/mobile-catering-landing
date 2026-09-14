@@ -553,7 +553,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white mobile-copy-surface">
+    <div className="min-h-screen bg-white">
       {/* Hero Section with Integrated Header */}
       <section className="relative h-[500px] md:h-[500px] lg:h-[500px] min-h-[500px] overflow-hidden">
         {/* Banner Carousel Background */}
@@ -745,7 +745,7 @@ export default function Home() {
                 </div>
                 
                 {/* 간단한 설명 - MO: 18px, PC: 36px */}
-                <p className="md:hidden mobile-readable-copy text-white drop-shadow-lg hero-title-animate mb-8 text-center text-[14px]" style={{lineHeight: '1.45'}}>
+                <p className="md:hidden text-white drop-shadow-lg hero-title-animate mb-8 text-center text-[14px]" style={{lineHeight: '1.45'}}>
                   {[
                     {
                       image: '/manus-storage/hero-office-meal_08208dd3.png',

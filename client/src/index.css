@@ -869,30 +869,3 @@
   }
 }
 
-
-/* Mobile copy rhythm: preserve meaningful Korean word groups without changing desktop typography. */
-@media (max-width: 767px) {
-  .mobile-copy-surface h1,
-  .mobile-copy-surface h2,
-  .mobile-copy-surface h3,
-  .mobile-copy-surface h4,
-  .mobile-copy-surface h5,
-  .mobile-copy-surface h6,
-  .mobile-copy-surface p,
-  .mobile-copy-surface button,
-  .mobile-copy-surface a,
-  .mobile-copy-surface span {
-    word-break: keep-all;
-    overflow-wrap: normal;
-    text-wrap: pretty;
-  }
-
-  .mobile-copy-surface p {
-    line-height: 1.55;
-  }
-
-  .mobile-copy-surface .mobile-readable-copy {
-    width: min(100%, 22rem);
-    margin-inline: auto;
-  }
-}
