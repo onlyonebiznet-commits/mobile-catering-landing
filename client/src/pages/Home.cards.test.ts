@@ -64,27 +64,27 @@ describe("FO card surface consistency", () => {
     expect(home).not.toContain("따뜻한 상태로 배송 후 위생적으로 수거합니다");
   });
 
-  it("uses the reference-style wide PC diet presentation while preserving the mobile card branch", () => {
-    expect(home).toContain('className="hidden md:block relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal"');
-    expect(home).toContain('className="relative h-[420px] overflow-hidden group select-none"');
-    expect(home).toContain('grid grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] gap-12 px-10 py-9');
+  it("uses the reference-style diet presentation responsively on PC and mobile", () => {
+    expect(home).toContain('className="relative overflow-hidden rounded-[10px] bg-white shadow-lg scroll-reveal"');
+    expect(home).toContain('className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none md:aspect-auto md:h-[420px]"');
+    expect(home).toContain('grid grid-cols-1 gap-8 px-5 py-7 sm:px-7 md:grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] md:gap-12 md:px-10 md:py-9');
     expect(home).toContain('고객 특성에 맞춰 구성됩니다');
-    expect(home).toContain('className="md:hidden relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal"');
+    expect(home).not.toContain('맞춤 운영 사례');
     expect(home).toContain('eventTitle: "오피스 임직원 맞춤 식사"');
   });
 
   it("uses three menu previews and arrow navigation without dot pagination", () => {
-    expect(home).toContain('className="grid grid-cols-3 gap-4"');
+    expect(home).toContain('className="grid grid-cols-3 gap-2 md:gap-4"');
     expect(home).not.toContain('aria-label="식단 선택"');
-    expect(home.match(/aria-label="이전 식단 카드"/g)?.length).toBe(2);
-    expect(home.match(/aria-label="다음 식단 카드"/g)?.length).toBe(2);
+    expect(home.match(/aria-label="이전 식단 카드"/g)?.length).toBe(1);
+    expect(home.match(/aria-label="다음 식단 카드"/g)?.length).toBe(1);
     expect(home).not.toContain('className="mt-7 flex items-center gap-2" aria-label="식단 선택"');
   });
 
   it("uses a 4:3 image ratio for the mobile customer diet card", () => {
     expect(home).toContain('data-diet-carousel');
     expect(home).toContain('className="relative aspect-[4/3] overflow-hidden');
-    expect(home).toContain('className="p-6 sm:p-8 md:p-12 flex flex-col justify-center aspect-[4/3]"');
+    expect(home).toContain('className="grid grid-cols-1 gap-8 px-5 py-7 sm:px-7 md:grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] md:gap-12 md:px-10 md:py-9"');
     expect(home).toContain('className="absolute inset-0 w-full h-full object-cover');
   });
 
@@ -93,8 +93,8 @@ describe("FO card surface consistency", () => {
     expect(home).toContain('onTouchCancel={() => setTouchStart(0)}');
     expect(home).toContain('aria-label="이전 식단 카드"');
     expect(home).toContain('aria-label="다음 식단 카드"');
-    expect(home).toContain('className="pointer-events-auto absolute left-3');
-    expect(home).toContain('className="pointer-events-auto absolute right-3');
+    expect(home).toContain('className="pointer-events-auto absolute left-4');
+    expect(home).toContain('className="pointer-events-auto absolute right-4');
     expect(home.match(/aspect-\[4\/3\]/g)?.length).toBe(2);
   });
 

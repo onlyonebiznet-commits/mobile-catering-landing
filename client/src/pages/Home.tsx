@@ -994,8 +994,8 @@ export default function Home() {
             }}
             onTouchCancel={() => setTouchStart(0)}
           >
-            <div className="hidden md:block relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal">
-              <div className="relative h-[420px] overflow-hidden group select-none">
+            <div className="relative overflow-hidden rounded-[10px] bg-white shadow-lg scroll-reveal">
+              <div className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none md:aspect-auto md:h-[420px]">
                 <img
                   src={diets[currentDietIndex].image}
                   loading="lazy"
@@ -1004,20 +1004,16 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-8 flex items-center gap-2 text-white text-sm font-semibold">
-                  <span className="h-2 w-2 rounded-full bg-white" aria-hidden="true" />
-                  <span>{diets[currentDietIndex].title} 맞춤 운영 사례</span>
-                </div>
               </div>
-              <div className="grid grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] gap-12 px-10 py-9">
+              <div className="grid grid-cols-1 gap-8 px-5 py-7 sm:px-7 md:grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] md:gap-12 md:px-10 md:py-9">
                 <div className="flex flex-col justify-center">
                   <div className="mb-4 flex items-center gap-2 text-brand-700">
                     <Utensils aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />
                     <span className="text-sm font-semibold tracking-[0.08em]">CUSTOM MENU</span>
                   </div>
-                  <h3 className="text-[28px] font-bold leading-tight text-gray-900">{dietPresentation[currentDietIndex].eventTitle}</h3>
+                  <h3 className="text-[22px] font-bold leading-tight text-gray-900 md:text-[28px]">{dietPresentation[currentDietIndex].eventTitle}</h3>
                   <div className="my-6 h-px w-10 bg-gray-900" aria-hidden="true" />
-                  <dl className="grid grid-cols-[44px_1fr] gap-x-4 gap-y-2 text-[15px] leading-relaxed">
+                  <dl className="grid grid-cols-[40px_1fr] gap-x-3 gap-y-2 text-[13px] leading-relaxed md:grid-cols-[44px_1fr] md:gap-x-4 md:text-[15px]">
                     <dt className="font-semibold text-gray-500">규모</dt>
                     <dd className="text-gray-900">{dietPresentation[currentDietIndex].scale}</dd>
                     <dt className="font-semibold text-gray-500">메뉴</dt>
@@ -1028,23 +1024,23 @@ export default function Home() {
 
                 </div>
                 <div className="flex flex-col justify-center">
-                  <div className="mb-5 flex items-center justify-between">
-                    <h4 className="text-[18px] font-semibold text-gray-900">주 메뉴</h4>
-                    <span className="text-[13px] text-gray-500">고객 특성에 맞춰 구성됩니다</span>
+                  <div className="mb-4 flex items-center justify-between gap-3 md:mb-5">
+                    <h4 className="text-[17px] font-semibold text-gray-900 md:text-[18px]">주 메뉴</h4>
+                    <span className="text-right text-[12px] text-gray-500 md:text-[13px]">고객 특성에 맞춰 구성됩니다</span>
                   </div>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-2 md:gap-4">
                     {dietPresentation[currentDietIndex].menus.map((menu) => (
-                      <div key={menu.name} className="rounded-[10px] bg-gray-50 p-3 text-center transition-colors hover:bg-gray-100">
-                        <div className="mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-[10px] bg-white">
+                      <div key={menu.name} className="rounded-[10px] bg-gray-50 p-2 text-center transition-colors hover:bg-gray-100 md:p-3">
+                        <div className="mb-2 flex aspect-square items-center justify-center overflow-hidden rounded-[10px] bg-white md:mb-3">
                           <img src={menu.image} loading="lazy" decoding="async" alt="" className="h-full w-full object-cover" />
                         </div>
-                        <span className="text-[14px] font-medium text-gray-700">{menu.name}</span>
+                        <span className="text-[12px] font-medium text-gray-700 md:text-[14px]">{menu.name}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute inset-y-0 inset-x-0">
+              <div className="pointer-events-none absolute inset-x-0 top-0 aspect-[4/3] md:aspect-auto md:h-[420px]">
                 <button
                   type="button"
                   onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
@@ -1064,42 +1060,6 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="md:hidden relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                <div className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none">
-                  <img
-                    src={diets[currentDietIndex].image}
-                    loading="lazy"
-                    decoding="async"
-                    alt={diets[currentDietIndex].title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center aspect-[4/3]">
-                  <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-2 text-[24px] md:text-[36px]">{diets[currentDietIndex].title}</h3>
-                  <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">{diets[currentDietIndex].description}</p>
-
-                </div>
-              </div>
-              <div className="pointer-events-none absolute inset-y-0 inset-x-0 md:hidden">
-                <button
-                  type="button"
-                  onClick={() => setCurrentDietIndex((prev) => (prev === 0 ? diets.length - 1 : prev - 1))}
-                  className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-[10px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-                  aria-label="이전 식단 카드"
-                >
-                  <ChevronLeft aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setCurrentDietIndex((prev) => (prev === diets.length - 1 ? 0 : prev + 1))}
-                  className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-[10px] bg-black/45 text-white shadow-lg transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-                  aria-label="다음 식단 카드"
-                >
-                  <ChevronRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
-                </button>
-              </div>
-            </div>
             <p className="mt-4 text-center text-xs text-gray-500 md:hidden" aria-live="polite">
               좌우로 밀어보거나 화살표로 다른 식단을 확인해보세요
             </p>
