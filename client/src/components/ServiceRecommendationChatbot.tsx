@@ -3,6 +3,8 @@ import { X, MessageCircle, ChevronDown, Check } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem } from '@/components/ui/accordion';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const companyTypes = ['산업체', '오피스', '병원', '요양시설', '복지관', '행사장', '기타'];
 const mealRanges = ['50명 미만', '50명 이상 ~ 70명 미만', '70명 이상 ~ 100명 미만', '100명 이상 ~ 200명 미만', '200명 이상 ~ 300명 미만', '300명 이상'];
@@ -115,7 +117,7 @@ const ServiceRecommendationChatbot = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-24px)] bg-white rounded-[10px] shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div className="fixed bottom-24 right-6 z-50 w-[min(30rem,calc(100vw-24px))] bg-white rounded-[10px] shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           <div className="bg-gradient-to-r from-[#007651] to-[#008F69] text-white p-6">
             <div className="flex items-start justify-between gap-3">
               <div><h3 className="text-lg font-bold">서비스 추천 상담</h3><p className="text-sm text-white/80 mt-1">우리 현장에 맞는 맞춤형 서비스를 추천해드립니다</p></div>
@@ -146,8 +148,15 @@ const ServiceRecommendationChatbot = () => {
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <p className="text-sm font-semibold text-gray-900">상담을 위해 기본 정보를 남겨주세요</p>
-                  <div className="grid grid-cols-2 gap-3">{[['name','이름'],['company','회사명/기관명'],['phone','연락처'],['email','이메일'],['region','희망 지역']].map(([name, placeholder], index) => <input key={name} type={name === 'email' ? 'email' : name === 'phone' ? 'tel' : 'text'} name={name} placeholder={placeholder} value={formData[name as keyof typeof formData]} onChange={handleFormChange} required={index < 4} className="rounded-[10px] border border-gray-300 px-3 py-2 text-sm focus:border-[#007651] focus:outline-none" />)}</div>
-                  <textarea name="inquiry" placeholder="추가 요청 사항을 남겨주세요." value={formData.inquiry} onChange={handleFormChange} rows={3} className="w-full resize-none rounded-[10px] border border-gray-300 px-3 py-2 text-sm focus:border-[#007651] focus:outline-none" />
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div className="space-y-1.5"><Label htmlFor="chatbot-contact-person" className="form-field-label text-xs">담당자명 <span className="text-status-error" aria-hidden="true">*</span></Label><Input id="chatbot-contact-person" name="name" placeholder="담당자명을 입력해주세요" value={formData.name} onChange={handleFormChange} aria-required="true" /></div>
+                    <div className="space-y-1.5"><Label htmlFor="chatbot-company" className="form-field-label text-xs">회사명 <span className="text-status-error" aria-hidden="true">*</span></Label><Input id="chatbot-company" name="company" placeholder="회사명/기관명을 입력해주세요" value={formData.company} onChange={handleFormChange} aria-required="true" /></div>
+                    <div className="space-y-1.5"><Label htmlFor="chatbot-phone" className="form-field-label text-xs">연락처 <span className="text-status-error" aria-hidden="true">*</span></Label><Input id="chatbot-phone" name="phone" type="tel" placeholder="010-0000-0000" value={formData.phone} onChange={handleFormChange} aria-required="true" /></div>
+                    <div className="space-y-1.5"><Label htmlFor="chatbot-email" className="form-field-label text-xs">이메일 <span className="text-status-error" aria-hidden="true">*</span></Label><Input id="chatbot-email" name="email" type="email" placeholder="example@company.com" value={formData.email} onChange={handleFormChange} aria-required="true" /></div>
+                    <div className="space-y-1.5"><Label htmlFor="chatbot-meal-range" className="form-field-label text-xs">예상 식수 <span className="text-status-error" aria-hidden="true">*</span></Label><Input id="chatbot-meal-range" name="mealRange" placeholder="선택한 예상 식수" value={selectedMealRange} readOnly aria-readonly="true" aria-required="true" /></div>
+                    <div className="space-y-1.5"><Label htmlFor="chatbot-region" className="form-field-label text-xs">희망 지역 <span className="text-status-error" aria-hidden="true">*</span></Label><Input id="chatbot-region" name="region" placeholder="서울, 경기 등" value={formData.region} onChange={handleFormChange} aria-required="true" /></div>
+                  </div>
+                  <div className="space-y-1.5"><Label htmlFor="chatbot-inquiry" className="form-field-label text-xs">요청 사항</Label><Textarea id="chatbot-inquiry" name="inquiry" placeholder="요청 사항을 입력해주세요" value={formData.inquiry} onChange={handleFormChange} rows={3} className="form-field-control--textarea" /></div>
                   <div className="space-y-3 border-t border-gray-200 pt-3" aria-label="개인정보 동의">
                     <div className="flex items-center gap-2"><Checkbox id="chatbot-all-agree" checked={agreements.allAgree} onCheckedChange={(checked) => handleAgreementChange('allAgree', checked === true)} onClick={stopAgreementPropagation} onPointerDown={stopAgreementPropagation} /><Label htmlFor="chatbot-all-agree" className="form-checkbox-label cursor-pointer font-medium" onClick={stopAgreementPropagation} onPointerDown={stopAgreementPropagation}>전체 동의</Label></div>
                     <Accordion type="single" collapsible value={accordionValue} onValueChange={setAccordionValue} className="w-full space-y-2">

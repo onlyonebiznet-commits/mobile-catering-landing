@@ -58,11 +58,13 @@ describe('ServiceRecommendationChatbot', () => {
 
   it('displays form fields after recommendation selection', async () => {
     await reachForm();
-    expect(screen.getByPlaceholderText('이름')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('회사명/기관명')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('연락처')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('이메일')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('추가 요청 사항을 남겨주세요.')).toBeInTheDocument();
+    expect(screen.getByLabelText(/담당자명/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/회사명/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/연락처/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/이메일/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/예상 식수/)).toHaveValue('70명 이상 ~ 100명 미만');
+    expect(screen.getByLabelText(/희망 지역/)).toBeInTheDocument();
+    expect(screen.getByLabelText('요청 사항')).toBeInTheDocument();
   });
 
   it('shows all privacy agreement items before inquiry submission', async () => {
