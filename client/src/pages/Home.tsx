@@ -384,6 +384,81 @@ export default function Home() {
     },
   ];
 
+  const dietPresentation = [
+    {
+      eventTitle: "오피스 임직원 맞춤 식사",
+      scale: "직원 수 80명",
+      menu: "한식, 샐러드, 디저트",
+      service: "중식·석식",
+      menus: [
+        { name: "핑거푸드", image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg" },
+        { name: "메인 요리", image: "/manus-storage/02_07006eb7.png" },
+        { name: "디저트", image: "/manus-storage/04_024062b0.png" },
+        { name: "드링크", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
+      ],
+    },
+    {
+      eventTitle: "산업체 근무자 활력식",
+      scale: "직원 수 150명",
+      menu: "고단백 한식, 국·반찬",
+      service: "중식·야식",
+      menus: [
+        { name: "든든한 밥상", image: "/manus-storage/02_07006eb7.png" },
+        { name: "고단백 메인", image: "/manus-storage/03_f0cbcda5.png" },
+        { name: "제철 반찬", image: "/manus-storage/04_024062b0.png" },
+        { name: "건강 음료", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
+      ],
+    },
+    {
+      eventTitle: "병원 맞춤 영양식",
+      scale: "병동·직원식 100명",
+      menu: "저염식, 특별식, 균형식",
+      service: "조식·중식·석식",
+      menus: [
+        { name: "균형식", image: "/manus-storage/02_07006eb7.png" },
+        { name: "특별식", image: "/manus-storage/03_f0cbcda5.png" },
+        { name: "부드러운 디저트", image: "/manus-storage/04_024062b0.png" },
+        { name: "웰니스 드링크", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
+      ],
+    },
+    {
+      eventTitle: "사내카페 브레이크 타임",
+      scale: "임직원 120명",
+      menu: "프리미엄 커피, 음료, 디저트",
+      service: "상시 운영",
+      menus: [
+        { name: "프리미엄 커피", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
+        { name: "시그니처 음료", image: "/manus-storage/pasted_file_5hIjDd_image_ccf1f4d9.png" },
+        { name: "베이커리", image: "/manus-storage/04_024062b0.png" },
+        { name: "시즌 디저트", image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg" },
+      ],
+    },
+    {
+      eventTitle: "기업 행사 케이터링",
+      scale: "행사 참석 100명",
+      menu: "핑거푸드, 디저트, 음료",
+      service: "행사 시간 맞춤",
+      menus: [
+        { name: "핑거푸드", image: "/manus-storage/cropped_fingerfood_04_6f773ed6.jpg" },
+        { name: "메인 플래터", image: "/manus-storage/03_f0cbcda5.png" },
+        { name: "디저트", image: "/manus-storage/04_024062b0.png" },
+        { name: "드링크", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
+      ],
+    },
+    {
+      eventTitle: "복합공간 맞춤 밀솔루션",
+      scale: "이용 인원 200명",
+      menu: "한식, 간편식, 스낵",
+      service: "운영 시간 맞춤",
+      menus: [
+        { name: "오늘의 한식", image: "/manus-storage/02_07006eb7.png" },
+        { name: "간편 메인", image: "/manus-storage/03_f0cbcda5.png" },
+        { name: "스낵 디저트", image: "/manus-storage/04_024062b0.png" },
+        { name: "음료", image: "/manus-storage/cropped_cafe_IMG_6844_dd3c1ce0.jpg" },
+      ],
+    },
+  ];
+
   const meals = [
     {
       name: "정통 한식",
@@ -925,7 +1000,70 @@ export default function Home() {
             }}
             onTouchCancel={() => setTouchStart(0)}
           >
-            <div className="relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal">
+            <div className="hidden md:block relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal">
+              <div className="relative h-[420px] overflow-hidden group select-none">
+                <img
+                  src={diets[currentDietIndex].image}
+                  loading="lazy"
+                  decoding="async"
+                  alt={`${diets[currentDietIndex].title} 고객 특성별 식단 현장 이미지`}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-8 flex items-center gap-2 text-white text-sm font-semibold">
+                  <span className="h-2 w-2 rounded-full bg-white" aria-hidden="true" />
+                  <span>{diets[currentDietIndex].title} 맞춤 운영 사례</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] gap-12 px-10 py-9">
+                <div className="flex flex-col justify-center">
+                  <div className="mb-4 flex items-center gap-2 text-brand-700">
+                    <Utensils aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />
+                    <span className="text-sm font-semibold tracking-[0.08em]">CUSTOM MENU</span>
+                  </div>
+                  <h3 className="text-[28px] font-bold leading-tight text-gray-900">{dietPresentation[currentDietIndex].eventTitle}</h3>
+                  <div className="my-6 h-px w-10 bg-gray-900" aria-hidden="true" />
+                  <dl className="grid grid-cols-[44px_1fr] gap-x-4 gap-y-2 text-[15px] leading-relaxed">
+                    <dt className="font-semibold text-gray-500">규모</dt>
+                    <dd className="text-gray-900">{dietPresentation[currentDietIndex].scale}</dd>
+                    <dt className="font-semibold text-gray-500">메뉴</dt>
+                    <dd className="text-gray-900">{dietPresentation[currentDietIndex].menu}</dd>
+                    <dt className="font-semibold text-gray-500">운영</dt>
+                    <dd className="text-gray-900">{dietPresentation[currentDietIndex].service}</dd>
+                  </dl>
+                  <div className="mt-7 flex items-center gap-2" aria-label="식단 선택">
+                    {diets.map((diet, idx) => (
+                      <button
+                        key={diet.title}
+                        type="button"
+                        onClick={() => setCurrentDietIndex(idx)}
+                        aria-label={`${diet.title} 식단 보기`}
+                        aria-pressed={idx === currentDietIndex}
+                        className={`h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 ${idx === currentDietIndex ? "w-8 bg-brand-700" : "w-2 bg-gray-300 hover:bg-gray-500"}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="flex flex-col justify-center">
+                  <div className="mb-5 flex items-center justify-between">
+                    <h4 className="text-[18px] font-semibold text-gray-900">주 메뉴</h4>
+                    <span className="text-[13px] text-gray-500">고객 특성에 맞춰 구성됩니다</span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-4">
+                    {dietPresentation[currentDietIndex].menus.map((menu) => (
+                      <div key={menu.name} className="rounded-[10px] bg-gray-50 p-3 text-center transition-colors hover:bg-gray-100">
+                        <div className="mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-[10px] bg-white">
+                          <img src={menu.image} loading="lazy" decoding="async" alt="" className="h-full w-full object-cover" />
+                        </div>
+                        <span className="text-[14px] font-medium text-gray-700">{menu.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:hidden relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 <div className="relative aspect-[4/3] overflow-hidden group cursor-grab active:cursor-grabbing select-none">
                   <img

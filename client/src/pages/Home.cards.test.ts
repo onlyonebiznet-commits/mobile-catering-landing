@@ -64,6 +64,15 @@ describe("FO card surface consistency", () => {
     expect(home).not.toContain("따뜻한 상태로 배송 후 위생적으로 수거합니다");
   });
 
+  it("uses the reference-style wide PC diet presentation while preserving the mobile card branch", () => {
+    expect(home).toContain('className="hidden md:block relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal"');
+    expect(home).toContain('className="relative h-[420px] overflow-hidden group select-none"');
+    expect(home).toContain('grid grid-cols-[minmax(250px,0.8fr)_minmax(0,1.8fr)] gap-12 px-10 py-9');
+    expect(home).toContain('고객 특성에 맞춰 구성됩니다');
+    expect(home).toContain('className="md:hidden relative bg-white rounded-[10px] overflow-hidden shadow-lg scroll-reveal"');
+    expect(home).toContain('eventTitle: "오피스 임직원 맞춤 식사"');
+  });
+
   it("uses a 4:3 image ratio for the mobile customer diet card", () => {
     expect(home).toContain('data-diet-carousel');
     expect(home).toContain('className="relative aspect-[4/3] overflow-hidden');
