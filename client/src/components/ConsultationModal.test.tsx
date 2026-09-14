@@ -155,18 +155,17 @@ describe("ConsultationModal - Agreement Accordion Behavior", () => {
   });
 });
 
-describe("ConsultationModal - FW Radio button appearance", () => {
-  it("uses the circular selection appearance without changing checkbox semantics", () => {
+describe("ConsultationModal - checkbox guide appearance", () => {
+  it("uses square checkbox semantics for services and all consent items", () => {
     const source = readFileSync(
       resolve(process.cwd(), "client/src/components/ConsultationModal.tsx"),
       "utf8"
     );
 
-    expect(source).toContain('appearance="radio"');
-    expect(source.match(/appearance="radio"/g)?.length).toBe(7);
+    expect(source).not.toContain('appearance="radio"');
     expect(source).toContain('onCheckedChange={(checked) => handleServiceToggle(value, checked === true)}');
     expect(source).toContain('id={checkboxId}\n                        checked={formData.serviceTypes.includes(value)}');
-    expect(source).not.toContain('id={checkboxId}\n                        appearance="radio"');
+    expect(source).toContain('id={checkboxId}\n                        checked={formData.serviceTypes.includes(value)}');
     expect(source).toContain('id="allAgree"');
     expect(source).toContain('id="personalInfoCollection"');
     expect(source).toContain('id="marketingConsent"');

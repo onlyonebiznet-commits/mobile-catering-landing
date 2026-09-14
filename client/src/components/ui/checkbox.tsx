@@ -19,7 +19,7 @@ function Checkbox({ className, appearance = "checkbox", ...props }: CheckboxProp
         "peer",
         isRadioAppearance
           ? "form-radio-control"
-          : "form-checkbox-control border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary dark:data-[state=checked]:border-primary aria-invalid:border-destructive disabled:cursor-not-allowed disabled:opacity-50",
+          : "form-checkbox-control",
         className
       )}
       {...props}

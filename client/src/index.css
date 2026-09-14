@@ -468,11 +468,11 @@
 
   /* Checkbox states and sizing from the attached Checkbox guide */
   .form-checkbox-control {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1rem;
+    height: 1rem;
     flex: 0 0 auto;
-    border: 1px solid var(--gray-300);
-    border-radius: 0.25rem;
+    border: 1px solid #b7c1bd;
+    border-radius: 0.125rem;
     background: #ffffff;
     color: #ffffff;
     box-shadow: none;
@@ -480,12 +480,7 @@
     transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
   }
 
-  .form-checkbox-control[data-state="checked"] {
-    border-color: var(--brand-700);
-    background: var(--brand-700);
-    color: #ffffff;
-  }
-
+  .form-checkbox-control[data-state="checked"],
   .form-checkbox-control[data-state="indeterminate"] {
     border-color: var(--brand-700);
     background: var(--brand-700);
@@ -494,26 +489,26 @@
 
   .form-checkbox-control:focus-visible {
     border-color: var(--brand-700);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-700) 20%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand-700) 22%, transparent);
   }
 
   .form-checkbox-control[aria-invalid="true"] {
     border-color: var(--status-error);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-error) 16%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-error) 16%, transparent);
   }
 
   .form-checkbox-control:disabled {
     cursor: not-allowed;
-    border-color: var(--gray-300);
-    background: var(--gray-50);
-    color: var(--gray-400);
+    border-color: #cbd2cf;
+    background: #f2f4f3;
+    color: #aab4b0;
     opacity: 1;
   }
 
   .form-checkbox-control[data-state="checked"]:disabled,
   .form-checkbox-control[data-state="indeterminate"]:disabled {
-    border-color: var(--gray-300);
-    background: var(--gray-300);
+    border-color: #b8c1bd;
+    background: #cbd2cf;
     color: #ffffff;
   }
 
