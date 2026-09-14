@@ -201,6 +201,12 @@ describe("ConsultationModal - confirmed personal information notice", () => {
     expect(noticeSource).not.toContain("서비스 상담 신청 후 3년");
     expect(noticeSource).toContain('className="text-[18px] font-semibold text-gray-900 md:text-[24px]"');
     expect((noticeSource.match(/className="text-\[18px\] font-semibold text-gray-900 md:text-\[24px\]"/g) ?? [])).toHaveLength(2);
+    expect(source).toContain('aria-expanded={accordionValue === "personal-info"}');
+    expect(source).toContain('aria-controls="personal-info-content"');
+    expect(source).toContain('aria-expanded={accordionValue === "marketing"}');
+    expect(source).toContain('aria-controls="marketing-consent-content"');
+    expect(source).toContain('aria-expanded={accordionValue === "ad"}');
+    expect(source).toContain('aria-controls="advertising-consent-content"');
   });
 });
 

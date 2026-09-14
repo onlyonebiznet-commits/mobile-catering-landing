@@ -94,7 +94,9 @@ describe('ServiceRecommendationChatbot', () => {
     expect(screen.getByRole('checkbox', { name: /개인정보 수집 및 이용 동의/ })).toBeChecked();
     expect(screen.getByRole('checkbox', { name: /마케팅 정보 수신 동의/ })).toBeChecked();
     expect(screen.getByRole('checkbox', { name: /광고성 정보 수신 동의/ })).toBeChecked();
-    expect(screen.getByRole('button', { name: '개인정보 수집 및 이용 동의 내용 열기' })).toHaveAttribute('aria-expanded', 'false');
+    const personalInfoToggle = screen.getByRole('button', { name: '개인정보 수집 및 이용 동의 내용 열기' });
+    expect(personalInfoToggle).toHaveAttribute('aria-expanded', 'false');
+    expect(personalInfoToggle).toHaveAttribute('aria-controls', 'chatbot-personal-info-content');
   });
 
   it('requires personal information agreement before submitting', async () => {

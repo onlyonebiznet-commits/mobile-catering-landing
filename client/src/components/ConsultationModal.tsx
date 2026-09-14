@@ -561,13 +561,15 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       onClick={() => setAccordionValue(accordionValue === "personal-info" ? "" : "personal-info")}
                       className="flex-shrink-0 hover:bg-gray-100 p-1 rounded-[10px] transition-colors"
                       aria-label="Toggle personal info section"
+                      aria-expanded={accordionValue === "personal-info"}
+                      aria-controls="personal-info-content"
                     >
                       <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
                         accordionValue === "personal-info" ? "rotate-180" : ""
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent className="bg-gray-50 p-3 rounded-[10px] max-h-[32rem] overflow-y-auto">
+                  <AccordionContent id="personal-info-content" className="bg-gray-50 p-3 rounded-[10px] max-h-[32rem] overflow-y-auto">
                     <PersonalInfoConsentDetails />
                   </AccordionContent>
                 </AccordionItem>
@@ -597,13 +599,15 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       onClick={() => setAccordionValue(accordionValue === "marketing" ? "" : "marketing")}
                       className="flex-shrink-0 hover:bg-gray-100 p-1 rounded-[10px] transition-colors"
                       aria-label="Toggle marketing section"
+                      aria-expanded={accordionValue === "marketing"}
+                      aria-controls="marketing-consent-content"
                     >
                       <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
                         accordionValue === "marketing" ? "rotate-180" : ""
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-64 overflow-y-auto">
+                  <AccordionContent id="marketing-consent-content" className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
                         <p className="font-semibold text-xs mb-1">◼ 수집·이용 항목</p>
@@ -652,13 +656,15 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       onClick={() => setAccordionValue(accordionValue === "ad" ? "" : "ad")}
                       className="flex-shrink-0 hover:bg-gray-100 p-1 rounded-[10px] transition-colors"
                       aria-label="Toggle advertising section"
+                      aria-expanded={accordionValue === "ad"}
+                      aria-controls="advertising-consent-content"
                     >
                       <ChevronDownIcon strokeWidth={1.5} aria-hidden="true" className={`system-icon system-icon-xs transition-transform duration-200 ${
                         accordionValue === "ad" ? "rotate-180" : ""
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-64 overflow-y-auto">
+                  <AccordionContent id="advertising-consent-content" className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-64 overflow-y-auto">
                     <div className="space-y-3">
                       <div>
                         <p className="text-xs mb-3">CJ프레시웨이㈜는 마케팅 목적의 개인정보 수집 및 이용에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다.</p>
