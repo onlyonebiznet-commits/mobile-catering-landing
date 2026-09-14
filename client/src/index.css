@@ -53,6 +53,7 @@
 }
 
 :root {
+  /* Token naming: brand-* = CJ brand green scale, status-* = semantic feedback, gray-* = neutral surfaces and text. */
   --font-title: "CJ ONLYONE", "Noto Sans KR", sans-serif;
   --font-body: "Noto Sans KR", sans-serif;
 }
