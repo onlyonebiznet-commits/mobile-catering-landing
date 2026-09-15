@@ -13,6 +13,7 @@ import SectionNavigation from "@/components/SectionNavigation";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { PromoBadge } from "@/components/ui/badge";
+import { PrivacyPolicyDetails } from "@/components/PrivacyPolicyDetails";
 
 interface StatisticItemProps {
   end: number;
@@ -1608,32 +1609,27 @@ export default function Home() {
 
       {/* Privacy Modal */}
       {showPrivacyModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-[10px] max-w-2xl w-full max-h-96 overflow-y-auto">
-            <div className="p-6">
-              <h2 className="text-2xl font-bold mb-4">개인정보 처리방침</h2>
-              <div className="space-y-4 text-gray-700 text-sm">
-                <p>CJ프레시웨이㈜는 이동급식 서비스 상담을 위해 아래 목적 범위 내로 고객님의 개인정보를 처리합니다.</p>
-                <div>
-                  <p className="font-semibold mb-2">◼ 수집·이용 항목:</p>
-                  <p>성명, 휴대폰번호, 이메일주소, 기업명, 주소, 예상 식수</p>
-                </div>
-                <div>
-                  <p className="font-semibold mb-2">◼ 목적:</p>
-                  <p>이동급식 서비스 상담 및 진행</p>
-                </div>
-                <div>
-                  <p className="font-semibold mb-2">◼ 보유·이용 기간:</p>
-                  <p>서비스 상담 신청 후 3년</p>
-                </div>
-                <p className="text-xs text-gray-600">개인정보를 기입하지 않으실 수 있으나, 기재하지 않으실 경우 이동급식 서비스 상담 진행이 어렵습니다.</p>
-              </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" role="presentation" onClick={() => setShowPrivacyModal(false)}>
+          <div
+            className="flex max-h-[min(86vh,900px)] w-full max-w-3xl flex-col overflow-hidden rounded-[10px] bg-white shadow-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="privacy-policy-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4 md:px-6">
+              <h2 id="privacy-policy-title" className="text-xl font-bold text-gray-900 md:text-2xl">개인정보 처리방침</h2>
               <button
+                type="button"
                 onClick={() => setShowPrivacyModal(false)}
-                className="mt-6 w-full px-4 py-2 bg-brand-700 text-white rounded-[10px] hover:bg-brand-600 transition"
+                className="rounded-[10px] px-3 py-2 text-sm text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                aria-label="개인정보 처리방침 닫기"
               >
                 닫기
               </button>
+            </div>
+            <div className="overflow-y-auto px-5 py-5 md:px-8 md:py-6">
+              <PrivacyPolicyDetails />
             </div>
           </div>
         </div>
