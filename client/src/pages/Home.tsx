@@ -679,7 +679,7 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative h-full flex flex-col justify-center items-center">
-          <div className="container w-full scroll-reveal">
+          <div className="container w-full scroll-reveal md:max-w-[1080px] md:px-6">
             {[
               {
                 video: '/manus-storage/0601_compressed_9dc9f144.mp4',
