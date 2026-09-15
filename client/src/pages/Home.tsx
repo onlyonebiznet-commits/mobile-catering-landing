@@ -9,7 +9,6 @@ import FloatingActionButtons from "@/components/FloatingActionButtons";
 import ThankYouPage from "@/pages/ThankYou";
 import StickyTabNavigation from "@/components/StickyTabNavigation";
 import PCNavigation from "@/components/PCNavigation";
-import SectionNavigation from "@/components/SectionNavigation";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { PromoBadge } from "@/components/ui/badge";
@@ -889,9 +888,6 @@ export default function Home() {
           animation: bounce-scale 2s ease-in-out infinite;
         }
       `}</style>
-      {/* Section Navigation - Hero Section 아래 */}
-      <SectionNavigation activeSection={activeTab} onSectionClick={scrollToSection} />
-
       {/* Service Recommendation Chatbot */}
       <ServiceRecommendationChatbot />
 

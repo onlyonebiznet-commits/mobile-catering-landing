@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 
 export default function FloatingActionButtons() {
   const [showRecommendationHint, setShowRecommendationHint] = useState(false);
@@ -43,15 +43,14 @@ export default function FloatingActionButtons() {
             </button>
           </div>
         )}
-        <div className="flex min-h-14 w-[244px] items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200 hover:bg-[#008F69]">
+        <div className="flex min-h-14 w-[244px] items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200 hover:bg-[#008F69] md:min-h-[84px] md:w-[366px]">
           <button
             type="button"
             onClick={scrollToChatbot}
-            className="flex min-h-14 w-full items-center justify-start text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97]"
+            className="cta-shine relative flex min-h-14 w-full items-center justify-center overflow-hidden text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97] md:min-h-[84px]"
             aria-label="우리 현장 맞춤 추천받기"
           >
-            <span className="flex w-[calc(100%-48px)] items-center justify-center whitespace-nowrap text-sm font-semibold sm:text-base">우리 현장 맞춤 추천받기</span>
-            <MessageCircle aria-hidden="true" strokeWidth={1.7} className="absolute right-4 h-5 w-5 flex-shrink-0" />
+            <span className="relative z-10 whitespace-nowrap text-sm font-semibold md:text-2xl">우리 현장 맞춤 추천받기</span>
           </button>
         </div>
       </div>
