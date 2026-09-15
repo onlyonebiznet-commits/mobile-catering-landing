@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import { MousePointer2, X } from "lucide-react";
 
 export default function FloatingActionButtons() {
   const [showRecommendationHint, setShowRecommendationHint] = useState(false);
@@ -43,6 +43,11 @@ export default function FloatingActionButtons() {
             </button>
           </div>
         )}
+        <div className="relative">
+          <span className="cta-cursor pointer-events-none absolute -right-3 -top-5 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#007651] shadow-md" aria-hidden="true">
+            <MousePointer2 className="h-4 w-4 fill-[#007651]/15" strokeWidth={2} />
+          </span>
+          <span className="cta-click-ring pointer-events-none absolute -right-3 -top-5 z-0 h-8 w-8 rounded-full border-2 border-white/80" aria-hidden="true" />
         <div className="cta-float flex min-h-14 w-[244px] items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200 hover:bg-[#008F69]">
           <button
             type="button"
@@ -52,6 +57,7 @@ export default function FloatingActionButtons() {
           >
             <span className="whitespace-nowrap text-sm font-semibold sm:text-base">우리 현장 맞춤 추천받기</span>
           </button>
+        </div>
         </div>
       </div>
     </>
