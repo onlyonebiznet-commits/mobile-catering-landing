@@ -48,7 +48,7 @@ export function RecommendationPersonalInfoConsentDetails({
           <div className="border-r border-gray-300 bg-gray-100 px-2 py-2 text-center font-semibold text-gray-900">수집 항목</div>
           <div className="bg-gray-100 px-2 py-2 text-center font-semibold text-gray-900">보유·이용 기간</div>
           <div className="border-r border-t border-gray-300 px-2 py-3">상담 내용 파악 및 맞춤 서비스 제안</div>
-          <div className="border-r border-t border-gray-300 px-2 py-3">필요 서비스·운영 장소·예산·일정</div>
+          <div className="border-r border-t border-gray-300 px-2 py-3">필요 서비스·운영 환경·예산·일정</div>
           <div className="border-t border-gray-300 px-2 py-3">상담일로부터 1개월</div>
         </div>
       </section>

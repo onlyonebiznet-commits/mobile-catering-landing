@@ -82,7 +82,7 @@ describe('ServiceRecommendationChatbot', () => {
     expect(await screen.findByText(/서비스 상담 제공을 위해 아래와 같이 개인정보를 수집·이용합니다/)).toBeInTheDocument();
     expect(screen.getByText(/서비스 상담 신청 접수, 상담 진행/)).toBeInTheDocument();
     expect(screen.getByText(/이름, 회사명·기관명, 연락처, 이메일, 예상 식수, 희망 지역/)).toBeInTheDocument();
-    expect(screen.getByText(/필요 서비스·운영 장소·예산·일정/)).toBeInTheDocument();
+    expect(screen.getByText(/필요 서비스·운영 환경·예산·일정/)).toBeInTheDocument();
     expect(screen.getAllByText(/상담일로부터 1개월/)).toHaveLength(2);
     expect(screen.getByText(/필수항목에 대한 동의를 거부하실 경우 서비스 상담 신청이 제한됩니다/)).toBeInTheDocument();
   });
