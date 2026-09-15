@@ -47,11 +47,11 @@ export default function FloatingActionButtons() {
           <span className="cta-cursor pointer-events-none absolute -bottom-3 -right-3 z-10 text-[#007651]" aria-hidden="true">
             <MousePointer2 className="h-7 w-7 fill-white" strokeWidth={2} />
           </span>
-        <div className="cta-float flex min-h-14 w-[244px] items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200 hover:bg-[#008F69]">
+        <div className="cta-float flex min-h-16 w-[280px] items-center overflow-hidden rounded-[10px] bg-[#1A1A1A] shadow-lg transition-all duration-200 hover:bg-[#333333]">
           <button
             type="button"
             onClick={scrollToChatbot}
-            className="relative flex min-h-14 w-full items-center justify-center overflow-hidden text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97]"
+            className="relative flex min-h-16 w-full items-center justify-center overflow-hidden text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#666666] focus-visible:ring-inset active:scale-[0.97]"
             aria-label="우리 현장 맞춤 추천받기"
           >
             <span className="whitespace-nowrap text-sm font-semibold sm:text-base">우리 현장 맞춤 추천받기</span>
