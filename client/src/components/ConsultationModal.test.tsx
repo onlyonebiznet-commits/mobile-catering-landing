@@ -170,9 +170,7 @@ describe("ConsultationModal - checkbox guide appearance", () => {
     expect(source).toContain('id="personalInfoCollection"');
     expect(source).toContain('id="marketingConsent"');
     expect(source).toContain('id="adConsent"');
-    expect(source).toContain('id="sms-consent"');
-    expect(source).toContain('id="email-consent"');
-    expect(source).toContain('id="kakao-consent"');
+    expect(source).toContain("AdvertisingConsentDetails");
   });
 });
 
@@ -232,6 +230,33 @@ describe("ConsultationModal - confirmed marketing information notice", () => {
     expect(noticeSource).toContain("1588-8161/1588-6967");
     expect(noticeSource).toContain("grid grid-cols-3 border border-gray-300 bg-white text-left");
     expect(source).toContain('aria-controls="marketing-consent-content"');
+  });
+});
+
+describe("ConsultationModal - confirmed advertising information notice", () => {
+  it("shares the approved transmission content and refusal guidance with the chatbot", () => {
+    const modalSource = readFileSync(
+      resolve(process.cwd(), "client/src/components/ConsultationModal.tsx"),
+      "utf8"
+    );
+    const chatbotSource = readFileSync(
+      resolve(process.cwd(), "client/src/components/ServiceRecommendationChatbot.tsx"),
+      "utf8"
+    );
+    const noticeSource = readFileSync(
+      resolve(process.cwd(), "client/src/components/AdvertisingConsentDetails.tsx"),
+      "utf8"
+    );
+
+    expect(modalSource).toContain("AdvertisingConsentDetails");
+    expect(chatbotSource).toContain("AdvertisingConsentDetails");
+    expect(noticeSource).toContain("정보통신망 이용촉진 및 정보보호 등에 관한 법률");
+    expect(noticeSource).toContain("서비스 소개, 신규 서비스 안내, 이벤트·프로모션 및 혜택 정보 등");
+    expect(noticeSource).toContain("SMS(문자)");
+    expect(noticeSource).toContain("이메일");
+    expect(noticeSource).toContain("카카오톡");
+    expect(noticeSource).toContain("1588-8161/1588-6967");
+    expect(noticeSource).toContain("언제든지 수신을 거부하실 수 있습니다.");
   });
 });
 

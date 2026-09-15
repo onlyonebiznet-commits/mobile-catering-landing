@@ -14,6 +14,7 @@ import { trackConsultationFormView, trackConsultationSubmit } from "@/utils/ga4-
 import SuccessModal from "./SuccessModal";
 import { PersonalInfoConsentDetails } from "./PersonalInfoConsentDetails";
 import { MarketingConsentDetails } from "./MarketingConsentDetails";
+import { AdvertisingConsentDetails } from "./AdvertisingConsentDetails";
 
 interface ConsultationModalProps {
   onClose: () => void;
@@ -49,12 +50,6 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
     personalInfoCollection: false,
     marketingConsent: false,
     adConsent: false,
-  });
-
-  const [adMediaConsents, setAdMediaConsents] = useState({
-    sms: false,
-    email: false,
-    kakao: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -132,41 +127,13 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
         marketingConsent: value,
         adConsent: value,
       });
-      // 전체 동의 체크 시 하위 항목도 모두 체크
-      if (value) {
-        setAdMediaConsents({
-          sms: true,
-          email: true,
-          kakao: true,
-        });
-      } else {
-        setAdMediaConsents({
-          sms: false,
-          email: false,
-          kakao: false,
-        });
-      }
       // 아코디언 상태는 변경하지 않음 (사용자의 명시적 클릭에만 반응)
     } else if (key === "adConsent") {
-      // 광고성 정보 수신 동의 체크 시 하위 항목 모두 자동 체크
       // 아코디언 상태는 변경하지 않음
       setAgreements({
         ...agreements,
         [key]: value,
       });
-      if (value) {
-        setAdMediaConsents({
-          sms: true,
-          email: true,
-          kakao: true,
-        });
-      } else {
-        setAdMediaConsents({
-          sms: false,
-          email: false,
-          kakao: false,
-        });
-      }
       // 아코디언 상태는 변경하지 않음 (사용자의 명시적 클릭에만 반응)
     } else {
       // 개별 항목 체크 시 아코디언 상태는 변경하지 않음
@@ -646,80 +613,8 @@ export default function ConsultationModal({ onClose, isOpen = true }: Consultati
                       }`} />
                     </button>
                   </div>
-                  <AccordionContent id="advertising-consent-content" className="text-xs text-gray-600 bg-gray-50 p-3 rounded-[10px] max-h-64 overflow-y-auto">
-                    <div className="space-y-3">
-                      <div>
-                        <p className="text-xs mb-3">CJ프레시웨이㈜는 마케팅 목적의 개인정보 수집 및 이용에 동의한 고객님의 개인정보를 이용하여 다양한 전자 전송 매체를 통해 광고성 정보를 전송할 수 있습니다.</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-xs mb-2">수신 매체 선택:</p>
-                        <div className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <Checkbox
-                            id="sms-consent"
-                                checked={adMediaConsents.sms}
-                              onCheckedChange={(checked) => {
-                                const newState = {...adMediaConsents, sms: checked as boolean};
-                                setAdMediaConsents(newState);
-                              }}
-                              onClick={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
-                            />
-                            <Label
-                              htmlFor="sms-consent"
-                              className="form-checkbox-label cursor-pointer"
-                              onClick={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
-                            >
-                              SMS(문자)
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <Checkbox
-                            id="email-consent"
-                                checked={adMediaConsents.email}
-                              onCheckedChange={(checked) => {
-                                const newState = {...adMediaConsents, email: checked as boolean};
-                                setAdMediaConsents(newState);
-                              }}
-                              onClick={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
-                            />
-                            <Label
-                              htmlFor="email-consent"
-                              className="form-checkbox-label cursor-pointer"
-                              onClick={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
-                            >
-                              이메일
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <Checkbox
-                            id="kakao-consent"
-                                checked={adMediaConsents.kakao}
-                              onCheckedChange={(checked) => {
-                                const newState = {...adMediaConsents, kakao: checked as boolean};
-                                setAdMediaConsents(newState);
-                              }}
-                              onClick={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
-                            />
-                            <Label
-                              htmlFor="kakao-consent"
-                              className="form-checkbox-label cursor-pointer"
-                              onClick={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
-                            >
-                              카카오톡
-                            </Label>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="border-t pt-2">
-                        <p className="text-xs font-semibold">고객센터 : 02-2149-6114</p>
-                      </div>
-                    </div>
+                  <AccordionContent id="advertising-consent-content" className="bg-gray-50 p-3 rounded-[10px] max-h-[32rem] overflow-y-auto">
+                    <AdvertisingConsentDetails />
                   </AccordionContent>
                 </AccordionItem>
 
