@@ -55,6 +55,6 @@ describe("FloatingActionButtons", () => {
 
   it("shows the simulation labels for desktop and mobile layouts", () => {
     render(<FloatingActionButtons />);
-    expect(screen.getAllByText("우리 현장 맞춤 추천받기").length).toBe(2);
+    expect(screen.getByText("우리 현장 맞춤 추천받기")).toBeTruthy();
   });
 });

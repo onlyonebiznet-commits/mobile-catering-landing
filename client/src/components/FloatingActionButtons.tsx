@@ -102,10 +102,10 @@ export default function FloatingActionButtons() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="relative flex h-14 w-full items-center justify-center rounded-[10px] bg-transparent text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97]"
+              className="relative flex h-14 w-full items-center justify-start rounded-[10px] bg-transparent text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97]"
               aria-label="맨 위로 이동"
             >
-              <span className="whitespace-nowrap text-sm font-semibold">위로 이동</span>
+              <span className="flex w-[calc(100%-48px)] items-center justify-center whitespace-nowrap text-sm font-semibold sm:text-base">위로 이동</span>
               <ChevronUp aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md absolute right-4" />
             </button>
           </div>
@@ -132,11 +132,10 @@ export default function FloatingActionButtons() {
           <button
             type="button"
             onClick={scrollToChatbot}
-            className="flex min-h-14 w-full items-center justify-center gap-2 px-4 text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97]"
+            className="flex min-h-14 w-full items-center justify-start text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97]"
             aria-label="우리 현장 맞춤 추천받기"
           >
-            <span className="whitespace-nowrap text-sm font-semibold sm:hidden">우리 현장 맞춤 추천받기</span>
-            <span className="hidden whitespace-nowrap text-base font-semibold sm:inline">우리 현장 맞춤 추천받기</span>
+            <span className="flex w-[calc(100%-48px)] items-center justify-center whitespace-nowrap text-sm font-semibold sm:text-base">우리 현장 맞춤 추천받기</span>
             <MessageCircle aria-hidden="true" strokeWidth={1.7} className="absolute right-4 h-5 w-5 flex-shrink-0" />
           </button>
         </div>
