@@ -64,6 +64,8 @@ const ServiceRecommendationChatbot = () => {
     setSubmitted(false);
   };
 
+  const closeWidget = () => setIsOpen(false);
+
   const chooseCompanyType = (value: string) => { setSelectedCompanyType(value); setStep(2); };
   const chooseMealRange = (value: string) => { setSelectedMealRange(value); setStep(3); };
   const chooseBudget = (value: string) => { setSelectedBudget(value); setStep(4); };
@@ -120,11 +122,22 @@ const ServiceRecommendationChatbot = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-[min(30rem,calc(100vw-24px))] bg-white rounded-[10px] shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
-          <div className="bg-gradient-to-r from-[#007651] to-[#008F69] text-white p-6">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 animate-in fade-in duration-200"
+          role="presentation"
+          onClick={closeWidget}
+        >
+          <div
+            className="w-full max-w-[30rem] overflow-hidden rounded-[10px] bg-white shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="service-recommendation-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+          <div className="bg-gradient-to-r from-[#007651] to-[#008F69] p-6 text-white">
             <div className="flex items-start justify-between gap-3">
-              <div><h3 className="text-lg font-bold">서비스 추천 상담</h3><p className="text-sm text-white/80 mt-1">우리 현장에 맞는 맞춤형 서비스를 추천해드립니다</p></div>
-              <button type="button" onClick={resetWidget} className="rounded-[10px] p-1 text-white/80 hover:bg-white/10" aria-label="서비스 추천 상담 닫기"><X className="h-5 w-5" aria-hidden="true" /></button>
+              <div><h3 id="service-recommendation-title" className="text-lg font-bold">서비스 추천 상담</h3><p className="mt-1 text-sm text-white/80">우리 현장에 맞는 맞춤형 서비스를 추천해드립니다</p></div>
+              <button type="button" onClick={closeWidget} className="rounded-[10px] p-1 text-white/80 hover:bg-white/10" aria-label="서비스 추천 상담 닫기"><X className="h-5 w-5" aria-hidden="true" /></button>
             </div>
           </div>
 
@@ -174,6 +187,7 @@ const ServiceRecommendationChatbot = () => {
                 </form>
               </div>
             )}
+          </div>
           </div>
         </div>
       )}

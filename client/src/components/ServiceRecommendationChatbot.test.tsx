@@ -144,4 +144,14 @@ describe('ServiceRecommendationChatbot', () => {
     fireEvent.click(screen.getByTitle('서비스 추천 챗봇'));
     await waitFor(() => expect(screen.queryByText('서비스 추천 상담')).not.toBeInTheDocument());
   });
+
+  it('closes on backdrop click without resetting the recommendation state', async () => {
+    openWidget();
+    fireEvent.click(await screen.findByRole('button', { name: '오피스' }));
+    fireEvent.click(screen.getByRole('presentation'));
+    expect(screen.queryByText('예상 식수를 선택해주세요')).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByTitle('서비스 추천 챗봇'));
+    expect(await screen.findByText('예상 식수를 선택해주세요')).toBeInTheDocument();
+  });
 });
