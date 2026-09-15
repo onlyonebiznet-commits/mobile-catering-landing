@@ -23,7 +23,7 @@ describe("FloatingActionButtons", () => {
   it("keeps the recommendation simulation CTA visible before scrolling", () => {
     Object.defineProperty(window, "scrollY", { value: 100, configurable: true });
     render(<FloatingActionButtons />);
-    expect(screen.getByRole("button", { name: "내 현장 맞춤 추천받기" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "우리 현장 맞춤 추천받기" })).toBeTruthy();
   });
 
   it("should have scroll event listener", () => {
@@ -55,7 +55,6 @@ describe("FloatingActionButtons", () => {
 
   it("shows the simulation labels for desktop and mobile layouts", () => {
     render(<FloatingActionButtons />);
-    expect(screen.getByText("내 현장 맞춤 추천받기")).toBeTruthy();
-    expect(screen.getByText("맞춤 추천받기")).toBeTruthy();
+    expect(screen.getAllByText("우리 현장 맞춤 추천받기").length).toBe(2);
   });
 });
