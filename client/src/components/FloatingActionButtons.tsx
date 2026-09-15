@@ -44,10 +44,9 @@ export default function FloatingActionButtons() {
           </div>
         )}
         <div className="relative">
-          <span className="cta-cursor pointer-events-none absolute -right-3 -top-5 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#007651] shadow-md" aria-hidden="true">
-            <MousePointer2 className="h-4 w-4 fill-[#007651]/15" strokeWidth={2} />
+          <span className="cta-cursor pointer-events-none absolute -bottom-3 -right-3 z-10 text-[#007651]" aria-hidden="true">
+            <MousePointer2 className="h-7 w-7 fill-white" strokeWidth={2} />
           </span>
-          <span className="cta-click-ring pointer-events-none absolute -right-3 -top-5 z-0 h-8 w-8 rounded-full border-2 border-white/80" aria-hidden="true" />
         <div className="cta-float flex min-h-14 w-[244px] items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200 hover:bg-[#008F69]">
           <button
             type="button"
