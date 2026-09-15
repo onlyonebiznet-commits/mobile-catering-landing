@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { ChevronUp, MessageCircle } from "lucide-react";
+import { ChevronUp, MessageCircle, Sparkles, X } from "lucide-react";
 
 export default function FloatingActionButtons() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
   const [touchedButton, setTouchedButton] = useState<string | null>(null);
+  const [showRecommendationHint, setShowRecommendationHint] = useState(false);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -60,6 +61,17 @@ export default function FloatingActionButtons() {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.sessionStorage.getItem("freshmeal-recommendation-hint-seen")) return;
+    const timer = window.setTimeout(() => setShowRecommendationHint(true), 3500);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const dismissRecommendationHint = () => {
+    setShowRecommendationHint(false);
+    window.sessionStorage.setItem("freshmeal-recommendation-hint-seen", "true");
+  };
+
   // Close touch state when clicking outside
   useEffect(() => {
     const handleClickOutside = () => {
@@ -102,31 +114,36 @@ export default function FloatingActionButtons() {
         </div>
       )}
 
-      {/* Consultation Button */}
-      {isVisible && (
-        <div
-          className="fixed bottom-6 right-6 z-40"
-          onMouseEnter={() => setHoveredButton("consultation")}
-          onMouseLeave={() => setHoveredButton(null)}
-          onTouchStart={() => handleTouchStart("consultation")}
-          onTouchEnd={handleTouchEnd}
-        >
-          {/* Connected shape: the label expands from the same green container as the button */}
-          <div className="flex h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200">
-            <div className={`flex h-14 items-center overflow-hidden transition-all duration-200 ${isExpanded("consultation") ? "max-w-44 px-4 opacity-100" : "max-w-0 px-0 opacity-0"}`} aria-hidden={!isExpanded("consultation")}>
-              <span className="whitespace-nowrap text-sm font-medium text-white">맞춤 상담하기</span>
-            </div>
+      {/* Recommendation simulation CTA */}
+      <div className="fixed bottom-6 right-4 z-40 sm:right-6">
+        {showRecommendationHint && (
+          <div className="absolute bottom-[calc(100%+12px)] right-0 w-[min(19rem,calc(100vw-2rem))] rounded-[10px] border border-[#007651]/15 bg-white p-4 pr-10 text-left shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <p className="text-sm font-semibold leading-5 text-gray-900">우리 현장에 맞는 서비스를</p>
+            <p className="text-sm leading-5 text-gray-700">30초 만에 추천받아보세요</p>
             <button
               type="button"
-              onClick={scrollToChatbot}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-transparent text-white transition-colors duration-200 hover:bg-[#008F69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-95"
-              aria-label="맞춤 상담"
+              onClick={dismissRecommendationHint}
+              className="absolute right-2 top-2 rounded-[10px] p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+              aria-label="추천 안내 닫기"
             >
-              <MessageCircle aria-hidden="true" strokeWidth={1.5} className="system-icon system-icon-md" />
+              <X className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
+        )}
+        <div className="flex min-h-14 items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200 hover:bg-[#008F69]">
+          <button
+            type="button"
+            onClick={scrollToChatbot}
+            className="flex min-h-14 items-center gap-2 px-4 text-white transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008F69] focus-visible:ring-inset active:scale-[0.97] sm:px-5"
+            aria-label="내 현장 맞춤 추천받기"
+          >
+            <Sparkles aria-hidden="true" strokeWidth={1.7} className="h-5 w-5 flex-shrink-0" />
+            <span className="whitespace-nowrap text-sm font-semibold sm:hidden">맞춤 추천받기</span>
+            <span className="hidden whitespace-nowrap text-base font-semibold sm:inline">내 현장 맞춤 추천받기</span>
+            <MessageCircle aria-hidden="true" strokeWidth={1.7} className="h-5 w-5 flex-shrink-0" />
+          </button>
         </div>
-      )}
+      </div>
     </>
   );
 }
