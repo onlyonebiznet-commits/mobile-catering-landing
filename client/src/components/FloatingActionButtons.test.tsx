@@ -26,11 +26,9 @@ describe("FloatingActionButtons", () => {
     expect(screen.getByRole("button", { name: "우리 현장 맞춤 추천받기" })).toBeTruthy();
   });
 
-  it("should have scroll event listener", () => {
-    const addEventListenerSpy = vi.spyOn(window, "addEventListener");
+  it("does not render the removed scroll-to-top action", () => {
     render(<FloatingActionButtons />);
-    expect(addEventListenerSpy).toHaveBeenCalledWith("scroll", expect.any(Function));
-    addEventListenerSpy.mockRestore();
+    expect(screen.queryByRole("button", { name: "맨 위로 이동" })).toBeNull();
   });
 
   it("should have green background color", () => {
@@ -43,14 +41,10 @@ describe("FloatingActionButtons", () => {
     expect(container).toBeTruthy();
   });
 
-  it("should support touch events", () => {
+  it("centers the recommendation CTA at the bottom", () => {
     const { container } = render(<FloatingActionButtons />);
-    expect(container).toBeTruthy();
-  });
-
-  it("should handle click outside to close touch state", () => {
-    const { container } = render(<FloatingActionButtons />);
-    expect(container).toBeTruthy();
+    expect(container.firstElementChild?.className).toContain("left-1/2");
+    expect(container.firstElementChild?.className).toContain("-translate-x-1/2");
   });
 
   it("shows the simulation labels for desktop and mobile layouts", () => {
