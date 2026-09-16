@@ -713,17 +713,17 @@
 
   @media (min-width: 1440px) {
     .container {
-      padding-left: 5rem; /* 80px - large desktop padding */
-      padding-right: 5rem;
-      max-width: 1440px; /* Large desktop content width */
+      padding-left: 2rem; /* 32px - keep a comfortable desktop gutter */
+      padding-right: 2rem;
+      max-width: 1280px; /* Narrower content creates balanced side whitespace */
     }
   }
 
   @media (min-width: 1600px) {
     .container {
-      padding-left: 6rem; /* 96px - extra large desktop padding */
-      padding-right: 6rem;
-      max-width: 1600px; /* Extra large desktop content width */
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
     }
   }
 
