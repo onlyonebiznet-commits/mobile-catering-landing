@@ -896,18 +896,8 @@
   animation: ctaFloat 2.4s ease-in-out infinite;
   will-change: transform;
 }
-@keyframes ctaCursorNudge {
-  0%, 100% { transform: translate(0, 0); }
-  35% { transform: translate(-3px, 3px); }
-  55% { transform: translate(0, 0) scale(0.88); }
-  70% { transform: translate(0, 0) scale(1); }
-}
-.cta-cursor {
-  animation: ctaCursorNudge 2.8s ease-in-out infinite;
-}
 @media (prefers-reduced-motion: reduce) {
-  .cta-float,
-  .cta-cursor { animation: none; }
+  .cta-float { animation: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .diet-card-transition {

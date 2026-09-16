@@ -1,4 +1,3 @@
-import { MousePointer2 } from "lucide-react";
 
 export default function FloatingActionButtons() {
   // Scroll to chatbot
@@ -15,10 +14,6 @@ export default function FloatingActionButtons() {
     <>
       {/* Recommendation simulation CTA */}
       <div className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2">
-        <div className="relative">
-          <span className="cta-cursor pointer-events-none absolute -bottom-3 -right-3 z-10 text-[#1A1A1A]" aria-hidden="true">
-            <MousePointer2 className="h-7 w-7 fill-white" strokeWidth={2} />
-          </span>
         <div className="cta-float flex min-h-14 w-[244px] items-center overflow-hidden rounded-[10px] bg-[#007651] shadow-lg transition-all duration-200 hover:bg-[#008F69]">
           <button
             type="button"
@@ -28,7 +23,6 @@ export default function FloatingActionButtons() {
           >
             <span className="whitespace-nowrap text-sm font-semibold sm:text-base">우리 현장 맞춤 추천받기</span>
           </button>
-        </div>
         </div>
       </div>
     </>
